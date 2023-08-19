@@ -1,0 +1,52 @@
+{{{header}}}
+<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>パスワード再発行</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">パスワード再発行</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">パスワードをお忘れですか？ユーザー名またはメールアドレスを入力してください。<br>
+						新しいパスワードを発行するリンクを送信します</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="c-form__errorMessage" id="registration-error-message" style="display:none">
+							そのメールアドレスは登録されていません。
+						</div>
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">メールアドレス</label></th>
+									<td class="c-form__data"><input type="email" placeholder="(例) sample@virbac.co.jp" class="c-form__input c-form__input--email" name="email" id="email" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+										<div class="c-form__error" style="display:none">
+											正しいメールアドレスの形式を入力してください。
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" onclick="submitform()" class="c-button" name="login" id="submit-email" value="リセットして再発行メールを受け取る">リセットして再発行メールを受け取る</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

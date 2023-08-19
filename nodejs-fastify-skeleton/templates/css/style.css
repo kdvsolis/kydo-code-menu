@@ -1,0 +1,275 @@
+html {
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+ }
+ html, body {
+    height: 100%;
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+ }
+ body {
+    display: flex;
+    flex-direction: column;
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+ }
+
+ #loading-img {
+    position: fixed;
+    left: 0px;
+    display: block;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1099;
+    background: url("/img/logo_loading.png") left no-repeat;
+ }
+
+ /* #loading-image {position: absolute;top: 40%;left: 45%;z-index: 100}  */
+ #loading { 
+    min-height:100%;
+    box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 1);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    display: block; 
+    z-index: 1099;
+}
+
+
+ #loading-img{
+     bottom:15%;
+    position:absolute;
+   /* animation: run 20s 2;
+    animation-direction: normal; */
+ }     
+ /* @-webkit-keyframes run {
+    0% { left: 0;}
+    25%{ left : 25%; }
+    50%{ left : 50%; }
+    75%{ left : 85%; }
+    100%{ left : 100%;  } */
+
+/* 
+    0% { left: 50%; }
+    50%{ left : 100%;  transform: scaleX(-1);}
+    100%{ left : 0%; }
+ }*/
+
+ button:hover {
+    cursor: pointer;
+ }
+
+
+ #content {
+    flex: 1 0 auto;
+ }
+ .footer {
+    flex-shrink: 0;
+ }
+  #primary {
+     margin: 64px 0;
+  }
+  #primary, #secondary {
+     display: block;
+     position: relative;
+     /* float: left; */
+     width: 100%;
+  }
+
+  .modal .modal-dialog {
+    max-width: 800px !important;
+    margin: auto !important;
+ }
+ .modal .modal-header {
+    border-bottom: none !important;
+ }
+ .modal .modal-body {
+    border-bottom: none !important;
+ }
+
+ .modal .modal-footer {
+    border-top: none !important;
+ }
+  button {
+    font-weight: 600 !important;
+  }
+
+  .page .entry-header {
+     margin-bottom: 24px;
+  }
+
+  .entry-header {
+     margin-bottom: 1em;
+     word-wrap: break-word;
+  }
+  .entry-title, .page-title {
+     font-size: 30px;
+     font-size: 2rem;
+  }
+
+  .entry-title, .entry-title a {
+     line-height: 1.2;
+  }
+  h1.entry-title {
+     text-align: center;
+     font-weight: 400;
+  }
+ 
+  .entry-title {
+     margin-bottom: .2em;
+  }
+  .entry-title, .entry-title a {
+     font-weight: 400;
+  }
+
+  .woocommerce h2, .woocommerce-account h2 {
+     font-size: 1.625rem;
+     font-weight: 400;
+  }
+
+  .entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6 {
+     margin-top: 20px;
+     margin: 1.5em 0 1em;
+  }
+  .woocommerce h2, .woocommerce-account h2 {
+     font-size: 1.625rem;
+  }
+  .woocommerce h2 {
+     margin-top: 20px;
+     margin: 1.5em 0 1em;
+  }
+
+  .clear {
+     clear: both;
+  }
+
+  .entry-content {
+     word-wrap: break-word;
+  }
+
+  .entry-content>:last-child, .entry-summary>:last-child, .page-content>:last-child {
+     margin-bottom: 0;
+  }
+
+  /* .ast-container {
+    max-width: 1240px;
+    font-size: 15px;
+ } */
+
+  .woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
+     border: 1px solid #d3ced2;
+     padding: 20px;
+     margin: 2em 0;
+     text-align: left;
+     border-radius: 5px;
+  }
+
+  .woocommerce form .form-row {
+   padding: 3px;
+   margin: 0 0 6px;
+  }
+  .woocommerce form .form-row-wide, .woocommerce-page form .form-row-wide {
+     clear: both;
+  }
+  .entry-content p {
+     margin-bottom: 0!important;
+  }
+  .entry-content p {
+     margin-bottom: 1.6em;
+  }
+  p {
+     margin-bottom: 1.75em;
+  }
+  .woocommerce form .form-row label {
+     line-height: 2;
+     font-weight: 700;
+     font-size: 13.5px;
+     font-size: .9rem;
+  }
+
+  .woocommerce form .form-row label, .woocommerce-page form .form-row label {
+     display: block;
+  }
+
+  .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+     box-sizing: border-box;
+     width: 100%;
+     margin: 0;
+     outline: 0;
+     line-height: 1;
+  }
+
+  .woocommerce form .form-row .input-text, .woocommerce-page form .form-row .input-text {
+     box-sizing: border-box;
+     width: 100%;
+  }
+  .woocommerce form .form-row textarea, .woocommerce input[type=email], .woocommerce input[type=number], .woocommerce input[type=password], .woocommerce input[type=reset], .woocommerce input[type=search], .woocommerce input[type=tel], .woocommerce input[type=text], .woocommerce input[type=url], .woocommerce textarea, .woocommerce-page form .form-row textarea, .woocommerce-page input[type=email], .woocommerce-page input[type=number], .woocommerce-page input[type=password], .woocommerce-page input[type=reset], .woocommerce-page input[type=search], .woocommerce-page input[type=tel], .woocommerce-page input[type=text], .woocommerce-page input[type=url], .woocommerce-page textarea {
+     border-color: #ddd;
+     background: #fff;
+     box-shadow: none;
+     border-radius: 0;
+  }
+  input[type=email], input[type=number], input[type=password], input[type=reset], input[type=search], input[type=tel], input[type=text], input[type=url], select, textarea {
+     color: #666;
+     padding: .75em;
+     height: auto;
+     border-width: 1px;
+     border-style: solid;
+     border-color: #eaeaea;
+     border-radius: 2px;
+     background: #fafafa;
+     box-shadow: none;
+     box-sizing: border-box;
+     transition: all .2s linear;
+  }
+  input[type=email], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=url], textarea {
+     color: #666;
+     border: 1px solid #ccc;
+     border-radius: 2px;
+     -webkit-appearance: none;
+     font-size: 1rem;
+  }
+
+  .woocommerce form .form-row label {
+     line-height: 2;
+     font-weight: 700;
+     font-size: 13.5px;
+     font-size: .9rem;
+  }
+  .woocommerce form .form-row label, .woocommerce-page form .form-row label {
+     display: block;
+     width: 100%;
+  }
+
+  .woocommerce button {
+     color: #ffffff;
+     border-radius: 2px;
+     padding: 10px 40px;
+     border-color: #9d8f87;
+     background-color: #9d8f87;
+     font-size: 14px;
+     margin: 0;
+     line-height: 1;
+     cursor: pointer;
+     position: relative;
+     text-decoration: none;
+     overflow: visible;
+     padding: .5em .75em;
+     font-weight: 700;
+     border-radius: 3px;
+     left: auto;
+     /* color: #515151;
+     background-color: #ebe9eb; */
+     border: 0;
+     display: inline-block;
+     background-image: none;
+     box-shadow: none;
+     text-shadow: none;
+     border-radius: 2px;
+     padding: 10px 40px;
+  }
+
+  button{
+    cursor: pointer;
+ }

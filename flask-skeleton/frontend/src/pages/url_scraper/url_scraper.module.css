@@ -1,0 +1,22 @@
+.table_main {
+    border: 3px solid #000000;
+    margin-bottom: 5px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.td_title {
+    border: 1px solid #dddddd;
+    width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.td_value {
+    border: 1px solid #dddddd;
+    width: 70%;
+}
+
+.tr_height {
+    height: auto
+}

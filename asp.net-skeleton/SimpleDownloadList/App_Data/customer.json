@@ -1,0 +1,21 @@
+﻿{
+  "customer": "John Doe",
+  "password": "secretpassword",
+  "downloads": [
+    {
+      "downloadFileURL": "https://example.com/magic-trick1.mp4",
+      "title": "Levitating Card",
+      "description": "Learn how to make a playing card float in mid-air."
+    },
+    {
+      "downloadFileURL": "https://example.com/magic-trick2.pdf",
+      "title": "Disappearing Coin",
+      "description": "Master the art of making a coin vanish into thin air."
+    },
+    {
+      "downloadFileURL": "https://example.com/magic-trick3.pdf",
+      "title": "Mind Reading",
+      "description": "Read people's minds with this mind-boggling trick."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>ログイン</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ログイン</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">メールアドレス</label></th>
+									<td class="c-form__data"><input type="email" placeholder="(例) sample@virbac.co.jp" class="c-form__input c-form__input--email" name="email" id="email" onfocus="inputChange('email')" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">パスワード</label></th>
+									<td class="c-form__data">
+										<input type="password" placeholder="(例) 1234tY@ma" class=" c-form__input c-form__input--password" name="password" id="password" value="" oninput="inputChange('password')" required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-form__errorMessage" style="display: none;">
+							ログインの際にエラーが発生しました。<br>
+							もう一度メールアドレス・パスワードをご確認ください。
+						</div>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" name="update_cart" onclick="saveUser()" value="ログイン" id="saveBtn">ログイン</button>
+						</div>
+						<p class="p-mypage__loginText">パスワードを忘れた場合は<a href="{{{home_url}}}/my-page/lost-password">こちら</a></p>
+
+						<div class="p-first">
+							<div class="p-first__text">
+								<span><span class="u-pc--inline">ビルバックサービスの</span>ご利用は初めてですか？</span>
+							</div>
+							<a class="p-first__button" href="/reg">
+								<div class="p-first__line01">
+									初回購入<strong>1000円オフ</strong>クーポン進呈
+								</div>
+								<div class="p-first__line02">
+									<strong>新規登録</strong>はこちら
+								</div>
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

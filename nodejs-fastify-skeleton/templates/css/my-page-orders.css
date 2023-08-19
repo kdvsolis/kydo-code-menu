@@ -1,0 +1,18 @@
+.view {
+    white-space: nowrap;
+    color: #ffffff !important;
+    border-radius: 2px;
+    padding: 10px 40px;
+    border-color: #1f497d;
+    background-color: #1f497d;
+ }
+
+ table td {
+    border: 1px solid #dee2e6;
+    padding: .7em 1em;
+ }
+
+ table thead {
+    background-color: #fbfbfb;
+    border: 1px solid #dee2e6;
+ }

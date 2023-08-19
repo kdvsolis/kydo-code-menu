@@ -1,0 +1,42 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    import {account} from '/components/account/account.js?v={{accountVersion}}';
+    let saveBtn = document.querySelector("#saveBtn");
+    if (saveBtn != null) {
+      saveBtn.onclick = async function (){
+         console.log('start');
+         let params = (new URL(document.location)).searchParams;
+         let page = params.get("page");
+         let skip = params.get("skip");
+         let subs_id = params.get("subs_id");
+         let username = document.querySelector("#email").value;
+         let password = document.querySelector("#password").value;
+         let login_response = await account.authenticateUser(username, password); 
+   console.log('middle');
+         if(login_response.success){
+               if(page == "order")
+                  window.location.href = "/mypage/orders";
+               else if(page == "cart")
+                  window.location.href = "/cart";
+               else if(page == "cart-subscription")
+                  window.location.href = "/cart-subscription";
+               else if(page == "checkout-subscription")
+                  window.location.href = "/checkout-subscription";
+               else if(page == "skip")
+                  window.location.href = "/mypage/subscription?skip=" + subs_id;
+               else if(skip != null)
+                  window.location.href = "/mypage/subscription?skip=" + skip;
+               else
+                  location.reload();
+         } else {
+               let err_text = 'ログインの際にエラーが発生しました。<br>もう一度メールアドレス・パスワードをご確認ください。';
+               let err_elm = document.getElementsByClassName('c-form__errorMessage');
+               for (let i = 0; i < err_elm.length; i++) {
+                     err_elm[i].innerHTML = err_text;
+                     err_elm[i].style.display = 'block';
+               }
+         }
+         console.log('end');
+      }
+   }
+</script>

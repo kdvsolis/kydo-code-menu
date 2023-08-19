@@ -1,0 +1,56 @@
+<script type="module">
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cart } from '/components/cart/cart.js?v={{cartVersion}}';
+
+    let orders = JSON.parse('{{{order_items}}}');
+    
+    document.querySelector('.c-button--reversal').onclick = async function(){
+        let userInfo = await account.getUser();
+        try{
+            await cart.clearCart();
+            for(let i = 0; i < orders.length; i++){
+                if(orders[i].categories.findIndex(r => r.name.includes("sample")) == -1){
+                    if(orders[i].product_id != 0 && orders[i].variation_id == 0){
+                        switch (orders[i].product_id) {
+                            case 21792:
+                                orders[i].variation_id = 121934;
+                            break;
+                            case 21793:
+                                orders[i].variation_id = 121945;
+                            break;
+                            case 21794:
+                                orders[i].variation_id = 121948;
+                            break;
+                            case 21795:
+                                orders[i].variation_id = 121951;
+                            break;
+                            case 21797:
+                                orders[i].variation_id = 121953;
+                            break;
+                            case 111061:
+                                orders[i].variation_id = 121956;
+                            break;
+                            case 21798:
+                                orders[i].variation_id = 121958;
+                            break;
+                            case 21799:
+                                orders[i].variation_id = 121960;
+                            break;
+                            case 21800:
+                                orders[i].variation_id = 121963;
+                            break;
+                            case 60928:
+                                orders[i].variation_id = 121965;
+                            break;
+                        }
+                    }
+                    console.log(orders)
+                    await cart.updateCartItem(userInfo.id, orders[i].variation_id != 0? orders[i].variation_id : orders[i].product_id, orders[i].quantity);
+                }
+            }
+            location.href = "/cart";
+        }catch(e){
+            console.log(e);
+        }
+    }
+</script>

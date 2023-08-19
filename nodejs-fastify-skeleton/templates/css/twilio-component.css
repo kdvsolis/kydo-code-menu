@@ -1,0 +1,70 @@
+ .btn {
+    width: 100%;
+    max-width: 60px;
+    border-color: #D1D1D1;
+    font-weight: 600;
+    height: 35px;
+    line-height: 35px;
+    padding: 0;
+}
+
+.confirm {
+  background-color: #004C98 !important;
+  color: #FFFFFF;
+}
+
+ input {
+    height: 35px;
+    padding: 5px !important;
+}
+ .secondary-btn {
+    background-color: #FFFFFF;
+}
+ p {
+    font-size: 16px;
+}
+ table thead {
+    background-color: #fafafa;
+}
+ table tr {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.red {
+  background-color: #E20711;
+  min-width: 70px !important;
+  color : #FFFFFF;
+  text-align: center;
+min-height: 26px;
+
+}
+.row-header {
+    background-color: #dee2e6;
+    width: 100%;
+    height: 38px;
+    padding: 20p;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .user-item-paragraph{
+      margin-left:20px;
+      margin-right:20px;
+      margin-bottom: 0;
+      ;
+  }
+   .item-paragraph {
+    font-size: 14px !important
+  }
+  
+.input-invalid {
+  background-color:#FFA3A4 !important;
+}
+
+.required {
+  color: red;
+}

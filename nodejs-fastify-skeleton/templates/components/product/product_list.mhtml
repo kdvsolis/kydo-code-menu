@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    import { cart } from '/components/cart/cart.js';
+    import { product } from '/components/product/product.js';
+    import { account } from '/components/account/account.js'
+    import {cookieService} from '/services/cookie.service.js';
+    
+    let isPremiumProduct = "{{isPremiumProduct}}" == "true";
+    let main_product_slug = decodeURI('{{main_slug}}');
+    let counterpart_product_slug = decodeURI("{{counterpart_product_slug}}");
+    console.log('test');
+ 
+    (async () => {
+
+        let checked_products = await product.checkedProducts_carousel(); // get array of checked products
+        console.log(checked_products) 
+        //[{id: , name: , slug: , image: },{id: , name: , slug: , image: },...]
+    })();
+    
+
+
+</script>

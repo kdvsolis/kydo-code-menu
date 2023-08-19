@@ -1,0 +1,15 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    //Import related modules for product-detail page
+    import { account } from '/components/account/account.js'
+
+    (async () => {
+        let userInfo = await account.getUser(); //Get user info if available
+        if (userInfo.success) {
+            let recentOrders = await account.orderHistoryCarousel(); //get order history list in format 
+            //[{name: "name", slug: "slug", "", image: "image"}]
+        }
+
+    })();
+
+</script>

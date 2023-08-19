@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>定期購入品詳細</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">定期購入品詳細</h2>
+								<div class="p-mypage__mainSection">
+									<p class="p-mypage__subscriptionDeatailName">{{subscription_list.meta.name}}</p>
+									<div class="p-mypage__subscriptionDeatailRow">
+										<div class="p-mypage__subscriptionDeatailCol p-mypage__subscriptionDeatailCol--image">
+											<img src="{{subscription_list.meta.images.0.src}}" alt="">
+										</div>
+										<div class="p-mypage__subscriptionDeatailCol p-mypage__subscriptionDeatailCol--contents">
+											<div class="p-mypage__subscriptionDeatailDate"><strong>{{{shipping_status}}}</strong><span>{{subscription_list.meta.next_scheduled_year}}年 {{subscription_list.meta.next_scheduled_month}} 月 {{subscription_list.meta.next_scheduled_day}} 日</span></div>
+											<dl class="p-mypage__subscriptionDeatailDef">
+												<dt class="p-mypage__subscriptionDeatailTitle">請求金額</dt>
+												<dd class="p-mypage__subscriptionDeatailData">{{subscription_list.total}}円（税込）</dd>
+												<dt class="p-mypage__subscriptionDeatailTitle">数量</dt>
+												<dd class="p-mypage__subscriptionDeatailData">{{subscription_list.meta._vs_quantity}}</dd>
+												<dt class="p-mypage__subscriptionDeatailTitle">発送頻度</dt>
+												<dd class="p-mypage__subscriptionDeatailData">{{subscription_list.meta._vs_period}}</dd>
+											</dl>
+											<div class="p-mypage__subscriptionDetailButtonWrap">
+												<button id="skip-now" type="button" class="p-mypage__subscriptionDetailButton p-mypage__subscriptionDetailButton--reversal" onclick="" value="次回のお届けをスキップ" href="#nextSkip" data-lity>次回のお届けをスキップ</button>
+												<button type="button" class="p-mypage__subscriptionDetailButton" onclick="showCancellation()" href="#cancelSubscription" data-lity>定期購入を解除する</button>
+											</div>
+											<div class="p-mypage__subscriptionDetailNote">
+												定期購入で指定した商品を、発送予定日よりも前に発送することはできません。
+												いますぐ発送した商品を購入したい場合には<a href="/product/dog/{{subscription_list.meta.slug}}" target="_blank">こちら</a>より通常購入をお願いいたします。
+											</div>
+										</div>
+									</div>
+								</div>
+								<h2 class="p-mypage__mainHeading__h2">各種設定</h2>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">配送スケジュール</small></h3>
+									<div class="p-mypage__schedule">
+										<dl class="p-mypage__scheduleDef">
+											<dt class="p-mypage__scheduleTitle">数量</dt>
+											<dd class="p-mypage__scheduleData">{{subscription_list.meta._vs_quantity}}</dd>
+											<dt class="p-mypage__scheduleTitle">頻度</dt>
+											<dd class="p-mypage__scheduleData">{{subscription_list.meta._vs_period}}</dd>
+											<dt class="p-mypage__scheduleTitle">お届け日</dt>
+											<dd class="p-mypage__scheduleData">{{subscription_list.meta.next_scheduled_year}}年 {{subscription_list.meta.next_scheduled_month}} 月 {{subscription_list.meta.next_scheduled_day}} 日</dd>
+										</dl>
+									</div>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editSchedule" data-lity>変更</button>
+									</div>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">お届け先住所</small></h3>
+									<div class="p-mypage__address">
+										<dl class="p-mypage__addressDef">
+											<dt class="p-mypage__addressTitle">氏名</dt>
+											<dd class="p-mypage__addressData">{{customer.billing.last_name}} {{customer.billing.first_name}}</dd>
+											<dt class="p-mypage__addressTitle">住所</dt>
+											<dd class="p-mypage__addressData">{{customer.shipping.state}}{{customer.shipping.city}}{{customer.shipping.address_1}}{{customer.shipping.address_2}}</dd>
+										</dl>
+									</div>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editAddress" data-lity>変更</button>
+									</div>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">お支払い方法</h3>
+									<div class="p-mypage__creditcard">
+										<dl class="p-mypage__creditcardDef">
+											<dt class="p-mypage__creditcardTitle">氏名</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_holder}}</dd>
+											<dt class="p-mypage__creditcardTitle">カード番号</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_val}}</dd>
+											<dt class="p-mypage__creditcardTitle">有効期限</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_expire}}</dd>
+										</dl>
+									</div>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editPayment" data-lity>変更</button>
+									</div>
+								</div>
+								<div class="c-button-wrap">
+									<button class="c-button" onclick="location.href='/my-page/subscription'">定期購入に戻る</button>
+								</div>
+							</div>
+
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete ">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+			<div class="c-modal">
+				<div id="nextSkip" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						次回の配送をスキップしますか？
+					</h3>
+					<div class="c-modal__contents">
+						<div class="c-modal__lead c-modal__lead--center">
+							スキップした場合、次回の配送予定日は以下です
+						</div>
+						<div class="c-modal__notice"><span>{{subscription_list.meta.next_skip_year}}年{{subscription_list.meta.next_skip_month}}月{{subscription_list.meta.next_skip_day}}日</span></div>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" onclick="skipProduct()">スキップする </button>
+						</div>
+					</div>
+				</div>
+				<div id="cancelSubscription" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						定期購入商品を解約しますか？
+					</h3>
+					<div class="c-modal__contents">
+						<div class="c-modal__lead c-modal__lead--center">
+							発送準備に入っていない商品はすべてキャンセルされます。<br>
+							配送頻度が高い場合、配送頻度の変更や次回配送分のスキップが可能です。
+						</div>
+						<div class="c-modal__image">
+							<img src="{{{base_url}}}/static/images/mypage/mypage_img_cancellation.png" alt="">
+						</div>
+						<div class="c-button-wrap">
+							<button id="cancel-subs" type="button" class="c-button c-button--reversal" onclick="skipProduct()" value="次の配送をスキップ">次の配送をスキップ</button>
+							<button id="subscription-cancel" type="button" class="c-button" value="定期購入商品を解約">定期購入商品を解約</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="editSchedule" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						配送スケジュール
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">数量</label></th>
+									<td class="c-form__data">
+										<select class="c-form__input c-form__input--select" id="quantity-select">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">頻度</label></th>
+									<td class="c-form__data">
+										<select class="c-form__input c-form__input--select" id="freq-val" onchange="onFreqChange()">
+											<option value="30">30日（おすすめ)</option>
+											<option value="40">40日</option>
+											<option value="50">50日</option>
+											<option value="60">60日</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">次回のお届け予定日</label></th>
+									<td class="c-form__data">
+										<select class="c-form__input c-form__input--select" id="del-date">{{#dates}}
+											<option value="{{value}}">{{text}}</option>
+										{{/dates}}</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">配達メモ</label></th>
+									<td class="c-form__data">
+									<textarea class="c-form__input c-form__input--textarea" id="message-modal" maxlength="100" placeholder="その他、発送に関するご希望はこちらにご記入ください。（例：宅配BOXに入れてください）※ご希望に添えない場合がございます事、予めご了承ください。" rows="5">{{subscription_list.meta._vs_memo}}</textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal">変更</button>
+							<!--onclick="updateSubscription()"-->
+						</div>
+					</div>
+				</div>
+
+
+				<div id="editAddress" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お届け先住所
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname" autocomplete="surname" value="">
+											<span>&nbsp;</span>
+											<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname" autocomplete="firstname" value="">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">郵便番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" class="c-form__input c-form__input--text" name="postal" id="postal" onkeyup="setPostal(false)" onchange="postalValidation()" placeholder="(例) 1234567">
+											<span>&nbsp;</span>
+											<button class="c-form__button c-form__button--reversal" onclick="setPostal(false)">郵便番号検索</button>
+										</div>
+										<div class="c-form__attention">※半角数字ハイフンなしで入力（例：1234567）</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">都道府県</label></th>
+									<td class="c-form__data">
+										<select name="shipping_state" id="shipping_state" class="c-form__input c-form__input--select" data-placeholder="お選びください" tabindex="-1" aria-hidden="true">
+											<option value="">お選びください</option>
+											<option value="北海道">北海道</option>
+											<option value="青森県">青森県</option>
+											<option value="岩手県">岩手県</option>
+											<option value="宮城県">宮城県</option>
+											<option value="秋田県">秋田県</option>
+											<option value="山形県">山形県</option>
+											<option value="福島県">福島県</option>
+											<option value="茨城県">茨城県</option>
+											<option value="栃木県">栃木県</option>
+											<option value="群馬県">群馬県</option>
+											<option value="埼玉県">埼玉県</option>
+											<option value="千葉県">千葉県</option>
+											<option value="東京都">東京都</option>
+											<option value="神奈川県">神奈川県</option>
+											<option value="新潟県">新潟県</option>
+											<option value="富山県">富山県</option>
+											<option value="石川県">石川県</option>
+											<option value="福井県">福井県</option>
+											<option value="山梨県">山梨県</option>
+											<option value="長野県">長野県</option>
+											<option value="岐阜県">岐阜県</option>
+											<option value="静岡県">静岡県</option>
+											<option value="愛知県">愛知県</option>
+											<option value="三重県">三重県</option>
+											<option value="滋賀県">滋賀県</option>
+											<option value="京都府">京都府</option>
+											<option value="大阪府">大阪府</option>
+											<option value="兵庫県">兵庫県</option>
+											<option value="奈良県">奈良県</option>
+											<option value="和歌山県">和歌山県</option>
+											<option value="鳥取県">鳥取県</option>
+											<option value="島根県">島根県</option>
+											<option value="岡山県">岡山県</option>
+											<option value="広島県">広島県</option>
+											<option value="山口県">山口県</option>
+											<option value="徳島県">徳島県</option>
+											<option value="香川県">香川県</option>
+											<option value="愛媛県">愛媛県</option>
+											<option value="高知県">高知県</option>
+											<option value="福岡県">福岡県</option>
+											<option value="佐賀県">佐賀県</option>
+											<option value="長崎県">長崎県</option>
+											<option value="熊本県">熊本県</option>
+											<option value="大分県">大分県</option>
+											<option value="宮崎県">宮崎県</option>
+											<option value="鹿児島県">鹿児島県</option>
+											<option value="沖縄県">沖縄県</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">市区</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="municipality" id="municipality">
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">町名・番地</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--textt" name="town" id="town" value="">
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--optional">建物名、部屋番号 など</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="bldg" id="bldg" value="">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" id="save-email" onclick="saveAddress()">変更を保存する</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="editPayment" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お支払い方法
+					</h3>
+					<div class="c-modal__contents">
+						<ol id="payment" class="c-modal__payment js-modal__payment">
+							<li class="c-modal__paymentItem c-modal__paymentItem js-modal__paymentItem is-active">
+								<div class="c-modal__paymentType">
+									<input type="radio" class="c-modal__paymentCheck js-modal__paymentCheck" name="paymentType" checked="">
+									<span class="c-modal__paymentTypeName">クレジットカード</span>
+								</div>
+								<div class="c-modal__paymentDetail js-modal__paymentDetail" style="">
+									<div class="c-modal__text">
+										以下のクレジットカードをご利用いただけます。
+									</div>
+										<img src="{{{base_url}}}/static/images/mypage/mypage_img_gmopg-cards.png" alt="">
+									<table class="c-form">
+										<tbody>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード名義</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_holdername" type="text" autocomplete="off" placeholder="" value="{{{cardInfo.credit_card_holder}}}" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード番号</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_ccNo" name="cardNumber" pattern="[0-9]*" type="tel" autocomplete="off" maxlength="17" placeholder="{{{cardInfo.credit_card_val}}}" value="" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">有効期限</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<select id="imgmopg_expdate_month" class="c-form__input c-form__input--select">
+															<option value="">MM</option>
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
+														<span>&nbsp;月&nbsp;</span>
+														<select id="imgmopg_expdate_year" class="c-form__input c-form__input--select">
+															<option value="">YYYY</option>
+															<option value="2020">2020</option>
+															<option value="2021">2021</option>
+															<option value="2022">2022</option>
+															<option value="2023">2023</option>
+															<option value="2024">2024</option>
+															<option value="2025">2025</option>
+															<option value="2026">2026</option>
+															<option value="2027">2027</option>
+															<option value="2028">2028</option>
+															<option value="2029">2029</option>
+															<option value="2030">2030</option>
+															<option value="2031">2031</option>
+															<option value="2032">2032</option>
+															<option value="2033">2033</option>
+															<option value="2034">2034</option>
+															<option value="2035">2035</option>
+															<option value="2036">2036</option>
+															<option value="2037">2037</option>
+															<option value="2038">2038</option>
+															<option value="2039">2039</option>
+															<option value="2040">2040</option>
+														</select>
+														<span>&nbsp;年&nbsp;</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">セキュリティコード</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_cvv" name="cvc2" pattern="[0-9]*" type="tel" autocomplete="off" placeholder="CVC" maxlength="4" class="c-form__input c-form__input--text">
+													<div class="c-form__attention">※セキュリティコード：主にカードの裏面の署名欄に記載されている末尾3桁～4桁の数字をご記入下さい。</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="c-form__agree">プライバシーポリシーは<a href="{{{home_url}}}/privacy-policy" target="_blank">こちら</a>。</div>
+									
+								</div>
+							</li>
+							<li class="c-modal__paymentItem c-modal__paymentItem js-modal__paymentItem">
+								<div class="c-modal__paymentType">
+									<input type="radio" class="c-modal__paymentCheck js-modal__paymentCheck" name="paymentType">
+									<span class="c-modal__paymentTypeName">代引</span>
+								</div>
+								<div class="c-modal__paymentDetail js-modal__paymentDetail" style=""></div>
+							</li>
+							<div class="c-button-wrap">
+								<button type="button" class="c-button c-button--reversal" id="save-email" onclick="saveCardPd()">登録</button>
+							</div>
+						</ol>
+					</div>
+				</div>
+
+
+			</div>
+
+
+
+
+		</article>
+	</main>
+{{{footer}}}
+

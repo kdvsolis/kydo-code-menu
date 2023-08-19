@@ -1,0 +1,83 @@
+<script type="module">
+    //Import related modules for product-detail page
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+    import { cart } from '/components/cart/cart.js?v={{cartVersion}}';
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    
+    let variations = '{{{variations}}}'!=""? (JSON.parse('{{{variations}}}')) : [];
+    let selected_variation = 0;
+    let product_id = variations.length == 0? '{{product.id}}' : variations[0];
+    let isIOS = !!navigator.platform.match(/iPhone|iPod|iPad/);
+
+    (async () => {
+        let user_token = cookieService.getCookieValue('token');
+        let userInfo = user_token != ""? await account.getUser() : {success: false}; //Duplicate for button purposes
+        let ordered_samples_index = userInfo.success? userInfo.user_meta.findIndex(r => r.key == '_v_ordered_samples') : -1;
+        let ordered_samples = ordered_samples_index > -1? userInfo.user_meta[ordered_samples_index].value : [];
+
+        async function addToCart() { 
+            let user_token = cookieService.getCookieValue('token');
+            let userInfo = user_token != ""? await account.getUser() : {success: false}; //Get user info if available
+            let is_premium = '{{product.categories.0.slug}}'.startsWith('premium');
+            let is_sample = '{{product.categories.0.slug}}'.startsWith('sample');
+
+            // Prevent normal users adding premium products
+            if (is_premium && (!userInfo || !userInfo.isPremiumUser)) {
+                let modal = document.getElementById('dispWarning');
+                lity(modal);
+                return;
+            }
+
+            let quantity = parseInt(document.getElementById('quantity_{{product.id}}').value);
+            let cart_response = await cart.updateCartItem(userInfo.success ? userInfo.id : '', variations.length == 0? product_id : variations[selected_variation], quantity);
+            cart.reloadCartUpperWidget();
+            document.querySelector('.p-product__message.js-product__message').style.display = "block";
+            document.querySelectorAll('.p-product__paymentButton')[0].disabled = '{{product.categories.0.slug}}'.startsWith('sample') && 
+                                                                              (ordered_samples.findIndex(r => r == ('{{{product.id}}}')) > -1 || 
+                                                                              cart.getCartContents().findIndex(r => r.product_id == ('{{{product.id}}}')) > -1);
+            window.scrollTo(0, 0);
+            setTimeout(function(){
+                document.querySelector('.p-product__message.js-product__message').style.display = "none";
+            },5000);
+        }
+
+        document.querySelector('.p-product__message.js-product__message').style.display = "none";
+
+        variations.forEach(async function(variation, index){
+            document.getElementById('option' + index).onchange = async function(event){
+                if(event.target.checked){
+                    selected_variation = index;
+                }
+            }
+        });
+        document.querySelectorAll('.p-product__paymentButton')[0].disabled = '{{product.categories.0.slug}}'.startsWith('sample') && 
+                                                                              (ordered_samples.findIndex(r => r == ('{{{product.id}}}')) > -1 || 
+                                                                              cart.getCartContents().findIndex(r => r.product_id == ('{{{product.id}}}')) > -1);
+
+        if(isIOS){
+            document.querySelectorAll('.p-product__paymentButton')[0].addEventListener('touchstart', addToCart);
+        } else {
+            document.querySelectorAll('.p-product__paymentButton')[0].onclick = addToCart;
+        }
+        
+        if(!('{{product.categories.0.slug}}'.startsWith('sample'))){
+            document.querySelectorAll('.p-product__paymentButton')[1].onclick = async function() { 
+                let user_token = cookieService.getCookieValue('token');
+                let userInfo = user_token != ""? await account.getUser() : {success: false}; //Get user info if available
+                // Prevent normal users adding premium products
+                let is_premium = '{{product.categories.0.slug}}'.startsWith('premium');
+                if (is_premium && (!userInfo || !userInfo.isPremiumUser)) {
+                    let modal = document.getElementById('dispWarning');
+                    lity(modal);
+                    return;
+                }
+                let quantity = parseInt(document.getElementById('quantity_subs_{{product.id}}').value);
+                let frequency = parseInt(document.getElementById('frequency').value);
+                let cart_response = await cart.updateCartSubscriptionItem(userInfo.success ? userInfo.id : '', variations.length == 0? product_id : variations[selected_variation], quantity, frequency);
+                location.href = "/checkout-subscription";
+            }
+        }
+    })();
+
+
+</script>

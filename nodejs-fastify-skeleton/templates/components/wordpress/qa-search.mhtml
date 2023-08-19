@@ -1,0 +1,164 @@
+<script type="module">
+
+    import mustache from 'https://unpkg.com/mustache@latest/mustache.mjs';
+    import { wordpress } from '/components/wordpress/wordpress.js?v={{wordpressVersion}}';
+
+    let params = (new URL(document.location)).searchParams;
+    let isLoading = false;
+    let selected_category = params.get("categories") != null? params.get("categories") : params.get("category")? params.get("category") : "";
+    let search_keyword = params.get("search") != null? params.get("search") : "";
+    let selected_tags = params.get("tags") != null? params.get("tags").split(",") : [];
+
+    if(search_keyword != "" || selected_category != "" || selected_tags.join() != "") {
+        document.getElementsByTagName("section")[0].style.display = "none";
+        document.getElementsByTagName("section")[1].style.display = "none";
+        document.getElementsByTagName("section")[2].style.display = "block";
+    } else {
+        document.getElementsByTagName("section")[0].style.display = "block";
+        document.getElementsByTagName("section")[1].style.display = "block";
+        document.getElementsByTagName("section")[2].style.display = "none";
+    }
+
+    selected_category = selected_category == ""? document.querySelector(".c-search__select.c-search__select--category.js-search__select--category").value : selected_category;
+    
+    async function loadQA(search, categories, tags, page) {
+        if (isLoading) {
+            return;
+        } else {
+            isLoading = true;
+        }
+        let qa_response = await wordpress.getQA(search, categories, tags, page);
+        let qa_result = qa_response.qa_list;
+        console.log("search-:" + search)
+        console.log("categories: " + categories)
+        console.log("tags" + tags)
+        let start = qa_result.length > 0? ((page - 1)*6) : 0;
+        let end = (start + 6 <= qa_response.total_query)? (start + 6) : qa_response.total_query;
+        let page_count = qa_response.total_pages;
+
+
+        let template = `\{\{#qa_result\}\}
+                            <li class="p-search__item p-search__item--\{\{\{animal_type\}\}\}">
+								<a class="p-search__link" href="/pet-qa/\{\{\{slug\}\}\}">
+									<div class="p-search__image">
+										<img src="\{\{\{featured_media\}\}\}" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">\{\{\{title.rendered\}\}\}</p>
+								</a>
+								<a class="p-search__tag" href="/pet-qa?category=\{\{\{category.slug\}\}\}">
+									\{\{category.name\}\}
+								</a>
+								<time class="p-search__date" datetime="\{\{\{date\}\}\}">\{\{\{date\}\}\}</time>
+							</li>
+                        \{\{/qa_result\}\}`;
+        let pagination_template = `<ul>
+                                        \{\{#arr\}\}
+                                        <li class="c-pagination__item c-pagination__item--number js-pagination__item--number">
+                                            <a href="">\{\{.\}\}</a>
+                                        </li>
+                                        \{\{/arr\}\}
+                                    </ul>`;
+        document.querySelector('.p-search__list').innerHTML = mustache.render(template, { qa_result: qa_result });
+
+        document.querySelectorAll('.c-pagination__informationCount').forEach(e => {
+            e.innerHTML = '0件';
+        });
+
+        if(qa_result.length > 0){
+            document.querySelectorAll('.c-pagination__informationCount').forEach(e => {
+                e.innerHTML = qa_response.total_query.toString() + "件中" + (start + 1).toString() + "～" + (end).toString() + "件";
+            });
+            document.querySelectorAll('.c-pagination__item--prev').forEach(e => {
+                e.onclick = function (event) { event.preventDefault(); if (page > 1) { page--; loadQA(search, categories, tags, page); } };
+            });
+
+            document.querySelectorAll('.c-pagination__item--next').forEach(e => {
+                e.onclick = function (event) {  event.preventDefault(); if (page_count > page) { page++; loadQA(search, categories, tags, page);} };
+            });
+
+            document.querySelector('.c-pagination__item.c-pagination__item--page').innerHTML = mustache.render(pagination_template, {arr: Array.from({length: page_count}, (_, i) => i + 1)});
+
+            document.querySelectorAll('.c-pagination__item.c-pagination__item--number.js-pagination__item--number')[page -1].classList.add("is-currentPage");
+        
+            document.querySelectorAll('.c-pagination__item.c-pagination__item--number.js-pagination__item--number').forEach((e, index)=>{
+                e.onclick = function (event) { event.preventDefault(); loadQA(search, categories, tags, index + 1); };
+            });
+        } else {
+            document.querySelector('.c-pagination__item.c-pagination__item--page').innerHTML = mustache.render(pagination_template, {arr: Array.from({length: 1}, (_, i) => i + 1)});
+        }
+
+        isLoading = false;
+    };
+
+    async function loadTagEvents(){
+        document.querySelectorAll('.c-search__dTagCheck').forEach(async function(event){
+            event.checked = false;
+            event.onchange = async function(){
+                let id = this.id.replace("tag-dog","").replace("tag-cat","");
+                let value = this.value;
+                let tag_index = selected_tags.findIndex(r => r == value);
+                if(this.checked){
+                    if(tag_index == -1){
+                        selected_tags.push(this.value);
+                    }
+                } else {
+                    if(tag_index != -1){
+                        selected_tags.splice(tag_index,1);
+                    }
+                }
+                await loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+            };
+        });
+    }
+
+    document.querySelector('.c-search__select.c-search__select--category.js-search__select--category').onchange = async function(event){
+        selected_category = this.value;
+        selected_tags = [];
+        loadTagEvents();
+        loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+    }
+
+    document.querySelector('.c-search__select.c-search__select--tag.js-search__dTag--dog').onchange = async function(event){
+        selected_category = this.value != ""?  this.value : document.querySelector(".c-search__select.c-search__select--category.js-search__select--category").value;
+        selected_tags = [];
+        loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+    };
+
+    document.querySelector('.c-search__select.c-search__select--tag.js-search__dTag--cat').onchange = async function(event){
+        selected_category = this.value != ""?  this.value : document.querySelector(".c-search__select.c-search__select--category.js-search__select--category").value;
+        selected_tags = [];
+        loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+    };
+
+    document.querySelectorAll(".c-search__clear").forEach(function(element){
+        element.onclick = function(){
+            selected_tags = [];
+            let checkedTags = document.querySelectorAll(".c-search__dTagCheck:checked")
+
+            for (let i = 0; i < checkedTags.length; i++){
+                checkedTags[i].checked = false
+            }
+            
+            loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+        }
+    });
+
+    document.querySelector('.c-search__button').onclick = async function(event){
+        event.preventDefault();
+        search_keyword = document.querySelector('.c-search__input.c-search__input--text').value;
+        await loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+        
+        document.getElementsByTagName("section")[0].style.display = "none";
+        document.getElementsByTagName("section")[1].style.display = "none";
+        document.getElementsByTagName("section")[2].style.display = "block";
+        window.scrollTo(0,0);
+    }
+
+    loadTagEvents();
+
+    if(document.getElementsByTagName("section")[2].style.display == "block"){
+        loadQA(search_keyword, selected_category, selected_tags.join(","), 1);
+    }
+    
+
+</script>

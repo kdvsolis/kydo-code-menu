@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>{{html_meta_title}}</title>
+	<meta name="description" content="{{html_meta_description}}" />
+	<meta name="keywords" content="{{html_meta_keyword}}" />
+	<meta name="theme-color" content="#004A8E">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="shortcut icon" type="image/x-icon" href="{{{base_url}}}/static/images/favicon.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{{base_url}}}/static/images/apple-touch-icon.png">
+
+	<!-- OGP -->
+	<meta property="og:title" content="{{html_meta_title}}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{{home_url}}}" />
+	<meta property="og:image" content="{{{base_url}}}/static/images/ogp.jpg" />
+	<meta property="og:image:width" content="1200px" />
+	<meta property="og:image:height" content="630px" />
+	<meta property="og:site_name" content="{{html_meta_keyword}}" />
+	<meta property="og:description" content="{{html_meta_description}}" />
+	<meta property="og:image:secure_url" content="{{{base_url}}}/static/images/ogp.jpg" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="{{html_meta_keyword}}" />
+	<meta name="twitter:description" content="{{html_meta_description}}" />
+	<meta name="twitter:image" content="{{{base_url}}}/static/images/ogp.jpg" />	<meta name="facebook-domain-verification" content="rb5gjebnady9e504p0ilqo531ikqob" />
+
+	<!--meta-->
+	<meta name="viewport" content="width=device-width" />
+	<script type="text/javascript">
+	( function () {
+		var ua = navigator.userAgent;
+		if((ua.indexOf('iPhone') > 0) || ua.indexOf('iPod') > 0 || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)){
+			document.querySelector( 'meta[name="viewport"]' ).setAttribute( 'content', 'width=device-width' );
+		} else {
+			document.querySelector( 'meta[name="viewport"]' ).setAttribute( 'content', 'width=1200' );
+		}
+	} )();
+	</script>
+
+
+	<!--stylesheet-->
+	<link rel="stylesheet" href="{{{base_url}}}/static/css/style.css" media="all">
+<!-- IM script -->
+<script type="module">
+    import {account} from '/components/account/account.js';
+
+	(async () => {
+       await account.templateLogic(); 
+    })();
+    
+</script>
+<!-- IM script -->
+<!--
+[if lt IE 9]>
+<script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+         <!-- WooCommerce Google Analytics Integration -->
+         <script type='text/javascript'>
+         var gaProperty = 'UA-101503797-1';
+         var disableStr = 'ga-disable-' + gaProperty;
+         if ( document.cookie.indexOf( disableStr + '=true' ) > -1 ) {
+         window[disableStr] = true;
+         }
+         function gaOptout() {
+         document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+         window[disableStr] = true;
+         }
+         </script>
+         <script type='text/javascript'>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga( 'create', 'UA-101503797-1', 'auto' );ga( 'require', 'displayfeatures' );ga( 'require', 'linkid' );ga( 'set', 'anonymizeIp', true );
+         ga( 'set', 'dimension1', 'no' );
+         ga( 'require', 'ec' );ga('set', 'dimension2', '未ログイン' );
+         </script>
+         <!-- /WooCommerce Google Analytics Integration -->
+
+         <!-- Google Tag Manager -->
+         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+         })(window,document,'script','dataLayer','GTM-PPL7TC7');</script>
+         <!-- End Google Tag Manager -->
+   
+         <!-- Google Tag Manager -->
+         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+         })(window,document,'script','dataLayer','GTM-T94K5T6');</script>
+         <!-- End Google Tag Manager -->
+
+         <!-- Facebook Pixel Code -->
+         <script>
+         !function(f,b,e,v,n,t,s)
+         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+         n.queue=[];t=b.createElement(e);t.async=!0;
+         t.src=v;s=b.getElementsByTagName(e)[0];
+         s.parentNode.insertBefore(t,s)}(window, document,'script',
+         'https://connect.facebook.net/en_US/fbevents.js');
+         fbq('init', '1168039120246273');
+         fbq('track', 'PageView');
+         </script>
+         <noscript><img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1168039120246273&ev=PageView&noscript=1"
+         /></noscript>
+         <!-- End Facebook Pixel Code -->
+         
+         <!-- LINE Tag Base Code -->
+         <!-- Do Not Modify -->
+         <script>
+            (function(g,d,o){
+            g._ltq=g._ltq||[];g._lt=g._lt||function(){g._ltq.push(arguments)};
+            var h=location.protocol==='https:'?'https://d.line-scdn.net':'http://d.line-cdn.net';
+            var s=d.createElement('script');s.async=1;
+            s.src=o||h+'/n/line_tag/public/release/v1/lt.js';
+            var t=d.getElementsByTagName('script')[0];t.parentNode.insertBefore(s,t);
+               })(window, document);
+            _lt('init', {
+            customerType: 'lap',
+            tagId: '1c76d7be-fb50-460f-a25e-2cf79413a0cd'
+            });
+            _lt('send', 'pv', ['1c76d7be-fb50-460f-a25e-2cf79413a0cd']);
+            </script>
+            <noscript>
+            <img height="1" width="1" style="display:none"
+                  src="https://tr.line.me/tag.gif?c_t=lap&t_id=1c76d7be-fb50-460f-a25e-2cf79413a0cd&e=pv&noscript=1" />
+            </noscript>
+            <!-- End LINE Tag Base Code -->
+
+         <!-- Global site tag (gtag.js) - Google Analytics -->
+         <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3GVZJ1GSL"></script>
+         <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B3GVZJ1GSL');
+         </script>
+      <script src="https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js"></script>
+      <script>
+         var parser = new UAParser();
+         var result = parser.getResult();
+         function getCookieValue(name) {
+            var b = document.cookie.match('(^|[^;]+)\\s*' + name + '\\s*=\\s*([^;]+)');
+            return b != null ? b.pop() : '';
+         }
+      </script>
+	
+	<!-- Global site tag (gtag.js) - Google Ads: 362070587 dentsu-adgear -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-362070587"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'AW-362070587');
+	</script>
+	<!-- /Google Ads: 362070587 -->
+	
+	<!-- Google Tag Manager Novelty -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PWS2G5N');</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- TETORI conversion tag -->
+	<script>
+	(function (w) {
+	  _wsq = w._wsq || (_wsq = []);
+	  _wsq.push(['conversion']);
+	})(window);
+	</script>
+
+	<!-- TETORI tag virbac-services.jp -->
+	<script>
+	(function (w, d, s, u) {
+	  // TAG VERSION 1.00
+	  if (w._wsq_init_flg) {
+	    return false;
+	  }
+	  w._wsq_init_flg = true;
+	  _wsq = w._wsq || (_wsq = []);
+	  _wsq.push(['init', u, 1488]);
+	  _wsq.push(['domain', 'virbac-services.jp']);
+	  var a = d.createElement(s); a.async = 1; a.charset='UTF-8'; a.src = 'https://cdn.' + u + '/share/js/tracking.js';
+	  var b = d.getElementsByTagName(s)[0]; b.parentNode.insertBefore(a, b);
+	})(window, document, 'script', 'tetori.link');
+	</script>
+
+</head>
+<body id="top" class="home">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWS2G5N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<h1 class="u-hide">{{html_meta_h1}}</h1>
+<div class="l-wrapper">
+	<figure id="hamburger" class="l-hamburger js-hamburger">
+		<div class="l-hamburger__menu">
+			<div class="l-hamburger__path l-hamburger__path--line01" d="M25.5,2H1A1,1,0,0,1,1,0H25.5a1,1,0,0,1,0,2Z"></div>
+			<div class="l-hamburger__path l-hamburger__path--line02" d="M25.5,10.07H1a1,1,0,1,1,0-2H25.5a1,1,0,1,1,0,2Z"></div>
+			<div class="l-hamburger__path l-hamburger__path--line03" d="M25.5,18.14H1a1,1,0,0,1,0-2H25.5a1,1,0,0,1,0,2Z"></div>
+		</div>
+		<span>MENU</span>
+	</figure>
+	<div id="header" class="l-header js-header">
+		<div class="l-header__section l-header__section--top js-header__section--top">
+			<div class="l-container--fluid">
+				<h1 class="l-header__logo">
+					<a  class="l-header__logoLink" href="{{{home_url}}}/" title="" data-label="">
+						<img class="l-header__logoSirviceLogo" src="{{{base_url}}}/static/images/common/common_service-logo.svg" alt="ビルバックサービスロゴ">
+						<img class="l-header__logoSirviceName" src="{{{base_url}}}/static/images/common/common_service-name.svg" alt="ビルバックサービス">
+						<div class="l-header__logoText" class="">ペットの健康を、もっと手軽に。</div>
+					</a>
+				</h1>
+				<div class="customer-logged-in" style="display: none;">
+					<ol class="l-header__utility">
+						<li class="l-header__utilityItem l-header__utilityItem--login">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/my-page">
+								<div class="l-header__utilityIcon l-header__utilityIcon--login">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-login-black.svg" alt="マイページ" title="マイページ">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-login-blue.svg" alt="マイページ" title="マイページ">
+										</figcaption>
+									</figure>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--login">
+									マイページ
+								</div>
+							</a>
+						</li>
+						<li class="l-header__utilityItem l-header__utilityItem--cart">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/cart">
+								<div class="l-header__utilityIcon l-header__utilityIcon--cart">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-black.svg" alt="カート" title="カート">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-blue.svg" alt="カート" title="カート">
+										</figcaption>
+									</figure>
+									<span id="cart-qty" class="l-header__quantity cart-qty-badge">0</span>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--cart">
+									カート
+								</div>
+							</a>
+						</li>
+					</ol>
+				</div>
+				<div class="customer-logged-out" style="display: none;">
+					<ol class="l-header__utility">
+						<li class="l-header__utilityItem l-header__utilityItem--login">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/my-page">
+								<div class="l-header__utilityIcon l-header__utilityIcon--login">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-login-black.svg" alt="ログイン" title="ログイン">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-login-blue.svg" alt="ログイン" title="ログイン">
+										</figcaption>
+									</figure>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--login">
+									ログイン
+								</div>
+							</a>
+						</li>
+						<li class="l-header__utilityItem l-header__utilityItem--registration">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/reg">
+								<div class="l-header__utilityIcon l-header__utilityIcon--registration">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-registration-black.svg" alt="新規登録" title="新規登録">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-registration-blue.svg" alt="新規登録" title="新規登録">
+										</figcaption>
+									</figure>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--registration">
+									新規登録
+								</div>
+							</a>
+						</li>
+						<li class="l-header__utilityItem l-header__utilityItem--cart">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/cart">
+								<div class="l-header__utilityIcon l-header__utilityIcon--cart">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-black.svg" alt="カート" title="カート">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-blue.svg" alt="カート" title="カート">
+										</figcaption>
+									</figure>
+									<span id="cart-qty" class="l-header__quantity cart-qty-badge"></span>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--cart">
+									カート
+								</div>
+							</a>
+						</li>
+						<li class="l-header__utilityItem l-header__utilityItem--veterinarian">
+							<a class="l-header__utilityLink" href="{{{home_url}}}/hospital" target="_blank">
+								<div class="l-header__utilityIcon l-header__utilityIcon--veterinarian">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_util-veterinarian-black.svg" alt="獣医師の方" title="獣医師の方">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_util-veterinarian-blue.svg" alt="獣医師の方" title="獣医師の方">
+										</figcaption>
+									</figure>
+								</div>
+								<div class="l-header__utilityLabel l-header__utilityLabel--veterinarian">
+									獣医師の方
+								</div>
+							</a>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div class="l-header__section l-header__section--bottom">
+			<div class="l-container">
+				<nav id="header__menu" class="l-header__menu">
+					<ol class="l-header__globalNav js-header__globalNav">
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="{{{home_url}}}/">ホーム</a></li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink l-header__globalNavLink--dog" href="{{{home_url}}}/product/dog">犬用商品を探す</a>
+							<div class="l-header__globalNavChild l-header__globalNavChild--dog js-header__globalNavChild">
+								<div class="l-container">
+									<div class="l-header__globalNavChildTitle l-header__globalNavChildTitle--dog">犬用商品　カテゴリーから探す</div>
+									<ol class="l-header__globalNavCategory">
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-health-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-normal.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													総合栄養食
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/premium-care-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-premium.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													食事療法食
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-dental-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-dental.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													デンタル
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-supplement.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													サプリメント
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-skin.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													スキンケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-snack-dog">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-category-snacks.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													機能性おやつ
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+									</ol>
+									<div class="l-header__globalNavChildTitle l-header__globalNavChildTitle--dog">犬用商品　目的から探す</div>
+									<ol class="l-header__globalNavPurpose">
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-neutered">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-neutered.svg" alt="NEUTERED">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													避妊・去勢後ケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-weight">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-weight.svg" alt="WEIGHT">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													体重のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-urology">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-urology.svg" alt="UROLOGY">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													泌尿器のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-gastro">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-gastro.svg" alt="GASTRO">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													お腹・肝臓のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-kidney">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-kidney.svg" alt="KIDNEY">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													腎臓のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-allergy">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-allergy.svg" alt="ALLERGY">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													食物アレルギー
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-skin">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-skincare.svg" alt="SKIN CARE">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													皮膚被毛のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-dental">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-dental.svg" alt="DENTAL">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													デンタルケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-joint">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-joint.svg" alt="JOINT">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													関節のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/dog/dog-behavior">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-behavior.svg" alt="BEHAVIOR">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													あんしんケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+									</ol>
+								</div>
+								<div class="c-button-wrap">
+									<a class="c-button c-button--dog" href="{{{home_url}}}/product/dog">犬用商品一覧</a>
+								</div>
+							</div>
+						</li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink l-header__globalNavLink--cat" href="{{{home_url}}}/product/cat">猫用商品を探す</a>
+							<div class="l-header__globalNavChild l-header__globalNavChild--cat js-header__globalNavChild">
+								<div class="l-container">
+									<div class="l-header__globalNavChildTitle l-header__globalNavChildTitle--cat">猫用商品　カテゴリーから探す</div>
+									<ol class="l-header__globalNavCategory">
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-health-cat">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-normal.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													総合栄養食
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/premium-care-cat">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-premium.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													食事療法食
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-dental-cat">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-dental.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													デンタル
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-supplement.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													サプリメント
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-skin.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													スキンケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem">
+											<a class="l-header__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-feliway">
+												<div class="l-header__globalNavCategoryImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-category-mental.png" alt="">
+												</div>
+												<div class="l-header__globalNavCategoryLabel">
+													フェリウェイ
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+										<li class="l-header__globalNavCategoryItem l-header__globalNavCategoryItem--empty"></li>
+									</ol>
+									<div class="l-header__globalNavChildTitle l-header__globalNavChildTitle--cat">猫用商品　目的から探す</div>
+									<ol class="l-header__globalNavPurpose">
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-neutered">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-neutered.svg" alt="NEUTERED">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													避妊・去勢後ケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-weight">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-weight.svg" alt="WEIGHT">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													体重のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-urology">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-urology.svg" alt="UROLOGY">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													泌尿器のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-gastro">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-gastro.svg" alt="GASTRO">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													お腹・肝臓のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-kidney">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-kidney.svg" alt="KIDNEY">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													腎臓のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-skin">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-skincare.svg" alt="SKIN CARE">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													皮膚被毛のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-dental">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-dental.svg" alt="DENTAL">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													デンタルケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-joint">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-joint.svg" alt="JOINT">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													関節のお悩み
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem">
+											<a class="l-header__globalNavPurposeLink" href="{{{home_url}}}/product/purpose/cat/cat-behavior">
+												<div class="l-header__globalNavPurposeImage">
+													<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-behavior.svg" alt="BEHAVIOR">
+												</div>
+												<div class="l-header__globalNavPurposeLabel">
+													あんしんケア
+												</div>
+											</a>
+										</li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+										<li class="l-header__globalNavPurposeItem l-header__globalNavPurposeItem--empty"></li>
+									</ol>
+								</div>
+								<div class="c-button-wrap">
+									<a class="c-button c-button--cat" href="{{{home_url}}}/product/cat">猫用商品一覧</a>
+								</div>
+							</div>
+						</li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="https://virbacjapan.force.com/hpmfaqpo/s/" target="_blank">よくある質問</a></li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="{{{home_url}}}/pet-qa">ペットのお悩みQ&A</a></li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="{{{home_url}}}/guarantee">満足保証</a></li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="{{{home_url}}}/find-hospitals">提携病院検索</a></li>
+						<li class="l-header__globalNavItem"><a class="l-header__globalNavLink" href="https://virbacjapan.force.com/hpmfaqpo/s/createrecord/GuestCommunityCaseVBServicePO" target="_blank">お問い合わせ</a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div><!-- /.l-header -->
+	<aside id="side" class="l-side js-side">
+		<div class="l-side__section l-side__section--login customer-logged-in" style="display: none;">
+			<div class="l-container">
+				<a class="l-side__loginLink" href="{{{home_url}}}/my-page">
+					<div class="l-side__login">
+						<img src="{{{base_url}}}/static/images/common/common_ico_util-login-pink.svg" alt="マイページ" title="マイページ">
+					</div>
+					<div class="l-side__loginLabel">
+						マイページ
+					</div>
+				</a>
+			</div>
+		</div>
+        <div class="customer-logged-out" style="display: none;">
+		<div class="c-information">
+			<div class="l-container">
+				<p class="c-information__text">初回購入1000円OFFクーポン進呈</p>
+			</div>
+		</div>
+		<div class="l-side__section l-side__section--utility">
+			<div class="l-container">
+				<ol class="l-side__utility">
+					<li class="l-side__utilityItem">
+						<a class="l-side__utilityLink" href="{{{home_url}}}/reg">
+							<div class="l-side__utilityIcon">
+								<img src="{{{base_url}}}/static/images/common/common_ico_util-registration-pink.svg" alt="新規登録" title="新規登録">
+							</div>
+							<div class="l-side__utilityLabel">
+								新規登録
+							</div>
+						</a>
+					</li>
+					<li class="l-side__utilityItem">
+						<a class="l-side__utilityLink" href="{{{home_url}}}/my-page">
+							<div class="l-side__utilityIcon">
+								<img src="{{{base_url}}}/static/images/common/common_ico_util-login-pink.svg" alt="ログイン" title="ログイン">
+							</div>
+							<div class="l-side__utilityLabel">
+								ログイン
+							</div>
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+		</div>
+		<div class="l-side__section l-side__section--category  l-side__section--category--dog">
+			<div class="l-container">
+				<div class="l-side__categoryTitle l-side__categoryTitle--dog">犬用商品</div>
+				<ol class="l-side__category">
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/normal-health-dog">総合栄養食</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/premium-care-dog">食事療法食</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/normal-dental-dog">デンタル</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">サプリメント</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">スキンケア</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--dog" href="{{{home_url}}}/product/category/dog/normal-snack-dog">機能性おやつ</a></li>
+					<li class="l-side__categoryItem l-side__categoryItem--empty"></li>
+					<li class="l-side__categoryItem l-side__categoryItem--empty"></li>
+				</ol>
+				<div class="l-side__categoryButtonWrap">
+					<a class="l-side__categoryButton l-side__categoryButton--dog" href="{{{home_url}}}/product/dog">犬用商品一覧</a>
+				</div>
+			</div>
+		</div>
+		<div class="l-side__section l-side__section--category  l-side__section--category--cat">
+			<div class="l-container">
+				<div class="l-side__categoryTitle l-side__categoryTitle--cat">猫用商品</div>
+				<ol class="l-side__category">
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/normal-health-cat">総合栄養食</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/premium-care-cat">食事療法食</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/normal-dental-cat">デンタル</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">サプリメント</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">スキンケア</a></li>
+					<li class="l-side__categoryItem"><a class="l-side__categoryLink l-side__categoryLink--cat" href="{{{home_url}}}/product/category/cat/normal-feliway">フェリウェイ</a></li>
+					<li class="l-side__categoryItem l-side__categoryItem--empty"></li>
+					<li class="l-side__categoryItem l-side__categoryItem--empty"></li>
+				</ol>
+				<div class="l-side__categoryButtonWrap">
+					<a class="l-side__categoryButton l-side__categoryButton--cat" href="{{{home_url}}}/product/cat">猫用商品一覧</a>
+				</div>
+			</div>
+		</div>
+		<div class="l-side__section l-side__section--globalNav">
+			<div class="l-container">
+				<nav id="side__menu" class="l-side__menu">
+					<ol class="l-side__globalNav">
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/">ホーム</a></li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/product/dog">犬用商品を探す</a>
+							<a class="l-side__globalNavChildButton js-side__globalNavChildButton"></a>
+							<div class="l-side__globalNavChild">
+								<ol class="l-side__globalNavCategory">
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-health-dog">
+											総合栄養食
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/premium-care-dog">
+											食事療法食
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-dental-dog">
+											デンタル
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryLink">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">
+											サプリメント
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">
+											スキンケア
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/dog/normal-snack-dog">
+											機能性おやつ
+										</a>
+									</li>
+								</ol>
+							</div>
+						</li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/product/cat">猫用商品を探す</a>
+							<a class="l-side__globalNavChildButton js-side__globalNavChildButton"></a>
+							<div class="l-side__globalNavChild">
+								<ol class="l-side__globalNavCategory">
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-health-cat">
+											総合栄養食
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/premium-care-cat">
+											食事療法食
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-dental-cat">
+											デンタル
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">
+											サプリメント
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">
+											スキンケア
+										</a>
+									</li>
+									<li class="l-side__globalNavCategoryItem">
+										<a class="l-side__globalNavCategoryLink" href="{{{home_url}}}/product/category/cat/normal-feliway">
+											フェリウェイ
+										</a>
+									</li>
+								</ol>
+							</div>
+						</li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="https://virbacjapan.force.com/hpmfaqpo/s/" target="_blank">よくある質問</a></li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/pet-qa">ペットのお悩みQ&A</a></li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/guarantee">満足保証</a></li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="{{{home_url}}}/find-hospitals">提携病院検索</a></li>
+						<li class="l-side__globalNavItem"><a class="l-side__globalNavLink" href="https://virbacjapan.force.com/hpmfaqpo/s/createrecord/GuestCommunityCaseVBServicePO" target="_blank">お問い合わせ</a></li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+		<div class="customer-logged-out" style="display: none;">
+		<div class="l-side__section l-side__section--veterinarian">
+			<div class="l-container">
+				<a class="l-side__veterinarianLink" href="{{{home_url}}}/hospital" target="_blank">
+					<div class="l-side__veterinarianIcon">
+						<img src="{{{base_url}}}/static/images/common/common_ico_util-veterinarian-pink.svg" alt="獣医師の方" title="獣医師の方">
+					</div>
+					<div class="l-side__veterinarianLabel">
+						獣医師の方
+					</div>
+				</a>
+			</div>
+		</div>
+		</div>
+		<div class="l-side__section l-side__section--sns">
+			<div class="l-container">
+				<div class="l-side__snsLead">FOLLOW　US！</div>
+				<ol class="l-side__sns">
+					<li class="l-side__snsItem"><a class="l-side__snsLink" target="_blank" href="https://www.facebook.com/%E3%83%93%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-111324977239001/"><img src="{{{base_url}}}/static/images/common/common_ico_sns-facebook-white.svg"></a></li>
+					<li class="l-side__snsItem"><a class="l-side__snsLink" target="_blank" href="https://www.instagram.com/virbac_japan/"><img src="{{{base_url}}}/static/images/common/common_ico_sns-instagram-white.svg"></a></li>
+					<li class="l-side__snsItem"><a class="l-side__snsLink" target="_blank" href="https://line.me/R/ti/p/%40860zuhne"><img src="{{{base_url}}}/static/images/common/common_ico_sns-line-white.svg"></a></li>
+					<li class="l-side__snsItem"><a class="l-side__snsLink" target="_blank" href="https://www.youtube.com/channel/UCatOudL82eGDZ0lHY-6Dazw"><img src="{{{base_url}}}/static/images/common/common_ico_sns-youtube-white.svg"></a></li>
+				</ol>
+			</div>
+		</div>
+	</aside><!-- /.l-side -->
+	<div class="customer-logged-out" style="display: none;">
+		<div class="c-information">
+			<div class="l-container">
+				<p class="c-information__text">初回購入1000円OFFクーポン進呈</p>
+			</div>
+		</div>
+	</div>

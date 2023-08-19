@@ -1,0 +1,241 @@
+{{{header}}}
+<div id="c-breadcrumb" class="c-breadcrumb">
+	<div class="l-container">
+		<ul class="c-breadcrumb__list">
+			<li><a href="{{{home_url}}}/">ホーム</a></li>
+			<li class="is-current"><span>新規会員登録</span></li>
+		</ul>
+	</div>
+</div>
+<main id="main" class="l-main full-form">
+		<article class="p-reg">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">新規会員登録</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">はじめてご利用のお客様は、ここから会員登録を行ってください。<br>登録完了で、初回購入1000円オフクーポン進呈！</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+					<div class="c-form__error" id="registration-error-message" style="display:none">
+											会員登録の際にエラーが発生しました。<br>
+											すでに登録されているメールアドレスです。
+										</div>
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname" autocomplete="surname" value="">
+											<span>&nbsp;</span>
+											<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname" autocomplete="firstname" value="">
+										</div>
+										<div class="c-form__error" id="name-error-message" style="display:none">
+											名前はすべて全角で入力してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">メールアドレス</label></th>
+									<td class="c-form__data"><input type="email" placeholder="(例) sample@virbac.co.jp" class="c-form__input c-form__input--email" name="email" id="email"  value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">メールアドレス（確認）</label></th>
+									<td class="c-form__data">
+										<input type="text" placeholder="(例) sample@virbac.co.jp" class=" c-form__input c-form__input--text" name="email-verify" id="email-verify" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+										<div class="c-form__error" id="username-error-message" style="display:none">
+											正しいメールアドレスの形式を入力してください。
+										</div>
+										<div class="c-form__error" id="username-exists-error-message" style="display:none">
+											すでに登録しているメールアドレスです。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">パスワード</label></th>
+									<td class="c-form__data">
+										<input type="password" placeholder="(例) 1234tY@ma" class=" c-form__input c-form__input--password" name="password" id="password" value=""  required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$">
+										<div class="c-form__attention">半角英数8文字以上で入力してください。名前やメールアドレスの一部は避けてください。​</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">パスワード（確認）</label></th>
+									<td class="c-form__data">
+										<input type="password" placeholder="(例) 1234tY@ma" class="c-form__input c-form__input--password" name="password-verify" id="password-verify" value="" required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$">
+										<div class="c-form__attention">確認のためもう一度入力してください。​</div>
+										<div class="c-form__error" id="password-error-message" style="display:none"> 
+											パスワードは8文字以上で、数字を含み、同じである必要があります。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">携帯電話番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline c-form__inline--spVertical">
+											<input type="text" placeholder="(例) 09012341234" class="c-form__input c-form__input--text" name="contactno" id="contactno"  value="" required="">
+											<span>&nbsp;</span>
+											<button id="auth-btn" type="button" class="c-form__button c-form__button--reversal" value="認証コードを受け取る">認証コードを受け取る</button>
+											<button id="resend-btn" type="button" class="c-form__button c-form__button--reversal" style="display: none;" value="確認する">再送信</button>
+										</div>
+										<div class="c-form__error" id="auth-required-notice" style="display:display">
+											新規登録には携帯電話番号認証が必要です。
+											<br>
+											ご入力された電話番号のSMS（ショートメッセージ）に送信される6桁のコードを10分以内に入力してください。
+											<br>
+											携帯電話番号認証に関する詳しいご説明は
+											<a href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000S4awGAC/%E6%90%BA%E5%B8%AF%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E8%AA%8D%E8%A8%BC" target="_blank">こちら。</a>
+										</div>
+										<div class="c-form__complete" id="auth-verified" style="display:none">
+											携帯電話番号認証が完了しました。
+											<p>新規登録の完了はまだ行われていません。<br>
+												画面下部にある「登録内容を確認する」ボタンを押してください。
+											</p>
+										</div>
+										<div class="c-form__error" id="contactno-error-message" style="display:none">
+											正しい電話番号を入力してください。
+										</div>
+										<div class="c-form__inline" id="phone-auth" style="display:none">
+										<div class="c-form__inline c-form__inline--spVertical">
+											<input type="text" placeholder="6桁のコード" class="c-form__input c-form__input--text" name="twilio-code-input" id="twilio-code-input"  value="" required="">
+											<span>&nbsp;</span>
+											<button id="confirm-auth-btn" type="button" class="c-form__button " value="確認する">認証</button>
+											<button id="confirm-auth-btn2" style="display:none" type="button" class="c-form__button " value="確認する">認証</button>
+										</div>
+										</div>
+										<div class="c-form__error" id="invalid-code" style="display:none">
+											入力した認証コードに誤りがあります。<br>
+											もう一度電話番号をご確認頂き、再送信ボタンを押してください。<br>
+										</div>
+										<div class="c-form__error" id="expired-code" style="display:none">
+											入力した認証コードの有効期限が切れました。<br>
+											もう一度電話番号をご確認頂き、再送信ボタンを押してください。<br>
+										</div>
+										<div class="c-form__error" id="contact-already-registered" style="display:none">
+											ご入力の電話番号は既に登録されています。<br>
+											ログインは <a href="{{{home_url}}}/my-page">こちら</a>。<br>
+											ご登録に身に覚えのない方、ご不明点、疑問点のある方は
+                                 <a href="https://virbacjapan.force.com/hpmfaqpo/s/createrecord/GuestCommunityCaseVBServicePO?_ga=2.95675996.1181099585.1615792826-956951487.1596531112"
+                                    >こちら</a>
+                                 からお問い合わせください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--optional">病院ユニークコード</label></th>
+									<td class="c-form__data"><input type="text" class="c-form__input c-form__input--text" name="code" id="code" placeholder="病院配布のユニークコードの入力で特典あり"  value="" required="" pattern="[0-9]*"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-form__agree">本<a href="{{{home_url}}}/terms" target="_blank">利用規約</a>および<a href="{{{home_url}}}/privacy-policy" target="_blank">プライバシーポリシー</a>に同意したものと見なします。</div>
+						<div class="c-button-wrap">
+							<button id="confirm-form" type="button" class="c-button c-button--reversal" name="register" value="登録内容を確認する">登録内容を確認する</button>
+							<button id="disabled-confirm-form" type="button" class="c-button c-button--reversal" name="register" value="登録内容を確認する" style="display:none" disabled>登録内容を確認する</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+	<main class="l-main confirmation-form" style="display:none">
+		<article class="p-reg">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">新規会員登録確認</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">入力内容をご確認の上、「登録する」ボタンを押下してください。</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head">お名前</th>
+									<td class="c-form__data" id="fullname">
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head">メールアドレス</th>
+									<td class="c-form__data" id="confirm_email">
+										sample@virbac.co.jp
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head">パスワード</th>
+									<td class="c-form__data">
+										**************
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head">携帯電話番号</th>
+									<td class="c-form__data" id="confirm_contactno">
+										090-1234-5678
+									</td>
+								</tr>
+								<tr id="hospital_detail">
+									<th class="c-form__head">病院ユニークコード</th>
+									<td class="c-form__data" id="hospital_code">
+										病院名
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" name="confirm" id="saveBtn" value="登録する">登録する</button>
+							<button type="button" class="c-button cancel" name="cancel" value="戻る">戻る</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+	<main class="l-main completed" style="display:none">
+		<article class="p-reg">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">新規会員登録完了</h1>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="p-lower__section p-lower__section--coupon">
+					<div class="l-container">
+						<div class="p-reg__coupon">
+							<div class="p-reg__couponText">
+								<span>ご登録ありがとうございました♪<br>
+								初回購入は1,000円オフでご利用可能です</span>
+							</div>
+							<div class="c-button-wrap" style="display: none;" id="isHospital">
+								<a href="/sample-products" class="c-button">サンプル商品はこちら</a>
+							</div>
+							<img src="{{{base_url}}}/static/images/reg/reg_img_coupon.jpg" alt="公式オンラインストア限定。新規会員登録（無料）完了で初回購⼊1000円オフクーポンプレゼント">
+							<div class="c-button-wrap">
+								<a href="{{{home_url}}}/product/dog/" class="c-button c-button--dog">犬用商品一覧</a>
+								<a href="{{{home_url}}}/product/cat/" class="c-button c-button--cat">猫用商品一覧</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</main>
+{{{footer}}}

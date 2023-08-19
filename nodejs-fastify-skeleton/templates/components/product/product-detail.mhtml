@@ -1,0 +1,56 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    //Import related modules for product-detail page
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+    import { product } from '/components/product/product.js?v={{productVersion}}';
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+
+    let isPremiumProduct = "{{isPremiumProduct}}" == "true";
+    let main_product_slug = decodeURI('{{main_slug}}');
+    let counterpart_product_slug = decodeURI("{{counterpart_product_slug}}");
+    let isSampleProduct = "{{isSampleProduct}}" == "true";
+    console.log("{{isSampleProduct}}","---");
+
+    (async () => {
+        let type = window.location.href.indexOf('/dog/')>0 ? 'dog' : 'cat'
+        let cookieProduct = {{{main_product}}}
+        cookieProduct.type = type
+        console.log(cookieProduct)
+
+        product.setCheckedCookies(cookieProduct)
+
+        document.getElementsByTagName("BODY")[0].style.visibility = "hidden"; //Hide contents while loading page
+        let user_token = cookieService.getCookieValue('token');
+        let userInfo = user_token != ""? await account.getUser() : {success: false}; //Get user info if available
+        //Go to mypage for normal users if this is sample product
+
+        if(isSampleProduct){
+            if(!userInfo.isPremiumUser){
+                location.href = "/my-page";
+            } else {
+                document.getElementsByTagName("BODY")[0].style.visibility = "visible";
+            }
+            return;
+        }
+
+        //Do switching here depending on product classification(premium or normal) and if user is premium or normal
+
+        if (isPremiumProduct) {
+            if ((!userInfo.success || !userInfo.isPremiumUser) && main_product_slug != counterpart_product_slug) {
+                location.href = "/product/{{type}}/" + counterpart_product_slug;
+            }
+            else {
+                document.getElementsByTagName("BODY")[0].style.visibility = "visible";
+            }
+        } else {
+            if ((!userInfo.success || !userInfo.isPremiumUser) && main_product_slug != counterpart_product_slug) {
+                document.getElementsByTagName("BODY")[0].style.visibility = "visible";
+            }
+            else {
+                location.href = "/product/{{type}}/" + counterpart_product_slug;
+            }
+        }
+    })();
+
+
+</script>

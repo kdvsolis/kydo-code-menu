@@ -1,0 +1,218 @@
+{{{header}}}
+
+<script type="module">
+	import {account} from '/components/account/account.js';
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+</script>
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>クーポン</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">クーポン</h2>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">クーポン一覧</h3>
+									<div class="p-mypage__mainText">※クーポンは注文確認画面より選択しご利用いただけます。</div>
+									<ol class="p-mypage__couponList">
+										<li class="p-mypage__couponItem">
+											<div class="p-mypage__couponName"></div>
+<!-- 将来的に表示の可能性あり
+											<dl class="p-mypage__couponDef">
+												<dt class="p-mypage__couponTitle">有効期限</dt>
+												<dd class="p-mypage__couponData">無期限</dd>
+												<dt class="p-mypage__couponTitle">所持枚数</dt>
+												<dd class="p-mypage__couponData">1枚</dd>
+											</dl>
+-->
+										</li>
+									</ol>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">クーポンコードをお持ちの方</h3>
+									<table class="c-form">
+										<tbody>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label">クーポンコード入力</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<input class="c-form__input c-form__input--text" type="text" id="coupon" name="coupon" placeholder="クーポンコード入力">
+														<span>&nbsp;</span>
+														<button class="c-form__button c-form__button--reversal" onclick="loadCoupons(true)">適用</button>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="c-form__errorMessage" style="display: none;" id="coupon_error" style="display:none;">
+										<br>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete ">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

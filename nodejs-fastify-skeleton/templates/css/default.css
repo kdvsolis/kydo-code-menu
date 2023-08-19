@@ -1,0 +1,251 @@
+figure {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+    margin: 0;
+}
+.wp-block-image .aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* .wp-block-image .aligncenter, .wp-block-image .alignleft, .wp-block-image .alignright, .wp-block-image.is-resized {
+    display: table;
+    margin-left: 0;
+    margin-right: 0;
+} */
+.aligncenter {
+    clear: both;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wp-block-image img {
+    max-width: 100%;
+}
+
+.wp-block-image {
+    max-width: 100%;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.n2-section-smartslider {
+    position: relative;
+    width: 100%;
+}
+
+.n2-ss-align.n2-ss-align-visible {
+    overflow: visible;
+}
+.n2-ss-align {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.news-header-title{
+    width: 20%;
+    text-align: center;
+}
+.news-header-line{
+    border-bottom: 3px solid #004C98; height: 15px; width: 25%;
+}
+
+.food {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    /* margin: 0 0 1.5em; */
+    width: 60%;
+    border: 0px solid rgba(0,0,0,.1);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.food td {
+    padding: 8px;
+    text-align: left;
+    border-width: 0 1px 1px 0;
+    border: 0px solid rgba(0,0,0,.1);
+}
+
+.food td span {
+    font-size: 12px;
+    color :#007bff;
+}
+.food td p {
+    color: #007bff;
+    margin-bottom: 0!important;
+    font-size: 12px;
+}
+.food td img {
+    height: auto;
+    max-width: 100%;
+}
+
+#content-desktop{display:block;}
+#content-mobile{display:none;}
+
+#browser-warning{
+    border: 1px solid red; 
+    margin: auto; 
+    width: 60%;
+    display: none;
+}
+
+@media screen and (max-width: 990px) {
+    .ast-container {
+        max-width: 90%;
+    }
+    .carousel-inner > img{
+        height: 269px;
+    }
+    .wp-block-latest-posts{
+        margin: auto;
+        padding: 10px;
+    }
+    .news-header {
+        width: 100vw;  
+        margin-left: calc(-50vw + 50%) !important;
+    }
+    .news-header-title{
+        width: 50%;
+    }
+    .food {
+        width: 100%;
+    }
+    #content-desktop{
+        display:none;
+    }
+    #content-mobile{
+        display:block;
+    }
+    
+    #browser-warning{
+        border: 1px solid red; 
+        margin: auto; 
+        width: 100%;
+    }
+}
+.ast-container {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.red{
+    background-color: black;
+}
+
+.carousel-indicators {
+    position: initial;
+    margin-top: 20px;
+}
+.carousel-indicators li {
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    background-color: #545454;
+}
+
+.carousel-indicators li:hover {
+    background-color: #09b474;
+}
+
+.carousel-indicators li.active {
+    background-color: #09b474;
+}
+.carousel-inner img{
+    max-height: 269px;
+    height: 269px; 
+    max-width: 100%;
+    object-fit: contain;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); 
+}
+
+ul li a {
+    font-size: 12px;
+}
+ul li time {
+    font-size: 12px;
+}
+
+#primary {
+    margin: 0px 0 !important;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+body .entry-content .wp-block-latest-posts li {
+    list-style: none;
+}
+
+.wp-block-latest-posts li {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.news td{
+    border-bottom: 1px solid #E2DDDB;
+    margin: 0px;
+}
+.img-top-items{
+    width: 47% !important;
+    height: 110px !important;
+}
+
+.shop-thumb__title {
+    padding: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 5px;
+    margin-left: 20px !important;
+    padding: 0; 
+    font-size: 12px !important;
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+.shop-thumb__img {
+    text-align: center;
+}
+
+.carousel-control-product-next-icon:after
+{
+content: '>';
+font-size: 35px;
+color: #E2DDDB;
+}
+
+.carousel-control-product-prev-icon:after {
+content: '<';
+font-size: 35px;
+color: #E2DDDB;
+}
+.items-holder {
+margin-top: 15px;
+} 
+.product-link {
+color: #007bff;
+font-size: 12px;
+}
+.product-link:hover{
+color: black;
+text-decoration: none;
+font-size: 12px;
+}
+.product-link-holder {
+padding-left: 20px !important;
+width: 170px;
+height: 60px;
+text-align: center;
+margin: auto;
+}
+.shop__thumb{
+max-width: 270px !important;
+}

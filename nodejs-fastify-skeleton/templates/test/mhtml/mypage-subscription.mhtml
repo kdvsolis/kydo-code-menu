@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{{header}}}
+
+<script type="module">
+	import {account} from '/components/account/account.js';
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+</script>
+
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>定期購入</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">定期購入</h2>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">配送スケジュール</h3>
+									<ol class="p-mypage__confirmedList">
+										{{#sl_schedule}}
+										<li class="p-mypage__confirmedItem">
+											<a href="/my-page/subscription/{{id}}" class="p-mypage__confirmedLink">
+												<div class="p-mypage__confirmedImage">
+													<img class="object-fit" src="{{meta.images.0.src}}" alt="">
+												</div>
+												<div class="p-mypage__confirmedContents">
+													<div class="p-mypage__confirmedName">{{meta.name}}</div>
+													<div class="p-mypage__confirmedDate"><strong>{{delivery_status}}</strong>発送日：{{meta.next_scheduled_year}}年 {{meta.next_scheduled_month}} 月 {{meta.next_scheduled_day}} 日</div>
+													<dl class="p-mypage__confirmedDef">
+														<dt class="p-mypage__confirmedTitle">請求金額</dt>
+														<dd class="p-mypage__confirmedData">{{total}}円（税込）</dd>
+														<dt class="p-mypage__confirmedTitle">数量</dt>
+														<dd class="p-mypage__confirmedData">{{meta._vs_quantity}}</dd>
+													</dl>
+												</div>
+											</a>
+										</li>
+										{{/sl_schedule}}
+									</ol>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">定期購入商品一覧</h3>
+									<ol class="p-mypage__subscriptionList">
+										{{#subscription_list}}
+											<li class="p-mypage__subscriptionItem">
+												<a href="/my-page/subscription/{{id}}" class="p-mypage__subscriptionLink">
+													<div class="p-mypage__subscriptionImage">
+														<img class="object-fit" src="{{meta.images.0.src}}" alt="">
+													</div>
+													<div class="p-mypage__subscriptionContents">
+														<div class="p-mypage__subscriptionName">{{meta.name}}</div>
+														<dl class="p-mypage__subscriptionDef">
+															<dt class="p-mypage__subscriptionTitle">次回お届け予定日</dt>
+															<dd class="p-mypage__subscriptionData">{{meta.next_scheduled_year}}年 {{meta.next_scheduled_month}} 月 {{meta.next_scheduled_day}} 日</dd>
+															<dt class="p-mypage__subscriptionTitle">次回請求金額</dt>
+															<dd class="p-mypage__subscriptionData">{{total}}円（税込）</dd>
+															<dt class="p-mypage__subscriptionTitle">数量</dt>
+															<dd class="p-mypage__subscriptionData">{{meta._vs_quantity}}</dd>
+															<dt class="p-mypage__subscriptionTitle">発送頻度</dt>
+															<dd class="p-mypage__subscriptionData">{{meta._vs_period}}日</dd>
+														</dl>
+													</div>
+												</a>
+											</li>
+										{{/subscription_list}}
+									</ol>
+								</div>
+								<h2 class="p-mypage__mainHeading__h2">各種設定</h2>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">お届け先住所</h3>
+									<div class="p-mypage__address">
+										<dl class="p-mypage__addressDef">
+											<dt class="p-mypage__addressTitle">氏名</dt>
+											<dd class="p-mypage__addressData" id="address_name">{{customer.billing.last_name}} {{customer.billing.first_name}} </dd>
+											<dt class="p-mypage__addressTitle">住所</dt>
+											<dd class="p-mypage__addressData" id="address_street"></dd>
+											
+										</dl>
+									</div>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editAddress" data-lity>登録情報変更</button>
+									</div>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">クレジットカード情報</h3>
+									<div class="p-mypage__creditcard">
+										<dl class="p-mypage__creditcardDef">
+											<dt class="p-mypage__creditcardTitle">氏名</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_holder}}</dd>
+											<dt class="p-mypage__creditcardTitle">カード番号</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_val}}</dd>
+											<dt class="p-mypage__creditcardTitle">有効期限</dt>
+											<dd class="p-mypage__creditcardData">{{cardInfo.credit_card_expire}}</dd>
+										</dl>
+									</div>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editPayment" data-lity>登録情報変更</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete ">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+			<div class="c-modal">
+				<div id="editAddress" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お届け先住所
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname_modal" autocomplete="surname" value="">
+											<span>&nbsp;</span>
+											<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname_modal" autocomplete="firstname" value="">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">郵便番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" class="c-form__input c-form__input--text" name="postal" id="postal" placeholder="(例) 1234567">
+											<span>&nbsp;</span>
+											<button class="c-form__button c-form__button--reversal" id="postal-btn">郵便番号検索</button>
+										</div>
+										<div class="c-form__attention">※半角数字ハイフンなしで入力（例：1234567）</div>
+										<div class="c-form__error" id="postal-error-message" style="display:none">
+											正しい郵便番号をご入力ください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">都道府県</label></th>
+									<td class="c-form__data">
+										<select name="shipping_state" id="shipping_state" class="c-form__input c-form__input--select" data-placeholder="お選びください" tabindex="-1" aria-hidden="true">
+											<option value="">お選びください</option>
+											<option value="北海道">北海道</option>
+											<option value="青森県">青森県</option>
+											<option value="岩手県">岩手県</option>
+											<option value="宮城県">宮城県</option>
+											<option value="秋田県">秋田県</option>
+											<option value="山形県">山形県</option>
+											<option value="福島県">福島県</option>
+											<option value="茨城県">茨城県</option>
+											<option value="栃木県">栃木県</option>
+											<option value="群馬県">群馬県</option>
+											<option value="埼玉県">埼玉県</option>
+											<option value="千葉県">千葉県</option>
+											<option value="東京都">東京都</option>
+											<option value="神奈川県">神奈川県</option>
+											<option value="新潟県">新潟県</option>
+											<option value="富山県">富山県</option>
+											<option value="石川県">石川県</option>
+											<option value="福井県">福井県</option>
+											<option value="山梨県">山梨県</option>
+											<option value="長野県">長野県</option>
+											<option value="岐阜県">岐阜県</option>
+											<option value="静岡県">静岡県</option>
+											<option value="愛知県">愛知県</option>
+											<option value="三重県">三重県</option>
+											<option value="滋賀県">滋賀県</option>
+											<option value="京都府">京都府</option>
+											<option value="大阪府">大阪府</option>
+											<option value="兵庫県">兵庫県</option>
+											<option value="奈良県">奈良県</option>
+											<option value="和歌山県">和歌山県</option>
+											<option value="鳥取県">鳥取県</option>
+											<option value="島根県">島根県</option>
+											<option value="岡山県">岡山県</option>
+											<option value="広島県">広島県</option>
+											<option value="山口県">山口県</option>
+											<option value="徳島県">徳島県</option>
+											<option value="香川県">香川県</option>
+											<option value="愛媛県">愛媛県</option>
+											<option value="高知県">高知県</option>
+											<option value="福岡県">福岡県</option>
+											<option value="佐賀県">佐賀県</option>
+											<option value="長崎県">長崎県</option>
+											<option value="熊本県">熊本県</option>
+											<option value="大分県">大分県</option>
+											<option value="宮崎県">宮崎県</option>
+											<option value="鹿児島県">鹿児島県</option>
+											<option value="沖縄県">沖縄県</option>
+										</select>
+										<div class="c-form__error" id="shipping_state-error-message" style="display:none">
+											都道府県を選択してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">市区</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="municipality" id="municipality">
+										<div class="c-form__error" id="municipality-error-message" style="display:none">
+											正しい市区町村を入力してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">町名・番地</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--textt" name="town" id="town" value="">
+										<div class="c-form__error" id="town-error-message" style="display:none">
+											正しい町名番地を入力してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--optional">建物名、部屋番号 など</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="bldg" id="bldg" value="">
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" id="save-address">変更を保存する</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="editPayment" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						クレジットカード情報
+					</h3>
+					<div class="c-modal__contents">
+									<div class="c-modal__text">
+										以下のクレジットカードをご利用いただけます。
+									</div>
+										<img src="{{{base_url}}}/static/images/mypage/mypage_img_gmopg-cards.png" alt="">
+									<table class="c-form">
+										<tbody>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード名義</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_holdername" type="text" autocomplete="off" placeholder="" value="" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード番号</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_ccNo" name="cardNumber" pattern="[0-9]*" type="tel" autocomplete="off" maxlength="17" placeholder="**** **** **** ****" value="" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">有効期限</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<select id="imgmopg_expdate_month" class="c-form__input c-form__input--select">
+															<option value="">MM</option>
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
+														<span>&nbsp;月&nbsp;</span>
+														<select id="imgmopg_expdate_year" class="c-form__input c-form__input--select">
+															<option value="">YYYY</option>
+															<option value="2020">2020</option>
+															<option value="2021">2021</option>
+															<option value="2022">2022</option>
+															<option value="2023">2023</option>
+															<option value="2024">2024</option>
+															<option value="2025">2025</option>
+															<option value="2026">2026</option>
+															<option value="2027">2027</option>
+															<option value="2028">2028</option>
+															<option value="2029">2029</option>
+															<option value="2030">2030</option>
+															<option value="2031">2031</option>
+															<option value="2032">2032</option>
+															<option value="2033">2033</option>
+															<option value="2034">2034</option>
+															<option value="2035">2035</option>
+															<option value="2036">2036</option>
+															<option value="2037">2037</option>
+															<option value="2038">2038</option>
+															<option value="2039">2039</option>
+															<option value="2040">2040</option>
+														</select>
+														<span>&nbsp;年&nbsp;</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">セキュリティコード</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_cvv" name="cvc2" pattern="[0-9]*" type="tel" autocomplete="off" placeholder="CVC" maxlength="4" class="c-form__input c-form__input--text">
+													<div class="c-form__attention">※セキュリティコード：主にカードの裏面の署名欄に記載されている末尾3桁～4桁の数字をご記入下さい。</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="c-form__agree">プライバシーポリシーは<a href="{{{home_url}}}/privacy-policy" target="_blank">こちら</a>。</div>
+									<div class="c-button-wrap">
+										<button type="button" class="c-button c-button--reversal" id="save-email" onclick="saveCardPd()">登録</button>
+									</div>
+
+
+
+					</div>
+				</div>
+
+
+			</div>
+
+
+
+
+		</article>
+	</main>
+{{{footer}}}

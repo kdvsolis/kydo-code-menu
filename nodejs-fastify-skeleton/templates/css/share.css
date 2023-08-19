@@ -1,0 +1,38 @@
+.banner-1{
+    width: 50vw;
+    object-fit: contain;
+    display: inline-block;
+    margin: 0 auto;
+}
+.share-content p{
+    font-size: 14px;
+}
+
+.share-content header {
+    width:100%;
+    text-align:center;
+}
+
+@media screen and (max-width: 990px) {
+    .banner-1{
+        width: 100%
+    }
+
+    .line-btn {
+        width: 126px !important;
+        height: 34px !important;
+    }
+    .email-btn{
+        width: 80px;
+    padding: 0px 0px 0px 5px !important;
+        line-height: 30px !important;
+        height: 30px;
+    }
+
+    .twitter-btn {
+        width: 104px !important;
+        height: 34px !important;   
+    }
+
+}
+

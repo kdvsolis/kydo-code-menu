@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ワンちゃんのお肌の健康を守るシャンプー、エピスース®ペプチド</title>
+    <meta name="description" content="エピスース®ペプチドは、フランスの老舗動物薬メーカー『ビルバック』が開発した、デリケートな犬のお肌の健康を守るシャンプーです。">
+
+    <meta name="og:title" content="ワンちゃんのお肌の健康を守るシャンプー、エピスース®ペプチド">
+    <meta name="og:type" content="article">
+    <meta name="og:url" content="https://virbac-services.jp/hpm-brand/">
+    <meta name="og:image" content="">
+    <meta name="og:site_name">
+    <meta name="og:description" content="エピスース®ペプチドは、フランスの老舗動物薬メーカー『ビルバック』が開発した、デリケートな犬のお肌の健康を守るシャンプーです。">
+    <meta name="twitter:card" content="summary">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://virbac-services.jp/special/2105episoothe_a/css/style.css">
+    <script src="https://virbac-services.jp/special/2105episoothe_a/js/script.js"></script>
+    <script type="text/javascript">//LineIt.loadButton();</script>
+  <script type='text/javascript'>
+    var gaProperty = 'UA-101503797-1';
+    var disableStr = 'ga-disable-' + gaProperty;
+    if (document.cookie.indexOf(disableStr + '=true') > -1) {
+      window[disableStr] = true;
+    }
+    function gaOptout() {
+      document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+      window[disableStr] = true;
+    }
+  </script>
+  <script type='text/javascript'>(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-101503797-1', 'auto'); ga('require', 'displayfeatures'); ga('require', 'linkid'); ga('set', 'anonymizeIp', true);
+    ga('set', 'dimension1', 'no');
+    ga('require', 'ec'); ga('set', 'dimension2', '未ログイン');
+  </script>
+  <!-- /WooCommerce Google Analytics Integration -->
+
+  <!-- LINE Tag Base Code -->
+  <!-- Do Not Modify -->
+  <script>
+    (function (g, d, o) {
+      g._ltq = g._ltq || []; g._lt = g._lt || function () { g._ltq.push(arguments) };
+      var h = location.protocol === 'https:' ? 'https://d.line-scdn.net' : 'http://d.line-cdn.net';
+      var s = d.createElement('script'); s.async = 1;
+      s.src = o || h + '/n/line_tag/public/release/v1/lt.js';
+      var t = d.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t);
+    })(window, document);
+    _lt('init', {
+      customerType: 'lap',
+      tagId: '1c76d7be-fb50-460f-a25e-2cf79413a0cd'
+    });
+    _lt('send', 'pv', ['1c76d7be-fb50-460f-a25e-2cf79413a0cd']);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://tr.line.me/tag.gif?c_t=lap&#038;t_id=1c76d7be-fb50-460f-a25e-2cf79413a0cd&#038;e=pv&#038;noscript=1" />
+  </noscript>
+  <!-- End LINE Tag Base Code -->
+
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1168039120246273');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1168039120246273&#038;ev=PageView&#038;noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+	 <!-- Google Tag Manager -->
+	 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	 })(window,document,'script','dataLayer','GTM-PPL7TC7');</script>
+	 <!-- End Google Tag Manager -->
+</head>
+
+<body>
+<div class="balloon" id="cart-balloon" style="display: none;">
+	  <p>カートに商品を追加しました！</p>
+</div>
+<div class="balloon" id="cart-error" style="display: none;">
+	  <p>通信に失敗しました。</p>
+</div>
+<div class="menu" style="display: none;">
+	<a href="/checkout/"><img src="https://virbac-services.jp/img/icon-cart.png">
+	<span class="badge" id="badge">0</span></a>
+</div>
+    <header>
+        <figure class="kv">
+            <img src="https://virbac-services.jp/special/2105episoothe_a/img/logo_pc.png" alt="" class="logo">
+            <img src="https://virbac-services.jp/special/2105episoothe_a/img/kv_sp.png" alt="">
+            <img src="https://virbac-services.jp/special/2105episoothe_a/img/logo_sp.png" alt="" class="logo">
+        </figure>
+        <div class="kv_txt inner">
+            <h1><span>ワンちゃん<small>の</small></span><br><strong>「お肌の健康」</strong><span>を</span><br>守るシャンプー</h1>
+            <p>ビルバック独自技術<br>&#8220;ペプチドテクノロジー&#8221;で、<br>健康な肌のバリア機能を保つ<br>「エピスース<sup class="sup-r">®</sup>ペプチド」</p>
+        </div>
+        <div class="kv_banner inner">
+            <p><small>無料会員登録で</small><br>1,000円OFF!!</p>
+        </div>
+    </header>
+    <main>
+        <div class="balloon pink inner sec01">
+            <h2>ご存知ですか？<br>ワンちゃんの肌は人間よりも<br class="pc_none">「デリケート」なこと</h2>
+        </div>
+        <div class="about_section sec01 inner">
+            <div class="about_inner ttl">
+                <h3>ワンちゃんの皮膚の薄さは、<br class="pc_none">人間の1/4 !?</h3>
+            </div>
+            <div class="about_inner">
+                <div class="about_flex">
+                    <figure class="siz02"><img src="https://virbac-services.jp/special/2105episoothe_a/img/img01.png" alt="ヒトの肌 犬の肌 "></figure>
+                    <div class="about_flex_txt">
+                        <p>ワンちゃんの皮膚の薄さは人間の1/4～1/2。<span class="point">乾燥の影響を受けやすい「デリケートな肌」です。</span></p>
+                        <p>だから<span class="point">デリケートな肌を守るためには、「うるおい」が大切です。</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="balloon blue">
+                    <h2>もしかして、ワンちゃんに<br class="pc_none">当てはまるものは<br class="sp_none">ありませんか？</h2>
+                </div>
+                <div class="about_flex sp flex01">
+                    <ul>
+                        <li>よく首や体を<br class="pc_none">掻いている<small>※乾燥による</small></li>
+                        <li>汚れて<br class="pc_none">臭いが気になる</li>
+                        <li>フケが気になる</li>
+                    </ul>
+                    <figure class="siz01">
+                        <img src="https://virbac-services.jp/special/2105episoothe_a/img/img02.png" alt="">
+                    </figure>
+                </div>
+                <p class="pc_center">一つでも当てはまれば、<br><span class="point strong">うるおい不足のサインかも!?</span></p>
+                <div class="about_box">
+                    <p><span class="strong white">そこで、フランス発<br>
+                            ペットケアブランド<br class="pc_none">
+                            「ビルバック」の</span><br><span class="point strong yellow">ワンちゃんの<br class="pc_none">「お肌のうるおい」を<br
+                                class="sp_none">守る<br class="pc_none">シャンプー！</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="buy_sec ">
+            <div class="inner">
+                <div class="buy_sec_ttl ">
+                    <p>ビルバック独自技術“ペプチドテクノロジー”で、<br>
+                        健康な肌のバリア機能を保つシャンプー</p>
+                    <h3>「エピスース<sup class="sup-r">®︎</sup>ペプチド」</h3>
+                </div>
+                <div class="flex">
+                    <figure class="product_img"><img src="https://virbac-services.jp/special/2105episoothe_a/img/product01.png" alt=""></figure>
+                    <div class="price">
+                        <p><small>通常3,263円（税込3,589円）</small><br><span class="red">初回購入クーポン適応<span>で</span></span>
+                        </p>
+                        <p class="first_price">1,000<small>円</small>OFF!</p>
+                        <p class="sub">※6,000円（税別）以上購入で送料無料</p>
+                        <div class="book_sec">
+                            <div>
+                                <p>購入したらもれなく！</p>
+                                <p><span>ホームスキンケアブック</span>が<br>
+                                    付いてくる！</p>
+                            </div>
+                            <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img03.png" alt=""></figure>
+                        </div>
+                    </div>
+                </div>
+                <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">エピスース ペプチド 250mL</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-1024x1024.jpg 1024w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-768x768.jpg 768w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-600x600.jpg 600w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main.jpg 1080w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,263 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="734001001"></input>
+            <button class="button cart-button" data-pid="30385" data-name="エピスース ペプチド 250mL" data-price="3263" data-slug="episoothe" name="734001001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+            </div>
+        </div>
+
+        <div class="balloon pink inner sec02">
+            <h2>「エピスース<sup class="sup-r">®︎</sup>ペプチド」の<br class="pc_none">3つの特長</h2>
+        </div>
+        <div class="about_section sec02 point01 inner">
+            <div class="about_inner ttl">
+                <h3>特長①</h3>
+            </div>
+            <div class="about_inner">
+                <h4>業界初！<br class="pc_none">
+                    ペプチドテクノロジーで<br>健康な肌フローラを守る！</h4>
+                <div class="about_flex">
+                    <figure>
+                        <img src="https://virbac-services.jp/special/2105episoothe_a/img/img04.png" alt="">
+                        <figcaption>
+                            <p>ボルド葉<br>抽出エキス</p>
+                            <p>セイヨウナツユキソウ<br>抽出エキス</p>
+                        </figcaption>
+                    </figure>
+                    <div class="about_flex_txt">
+                        <p>2つの天然成分をビルバック独自のバランスで配合（ペプチドテクノロジー）。<span class="point">肌本来の肌フローラを維持します。</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about_section sec02 point02 inner">
+            <div class="about_inner ttl">
+                <h3>特長②</h3>
+            </div>
+            <div class="about_inner">
+                <h4>フケのない<br class="pc_none">ツヤツヤの毛並みに</h4>
+                <div class="about_flex">
+                    <div class="about_flex_txt">
+                        <p><span class="point">化粧品にも使われる「オーツ麦由来保湿成分<sup
+                                    class="sup-kome">※１</sup>」を配合。</span>健やかな肌を保つことでフケのないツヤツヤの毛並みに。</p>
+                        <small>※１コロイド状オートミール</small>
+                    </div>
+                    <figure>
+                        <img src="https://virbac-services.jp/special/2105episoothe_a/img/img05.png" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="about_section sec02 point03 inner">
+            <div class="about_inner ttl">
+                <h3>特長③</h3>
+            </div>
+            <div class="about_inner">
+                <h4>爽やかな青リンゴの香り</h4>
+                <div class="about_flex">
+                    <div class="about_flex_txt">
+                        <p><span class="point">ほのかな青リンゴの香りが多くの飼い主さまに好評。</span>ワンちゃんとのひと時をより楽しく、より快適に。</p>
+                    </div>
+                    <figure>
+                        <img src="https://virbac-services.jp/special/2105episoothe_a/img/img06.png" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="balloon pink inner sec03">
+            <h2>飼い主様から<br class="pc_none">嬉しいお声が届いています！</h2>
+        </div>
+        <div class="about_section sec03 inner">
+            <div class="about_inner">
+                <div class="about_flex">
+                    <div class="about_flex">
+                        <figure>
+                            <img src="https://virbac-services.jp/special/2105episoothe_a/img/img07_pc.png" alt="">
+                            <img src="https://virbac-services.jp/special/2105episoothe_a/img/img07_sp.png" alt="">
+                        </figure>
+                        <div class="about_flex_txt">
+                            <p><strong>エピスースで洗い流すことで<br class="pc_none">かゆみが<br class="sp_none">抑えられたようです。</strong></p>
+                            <p>青りんごのいい匂いでした。エピスースでシャンプーをしたら肌がしっとりしてかゆがらなくなりました。次のシャンプーが楽しみです。</p>
+                            <p>
+                                <strong><small>（社福）日本介助犬協会　介助犬「フランク」<br>
+                                        ゴールデンレトリーバー</small></strong>
+                            </p>
+                        </div>
+                        <figure class="logo">
+                            <img src="https://virbac-services.jp/special/2105episoothe_a/img/logo01.png" alt="">
+                        </figure>
+                    </div>
+                    <div class="about_flex">
+                        <figure>
+                            <img src="https://virbac-services.jp/special/2105episoothe_a/img/img08_pc.png" alt="">
+                            <img src="https://virbac-services.jp/special/2105episoothe_a/img/img08_sp.png" alt="">
+                        </figure>
+                        <div class="about_flex_txt">
+                            <p><strong>優しい青リンゴの香りのシャンプーで、<br>汚れをさっぱり洗い流すことができました。</strong></p>
+                            <p>泡切れがとても良く、洗いやすかったです。シャンプー後の仕上がりは、毛並みのフワフワ感とツヤが非常に良くなり、シャンプーの匂いが強すぎず、青リンゴの残り香がほどよいと思いました。
+                            </p>
+                            <p><strong><small>「ダイズ」<br class="pc_none">トイプードル</small></strong></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="buy_sec sec03">
+            <div class="inner">
+                <div class="buy_sec_ttl ">
+                    <p>ビルバック独自技術“ペプチドテクノロジー”で、<br>
+                        健康な肌のバリア機能を保つシャンプー</p>
+                    <h3>「エピスース<sup class="sup-r">®︎</sup>ペプチド」</h3>
+                </div>
+                <div class="flex">
+                    <figure class="product_img"><img src="https://virbac-services.jp/special/2105episoothe_a/img/product01.png" alt=""></figure>
+                    <div class="price">
+                        <p><small>通常3,263円（税込3,589円）</small><br><span class="red">初回購入クーポン適応<span>で</span></span>
+                        </p>
+                        <p class="first_price">1,000<small>円</small>OFF!</p>
+                        <p class="sub">※6,000円（税別）以上購入で送料無料</p>
+                        <div class="book_sec">
+                            <div>
+                                <p>購入したらもれなく！</p>
+                                <p><span>ホームスキンケアブック</span>が<br>
+                                    付いてくる！</p>
+                            </div>
+                            <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img03.png" alt=""></figure>
+                        </div>
+                    </div>
+                </div>
+                <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">エピスース ペプチド 250mL</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-1024x1024.jpg 1024w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-768x768.jpg 768w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-600x600.jpg 600w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main.jpg 1080w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,263 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="734001001"></input>
+            <button class="button cart-button" data-pid="30385" data-name="エピスース ペプチド 250mL" data-price="3263" data-slug="episoothe" name="734001001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+            </div>
+        </div>
+
+        <div class="balloon pink inner sec04">
+            <h2>９０％が動物病院で<br class="pc_none">使われているシャンプーで、<br>
+                おうちで「本格ケア」を<br class="pc_none">してあげませんか？</h2>
+        </div>
+        <div class="about_section sec04 inner">
+            <div class="about_inner ttl">
+                <h3>ワンちゃんの<br class="pc_none">
+                    お肌の健康を守るために！<br>
+                    「エピスース<sup class="sup-r">®︎</sup>ペプチド」<br class="pc_none">
+                    のシャンプー方法</h3>
+            </div>
+            <div class="about_inner">
+                <div class="balloon blue balloon01">
+                    <h2>シャンプー前にしておくこと</h2>
+                </div>
+                <div class="about_flex">
+                    <ul>
+                        <li>ブラッシングで毛玉をほぐして<br>
+                            汚れや抜け毛を取り除く</li>
+                        <li>肌の気になる部分の確認</li>
+                        <li>しわの間や指の間、<br class="pc_none">尾の付け根など<br>
+                            汚れやすい部分を確認</li>
+                    </ul>
+                    <figure class="siz01">
+                        <img src="https://virbac-services.jp/special/2105episoothe_a/img/img09.png" alt="">
+                    </figure>
+                </div>
+                <div class="ready_sec">
+                    <h4>準備するもの</h4>
+                    <div>
+
+                        <div class="clm3">
+                            <figure>
+                                <img src="https://virbac-services.jp/special/2105episoothe_a/img/product02.png" alt="">
+                                <figcaption>
+                                    <p>シャンプー</p>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="https://virbac-services.jp/special/2105episoothe_a/img/product04.png" alt="">
+                                <figcaption>
+                                    <p>保湿液</p>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="https://virbac-services.jp/special/2105episoothe_a/img/img10.png" alt="">
+                                <figcaption>
+                                    <p>泡立てネット</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="clm2">
+                            <figure>
+                                <img src="https://virbac-services.jp/special/2105episoothe_a/img/img11.png" alt="">
+                                <figcaption>
+                                    <p>タイマー</p>
+                                </figcaption>
+                            </figure>
+                            <figure>
+                                <img src="https://virbac-services.jp/special/2105episoothe_a/img/img12.png" alt="">
+                                <figcaption>
+                                    <p>タオル</p>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="balloon blue balloon02">
+                    <h2>さあ、シャンプーを<br class="pc_none">始めましょう！</h2>
+                </div>
+                <div class="flex">
+                    <div class="step step01">
+                        <h4><span>&#9312;</span>ぬるま湯でぬらす</h4>
+                        <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img14.png" alt="約5分"></figure>
+                        <div class="step_txt">
+                            <p><strong>水温は30℃～35℃を目安に。</strong></p>
+                            <small>※これ以上高いとシャンプーの後、<br class="sp_none">肌が乾燥する恐れがあります。</small>
+                        </div>
+                        <div class="point">
+                            <p>Point</p>
+                            <p>地肌と毛をまんべんなく濡らし、<br class="sp_none">大まかな汚れを落とす。</p>
+                        </div>
+                    </div>
+                    <div class="step step02">
+                        <h4><span>&#9313;</span>プレシャンプー</h4>
+                        <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img15.png" alt="">
+                            <figcaption><img src="https://virbac-services.jp/special/2105episoothe_a/img/img23.png" alt="きもちいいワン！"></figcaption>
+                        </figure>
+                        <div class="step_txt">
+                            <p><strong>シャンプーをよくなじませ、<br>汚れをザっと洗い流す。</strong></p>
+                        </div>
+                        <div class="point">
+                            <p>Point</p>
+                            <p>あらかじめ泡立てたシャンプーを<br class="sp_none">使用してもOK。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="step step03">
+                        <h4><span>&#9314;</span>本シャンプー</h4>
+                        <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img16.png" alt="約10分"></figure>
+                        <div class="step_txt">
+                            <p><strong>気になる部分から、シャンプーの<br class="sp_none">成分を<br
+                                        class="pc_none">肌にしみこませるように<br>マッサージしながら優しく洗う。</strong></p>
+                            <small>※500円玉大で、洗面器1杯分の泡に。</small>
+                        </div>
+                        <div class="point">
+                            <p>Point</p>
+                            <p>よく泡立て、気になる部分から洗う。</p>
+                        </div>
+                    </div>
+                    <div class="step step04">
+                        <h4><span>&#9315;</span>すすぎ</h4>
+                        <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img17.png" alt="よく流してワン！"></figure>
+                        <div class="step_txt">
+                            <p><strong>ぬるま湯で十分にすすぎます。</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="step step05">
+                        <h4><span>&#9316;</span>タオルドライ</h4>
+                        <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img18.png" alt="">
+                            <figcaption><img src="https://virbac-services.jp/special/2105episoothe_a/img/img24.png" alt="スッキリだワン！"></figcaption>
+                        </figure>
+                        <div class="step_txt">
+                            <p><strong>タオルに水気を含ませるように、<br>
+                                    やさしく拭いて乾かす。</strong></p>
+                        </div>
+                        <div class="point">
+                            <p>Point</p>
+                            <p>ドライヤーを使う場合、<br class="sp_none">
+                                乾燥しすぎないように体からなるべく<br class="sp_none">離して短時間で乾かす。</p>
+                            <div class="point_flex">
+                                <p>気になる部分の集中保湿<br><span class="name_right">ダーム・ワン<sup class="sup-r">®︎</sup>ペプチド</span>
+                                </p>
+                                <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/product04.png" alt=""></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="virbac inner">
+            <div class="virbac_inner">
+                <figure class="logo"><img src="https://virbac-services.jp/special/2105episoothe_a/img/virbac.png" alt="virbac"></figure>
+                <div class="flex">
+                    <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img19.png" alt=""></figure>
+                    <div>
+                        <figure class="flag sp_none"><img src="https://virbac-services.jp/special/2105episoothe_a/img/flag.png" alt=""></figure>
+                        <p>フランスのペットケアブランド『ビルバック』は現在、100か国以上で事業を展開。動物専門医薬品メーカーとしての地位を確立しています。動物の健康と医療にかかわる分野で培われた豊富な知識と経験。それをいかして、医薬品やペットフードをはじめ、毎日のペットケアに役立つ様々な製品やサービスを提供しています。
+                        </p>
+                    </div>
+                </div>
+                <figure class="flag pc_none"><img src="https://virbac-services.jp/special/2105episoothe_a/img/flag.png" alt=""></figure>
+                <p class="v_name">ビルバックジャパン</p>
+            </div>
+        </div>
+        <div class="buy_sec ">
+            <div class="inner">
+                <div class="buy_sec_ttl ">
+                    <p>ビルバック独自技術“ペプチドテクノロジー”で、<br>
+                        健康な肌のバリア機能を保つシャンプー</p>
+                    <h3>「エピスース<sup class="sup-r">®︎</sup>ペプチド」</h3>
+                </div>
+                <div class="flex">
+                    <figure class="product_img"><img src="https://virbac-services.jp/special/2105episoothe_a/img/product01.png" alt=""></figure>
+                    <div class="price">
+                        <p><small>通常3,263円（税込3,589円）</small><br><span class="red">初回購入クーポン適応<span>で</span></span>
+                        </p>
+                        <p class="first_price">1,000<small>円</small>OFF!</p>
+                        <p class="sub">※6,000円（税別）以上購入で送料無料</p>
+                        <div class="book_sec">
+                            <div>
+                                <p>購入したらもれなく！</p>
+                                <p><span>ホームスキンケアブック</span>が<br>
+                                    付いてくる！</p>
+                            </div>
+                            <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img03.png" alt=""></figure>
+                        </div>
+                    </div>
+                </div>
+                <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">エピスース ペプチド 250mL</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-1024x1024.jpg 1024w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-768x768.jpg 768w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-600x600.jpg 600w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Episoothe_main.jpg 1080w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,263 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="734001001"></input>
+            <button class="button cart-button" data-pid="30385" data-name="エピスース ペプチド 250mL" data-price="3263" data-slug="episoothe" name="734001001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+                <div class="campaign">
+                    <h4>キャンペーン期間</h4>
+                    <p>2021年<span>5</span>月<span>6</span>日(木)正午〜<br class="pc_none">
+                        2021年<span>6</span>月<span>30</span>日(水)</p>
+                </div>
+            </div>
+        </div>
+        <div class="balloon blue02 inner sec05">
+            <div class="flex">
+                <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img25.png" alt=""></figure>
+                <h2><span class="yellow">6,000円<small>（税別）以上</small></span>の<br>お買い上げで <span class="red">送料無料！</span>
+                </h2>
+            </div>
+            <div class="flex">
+                <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img26.png" alt=""></figure>
+                <h2><span class="yellow">10,000円<small>（税別）以上</small></span>の<br>お買い上げで <span
+                        class="red">1,000円OFF！</span></h2>
+            </div>
+            <small class="kome">※会員登録後初回購入で1,000円OFFと、10,000円以上購入で<br class="pc_none">1,000円OFFの併用はできません。</small>
+        </div>
+        <div class="about_section sec05 inner">
+            <div class="about_inner">
+                <h3>ダーム・ワン<sup class="sup-r1">®︎</sup>ペプチド</h3>
+                <ul>
+                    <li>・常に新鮮な状態で使える1回使い切りタイプの保湿液</li>
+                    <li>・セラミドをたっぷり配合</li>
+                    <li>・乾燥が気になる部分の集中保湿に</li>
+                </ul>
+                <div>
+                    <figure class="siz01"><img src="https://virbac-services.jp/special/2105episoothe_a/img/product04.png" alt=""></figure>
+                    <p>3,263円<small>（税別）</small>3,589円<small>（税込）</small></p>
+                    <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">ダーム-ワン ペプチド</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-1024x1024.jpg 1024w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-768x768.jpg 768w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-600x600.jpg 600w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2021/04/VBJ_EC_img_Derm1_main.jpg 1080w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,263 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="734004001"></input>
+            <button class="button cart-button" data-pid="30350" data-name="ダーム-ワン ペプチド" data-price="3263" data-slug="derm1" name="734004001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+                </div>
+            </div>
+            <div class="about_inner">
+                <h3>犬用アダルトニュータード</h3>
+                <p>お肉たっぷり。高タンパク質・低炭水化物<sup
+                        class="sup-kome">※</sup>、グルテンフリーなど8種のタンパク源不使用のプレミアムフード。<br><small>※弊社従来品と比較して、タンパク質＋40%、炭水化物-30%</small>
+                </p>
+                <ul>
+                    <li>・去勢避妊後の10ヵ月齢以上の犬用。</li>
+                    <li>・お肉味。</li>
+                    <li>・最も<sup class="sup-kome">※</sup>低炭水化物で健康な体重維持をサポート。<br><small>※HPM犬用アダルトと比較して-5.5%</small></li>
+                </ul>
+                <div>
+                    <figure class="siz02"><img src="https://virbac-services.jp/special/2105episoothe_a/img/img20.png" alt=""></figure>
+                    <p>3,300円<small>（税別）</small>3,630円<small>（税込）</small></p>
+                    <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">VETERINARY HPM 犬用 アダルトニュータード (避妊去勢済み) 2kg</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_adult-neutered_2kg-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_adult-neutered_2kg-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_adult-neutered_2kg-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_adult-neutered_2kg-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_adult-neutered_2kg.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,300 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="711003001"></input>
+            <button class="button cart-button" data-pid="21787" data-name="VETERINARY HPM 犬用 アダルトニュータード (避妊去勢済み) 2kg" data-price="3300" data-slug="hpm-%e7%8a%ac%e7%94%a8-%e3%82%a2%e3%83%80%e3%83%ab%e3%83%88%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%bf%e3%83%bc%e3%83%89-%e9%81%bf%e5%a6%8a%e5%8e%bb%e5%8b%a2%e6%b8%88%e3%81%bf-2kg" name="711003001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+                </div>
+            </div>
+            <div class="about_inner">
+                <h3>犬用シニアニュータード</h3>
+                <p>お肉たっぷり。高タンパク質・低炭水化物<sup
+                        class="sup-kome">※</sup>、グルテンフリーなど8種のタンパク源不使用のプレミアムフード。<br><small>※弊社従来品と比較して、タンパク質＋40%、炭水化物-30%</small>
+                </p>
+                <ul>
+                    <li>・去勢避妊後の10歳以上の犬用。</li>
+                    <li>・お肉味。</li>
+                    <li>・カロリー控えめ。</li>
+                    <li>・健康な関節ケアにコンドロイチン硫酸配合。</li>
+                </ul>
+                <div>
+                    <figure class="siz02"><img src="https://virbac-services.jp/special/2105episoothe_a/img/img21.png" alt=""></figure>
+                    <p>3,300円<small>（税別）</small>3,630円<small>（税込）</small></p>
+                    <a href="#user-info-form" class="shiny-btn1" onclick="btnClick()">ご購入はこちら</a>
+
+        <div class="timesale-product">
+        <h1 class="title">VETERINARY HPM 犬用 シニアニュータード (避妊去勢済み) 2kg</h1>
+        <img width="300" height="300" src="https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_senior-neutered_2kg-300x300.jpg" class="attachment-300x300 size-300x300" alt="" srcset="https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_senior-neutered_2kg-300x300.jpg 300w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_senior-neutered_2kg-150x150.jpg 150w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_senior-neutered_2kg-100x100.jpg 100w, https://vdev.impactm.net/b2c/wp-content/uploads/2020/07/3_1DOG_senior-neutered_2kg.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />        <div class="product-content">
+        <div class="product-title">
+        </div><!-- /.product-title -->
+                <span class="discount">&yen;3,300 (税別)</span>
+                    <div class="product-link">
+            <input class="quantity" type="number" min="1" max="300" value="1" name="711004001"></input>
+            <button class="button cart-button" data-pid="21788" data-name="VETERINARY HPM 犬用 シニアニュータード (避妊去勢済み) 2kg" data-price="3300" data-slug="hpm-%e7%8a%ac%e7%94%a8-%e3%82%b7%e3%83%8b%e3%82%a2%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%bf%e3%83%bc%e3%83%89-%e9%81%bf%e5%a6%8a%e5%8e%bb%e5%8b%a2%e6%b8%88%e3%81%bf-2kg" name="711004001" onClick="addToCart()">カートに入れる</button>
+            </div>
+        </div><!-- /.product-content -->
+        </div><!-- /.timesale-product -->
+
+        
+
+                </div>
+            </div>
+        </div>
+        <div class="fund inner">
+            <div class="flex ">
+                <p class="pc_none">また、1注文につき、100円が<br>
+                    ビルバックジャパンより<br>（社福）介助犬協会に寄付されます。</p>
+                <figure class="pc_none"><img src="https://virbac-services.jp/special/2105episoothe_a/img/logo01.png" alt=""></figure>
+                <figure><img src="https://virbac-services.jp/special/2105episoothe_a/img/img27.png" alt=""></figure>
+                <div>
+                    <p class="sp_none">また、1注文につき、100円が<br>
+                        ビルバックジャパンより<br>（社福）介助犬協会に寄付されます。</p>
+                    <figure class="sp_none"><img src="https://virbac-services.jp/special/2105episoothe_a/img/logo01.png" alt=""></figure>
+                    <small>※今回のキャンペーンによる寄付金額の上限は<br class="pc_none">10万円とさせていただきます。</small>
+                </div>
+            </div>
+        </div>
+                <link href="https://virbac-services.jp/special/timesale/css/tsaleform.css" rel="stylesheet" itemprop="stylesheet">
+        <div id="user-form">
+        <div id="user-login-form">
+<h2>すでにアカウントをお持ちの方</h2>
+<form id="user-login">
+	<span id="login-error-message">ログイン情報が間違っています。<br>メールアドレス、パスワードにお間違いがないかご確認ください。</span>
+	<div>
+		<label for="login-email">メールアドレス</label>
+		<input type="email" name="login-email" id="login-email" placeholder="user@virbac-services.jp">
+		<span id="login-email-error-message">正しいメールアドレスの形式を入力してください。</span>
+	</div>
+	<div>
+		<label for="login-pass">パスワード</label>
+		<input type="password" name="login-pass" id="login-pass" placeholder="パスワードを入力">
+	</div>
+	<button id="login-btn">ログイン</button>
+</form>
+</div><!-- /#user-login-form -->
+<div id="user-logout-form" style="display: none;">
+<h2>すでにアカウントをお持ちの方</h2>
+<form id="user-logout">
+<input type="hidden" name="token" value="" id="token"></input>
+<input type="hidden" name="uid" value="" id="uid"></input>
+<input type="hidden" name="utype" value="normal" id="utype"></input>
+
+<span style="font-weight: bold;">ログイン中のメールアドレス</span>
+	<div>
+		<span id="logout-email"></span>
+	</div>
+	<button id="logout-btn">ログアウト</button>
+</form>
+</div><!-- /#user-login-form -->
+        <div id="user-info-form">
+<h2>お客さま情報</h2>
+<form id="user-info" autocomplete="off">
+	<span id="register-error-message">すでに登録されているメールアドレスまたは電話番号です。<br>ログインフォームよりログインしてください。</span>
+	<h3><span class="check">必須</span>お名前</h3>
+	<div>
+		<input type="text" name="surname" id="surname" placeholder="渡辺">
+		<input type="text" name="firstname" id="firstname" placeholder="まりな">
+		<span id="name-error-message">お名前は日本語でご入力ください。</span>
+	</div>
+	<h3><span class="check">必須</span>お届け先住所</h3>
+	<div>
+		<label for="postal">郵便番号（ハイフンなし・自動入力）</label>
+		<input type="text" name="postal" id="postal" placeholder="例)2220033" autocomplete="postal-code">
+		<span id="postal-error-message">正しい郵便番号をご入力ください。</span>
+	</div>
+	<div class="col-2">
+		<div>
+		<label for="shipping_state">都道府県</label>
+		<select name="shipping_state" id="shipping_state" placeholder="都道府県">
+			<option value="">都道府県</option>
+			<option value="北海道">北海道</option>
+			<option value="青森県">青森県</option>
+			<option value="岩手県">岩手県</option>
+			<option value="宮城県">宮城県</option>
+			<option value="秋田県">秋田県</option>
+			<option value="山形県">山形県</option>
+			<option value="福島県">福島県</option>
+			<option value="茨城県">茨城県</option>
+			<option value="栃木県">栃木県</option>
+			<option value="群馬県">群馬県</option>
+			<option value="埼玉県">埼玉県</option>
+			<option value="千葉県">千葉県</option>
+			<option value="東京都">東京都</option>
+			<option value="神奈川県">神奈川県</option>
+			<option value="新潟県">新潟県</option>
+			<option value="富山県">富山県</option>
+			<option value="石川県">石川県</option>
+			<option value="福井県">福井県</option>
+			<option value="山梨県">山梨県</option>
+			<option value="長野県">長野県</option>
+			<option value="岐阜県">岐阜県</option>
+			<option value="静岡県">静岡県</option>
+			<option value="愛知県">愛知県</option>
+			<option value="三重県">三重県</option>
+			<option value="滋賀県">滋賀県</option>
+			<option value="京都府">京都府</option>
+			<option value="大阪府">大阪府</option>
+			<option value="兵庫県">兵庫県</option>
+			<option value="奈良県">奈良県</option>
+			<option value="和歌山県">和歌山県</option>
+			<option value="鳥取県">鳥取県</option>
+			<option value="島根県">島根県</option>
+			<option value="岡山県">岡山県</option>
+			<option value="広島県">広島県</option>
+			<option value="山口県">山口県</option>
+			<option value="徳島県">徳島県</option>
+			<option value="香川県">香川県</option>
+			<option value="愛媛県">愛媛県</option>
+			<option value="高知県">高知県</option>
+			<option value="福岡県">福岡県</option>
+			<option value="佐賀県">佐賀県</option>
+			<option value="長崎県">長崎県</option>
+			<option value="熊本県">熊本県</option>
+			<option value="大分県">大分県</option>
+			<option value="宮崎県">宮崎県</option>
+			<option value="鹿児島県">鹿児島県</option>
+			<option value="沖縄県">沖縄県</option>
+		</select>
+		</div>
+		<div>
+		<label for="municipality">市区町村</label>
+		<input type="text" name="municipality" id="municipality" placeholder="横浜市港北区">
+		<span id="shipping_state-error-message">都道府県を選択してください。</span>
+		<span id="municipality-error-message">正しい市区町村を入力してください。</span>
+		</div>
+	</div>
+	<div>
+		<label for="town">町名番地</label>
+		<input type="text" name="town" id="town" placeholder="新横浜３丁目１８−１４">
+		<span id="town-error-message">正しい町名番地を入力してください。</span>
+	</div>
+	<div>
+		<label for="bldg">マンション名・部屋番号など</label>
+		<input type="text" name="bldg" id="bldg" placeholder="ビルバックタワー 105号室">
+		<span id="bldg-error-message">正しいマンション名・部屋番号を入力してください。</span>
+	</div>
+	<h3><span class="check">必須</span>電話番号</h3>
+	<div>
+		<input type="tel" name="contactno" id="contactno" placeholder="09012345678">
+        <span id="contactno-error-message">正しい電話番号を入力してください。</span>
+		<!--<button id="auth-btn">6桁のコードを受け取る</button>
+		<input tye="number" name="twilio-code-input" id="twilio-code-input" placeholder="000000">
+		<button id="confirm-auth-btn" name="confirm-auth-btn">認証</button>
+		
+		<span id="auth-verified">電話番号認証が完了しました。</span>-->
+	</div>
+    <div id="registration-item">
+	<h3><span class="check">必須</span>メールアドレス</h3>
+	<div>
+		<input type="email" name="username" id="username" placeholder="user@virbac-services.jp">
+		<span id="username-error-message">正しいメールアドレスの形式を入力してください。</span>
+	</div>
+	<h3><span class="check">必須</span>パスワード</h3>
+	<div>
+		<input type="password" name="password" id="password" placeholder="パスワードを入力">
+        <span id="password-error-message">パスワードは6文字以上、数字を含めてください。</span>
+	</div>
+	<h3>病院ユニークコード</h3>
+	<div>
+		<input type="text" name="code" id="code" placeholder="ユニークコードを入力">
+	</div>
+    <input type="hidden" name="hospital_id" id="hospital_id" value="">
+	<input type="hidden" name="hospital_code" id="hospital_code" value="">
+	<input type="hidden" name="hospital_name" id="hospital_name" value="">
+    <span id="hospital-error-message">所属している病院が見つかりませんでした。もう一度正しい病院コードを入力してください。</span>
+	</div><!-- /#registration-item -->
+	<h2>カートの中身</h2>
+    <div id="cart-item">
+    </div><!-- /#cart-item -->
+    <div id="registration-error-message" style="display:none"><p>会員登録の際にエラーが発生しました。<br>すでに登録されているメールアドレスです。</p></div>
+    <div id="exception-error-message" style="display:none"><p>入力エラーが発生しました。<br>記入内容をご確認いただき再度確認ボタンを押してください。</p></div>
+	<button id="confirm-btn">お申込み確認画面</button>
+</form>
+
+
+</div><!-- /#user-info-form -->
+                </div><!-- /#user-form -->
+        <!-- /components/integrated/integrated.js -->
+        <script src="/special/timesale/js/integrated.js" type="module"></script>
+        
+    </main>
+    <footer>
+        <div class="app">
+            <a
+                href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fvirbac-services.jp%2Fcampaign%2F2105episoothe_a%2F">
+                <img src="https://virbac-services.jp/special/2105episoothe_a/img/line.png" alt=""></a>
+            <a href="https://www.instagram.com/virbac_japan/?hl=ja" target="_blank" rel="noopener noreferrer">
+                <img src="https://virbac-services.jp/special/2105episoothe_a/img/insta.png" alt=""></a>
+        </div>
+        <div id="page_top"></a></div>
+        <figure class="logo"><img src="https://virbac-services.jp/special/2105episoothe_a/img/logo.png" alt=""></figure>
+        <p>ビルバックコンタクトセンター</p>
+        <p class="tel">TEL.<a href="tel:0120-550-700">0120-550-700</a></p>
+        <small>受付時間 9:00〜17:00（年末年始、日曜・祝日除く）</small>
+        <div class="company">
+            <ul>
+                <li><a href="https://virbac-services.jp/about">運営会社</a></li>
+                <li><a href="https://virbac-services.jp/terms">利用規約</a></li>
+                <li><a href="https://virbac-services.jp/privacy-policy">プライバシーポリシー</a></li>
+                <li><a href="https://virbac-services.jp/spec">特別商取引法に基づく表記</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+<script>
+$(function() {
+	$('.timesale-product').css('display', 'none');
+	$('.cart-button').removeAttr("onclick");
+		var gurl = 'https://' + document.domain + '/json-add-to-cart'
+		$.ajax(gurl).done(function(data){
+			var item_cnt = 0;
+			for (let i = 0; i < data.length; i++){
+				item_cnt += data[i].quantity;
+			console.log(`id=${data[i].product_id}, quantity=${data[i].quantity}`);
+			}
+			document.getElementById('badge').innerText = item_cnt;
+		})
+		.fail(function(){
+			document.getElementById('badge').innerText = 0;
+		});
+});
+
+
+	//カートに入れるボタンが購入ボタンだった場合の処理
+	function btnClick() {
+		//document.getElementsByClassName("shiny-btn1")[0].nextElementSibling.getElementsByTagName("button")[0].click();
+		$(".shiny-btn1").on('click', function(event) {event.target.nextElementSibling.getElementsByTagName("button")[0].click();});
+	}
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<script type="module">
+    import { cart } from '/components/cart/cart.js?v={{cartVersion}}';
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+
+    (async() =>{
+        let items = JSON.parse('{{{items}}}');
+        let cart_summary_contents = cart.getCartContents();
+        let cart_qty = await cart.getTotalCartQuantity();
+
+        if (cart_qty == 0){
+            document.querySelector('.p-cart__message--empty').innerHTML = "現在カートに商品はありません";
+            document.querySelector('.p-cart__flowList').style.display = 'none';
+            document.querySelector('.p-cart__subtotalDef').style.display = 'none';
+            document.querySelector('.p-cart__totalDef').style.display = 'none';
+            document.querySelector('.c-button--reversal').style.display = 'none';
+            document.querySelector('.p-cart__table').style.display = 'none';
+        }
+        else {
+            document.querySelector('.p-cart__flowList', '.p-cart__subtotalDef').style.display = 'show';
+            document.querySelector('.p-cart__subtotalDef').style.display = 'show';
+            document.querySelector('.p-cart__totalDef').style.display = 'show';
+            document.querySelector('.c-button--reversal').style.display = 'show';
+            document.querySelector('.p-cart__table').style.display = 'show';
+            document.querySelector('.p-cart__message--empty').style.display = 'none';
+        }
+
+        let user_token = cookieService.getCookieValue('token');
+        let userInfo = user_token != ""? await account.getUser() : {success: false}; //Get user info if available
+        let total_price = parseFloat(items.reduce(function(a,b){ return parseFloat(b.quantity) * parseFloat(b.price) + a }, 0));
+        let total_tax = Math.round(total_price * 0.1);
+
+        function computePrice(){
+            total_price = parseFloat(items.reduce(function(a,b){ return parseFloat(b.quantity) * parseFloat(b.price) + a }, 0));
+            total_tax = Math.round(total_price * 0.1);
+            document.querySelectorAll(".p-cart__subtotalData")[0].innerHTML = total_price.toLocaleString() + "円";
+            document.querySelectorAll(".p-cart__subtotalData")[1].innerHTML = total_tax.toLocaleString() + "円";
+            document.querySelector('.p-cart__totalData').innerHTML = (total_price + total_tax).toLocaleString() + "円";
+        }
+        computePrice();
+
+        function freeShippingNotice() {
+            if (total_price < 6000) {
+                document.querySelector('.p-cart__subtotalMessage').innerHTML = "あと" + (6000 - total_price).toLocaleString() + "円で送料無料となります。<br class='u-sp--inline'>※サンプルを除く<br class='u-sp--inline'>※沖縄・離島を除く";
+            }
+            else {
+                document.querySelector('.p-cart__subtotalMessage').innerHTML = "現在送料無料です。<br class='u-sp--inline'>※沖縄・離島を除く";
+            }
+        }
+        freeShippingNotice();
+
+        items.forEach(function(item, index){
+            document.getElementById("delete_" + item.id).onclick = async function(){
+                try{
+                    await cart.deleteCartItem(item.cart_id, item.id);
+                    //Do UI trigger here
+                    window.location.href = "/cart";
+                } catch(e){
+                    //Do error display here
+                }
+            }
+            document.getElementById("cart_later_" + item.id).onclick = async function(){
+                try{
+                    await cart.updateCartItem(userInfo.success ? userInfo.id : '', item.id, 0, 1);
+                    //Do UI trigger here
+                    location.reload();
+                } catch(e){
+                    //Do error display here
+                }
+            }
+            document.getElementById("button_plus_" + item.id).onclick = async function(){
+                try{
+                    if(item.categories.length > 0 && item.categories[0].slug.startsWith('sample')){
+                        return;
+                    }
+                    if(parseInt(document.getElementById("quantity_" + item.id).value) < 30){
+                        document.getElementById("quantity_" + item.id).value = parseInt(document.getElementById("quantity_" + item.id).value) + 1;
+                    }
+                    let quantity = parseInt(document.getElementById("quantity_" + item.id).value);
+                    await cart.updateCartItem(userInfo.success ? userInfo.id : '', item.id, quantity, 0, "r");
+                    items[index].quantity = quantity;
+                    document.querySelectorAll('.p-cart__tableData--subtotal')[index].innerHTML = (item.price * items[index].quantity).toLocaleString() + '円<small class="u-sp--inline">（税別）</small>';
+                    computePrice();
+                    freeShippingNotice();
+                    cart.reloadCartUpperWidget();
+                } catch(e){
+                    //Do error display here
+                }
+            }
+            document.getElementById("button_minus_" + item.id).onclick = async function(){
+                try{
+                    if(parseInt(document.getElementById("quantity_" + item.id).value) > 1)
+                        document.getElementById("quantity_" + item.id).value = parseInt(document.getElementById("quantity_" + item.id).value) - 1;
+                    let quantity = parseInt(document.getElementById("quantity_" + item.id).value);
+                    await cart.updateCartItem(userInfo.success ? userInfo.id : '', item.id, quantity, 0, "r");
+                    items[index].quantity = quantity;
+                    document.querySelectorAll('.p-cart__tableData--subtotal')[index].innerHTML = (item.price * items[index].quantity).toLocaleString() + '円<small class="u-sp--inline">（税別）</small>';
+                    computePrice();
+                    freeShippingNotice();
+                    cart.reloadCartUpperWidget();
+                } catch(e){
+                    //Do error display here
+                }
+            }
+        });
+    })();
+
+</script>

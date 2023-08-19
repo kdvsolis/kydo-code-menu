@@ -1,0 +1,230 @@
+<script src="{{{shopBaseUrl}}}/ext/js/token.js"></script>
+//document.getElementById("quantity-select").selectedIndex = 2;
+<script type="module">
+    import {account} from '/components/account/account.js?v={{accountVersion}}';
+    import { product } from '/components/product/product.js?v={{productVersion}}';
+    import { checkout } from '/components/checkout/checkout.js?v={{checkoutVersion}}';
+	
+    (async () => {
+		account.templateLogic();
+		let userInfo = await account.getUser(); //Get user info if available
+		let isIOS = !!navigator.platform.match(/iPhone|iPod|iPad/);
+		let expireMonth = "{{{expireMonth}}}";
+		let expireYear = "{{{expireYear}}}";
+		let purchase_type = "{{{purchase_type}}}";
+console.log(purchase_type)
+		if(purchase_type == "cod"){
+			document.querySelectorAll('.p-mypage__creditcardTitle')[0].innerHTML = "代引き";
+			document.querySelectorAll('.p-mypage__creditcardTitle')[1].style.display = "none";
+			document.querySelectorAll('.p-mypage__creditcardTitle')[2].style.display = "none";
+			document.querySelectorAll('.p-mypage__creditcardData')[0].style.display = "none";
+			document.querySelectorAll('.p-mypage__creditcardData')[1].style.display = "none";
+			document.querySelectorAll('.p-mypage__creditcardData')[2].style.display = "none";
+		}
+		
+		document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+			console.log(await account.logoutUser());
+			window.location.replace("/my-page");
+
+		});
+
+		let subscription = {{{subscription_list_stringed}}};
+		
+        async function loadPostalAddress(){
+            try{
+                let postal = (await checkout.getPostal(document.getElementById('postal').value.replace("-", ""))).response;
+                document.getElementById("shipping_state").value = postal.pref.name;
+                document.getElementById('municipality').value =  postal.city.name;
+            } catch(e){
+                console.error(e);
+            }
+        }
+
+		let state_array = ["", "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+        "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+        "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+        "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県",
+        "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県",
+        "大分県", "宮崎県",
+        "鹿児島県", "沖縄県"];
+		let state = state_array[(parseInt(userInfo.state.replace("JP",""))|| 0)];console.log(parseInt(userInfo.state.replace("JP","")));
+		document.querySelectorAll(".p-mypage__addressData")[1].innerHTML = state + userInfo.city + userInfo.address_1 + userInfo.address_2;
+
+		//Fill out address form
+		document.getElementById('surname').value = userInfo.last_name;
+		document.getElementById('firstname').value = userInfo.first_name;
+		document.getElementById('postal').value = userInfo.postcode;		
+		document.getElementById('shipping_state').value = state;
+		document.getElementById('municipality').value = userInfo.city;
+		document.getElementById('town').value = userInfo.address_1;
+		document.getElementById('bldg').value = userInfo.address_2;
+
+		//skip subscription
+		async function skipSubscription() {
+			console.log("Subscription Skipped")
+			console.log(await account.skipProductSubscription(subscription))
+			window.location.reload();
+		};
+		
+		document.getElementsByClassName('c-button--reversal')[3].addEventListener(isIOS? "touchstart":"click", skipSubscription);
+		document.getElementById('cancel-subs').addEventListener("click", skipSubscription);
+
+		document.getElementsByClassName('c-button--reversal')[0].addEventListener(isIOS? "touchstart":"click", async function (){
+			document.getElementById('quantity-select').value = {{subscription_list.meta._vs_quantity}};
+			document.getElementById("freq-val").value = {{subscription_list.meta._vs_period}};
+		});
+		
+		//delete subscription
+		document.getElementById('subscription-cancel').addEventListener(isIOS? "touchstart":"click", async function (){
+			console.log("Subscription Deleted")
+			console.log( await account.cancelProductSubscription(subscription))
+			window.location = "/my-page/subscription";
+		});
+
+		$(document).on('lity:ready', function(event, instance) {
+			if(event.target.firstChild.parentNode.id == "editPayment"){
+				document.getElementById("imgmopg_expdate_month").value = expireMonth;
+				document.getElementById("imgmopg_expdate_year").value = expireYear;
+			}
+		});
+		//change subscription
+		document.getElementsByClassName("c-button--reversal")[5].addEventListener(isIOS? "touchstart":"click", async function (){
+			let meta = {
+				quantity: document.getElementById("quantity-select").value,
+				period: document.getElementById("freq-val").value,
+				schedule: document.getElementById("del-date").value,
+				memo: document.getElementById("message-modal").value
+			}	
+			
+			let response = await account.changeInfoSubscription(subscription, meta);
+			
+			console.log(meta);
+			console.log(response);
+			
+			if (response.success == true){
+				let schedule = meta.schedule.split("-")
+			
+				document.querySelectorAll(".p-mypage__scheduleData")[0].innerHTML = meta.quantity;
+				document.querySelectorAll(".p-mypage__scheduleData")[1].innerHTML = meta.period;
+				document.querySelectorAll(".p-mypage__scheduleData")[2].innerHTML = meta.schedule;
+				document.querySelectorAll(".p-mypage__subscriptionDeatailData")[1].innerHTML = meta.quantity;
+				document.querySelectorAll(".p-mypage__subscriptionDeatailData")[2].innerHTML = meta.period;
+				
+				document.querySelector('.lity-close').click();
+			}
+		});
+
+        document.querySelectorAll('.c-form__button.c-form__button--reversal')[0].addEventListener(isIOS? "touchstart":"click", loadPostalAddress);
+
+        document.getElementById('postal').oninput = loadPostalAddress;
+		
+		document.querySelectorAll(".c-button.c-button--reversal")[6].addEventListener(isIOS? "touchstart":"click",async function(){
+			let new_user_data = {
+				meta_data: [{}],
+				billing: {},
+				shipping: {}
+			};
+			new_user_data.first_name = document.getElementById('firstname').value;
+			new_user_data.last_name = document.getElementById('surname').value;
+			
+			new_user_data.billing.first_name = document.getElementById('firstname').value;
+			new_user_data.billing.last_name = document.getElementById('surname').value;
+			new_user_data.billing.state = "JP" + state_array.findIndex(r => r == document.getElementById('shipping_state').value);
+			new_user_data.billing.city = document.getElementById('municipality').value;
+			new_user_data.billing.address_1 = document.getElementById('town').value;
+			new_user_data.billing.address_2 = document.getElementById('bldg').value;
+			new_user_data.billing.postcode = document.getElementById('postal').value;
+			new_user_data.shipping.first_name = new_user_data.billing.first_name
+			new_user_data.shipping.last_name = new_user_data.billing.last_name
+			new_user_data.shipping.state = new_user_data.billing.state
+			new_user_data.shipping.city = new_user_data.billing.city
+			new_user_data.shipping.address_1 = new_user_data.billing.address_1
+			new_user_data.shipping.address_2 = new_user_data.billing.address_2
+			new_user_data.shipping.postcode = new_user_data.billing.postcode
+			console.log(document.getElementById('shipping_state').value, state_array.findIndex(r => r == document.getElementById('shipping_state').value),"--------");
+            let state = state_array[parseInt(new_user_data.shipping.state.replace("JP","") || 0)];
+			console.log(await account.modifyUser(userInfo.id, new_user_data))
+			document.querySelectorAll(".p-mypage__addressData")[0].innerHTML = new_user_data.last_name + " " + new_user_data.first_name
+			document.querySelectorAll(".p-mypage__addressData")[1].innerHTML = state + new_user_data.billing.city + new_user_data.billing.address_1 + new_user_data.billing.address_2
+			console.log('Account Address Modified')
+			document.querySelector('.lity-close').click();
+		}); 
+		
+		document.querySelectorAll(".c-button.c-button--reversal")[7].addEventListener(isIOS? "touchstart":"click",async function(){
+			if(document.querySelectorAll(".c-modal__paymentCheck.js-modal__paymentCheck")[0].checked){
+				let cardNo = document.getElementById("imgmopg_ccNo").value;
+				let expire = document.getElementById("imgmopg_expdate_year").value + '' + document.getElementById("imgmopg_expdate_month").value
+				let security = document.getElementById("imgmopg_cvv").value; 
+				let holder_name = document.getElementById("imgmopg_holdername").value;
+				let subscription = {id:""};
+				expireMonth =  document.getElementById("imgmopg_expdate_month").value;
+				expireYear = document.getElementById("imgmopg_expdate_year").value ;
+		
+				var tokenRequestPayload = {
+					expire: expire,
+					cardno: cardNo,
+					securityCode: security,
+					holdername: holder_name,
+					tokennumber: '1'
+				}
+				
+				Multipayment.init('{{{shop_id_subs}}}');
+				Multipayment.getToken(tokenRequestPayload, async function (token_response) {     
+					try{    
+					let user_token = userInfo.token;
+						if (token_response.resultCode != '000') {
+							throw "Invalid token";
+						}   
+						purchase_type = "imgmopg";
+						document.getElementById("imgmopg_expdate_month").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_expdate_year").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_cvv").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_holdername").style.backgroundColor = "#FFF";
+						
+						
+						let cardUpdateResponse = await account.modifySubscriptionPayMethod(subscription,"imgmopg",token_response.tokenObject.token[0])
+						
+						console.log("cardUpdateResponse: " + JSON.stringify(cardUpdateResponse));
+						
+						if(cardUpdateResponse.success == true){
+							purchase_type = "cod";
+							document.querySelectorAll('.p-mypage__creditcardTitle')[0].innerHTML = "氏名";
+							document.querySelectorAll('.p-mypage__creditcardTitle')[1].style.display = "block";
+							document.querySelectorAll('.p-mypage__creditcardTitle')[2].style.display = "block";
+							document.querySelectorAll('.p-mypage__creditcardData')[0].style.display = "block";
+							document.querySelectorAll('.p-mypage__creditcardData')[1].style.display = "block";
+							document.querySelectorAll('.p-mypage__creditcardData')[2].style.display = "block";
+
+							document.querySelectorAll(".p-mypage__creditcardData")[0].innerHTML = holder_name;
+							document.querySelectorAll(".p-mypage__creditcardData")[1].innerHTML = "*************" + cardNo.substr(cardNo.length - 3);
+							document.querySelectorAll(".p-mypage__creditcardData")[2].innerHTML = expire.substring(2,4) + "/" + expire.substring(4,6);
+							document.querySelector('.lity-close').click();
+						} else {
+							document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFA3A4";
+						}
+					}catch(e){
+						document.getElementById("imgmopg_expdate_month").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_expdate_year").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_cvv").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_holdername").style.backgroundColor = "#FFA3A4";
+						console.log(e)
+					}
+				});
+			} else if(document.querySelectorAll(".c-modal__paymentCheck.js-modal__paymentCheck")[1].checked){
+				let cardUpdateResponse = await account.modifySubscriptionPayMethod(subscription,"cod");
+				console.log(cardUpdateResponse);
+				document.querySelectorAll('.p-mypage__creditcardTitle')[0].innerHTML = "代引き";
+				document.querySelectorAll('.p-mypage__creditcardTitle')[1].style.display = "none";
+				document.querySelectorAll('.p-mypage__creditcardTitle')[2].style.display = "none";
+				document.querySelectorAll('.p-mypage__creditcardData')[0].style.display = "none";
+				document.querySelectorAll('.p-mypage__creditcardData')[1].style.display = "none";
+				document.querySelectorAll('.p-mypage__creditcardData')[2].style.display = "none";
+				document.querySelector('.lity-close').click();
+				return;
+			}
+		});
+		
+    })();
+</script>

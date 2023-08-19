@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+{{{header}}}
+<script type="module">
+    import { account } from '/components/account/account.js';
+    import { cookieService } from '/services/cookie.service.js';
+	
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+
+
+	
+	let userInfo = await account.getUser();
+	console.log("userInfo: " + userInfo.token);
+	console.log('userInfo.token == undefined: ' + userInfo.token == undefined);
+	if(userInfo.token == "" || undefined){
+				location.href = "/my-page";
+			}
+
+    document.querySelector('.c-button--reversal').onclick = async function(){
+		try{
+			let subscription_list = {{{subscription_list}}};
+
+				for(let i = 0; i < subscription_list.length; i++){
+					if(subscription_list[i]._sf_unpatched != 'cancel'){
+						let x = JSON.stringify(await account.cancelProductSubscription(subscription_list[i]));
+						console.log("cancel product: " + x)
+					}
+				}
+
+			if(userInfo.token == "" || undefined){
+				location.href = "/my-page";
+			}else{
+				let user_token = cookieService.getCookieValue('token');
+				console.log("1. userInfo.token: " + userInfo.token );
+				console.log("1. user_token: " + user_token );
+				console.log("typeof user_token: " + typeof user_token );
+	
+
+				let reason = document.getElementById("cancel-reason-text").value;
+				console.log("reason: " + reason)
+
+				let deleteAccount = await account.cancelUser(userInfo.id, reason);
+				//user_token = cookieService.getCookieValue('token');
+				console.log('deleteAccount' + JSON.stringify(deleteAccount))
+				if (deleteAccount.success == true){
+					document.querySelector('.p-mypage__layout').style.display = "none";
+					document.querySelector('.c-form__errorMessage').style.display = "block";
+				}
+				setTimeout(function(){
+					location.href = "/"
+				}, 5000);
+				console.log("2. userInfo.token: " + userInfo.token );
+				//console.log("2. user_token: " + user_token );
+				//console.log("typeof user_token: " + typeof user_token );
+				//console.log("user_token == undefined: " + (user_token == undefined));
+
+				if(userInfo == "" || undefined){
+					location.href = "/my-page";
+				}
+			}
+		}catch(e){
+			console.log("hi")
+			console.log(e);
+		}
+	}
+</script>
+'
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>退会手続き</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+					<div class="c-form__errorMessage" style="display: none;">
+					退会処理が完了しました。またのご利用をお待ちしております。<br>
+					</div>
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">退会手続き</h2>
+								<div class="p-mypage__mainSection">
+									<div class="p-mypage__deleteConfirm">
+										<h3 class="p-mypage__deleteConfirmHeading">退会手続き</h3>
+										■退会後は全てのサービスが利用できなくなります。<br>
+										■会員特典は全て無効になります。<br>
+										■既にご注文いただきました商品は、退会後も発送を行わせていただきます。<br>
+										■退会後、ご登録内容の確認・変更はできなくなります。 （配送先・お支払い方法・配達日時の変更はできません）
+									</div>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">退会理由<small>（200文字まで）※任意</small></h3>
+									<textarea id="cancel-reason-text" class="c-form__input c-form__input--textarea p-mypage__deleteReason" maxlength="200"></textarea>
+									<div class="c-button-wrap">
+										<button type="button" onclick="account_cancellation()" class="c-button c-button--reversal">確認事項に同意して退会する</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete ">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+
+	{{{footer}}}
+	
+	<div class="c-to-top js-float">
+		<a href="#top"></a>
+	</div><!-- /.c-to-top -->
+	<div class="c-float js-float">
+		<div class="c-float__side">
+			<a class="c-float__sideRegistration" href="{{{home_url}}}/reg">
+				<div class="c-float__sideRegistrationNotice">
+					<div class="c-float__sideRegistrationBalloon">
+						<div>
+						初回購入<br>
+						<strong>1000円オフ</strong><br>
+						クーポン進呈
+						</div>
+					</div>
+				</div>
+				新規登録<small>（無料）</small>
+			</a>
+			<a class="c-float__sideCart" href="{{{home_url}}}/cart">
+				<div class="c-float__sideCartIcon">
+					<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-white.svg" alt="カート" title="カート">
+					<span id="cart-qty" class="c-float__sideQuantity">1</span>
+				</div>
+			</a>
+		</div>
+		<div class="c-float__bottom">
+			<!--chatbot実装時ここに入れる-->
+		</div>
+	</div><!-- /.c-side-float -->
+</div><!-- /.l-wrapper -->
+</body>
+
+<!-- JS -->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- スライダー -->
+<link rel="stylesheet" href="{{{base_url}}}/static/js/lib/slick/slick.css">
+<link rel="stylesheet" href="{{{base_url}}}/static/js/lib/slick/slick-theme.css">
+<script src="{{{base_url}}}/static/js/lib/slick/slick.js"></script>
+
+<!--[if !IE]><!-->
+<script src="{{{base_url}}}/static/js/setProperty.js"></script>
+<!--<![endif]-->
+<script src="{{{base_url}}}/static/js/script.js"></script>
+</html>

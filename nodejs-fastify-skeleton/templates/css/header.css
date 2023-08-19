@@ -1,0 +1,261 @@
+
+  .header {
+    /* margin-left: 5em;
+    margin-right: 5em; */
+    height: 76.09px;
+    max-width: 100%;
+    margin-bottom: 0px;
+
+  }
+
+  .site-logo-img {
+    padding-right: 1em;
+  }
+
+  .site-branding {
+    line-height: 1;
+    align-self: center;
+    display: flex;
+    flex: 1;
+    align-self: center;
+    min-width: 14%;
+  }
+
+  .ast-logo-title-inline .ast-site-identity {
+    -js-display: inline-flex;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+  }
+
+  .ast-site-identity {
+    /* padding: 1em 1em; */
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    width: 100%;
+  }
+
+  .ast-logo-title-inline .site-logo-img {
+    padding-right: 1em;
+  }
+
+  .main-header-bar {
+    background-color: #bbb5b4;
+  }
+
+  /*
+   .header-submenu-bar {
+     background-color: #414042;
+     border-bottom-width: 0;
+     line-height: 30px;
+     width: 100%;
+     height: 30px;
+   }*/
+
+  .custom-logo {
+    width: 100%;
+    height: 100%;
+    max-width: 160px;
+  }
+
+  .link {
+    color: #66645D !important;
+    text-decoration: none;
+    padding: 0 1em;
+    padding-top: 0px;
+    padding-right: 0em;
+    padding-bottom: 0px;
+    padding-left: 1em;
+    display: inline-block;
+    transition: all .2s
+  }
+
+  .link2 {
+    color: #66645D !important;
+    text-decoration: none;
+    padding: 0 1em;
+    padding-top: 0px;
+    padding-right: 0em;
+    padding-bottom: 0px;
+    padding-left: 1em;
+    display: inline-block;
+    transition: all .2s
+  }
+
+  .link3 {
+    color: #66645D !important;
+    text-decoration: none;
+    padding: 0 1em;
+    padding-top: 0px;
+    padding-right: 0em;
+    padding-bottom: 0px;
+    padding-left: 1em;
+    display: block;
+    transition: all .2s
+  }
+
+  .nav-item a {
+    font-size: 1vw;
+
+  }
+
+  .link:hover {
+    color: #0274be !important;
+  }
+
+  .link2:hover {
+    color: #0274be !important;
+  }
+
+  .link3:hover {
+    color: #0274be !important;
+  }
+
+  .navigation {
+    padding-left: 15px;
+    vertical-align: top;
+    display: inline-flex;
+    height: 100%;
+    line-height: 1.85714285714286;
+    font-size: 15px;
+  }
+
+
+  .navigation ul {
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .navigation ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    position: relative;
+  }
+
+  .icon-holder {
+    display: flex;
+  }
+
+  .icon-hospital {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0.2rem;
+    margin-top: 0.5rem;
+    line-height: 0.7rem;
+    font-size: 0.7rem;
+  }
+
+
+  .icon-register {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0.2rem;
+    margin-top: 0.5rem;
+    line-height: 0.7rem;
+    font-size: 0.7rem;
+  }
+
+
+  .navbar-toggler-icon {
+    border: none;
+  }
+
+  .ast-container {
+    max-width: 1240px;
+    font-size: 0rem;
+  }
+
+  @media screen and (max-width: 990px) {
+
+
+    .nav-item a {
+    font-size: 16px;
+
+  }
+    .navbar {
+      padding-top: 0.0rem !important;
+      padding-bottom: 0.0rem !important;
+      width: 100%;
+      z-index: 10;
+      position: absolute !important;
+      top: 0px;
+      left: 0px;
+      background-color: #bbb5b4;
+    }
+
+    .custom-logo {
+      width: 90px;
+      position: absolute;
+      height: 66px;
+      left: 0;
+      top: 0;
+    }
+
+    #im-bottom-menu {
+      margin-top: 70px;
+    }
+
+
+  }
+
+  #im-bottom-menu {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1240px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .dropdown-menu {
+    border: 0;
+    background-color: #FCF5F5 !important;
+    min-width: 190px !important;
+  }
+
+  .dropdown-menu .dropdown-item {
+    color: #8B7D7D !important;
+  }
+
+  .dropdown-menu .dropdown-item:hover {
+    color: #0274be !important;
+    background-color: #FCF5F5 !important;
+  }
+
+
+  /* Drop down sub menu*/
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+  }
+
+  .display-name {
+    font-size: 1.0rem;
+    color: #004c99;
+  }
+
+  .display-name p {
+    text-align: right;
+    margin: 1px;
+  }
+

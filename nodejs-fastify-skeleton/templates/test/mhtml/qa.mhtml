@@ -1,0 +1,353 @@
+{{{header}}}
+<script>
+
+let featured_media = "{{{featured_media}}}"
+		
+if (featured_media == '') {
+			console.log('empty')
+		}  else {
+			console.log(featured_media)
+		} 
+		
+		
+</script>
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/pet-qa">ペットのお悩みQ&A</a></li>
+				<li class="is-current"><span>{{qa_content.title.rendered}}</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-post">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ペットのお悩みQ&A</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">ペットの日頃気になることや<br class="u-sp--inline">お悩みに役立つ記事をお届けします</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--post">
+					<div class="l-container--small">
+						<div class="p-post__frame">
+							<a class="p-post__tag" href="{{home_url}}/pet-qa?category={{category.slug}}">
+								{{category.name}}
+							</a>
+							<time class="p-post__date" datetime="{{qa_content.date}}">{{qa_content.date}}</time>
+							<h1 class="p-post__title">{{qa_content.title.rendered}}</h1>
+							<div class="p-post__image">
+							<img src="{{{featured_media}}}">
+							</div>
+							<div class="p-post__contents user-edit">
+								{{{qa_content.content.rendered}}}
+							</div>
+							<div class="p-post__dTag">
+								<div class="p-post__dTagTitle">主な症状・お悩み</div>
+								<ol class="p-post__dTagList">{{#tags}}
+									<li class="p-post__dTagItem"><a class="p-post__dTagLink" href="{{home_url}}/pet-qa?tags={{slug}}">{{name}}</a></li>
+								{{/tags}}</ol>
+							</div>
+						</div>
+						<div class="p-author">
+							{{{qa_content.qa_author}}}
+							<!-- <p class="p-author__title">監修：川緑 圭吾</p>
+							<div class="p-author__image">
+								<img src="{{{base_url}}}/static/images/temp/temp_author.png" alt="テスト" class="">
+							</div>
+							<div class="p-author__profile">
+								株式会社ビルバックジャパン マーケティング部所属。獣医師。犬・猫診療を主とした動物病院勤務を経て、現職ではデンタルケア・犬猫寄生虫駆虫薬・サプリメント製品の学術部門を担当。北里大学獣医学部卒。<br>
+								<br>
+								コメント：動物病院で獣医師として診療した際に培った知識と経験を活かして、犬・猫のデンタルケアやサプリメント、医薬品の製品開発や啓発活動に力を入れています。
+							</div> -->
+						</div>
+						<div class="c-share c-share--qa">
+							<h2 class="c-share__heading">この記事をシェアする</h2>
+							<ul class="c-share__list">
+								<li class="c-share__item">
+									<a id="share__link--line" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-line.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--facebook" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-facebook.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--twitter" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-twitter.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--mail" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-mail.svg">
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="c-pagination">
+							<ul class="c-pagination__list c-pagination__list--bottom">
+								
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a href="{{#qa_prev}}/pet-qa/{{slug}}{{/qa_prev}}" {{^qa_prev}}disabled{{/qa_prev}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--top">
+									<a href="/pet-qa">一覧へ戻る</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a href="{{#qa_next}}/pet-qa/{{slug}}{{/qa_next}}" {{^qa_next}}disabled{{/qa_next}}>次へ→</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<form class="c-search" name="search" method="get">
+							<h2 class="c-search__h2">記事を検索する</h2>
+							<div class="c-search__row">
+								<div class="c-search__col">
+									<select name="category" class="c-search__select c-search__select--category js-search__select--category">
+										<option value="dog">犬</option>
+										<option value="cat">猫</option>
+									</select>
+								</div>
+								<div class="c-search__col">
+									<select name="category-dog" class="c-search__select c-search__select--tag js-search__dTag--dog">
+									<option value="">選択…</option>
+									{{#dog_category_list}}
+										<option value="{{slug}}">{{name}}</option>
+									{{/dog_category_list}}</select>
+									<select name="category-cat" class="c-search__select c-search__select--tag js-search__dTag--cat">
+									<option value="">選択…</option>
+									{{#cat_category_list}}
+										<option value="{{slug}}">{{name}}</option>
+									{{/cat_category_list}}</select>
+								</div>
+								<div class="c-search__col">
+									<input type="text" name="keyword" class="c-search__input c-search__input--text" placeholder="フリーワード">
+								</div>
+								<div class="c-search__col">
+									<a class="c-search__button" id="qa_search_button">検索</a>
+								</div>
+							</div>
+							<h2 class="c-search__h2">詳細タグから探す</h2>
+							<div class="js-search__dTag--dog">
+								<ol class="c-search__dTagList">
+									{{#dog_tag_list}}
+									<li class="c-search__dTagItem">
+										<input name="tag-dog" class="c-search__dTagCheck" id="tag-dog{{id}}" type="checkbox" value="{{slug}}">
+										<label class="c-search__dTagLabel" for="tag-dog{{id}}">{{name}}</label>
+									</li>
+									{{/dog_tag_list}}
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('dog');">× 全てクリア</a>
+							</div>
+							<div class="js-search__dTag--cat">
+								<ol class="c-search__dTagList">
+									{{#cat_tag_list}}
+									<li class="c-search__dTagItem">
+										<input name="tag-cat" class="c-search__dTagCheck" id="tag-cat{{id}}" type="checkbox" value="{{slug}}">
+										<label class="c-search__dTagLabel" for="tag-cat{{id}}">{{name}}</label>
+									</li>
+									{{/cat_tag_list}}
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('cat');">× 全てクリア</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+			<div class="c-modal">
+				<div id="dispRelation" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						関連商品
+					</h3>
+					<div class="c-modal__contents">
+						<div class="c-modal__lead c-modal__lead--center"></div>
+
+
+						<ol class="p-relation__list">
+						</ol>
+
+					</div>
+				</div>
+				<div id="confirmTransition" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						商品ページに移動しますか？
+					</h3>
+					<div class="c-modal__contents">
+						<div class="c-modal__image">
+							<img src="../static/images/qa/qa_img_transition.jpg" alt="">
+						</div>
+						<div class="c-button-wrap">
+							<a href="" class="c-button c-button--reversal" id="transition-link" target="_blank">はい</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</article>
+	</main>
+	<script>
+		document.getElementById('qa_search_button').onclick = function(e) {
+			var category = document.getElementsByName('category')[0].value;
+			var categories = '';
+			var tags = '';
+			var keyword = document.getElementsByName('keyword')[0].value;
+			if (category == 'dog') {
+				categories = document.getElementsByName('category-dog')[0].value;
+				tags = Array.from(document.getElementsByName('tag-dog'))
+				.filter(t => t.checked).map(t => t.value).join();
+			} else if (category == 'cat') {
+				categories = document.getElementsByName('category-cat')[0].value;
+				tags = Array.from(document.getElementsByName('tag-cat'))
+				.filter(t => t.checked).map(t => t.value).join();
+			}
+			if (categories == '' && tags == '' && keyword == '') {
+				location.href = '/pet-qa?category=' + category;
+			} else {
+				if (categories == '') {
+					categories = category;
+				}
+				location.href = '/pet-qa?category=' + categories + '&tags=' + tags + '&search=' + keyword;
+			}
+		}
+	</script>
+	<script type="module">
+	import mustache from 'https://unpkg.com/mustache@latest/mustache.mjs';
+	import { product } from '/components/product/product.js';
+
+	
+
+	(async() => {
+		//await getProduct(slug)
+
+		var myModal = null;
+	let targets = document.getElementsByClassName("js-btn");
+var arrayProduct = []
+var productJSON=[];
+		for(let i = 0; i < targets.length; i++){
+
+ arrayProduct.push(targets[i].dataset.product.split(',')); // this is an array now
+productJSON[i]=[]
+
+let productList = targets[i].dataset.product.split(',');
+
+if ( arrayProduct[i].length > 1 ) {
+			//Add Disabled Button Class
+			targets[i].classList.add("btn-disable");
+		}
+
+			if(arrayProduct[i].length>1){
+				arrayProduct[i].forEach(async (e,index) => {
+				let result = (await product.getProduct(e)).product;
+
+				let productCard={};
+				['slug', 'images', 'name', 'price'].forEach(property =>{
+					if(property=='slug'){
+						productCard[property] = result[property].replace('pre_','')						
+					}
+					if(property=='images'){
+						productCard[property] = result[property].slice(0,1)[0].src
+					}
+					else{
+						productCard[property] = result[property]
+					}
+
+				})
+				var reviews = await product.getProductReviews(result.id, 1);
+				var sum = 0;
+
+                for (var j=0; j<reviews.length; j++) {
+                    var review = reviews[j];
+                    sum += review.rating;
+                }
+                var average = reviews.length > 0 ? sum / reviews.length : 0;
+                average = average.toFixed(2);
+    
+                var rendered = '';
+                for (var k=1; k<=5; k++) {
+                    var checked = (k <= Math.ceil(average)) ? ' class="is-checked"' : '';
+                    rendered += '<span' + checked + '>★</span>';
+                }
+
+				productCard.averageRating = rendered;
+
+				let price = parseInt(productCard.price).toLocaleString("ja-JP", {style: "currency", currency: "JPY"})
+				productCard.price = price.slice(1)
+				productCard.target = targets[i].dataset.target;
+				productJSON[i].push(productCard)
+
+			if(productJSON[i].length == productList.length){
+				//Remove Disabled Button Class
+				targets[i].classList.remove("btn-disable");
+			}
+
+			});
+			}
+
+
+		targets[i].addEventListener("click",() => {
+
+			// ----------商品が複数指定されていた場合----------
+			if ( arrayProduct[i].length > 1 ) {
+
+				// ★★★★★インパクトＭ様お願いします★★★★★
+			if (productJSON[i].length == productList.length){	
+				let related_template = (`\{\{#relatedProducts\}\}
+                                    <li class="p-relation__item">
+								<a class="p-relation__link" href="/product/\{\{target\}\}/\{\{slug\}\}" target="_blank">
+									<div class="p-relation__image">
+									<img class="object-fit" src="\{\{images\}\}" alt="">
+									</div>
+									<div class="p-relation__label">
+									\{\{name\}\}
+									</div>
+									<div class="p-relation__reviewStar">
+									\{\{\{averageRating\}\}\}
+									</div>
+									<div class="p-relation__price">
+									\{\{price\}\}<span>円（税込）</span>
+									</div>
+								</a>
+							</li>
+                                \{\{/relatedProducts\}\}`);
+
+	document.querySelector('.p-relation__list').innerHTML = mustache.render(related_template, { relatedProducts: productJSON[i] });
+
+				myModal = lity('#dispRelation');
+				myModal.opener();
+			}
+
+			// ----------商品が一つだけ指定されていた場合----------
+			} else {
+				var target = document.getElementById("transition-link");
+				target.href = "https://vdev.impactm.net/product/" + targets[i].dataset.target + "/" + arrayProduct[i][0] + "/";
+				myModal = lity('#confirmTransition');
+				myModal.opener();
+			}
+		}, false);
+	}
+	
+	document.getElementById("transition-link").onclick = async function(){
+		myModal.close();
+	}
+	})();
+
+	
+	
+</script>
+{{{footer}}}

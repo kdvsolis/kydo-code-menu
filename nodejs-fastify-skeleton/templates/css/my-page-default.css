@@ -1,0 +1,24 @@
+ 
+  .wpholder-content dl{
+    font-size: 14px;
+}
+
+.wpholder-content dt{
+    font-size: 14px;
+}
+
+.wpholder-content dd{
+    font-size: 14px;
+}
+
+.wpholder-content p{
+    font-size: 14px;
+}
+.wpholder-content p:first-child{
+    text-align:center;
+}
+
+.wpholder-content header {
+    width:100%;
+    text-align:center;
+}

@@ -1,0 +1,368 @@
+b,
+strong {
+   font-weight: 700;
+}
+
+.shop__thumb {
+   -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
+   -o-transition: border-color 0.1s, box-shadow 0.1s;
+   transition: border-color 0.1s, box-shadow 0.1s;
+}
+
+.shop__thumb:hover {
+}
+
+.shop__thumb>a {
+   color: #333333;
+}
+
+.shop__thumb>a:hover {
+   text-decoration: none;
+}
+
+.shop-thumb__img {
+   position: relative;
+   margin: auto;
+   overflow: hidden;
+   max-width: 255px;
+   max-height: 255px;
+}
+
+.shop-thumb__img>img {
+   max-width: 255px;
+   max-height: 255px;
+}
+
+.shop-thumb__title {
+   padding: 0 !important;
+   margin-top: 0 !important;
+   margin-bottom: 5px;
+   padding: 0;
+   font-size: 14px !important;
+   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.shop-thumb__price {
+   color: #777777;
+}
+
+.rating {
+   padding: 0;
+   list-style: none;
+   display: block
+}
+
+.rating li {
+   color: #0274be;
+   font-size: 15px;
+   display: inline-block
+}
+
+.rating li.disable {
+   color: #dcdcdc
+}
+
+.price {
+   font-size: 14px;
+   margin-bottom: .5em;
+}
+
+.amount {
+   font-weight: 700;
+}
+
+.quantity {
+   font-size: 14px;
+   margin-bottom: 20px;
+}
+
+.qty {
+   width: 3.631em;
+   text-align: center;
+   min-height: 35px;
+   display: block;
+   color: #666;
+   padding: .75em;
+   height: auto;
+   border-width: 1px;
+   border-style: solid;
+   border-color: #eaeaea;
+   border-radius: 2px;
+   background: #fafafa;
+   box-shadow: none;
+   box-sizing: border-box;
+   transition: all .2s linear;
+   border-color: #ddd;
+   background: #fff !important;
+   box-shadow: none;
+   border-radius: 0;
+}
+
+.add_to_cart_button {
+   font-weight: 700;
+   font-size: 14px;
+   margin-top: 5px;
+   border-color: #9d8f87;
+   background-color: #9d8f87;
+   color: #FFFFFF !important;
+   padding: 10px 30px 10px 30px;
+}
+
+.col-md-3 {
+   margin-bottom: 25px;
+}
+
+.instruction {
+   font-size: 16px;
+   text-align: center;
+   color: #3a3a3a;
+   font-weight: 300;
+}
+
+.entry-title,
+.page-title {
+   font-size: 1.2rem;
+}
+
+.entry-title,
+.entry-title a {
+   line-height: 1.2;
+}
+
+h1.entry-title {
+   text-align: center;
+   font-weight: 400;
+}
+
+.entry-title {
+   margin-bottom: .2em;
+   font-size: 1.2rem !important;
+   display: inline-block;
+   height: 100%;
+   vertical-align: middle;
+}
+
+.entry-title,
+.entry-title a {
+   font-weight: 400;
+}
+
+p {
+   font-size: 16px;
+}
+
+.form-registration {
+   border: 0px solid #d3ced2;
+   margin-top: 10px;
+}
+
+.form-registration .form-reg-label {
+   display: block;
+   font-size: 14px;
+}
+
+.form-registration .form-reg-input {
+   height: 44.5px;
+   background-color: #FFFFFF;
+}
+
+.form-registration .item-paragraph {
+   font-size: 14px;
+}
+
+.form-registration button {
+   max-height: 35px;
+   width: 100%;
+   height: 100%;
+   color: #FFFFFF;
+   background-color: #004C98;
+   border-radius: 2px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.form-registration .secondary-btn {
+   width: 100%;
+   border-color: #D1D1D1;
+   font-weight: 600;
+   height: 44.5px !important;
+   max-height: 44.5px;
+   background-color: #FFFFFF;
+   color: #000000;
+   padding: 0;
+}
+
+.required {
+   color: red;
+}
+
+
+.woocommerce-error {
+   font-size: 14px;
+   padding: 1em 2em 1em 3.5em;
+   margin: 0 0 2em;
+   position: relative;
+   background-color: #f7f6f7;
+   color: #515151;
+   border-top: 3px solid #b81c23;
+   list-style: none outside;
+   width: auto;
+   word-wrap: break-word;
+}
+
+.error {
+   color: #b81c23;
+}
+
+.reg-page p {
+   margin-bottom: 0;
+}
+
+.reg-page .row-header {
+   background-color: #dee2e6;
+   margin: auto;
+   padding: 20p;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   margin-bottom: 10px;
+   margin-top: 20px;
+}
+
+@media screen and (max-width: 990px) {
+
+   .reg-page .row-header {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+   }
+
+   .form-registration button {
+      max-width: 100%;
+   }
+
+   .confirm-btn {
+      max-width: 180px !important;
+      width: 40%;
+      margin: 10px;
+      height: 80px;
+   }
+   .carousel-inner > img{
+         height: 269px;
+     }
+}
+.carousel-indicators {
+     position: initial;
+     margin-top: 20px;
+ }
+ .carousel-indicators li {
+     border-radius: 100%;
+     width: 10px;
+     height: 10px;
+     background-color: #545454;
+ }
+ .carousel-indicators li:hover {
+     background-color: #09b474;
+ }
+
+ .carousel-indicators li.active {
+     background-color: #09b474;
+ }
+ .carousel-inner img{
+     max-height: 269px;
+     height: 269px; 
+     max-width: 100%;
+     object-fit: contain;
+     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); 
+     padding: 10px;
+ }
+ .carousel-control-product-next-icon:after
+{
+content: '>';
+font-size: 35px;
+color: #E2DDDB;
+}
+
+.carousel-control-product-prev-icon:after {
+content: '<';
+font-size: 35px;
+color: #E2DDDB;
+}
+.reg-page .row-header p {
+   font-weight: 700;
+   font-size: 12px;
+}
+
+.red {
+   background-color: #E20711;
+   min-width: 50px;
+   color: #FFFFFF;
+   text-align: center;
+}
+
+.popover-body {
+   background-color: #212529;
+   color: #FFFFFF;
+}
+
+.input-invalid {
+   background-color: #FFA3A4 !important;
+}
+
+#completed {
+   text-align: center;
+   display: none;
+}
+
+#full-form {
+   display: block;
+
+}
+
+.service-top {
+   background-color: #1F497D;
+   color: #FFFFFF;
+   font-weight: 700;
+   padding: 10px;
+}
+
+#confirmation {
+   display: none;
+}
+
+.confirm {
+   background-color: #004C98 !important;
+   color: #FFFFFF;
+}
+
+.confirm-btn {
+   max-height: 35px;
+   height: 35px !important;
+   max-width: 110px;
+   font-size: 14px;
+   max-width: 180px;
+   height: 100%;
+   background-color: #FFFFFF;
+   border: 1px solid;
+   border-radius: 5px !important;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+#confirmation .form-reg-label {
+   font-size: 14px;
+}
+
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+textarea {
+   color: #333 !important;
+}
+
+/* .btn-register:hover {
+    background-color: red;
+ } */

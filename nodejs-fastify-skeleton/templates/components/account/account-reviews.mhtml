@@ -1,0 +1,74 @@
+<script type="module">
+	import {account} from '/components/account/account.js?v={{accountVersion}}';
+    import { product } from '/components/product/product.js?v={{productVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+	
+	let reviewedProducts = JSON.parse('{{{reviewsForJs}}}'.replaceAll('<br />\n','\\n'));
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+	(async () => {
+        let userInfo = await account.getUser();
+
+        //let x = await account.getReviews(userInfo.email)
+        //console.log(x.reviews)
+        //if (x.reviews.length >= 4) {
+        //    document.querySelector('.c-pagination').style.display =="none";
+        //}
+        //account.reviewPagination(x.reviews);
+        //account.changeReviewPage()
+        let z = parseInt("{{{reviews_length}}}");
+        console.log(z)
+        if (z >= 5) {
+            document.querySelector('.c-pagination').style.display ="block";
+        }
+        account.loadButtonsTest(z, 'reviews');
+        account.changePageTest(1,'reviews');
+
+        reviewedProducts.forEach(async function(product){
+            document.getElementById("review-" + product.product_id).onclick = async function(){
+                let rating = product.rating;
+                let review_count = (parseInt(product.reviewer) || 0);
+                review_count = (review_count % 2 == 0? review_count + 2 : review_count + 1).toString();
+                document.getElementById(product.rating+"").click();
+                document.getElementById("rev-modal-content").value = product.review;
+                document.querySelector('.p-mypage__reviewEditLabel').innerHTML = product.name;
+                document.querySelector('.p-mypage__reviewEditImage').children[0].src = product.image;
+                document.getElementById('rev-modal-submit').onclick = async function(){
+                    document.getElementById('rev-modal-submit').disabled = true;
+				    document.getElementById('rev-modal-submit').innerHTML = "投稿中です";
+				let review = document.getElementById("rev-modal-content").value ? document.getElementById("rev-modal-content").value : ' ' ;
+                    
+                    document.getElementsByName('rating').forEach(e=>{
+					if(e.checked){
+						rating = e.id
+					}
+				})
+
+                    let response = await account.modifyReview(product.id, JSON.stringify({
+                        product_id: product.product_id,
+                        rating: rating,
+                        review: review,
+                        reviewer: review_count
+                    }));
+                    if(response.success){
+                        location.reload();
+                    }
+                    else{
+					document.getElementById('rev-modal-submit').disabled = false;
+				    document.getElementById('rev-modal-submit').innerHTML = "投稿";
+				    }
+                };
+                
+                for(let i = 1; i <= 5; i++){
+                    document.getElementById(i).onclick = async function(event){
+                        rating = i;
+                    };
+                };
+            };
+        });
+    })();
+	
+</script>

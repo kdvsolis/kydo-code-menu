@@ -1,0 +1,171 @@
+<script src="{{{shopBaseUrl}}}/ext/js/token.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script type="module">
+    import { account } from '/components/account/account.js';
+    import { cart } from '/components/cart/cart.js';
+    import { checkout } from '/components/checkout/checkout.js';
+
+    QUnit.module('cartadd', function() {
+        QUnit.test('should add to cart', async function(assert) {
+            //Always do logout to avoid mixing with existing cookies
+            await account.logoutUser();
+            let cart_items = await cart.updateCartItem('', 21785, 1, 0, '+'); 
+            cart_items = cart.getCartContents();
+            console.log(cart_items);
+            assert.equal(cart_items.findIndex(r => r.product_id == 21785) > -1, true);
+        });
+    });
+    
+    QUnit.module('premiumcartswitch', function() {
+        QUnit.test('should switch to premium when user is logged in', async function(assert) {
+            //Always do logout to avoid mixing with existing cookies
+            await account.logoutUser();
+            
+            let cart_items = await cart.updateCartItem('', 21785, 1, 0, '+');
+            let normal_cart_details = await cart.getCartDetails();
+            let response = await account.authenticateUser("test3@gmail.com", "1rootadmin");
+            let premium_cart_details = await cart.getCartDetails();
+
+            assert.equal(parseInt(normal_cart_details.cart_details[0].sku) - parseInt(premium_cart_details.cart_details[0].sku) == 100000000, true);
+        });
+    });
+    
+    QUnit.module('fullCheckoutflowgmopg', function() {
+        QUnit.test('should do standard checkout for normal purchase', async function(assert) {
+            //Always do logout to avoid mixing with existing cookies
+            await account.logoutUser();
+            
+            let done = assert.async();
+            let order_response = {};
+            let cart_items = await cart.updateCartItem('', 21785, 1, 0, '+');
+            let response = await account.authenticateUser("test3@gmail.com", "1rootadmin");
+            let user_info = await account.getUser();
+            let cart_details = (await cart.getCartDetails()).cart_details;
+            let line_items = []; cart_details.forEach(element => {line_items.push({ product_id: element.id, quantity: element.quantity })});
+            let tokenRequestPayload = {
+                  expire: ((new Date().getFullYear() + 1)%100) + ('' + (new Date().getMonth() + 1)).padStart(2, '0'),
+                  cardno: '4111111111111111',
+                  securityCode: '123',
+                  holdername: 'ABBY YARBRO',
+                  tokennumber: '1'
+            };
+            let data = {
+                user_id: user_info.id,
+                payment_method: 'imgmopg',
+                payment_method_title: "クレジットカード",
+                set_paid: false, 
+                status: 'pending',
+                customer_note: 'test_memo',
+                billing: {
+                    email: user_info.email,
+                    phone: user_info.phone,
+                    address_1: user_info.address_1,
+                    address_2: user_info.address_2,
+                    city: user_info.city,
+                    postcode: user_info.postcode,
+                    country: user_info.country,
+                    state: user_info.state
+                },
+                shipping: {
+                    email: user_info.email,
+                    phone: user_info.phone,
+                    address_1: user_info.address_1,
+                    address_2: user_info.address_2,
+                    city: user_info.city,
+                    postcode: user_info.postcode,
+                    country: user_info.country,
+                    state: user_info.state
+                },
+                del_date: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
+                del_time: 0,
+                sf_status: "_sf_unposted",
+                sf_date: moment((new Date())).format('YYYYMMDD-HHmmss'),
+                line_items: line_items,
+                postage_name: '',
+                shipping_fee: 600,
+                cod_fee: 0,
+                timesale_coupons: [],
+                timesale_slug: '',
+                coupon_lines: []
+            };
+            Multipayment.init('{{{shop_id}}}');
+            Multipayment.getToken(tokenRequestPayload, async function (token_response) {
+                console.log(token_response.resultCode )
+                if(token_response.resultCode == "000"){
+                    let token = token_response.tokenObject.token[0];
+                    let cc_response = {
+                        user_id: data.user_id,
+                        token: token
+                    };
+                    order_response = await checkout.checkout(data, cc_response);
+                    assert.equal(order_response.id != null || typeof order_response.id !== "undefined", true);
+                    done();
+                } else {
+                    //Invalid credit card
+                    assert.equal(false, true);
+                    done();
+                }
+            });
+        });
+    });
+
+    QUnit.module('fullCheckoutflowcod', function() {
+        QUnit.test('should do standard checkout for normal purchase in cod', async function(assert) {
+            //Always do logout to avoid mixing with existing cookies
+            await account.logoutUser();
+            let done = assert.async();
+            let order_response = {};
+            let cart_items = await cart.updateCartItem('', 21785, 1, 0, '+');
+            let response = await account.authenticateUser("test3@gmail.com", "1rootadmin");
+            let user_info = await account.getUser();
+            let cart_details = (await cart.getCartDetails()).cart_details;
+            let line_items = []; cart_details.forEach(element => {line_items.push({ product_id: element.id, quantity: element.quantity })});
+
+            let data = {
+                user_id: user_info.id,
+                payment_method: 'cod',
+                payment_method_title: "代金引換",
+                set_paid: false, 
+                status: 'pending',
+                customer_note: 'test_memo',
+                billing: {
+                    email: user_info.email,
+                    phone: user_info.phone,
+                    address_1: user_info.address_1,
+                    address_2: user_info.address_2,
+                    city: user_info.city,
+                    postcode: user_info.postcode,
+                    country: user_info.country,
+                    state: user_info.state
+                },
+                shipping: {
+                    email: user_info.email,
+                    phone: user_info.phone,
+                    address_1: user_info.address_1,
+                    address_2: user_info.address_2,
+                    city: user_info.city,
+                    postcode: user_info.postcode,
+                    country: user_info.country,
+                    state: user_info.state
+                },
+                del_date: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
+                del_time: 0,
+                sf_status: "extra",
+                sf_date: moment((new Date())).format('YYYYMMDD-HHmmss'),
+                line_items: line_items,
+                postage_name: '',
+                shipping_fee: 600,
+                cod_fee: 600,
+                timesale_coupons: [],
+                timesale_slug: '',
+                coupon_lines: []
+            };
+            let cc_response = {
+                user_id: data.user_id
+            };
+            order_response = await checkout.checkout(data, cc_response);
+            assert.equal(order_response.id != null || typeof order_response.id !== "undefined", true);
+            done();
+        });
+    });
+</script>

@@ -1,0 +1,596 @@
+{{{header}}}
+<!-- IM script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script type="module">
+    import {account} from '/components/account/account.js';
+    import { product } from '/components/product/product.js';
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		location.href = "/login";
+	});
+
+
+
+    (async () => {
+        account.templateLogic();
+		account.enableSave();
+        let userInfo = await account.getUser(); //Get user info if available
+        if (userInfo.success) {
+            console.log(userInfo);
+        }
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+	console.log(await account.logoutUser());
+	location.reload();
+	}); 
+
+
+		let state_array = ["", "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+        "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+        "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+        "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県",
+        "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県",
+        "大分県", "宮崎県",
+        "鹿児島県", "沖縄県"];
+
+		let fullname = userInfo.last_name.concat(' ',userInfo.first_name);
+
+		let final_state = userInfo.state.startsWith('JP') ? state_array[parseInt(userInfo.state.replace("JP", ""))] : userInfo.state;
+		let postcode_str = userInfo.postcode.substr(0, 3) + '-' + userInfo.postcode.substr(3);
+		let address = postcode_str.concat(' ', final_state, ' ', userInfo.city,' ', userInfo.address_1,' ', userInfo.address_2);
+
+		console.log('address', address);
+
+
+		document.getElementById('surname').value = userInfo.last_name;
+		document.getElementById('firstname').value = userInfo.first_name;
+
+		document.getElementById('surname_modal').value = userInfo.last_name;
+		document.getElementById('firstname_modal').value = userInfo.first_name;
+
+		document.getElementById('postal').value = userInfo.postcode;
+
+		document.getElementById('town').value = userInfo.address_1;
+		document.getElementById('bldg').value = userInfo.address_2; 
+
+		document.getElementById("municipality").value = userInfo.city;
+    	document.getElementById("shipping_state").value = userInfo.state;
+
+		//await account.setPostal(false);
+
+		document.getElementById('postal-btn').addEventListener('click', async function (){
+			await account.setPostal(false);
+		})
+		document.getElementById('postal').addEventListener('keyup', async function (){
+			await account.setPostal(false);
+		})
+
+		document.getElementById('current-email').value = userInfo.email;
+
+		
+		document.getElementById('address_name').innerHTML = fullname;
+		document.getElementById('address_street').innerHTML = address;
+
+		document.getElementById('contactno').value = userInfo.phone;
+
+		userInfo.user_meta.forEach(e => e.key=='hospital_code' ? document.getElementById('code').value = e.value:'');
+
+		document.getElementById('code').value != '' ?
+		document.getElementById('code').setAttribute('current-hospital_code', document.getElementById('code').value)
+		:
+		document.getElementById('code').setAttribute('current-hospital_code', '');
+
+
+		let isValidHospital = await account.validateHospital();
+			if (isValidHospital.success == true && isValidHospital.hospital_name != undefined){//if still undefined try checking if it isnt undefined
+				document.getElementById('hos-text').innerHTML = '現在のかかりつけ病院：'+ isValidHospital.hospital_name;
+
+			}
+			else{
+				document.getElementById('hos-text').style.display = 'none';
+			}
+         
+		document.getElementById('hos-btn').addEventListener('click', async function (){
+			let isValidHospital = await account.validateHospital();
+			if (isValidHospital.success == true && isValidHospital.hospital_name != undefined){
+				document.getElementById('hos-text').innerHTML = '現在のかかりつけ病院：'+ isValidHospital.hospital_name;
+				document.getElementById('hos-text').style.display = 'block';
+				console.log('onpress',isValidHospital);
+			}
+
+		})
+        
+             await account.two_factor_authentication(true, true);
+             document.getElementById('confirm-form').addEventListener('click', async function(){
+                 console.log('post-press');
+				 console.log('userInfo.id:',userInfo.id);
+                let x = await account.validateFormTest('user_info', true);
+                console.log('valid registration?', x.status);
+				console.log('valid data: ', x.data);
+				if (x.status=='success'){
+					await account.modifyUser(userInfo.id, x.data);
+				}
+             })
+
+			 document.getElementById('save-address').addEventListener('click', async function(){
+				 let modified = await account.validateAddress();
+				 if (modified.success==true){
+					 let response = await account.modifyUser(userInfo.id, modified.data);
+					document.getElementById('address_name').innerHTML = modified.data.last_name.concat(' ',modified.data.first_name);
+					final_state = modified.data.shipping.state.startsWith('JP') ? state_array[parseInt(modified.data.shipping.state.replace("JP", ""))] : modified.data.shipping.state;
+					let postcode_str = modified.data.shipping.postcode.substr(0, 3) + '-' + modified.data.shipping.postcode.substr(3);
+					document.getElementById('address_street').innerHTML = postcode_str.concat(' ', final_state,' ', modified.data.shipping.city,' ', modified.data.shipping.address_1,' ', modified.data.shipping.address_2);
+					document.querySelector('.lity-close').click();
+				 }
+			 })
+
+	account.limitInput()
+
+    })();
+
+	
+    
+</script>
+<!-- IM script -->
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>会員情報変更</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">会員情報変更</h2>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">基本情報</small></h3>
+									<p class="p-mypage__text">変更の際には下部「変更を確定する」を押してください</p>
+									<table class="c-form">
+										<tbody>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname" autocomplete="surname" value="">
+														<span>&nbsp;</span>
+														<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname" autocomplete="firstname" value="">
+													</div>
+													<div class="c-form__error" id="name-error-message" style="display:none">
+											名前はすべて全角で入力してください。
+										</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">現在のメールアドレス</label></th>
+												<td class="c-form__data"><input type="email" placeholder="(例) sample@virbac.co.jp" class="c-form__input c-form__input--email" name="email" id="current-email" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off">
+												
+												</td>
+											
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">新メールアドレス</label></th>
+												<td class="c-form__data"><input type="email" placeholder="(例) sample@virbac.co.jp" class="c-form__input c-form__input--email" name="email" id="email" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off"></td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">新メールアドレス（確認）</label></th>
+												<td class="c-form__data">
+													<input type="text" placeholder="(例) sample@virbac.co.jp" class=" c-form__input c-form__input--text" name="email-verify" id="email-verify" value="" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" autocomplete="off">
+													<div class="c-form__error" id="username-error-message" style="display:none">
+											正しいメールアドレスの形式を入力してください。
+										</div>
+										<div class="c-form__error" id="username-exists-error-message" style="display:none">
+											すでに登録しているメールアドレスです。
+										</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">現在のパスワード</label></th>
+												<td class="c-form__data">
+													<input type="password" placeholder="(例) 1234tY@ma" class=" c-form__input c-form__input--password" name="password" id="current-password" value="" required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$" autocomplete="off">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">新パスワード</label></th>
+												<td class="c-form__data">
+													<input type="password" placeholder="(例) 1234tY@ma" class=" c-form__input c-form__input--password" name="password" id="password" value="" required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$" autocomplete="off">
+													<div class="c-form__attention">半角英数8文字以上で入力してください。名前やメールアドレスの一部は避けてください。​</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">新パスワード（確認）</label></th>
+												<td class="c-form__data">
+													<input type="password" placeholder="(例) 1234tY@ma" class=" c-form__input c-form__input--password" name="password" id="password-verify" value="" required="" pattern="^((?=.*[0-9a-zA-Z])([a-zA-Z0-9@`~!#$%^&amp;*()-=_+|{}\[\]|\\:;\u0022',.<>/?]+)){8,}$" autocomplete="off">
+												<div class="c-form__error" id="password-error-message" style="display:none">
+											パスワードは8文字以上で、数字を含み、同じである必要があります。
+										</div>
+												</td>
+											</tr>
+											<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">携帯電話番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline c-form__inline--spVertical">
+											<input type="text" placeholder="(例) 09012341234" class="c-form__input c-form__input--text" name="contactno" id="contactno" value="" required="">
+											<span>&nbsp;</span>
+											<button id="auth-btn" type="button" class="c-form__button c-form__button--reversal" value="変更する">変更する</button>
+											<button id="resend-btn" type="button" class="c-form__button c-form__button--reversal" style="display: none;" value="再送信">再送信</button>
+										</div>
+										<div class="c-form__complete" id="auth-verified" style="display:none">
+											携帯電話番号認証が完了しました。
+											<p>会員情報の変更はまだ行われていません。<br>
+												画面下部にある「変更を保存する」ボタンを押してください。
+											</p>
+										</div>
+										<div id="phone-auth" style="display:none">
+											<hr>
+											<div class="c-form__inline c-form__inline--spVertical">
+												<input type="text" placeholder="6桁のコード" class="c-form__input c-form__input--text" name="twilio-code-input" id="twilio-code-input" value="" required="">
+												<span>&nbsp;</span>
+												<button id="confirm-auth-btn" type="button" class="c-form__button " value="確認する">認証</button>
+												<button id="confirm-auth-btn2" style="display:none" type="button" class="c-form__button " value="確認する">認証</button>
+											</div>
+										</div>
+										<div class="c-form__error" id="auth-required-notice" style="display:display">
+											携帯電話番号の変更には携帯電話番号認証が必要です。
+											<br>
+											変更後の電話番号をご入力後、「変更する」ボタンを押し、ご入力された電話番号のSMS（ショートメッセージ）に送信される6桁のコードを10分以内に入力してください。
+											<br>
+											携帯電話番号認証に関する詳しいご説明は
+											<a href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000S4awGAC/%E6%90%BA%E5%B8%AF%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%E8%AA%8D%E8%A8%BC" target="_blank">こちら。</a>
+										</div>
+										<div class="c-form__error" id="invalid-code" style="display:none">
+											入力した認証コードに誤りがあります。<br>
+											もう一度電話番号をご確認頂き、再送信ボタンを押してください。<br>
+										</div>
+										<div class="c-form__error" id="expired-code" style="display:none">
+											入力した認証コードの有効期限が切れました。<br>
+											もう一度電話番号をご確認頂き、再送信ボタンを押してください。<br>
+										</div>
+										<div class="c-form__error" id="contact-already-registered" style="display:none">
+											ご入力の電話番号は既に登録されています。<br>
+											ログインは <a href="{{{home_url}}}/my-page">こちら</a>。<br>
+											ご登録に身に覚えのない方、ご不明点、疑問点のある方は
+                                 <a href="https://virbacjapan.force.com/hpmfaqpo/s/createrecord/GuestCommunityCaseVBServicePO?_ga=2.95675996.1181099585.1615792826-956951487.1596531112"
+                                    >こちら</a>
+                                 からお問い合わせください。
+										</div>
+										<div class="c-form__error" id="contactno-error-message" style="display:none">
+											正しい電話番号を入力してください。
+										</div>
+										<div class="c-form__attention" >※電話番号変更の際には認証が必要です</div>
+									</td>
+								</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--optional">病院ユニークコード</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<input type="text" class="c-form__input c-form__input--text" name="code" id="code" placeholder="病院配布のユニークコードの入力で特典あり" value="" required="" pattern="[0-9]*">
+														<span>&nbsp;</span>
+														<button id="hos-btn" type="button" class="c-form__button c-form__button--reversal" value="病院確認">病院確認</button>
+													</div>
+													<div class="c-form__attention" id="hos-text">​</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<p class="c-form__notice">※ユニークコードの登録で、全商品が割引で買えます。コードのもらえる病院は<a href="{{{home_url}}}/find-hospitals" target="_blank">こちら</a></p>
+									<div class="c-button-wrap">
+										<button type="button" class="c-button c-button--reversal" value="変更を保存する" id="confirm-form" style="display:none">変更を保存する</button>
+										<button type="button" class="c-button c-button--reversal" value="変更を保存する" id="disabled-confirm-form" disabled>変更を保存する</button>
+									</div>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">住所の変更</small></h3>
+									<div class="p-mypage__address">
+										<dl class="p-mypage__addressDef">
+											<dt class="p-mypage__addressTitle">氏名</dt>
+											<dd class="p-mypage__addressData" id="address_name"></dd>
+											<dt class="p-mypage__addressTitle">住所</dt>
+											<dd class="p-mypage__addressData" id="address_street"></dd>
+										</dl>
+									</div>
+									<p class="p-mypage__addressNotice">
+										※今後すべてのお届け先が変更されます
+									</p>
+									<div class="c-button-wrap">
+										<button class="c-button c-button--reversal" href="#editAddress" data-lity>変更する</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+			<div class="c-modal">
+				<div id="editAddress" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お届け先住所
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname_modal" autocomplete="surname" value="">
+											<span>&nbsp;</span>
+											<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname_modal" autocomplete="firstname" value="">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">郵便番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" class="c-form__input c-form__input--text" name="postal" id="postal"  placeholder="(例) 1234567">
+											<span>&nbsp;</span>
+											<button class="c-form__button c-form__button--reversal" id="postal-btn">郵便番号検索</button>
+										</div>
+										<div class="c-form__attention">※半角数字ハイフンなしで入力（例：1234567）</div>
+										<div class="c-form__error" id="postal-error-message" style="display:none">
+											正しい郵便番号をご入力ください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">都道府県</label></th>
+									<td class="c-form__data">
+										<select name="shipping_state" id="shipping_state" class="c-form__input c-form__input--select" data-placeholder="お選びください" tabindex="-1" aria-hidden="true">
+											<option value="">お選びください</option>
+											<option value="北海道">北海道</option>
+											<option value="青森県">青森県</option>
+											<option value="岩手県">岩手県</option>
+											<option value="宮城県">宮城県</option>
+											<option value="秋田県">秋田県</option>
+											<option value="山形県">山形県</option>
+											<option value="福島県">福島県</option>
+											<option value="茨城県">茨城県</option>
+											<option value="栃木県">栃木県</option>
+											<option value="群馬県">群馬県</option>
+											<option value="埼玉県">埼玉県</option>
+											<option value="千葉県">千葉県</option>
+											<option value="東京都">東京都</option>
+											<option value="神奈川県">神奈川県</option>
+											<option value="新潟県">新潟県</option>
+											<option value="富山県">富山県</option>
+											<option value="石川県">石川県</option>
+											<option value="福井県">福井県</option>
+											<option value="山梨県">山梨県</option>
+											<option value="長野県">長野県</option>
+											<option value="岐阜県">岐阜県</option>
+											<option value="静岡県">静岡県</option>
+											<option value="愛知県">愛知県</option>
+											<option value="三重県">三重県</option>
+											<option value="滋賀県">滋賀県</option>
+											<option value="京都府">京都府</option>
+											<option value="大阪府">大阪府</option>
+											<option value="兵庫県">兵庫県</option>
+											<option value="奈良県">奈良県</option>
+											<option value="和歌山県">和歌山県</option>
+											<option value="鳥取県">鳥取県</option>
+											<option value="島根県">島根県</option>
+											<option value="岡山県">岡山県</option>
+											<option value="広島県">広島県</option>
+											<option value="山口県">山口県</option>
+											<option value="徳島県">徳島県</option>
+											<option value="香川県">香川県</option>
+											<option value="愛媛県">愛媛県</option>
+											<option value="高知県">高知県</option>
+											<option value="福岡県">福岡県</option>
+											<option value="佐賀県">佐賀県</option>
+											<option value="長崎県">長崎県</option>
+											<option value="熊本県">熊本県</option>
+											<option value="大分県">大分県</option>
+											<option value="宮崎県">宮崎県</option>
+											<option value="鹿児島県">鹿児島県</option>
+											<option value="沖縄県">沖縄県</option>
+										</select>
+										<div class="c-form__error" id="shipping_state-error-message" style="display:none">
+											都道府県を選択してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">市区</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="municipality" id="municipality">
+										<div class="c-form__error" id="municipality-error-message" style="display:none">
+											正しい市区町村を入力してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">町名・番地</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="town" id="town" value="">
+										<div class="c-form__error" id="town-error-message" style="display:none">
+											正しい町名番地を入力してください。
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--optional">建物名、部屋番号 など</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="bldg" id="bldg" value="">
+										<div class="c-form__error" id="bldg-error-message" style="display:none">
+											正しい町名番地を入力してください。正しいマンション名・部屋番号を入力してください。
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" id="save-address">変更を保存する</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</article>
+	</main>
+{{{footer}}}

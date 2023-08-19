@@ -1,0 +1,36 @@
+{{{header}}}
+<!-- IM script -->
+<script type="module">
+
+
+		let featured_media = "{{{featured_media}}}"
+		if (featured_media == '') {
+			console.log('empty')
+		}  else {
+			console.log(featured_media)
+		} 
+   
+</script>
+<!-- IM script -->
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>{{page_content.title}}</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-notfound">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">{{page_content.title}}</h1>
+					</div>
+				</div>
+			</div>
+			{{{page_content.content}}}
+		</article>
+	</main>
+{{{footer}}}

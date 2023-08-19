@@ -1,0 +1,94 @@
+{{{header}}}
+<script>
+window.onload = function () {
+	jQuery.ajax({
+		dataType: 'json', url: 'https://virbac-services.jp/location-prefecture/{{prefecture}}', method: 'GET',
+		//data: data,
+		success: function(data) {
+			if (data != null) createList(data);
+			else location.href = '/find-hospitals';
+		},
+		failure: function(req, status, error) {
+			alert('Network Error: (' + status + ') ' + error)
+		},
+		error: function(req, status, error) {
+			alert('Error: (' + status + ') ' + error)
+		}
+	}).always(function(data) {
+    })
+}
+function createList(data) {
+	var $list = "<ol class='p-findHospitals__resultList'>\n";
+	var $prefecture = "";
+	var $city = "";
+
+	if ( data.length > 0 ) {
+		for( var $i = 0; $i < data.length; $i++ ) {
+			var $data = data[$i];
+			if ( $city != $data['city'] ) {
+				$city = $data['city'];
+				if ( $i > 0 ) {
+					$list += "</ol>";
+					$list += "</li>";
+				} else {
+					$prefecture = $data['prefecture'];
+				}
+				$list += "<li class='p-findHospitals__resultItem'>";
+				$list += "<span class='p-findHospitals__resultCityName'>" + $city +"</span>";
+				$list += "<ol class='p-findHospitals__resultHospitalList'>";
+			}
+			$list += "<li class='p-findHospitals__resultHospitalItem'>";
+			$list += "<div class='p-findHospitals__resultHospitalName'>" + $data['hospital'] + "</div>";
+			$list += "<div class='p-findHospitals__resultHospitalInfomation'>";
+			$list += "<p class='address'>〒" + $data['postcode']  + $data['prefecture'] + $data['city'] + $data['addr1'] + $data['addr2'] + "</p>";
+			$list += "<p class='tel'>" + $data['phone'] + "</p>";
+			$list += "</div>";
+			$list += "</li>\n";
+		}
+		$list += '</ol>';
+		document.getElementById("breadcrumb__prefecture").innerHTML = $prefecture;
+		document.getElementById("pageLead__text").innerHTML = $prefecture + "の提携病院一覧";
+		document.getElementById("heading02__h2").innerHTML = $prefecture;
+		document.getElementById("result").innerHTML = $list;
+	} else {
+		document.getElementById("breadcrumb__prefecture").innerHTML = "未登録";
+		document.getElementById("pageLead__text").innerHTML = "提携病院の登録がありません";
+		document.getElementById("heading02__h2").innerHTML = "-";
+	}
+}
+</script>
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{{home_url}}}/find-hospitals">ビルバックサービスの提携病院</a></li>
+				<li class="is-current"><span id="breadcrumb__prefecture"></span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-guarantee">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ビルバックサービスの提携病院</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text" id="pageLead__text"></p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--findHospitals">
+					<div class="l-container">
+						<h2 class="c-heading02__h2" id="heading02__h2"></h2>
+						<div id="result"></div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

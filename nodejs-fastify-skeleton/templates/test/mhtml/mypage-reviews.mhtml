@@ -1,0 +1,321 @@
+{{{header}}}
+<!-- IM script
+
+<script type="module">
+    //Generate visited products JSON area
+    import { product } from '/components/product/product.js';
+    import {cookieService} from '/services/cookie.service.js';
+    import { account } from '/components/account/account.js'
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+
+
+
+	(async () => {
+		let userInfo = await account.getUser();
+
+		let x = await account.getReviews(userInfo.email)
+		console.log(x.reviews)
+		if (x.reviews.length >= 4) {
+			document.querySelector('.c-pagination').style.display =="none";
+		}
+		//account.reviewPagination(x.reviews);
+		//account.changeReviewPage()
+		let z = {{{reviews.length}}}
+		console.log(z)
+		if (z <= 5) {
+			document.querySelector('.c-pagination').style.display ="none";
+		}
+		account.loadButtonsTest(z, 'reviews');
+		account.changePageTest(1,'reviews');
+
+})();
+
+</script>
+
+IM script -->
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>投稿したレビュー</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">投稿したレビュー</h2>
+								<div class="p-mypage__mainSection">
+									<ol class="p-mypage__reviewList">
+								{{#reviews}}
+									<li class="p-mypage__reviewItem pagination_item" data-page="{{data_page}}" style="display:none">
+											<div class="p-mypage__reviewName"><a href="#">{{name}}</a></div>
+											<dl class="p-mypage__reviewDef">
+												<dt class="p-mypage__reviewTitle">投稿日</dt>
+												<dd class="p-mypage__reviewData">{{date}}</dd>
+												<dt class="p-mypage__reviewTitle">評価</dt>
+												<dd class="p-mypage__reviewData">
+													<div class="p-mypage__reviewStar">
+														{{#pos_rating}}
+														{{{.}}}
+														{{/pos_rating}}
+														{{#neg_rating}}
+														{{{.}}}
+														{{/neg_rating}}
+													</div>
+												</dd>
+												<dt class="p-mypage__reviewTitle">レビュー内容</dt>
+												<dd class="p-mypage__reviewData">
+													{{{review}}}
+												</dd>
+											</dl>
+											<div class="c-button-wrap">
+												<a class="c-button c-button--reversal noScroll" href="#editReview001" data-lity id="review-{{product_id}}">レビューを変更する</a>
+											</div>
+										</li>
+										{{/reviews}}
+										</ol>
+									<div class="c-pagination">
+										<div></div>
+										<ul class="c-pagination__list c-pagination__list--bottom">
+											<li class="c-pagination__item c-pagination__item--prev">
+												<a href="{{prevUrl}}" {{#firstpage}}is-disabled=""{{/firstpage}}>←前へ</a>
+											</li>
+											<li class="c-pagination__item c-pagination__item--page">
+									<ul class="page_numbers_bot">
+
+									
+									</ul>
+								</li>
+											<li class="c-pagination__item c-pagination__item--next">
+												<a href="{{nextUrl}}" {{#lastpage}}is-disabled=""{{/lastpage}}>次へ→</a>
+											</li>
+										</ul>
+										<div></div>
+									</div>
+
+
+
+
+
+
+
+								</div>
+							</div>
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+
+			<div class="c-modal">
+				<div id="editReview001" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						商品レビュー
+					</h3>
+					<div class="c-modal__contents">
+						<div class="p-mypage__reviewEditImage">
+							<img src="{{{base_url}}}/static/images/mypage/mypage_img_sample-cat-senior-neutered.jpg" alt="">
+						</div>
+						<div class="p-mypage__reviewEditLabel">
+							VETERINARY HPM 猫用 シニアニュータード (避妊去勢済み)
+						</div>
+						<div class="p-mypage__reviewEditStar">
+							<div>
+								<!-- <input type="radio" name="rating" value="" id="5">
+								<label for="5">☆</label>
+								<input type="radio" name="rating" value="" id="4">
+								<label for="4">☆</label>
+								<input type="radio" name="rating" value="" id="3">
+								<label for="3">☆</label>
+								<input type="radio" name="rating" value="" id="2">
+								<label for="2">☆</label>
+								<input type="radio" name="rating" value="" id="1">
+								<label for="1">☆</label> -->
+								<input type="radio" name="rating" value="" id="5" onclick="setRating('5')">
+								<label for="5">☆</label>
+								<input type="radio" name="rating" value="" id="4" onclick="setRating('4')">
+								<label for="4">☆</label>
+								<input type="radio" name="rating" value="" id="3" onclick="setRating('3')">
+								<label for="3">☆</label>
+								<input type="radio" name="rating" value="" id="2" onclick="setRating('2')">
+								<label for="2">☆</label>
+								<input type="radio" name="rating" value="" id="1" onclick="setRating('1')">
+								<label for="1">☆</label>
+							</div>
+						</div>
+						<textarea id="rev-modal-content" class="c-form__input c-form__input--textarea" placeholder="コメントは任意で最大255文字までです。" rows="4" maxlength="255"></textarea>
+						<div class="c-form__agree">本<a href="{{{home_url}}}/review-terms" target="_blank">レビュー投稿規約</a>に同意したものと見なします。</div>
+						<div class="c-button-wrap">
+							<button type="button" id="rev-modal-submit" class="c-button c-button--reversal" value="投稿">投稿</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</article>
+	</main>
+
+{{{footer}}}

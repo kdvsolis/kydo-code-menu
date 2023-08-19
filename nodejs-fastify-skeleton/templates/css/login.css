@@ -1,0 +1,25 @@
+.login .btn-login {
+    width: 100%;
+    /* margin: auto; */
+    max-width: 450px;
+    background: #004c99;
+ }
+
+ .login input {
+    max-width: 380px;
+    height: 40px!important;
+    background-color: #F1F1F1!important;
+ }
+
+ .login label {
+    margin-bottom: 0;
+ }
+ .woocommerce-notices-wrapper {
+    font-size: 14px;
+    margin: 0 0 2em;
+    position: relative;
+    color: #515151;
+    list-style: none outside;
+    width: auto;
+    word-wrap: break-word;
+ }  

@@ -1,0 +1,444 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/product">商品一覧</a></li>
+				<li><a href="{{{home_url}}}" id="breadcrumb-category"></a></li>
+				<li class="is-current"><span>{{product.name}}</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-product">
+			<section>
+				<div class="p-product__main">
+					<div class="l-container">
+						<!-- ※このエリアはカート追加したときのみ表示 -->
+						<p class="p-product__message js-product__message" style="display: none;">
+							カートに追加しました
+						</p>
+						<h1 class="p-product__h1" id="product-name">
+							{{product.name}}
+						</h1>
+						{{_im_product_content5}}
+						<div class="p-product__row">
+							<div class="p-product__col p-product__col--image">
+								<ol class="p-productMain js-productMain">
+									{{#images}}
+									<li class="p-productMain__item {{isActive}}"><img src="{{src}}" alt=""></li>
+									{{/images}}
+								</ol>
+							<ol class="p-productNav js-productNav">
+									{{#images}}
+									<li class="p-productNav__item {{isActive}}"><img src="{{src}}" alt=""></li>
+									{{/images}}
+							</ol>
+							</div>
+							<div class="p-product__col p-product__col--contents">
+								<!-- バリエーション -->
+								<div class="p-product__variation">
+									<div class="btn-group-toggle" style="display: block;">
+									{{#variations}}
+										<label>
+										<input type="radio" id="option{{sequence}}" onclick="selectVariant('{{sequence}}')" autocomplete="off" name="variations"><span id="variant-label{{sequence}}">{{name}}</span>
+										</label>
+									{{/variations}}
+									</div>
+								</div>
+								<!-- /バリエーション -->
+								<ol id="payment" class="p-product__payment js-product__payment">
+									<li class="p-product__paymentItem p-product__paymentItem js-product__paymentItem is-active">
+										<div class="p-product__paymentType">
+											<input type="radio" class="p-product__paymentCheck js-product__paymentCheck" name="paymentType" checked>
+											<span class="p-product__paymentTypeName">通常購入</span>
+										</div>
+										<div class="p-product__paymentPrice" id="regular_info">
+												{{#dis_price}}
+												<span class="p-product__paymentPriceBefore"><price class="rx-regular">{{regular}}</price><small class="p-product__paymentPriceCurrency"> 円</small></span>
+												<span class="p-product__paymentPriceAfter"><price class="rx-original">{{original}}</price></span><small class="p-product__paymentPriceCurrency"> 円(税別)</small>
+												<p class="p-product__paymentPriceInclusiveTax" id="inclusive_tax_price"><span class="tax_inclusive">税込単価：<price class="ri-original">00</price>円</span></p>
+												{{/dis_price}}
+												{{^dis_price}}
+												<span id="regular_price"><price class="rx-original">{{original}}</price></span><small class="p-product__paymentPriceCurrency"> 円(税別)</small>
+												<p class="p-product__paymentPriceInclusiveTax" id="inclusive_tax_price"><span class="tax_inclusive">税込単価：<price class="ri-original">00</price>円</span></p>
+												{{/dis_price}}
+										</div>
+										<div class="p-product__paymentDetail js-product__paymentDetail">
+											<dl class="p-product__paymentStock">
+												<dt>在庫</dt>
+												<dd id="stock-status-r">
+													{{#instock}}
+													あり
+													{{/instock}}
+													{{^instock}}
+													{{stockvalue}}
+													{{/instock}}
+													{{#nostock}}
+													なし
+													{{/nostock}}
+												</dd>
+											</dl>
+											<form>
+												<dl class="p-product__paymentQuantity">
+													<dt>数量</dt>
+													<dd>
+														<div class="p-product__paymentQuantityGroup">
+															<button type="button" onClick="minus(this.form.quantity)">－</button>
+															<input type="number" inputmode="numeric" pattern="[0-9]*" id="quantity_{{product.id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="1" title="数" size="4">
+															<button type="button" onClick="plus(this.form.quantity)">＋</button>
+															<input type="text" name="dummy" style="display:none;">
+														</div>
+													</dd>
+												</dl>
+											</form>
+											{{#instock}}
+											<button class="p-product__paymentButton" onclick="addToCart()" type="button" value="カートに入れる" id="cart-button">カートに入れる</button>
+											{{/instock}}
+											{{^instock}}
+											<button class="p-product__paymentButton p-product__paymentButton--disabled" onclick="addToCart()" type="button" value="在庫切れ">在庫切れ</button>
+											{{/instock}}
+<!-- 提携病院案内なしの場合こっち
+											<button class="p-product__paymentButton" onclick="addToCart()" type="button" value="カートに入れる">カートに入れる</button>
+-->
+											<div class="p-product__paymentNote">
+												■<strong>6,000円（税別）以上</strong>のお買い物で送料無料となります。<br>
+												■<strong>16時</strong>までの注文で翌営業日発送<br>
+											</div>
+										</div>
+									</li>
+									<li class="p-product__paymentItem p-product__paymentItem js-product__paymentItem">
+										<div class="p-product__paymentType">
+											<input type="radio" class="p-product__paymentCheck js-product__paymentCheck" name="paymentType">
+											<span class="p-product__paymentTypeName">定期購入</span>
+											<span class="p-product__paymentFirst">初回10％OFF</span>
+										</div>
+										<div class="p-product__paymentPrice p-product__paymentPrice--subscription" id="subscription_info">
+											{{#dis_price}}
+												<span><price class="rx-original">{{original}}</price></span><small class="p-product__paymentPriceCurrency"> 円(税別)</small>
+												<p class="p-product__paymentPriceInclusiveTax" id="inclusive_tax_price"><span class="tax_inclusive">税込単価：<price class="si-original">00</price>円</span></p>
+											{{/dis_price}}
+											{{^dis_price}}
+												<span class="p-product__paymentPriceBefore"><price class="rx-original">{{original}}</price><small class="p-product__paymentPriceCurrency"> 円</small></span>
+												<span class="p-product__paymentPriceAfter" id="subscription_price"><price class="sx-original">000</price></span><small class="p-product__paymentPriceCurrency"> 円(税別)</small>
+												<p class="p-product__paymentPriceInclusiveTax" id="inclusive_tax_price"><span class="tax_inclusive">税込単価：<price class="si-original">00</price>円</span></p>
+											{{/dis_price}}
+										</div>
+										<div class="p-product__paymentDetail js-product__paymentDetail">
+											<dl class="p-product__paymentStock">
+												<dt>在庫</dt>
+												<dd id="stock-status-s">
+													{{#instock}}
+													あり
+													{{/instock}}
+													{{^instock}}
+													{{stockvalue}}
+													{{/instock}}
+													{{#nostock}}
+													なし
+													{{/nostock}}
+												</dd>
+											</dl>
+											<form>
+												<dl class="p-product__paymentQuantity">
+													<dt>数量</dt>
+													<dd>
+														<div class="p-product__paymentQuantityGroup">
+															<button type="button" onClick="minus(this.form.quantity)">－</button>
+															<input type="number" inputmode="numeric" pattern="[0-9]*" id="quantity_subs_{{product.id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="1" title="数" size="4">
+															<button type="button" onClick="plus(this.form.quantity)">＋</button>
+															<input type="text" name="dummy" style="display:none;">
+														</div>
+													</dd>
+												</dl>
+												<dl class="p-product__paymentCycle">
+													<dt>配送頻度</dt>
+													<dd><select id="frequency">
+															<option value="30">30日（おすすめ)</option>
+															<option value="40">40日</option>
+															<option value="50">50日</option>
+															<option value="60">60日</option>
+														</select>
+													</dd>
+												</dl>
+											
+												{{#instock}}
+												<button class="p-product__paymentButton" type="button" value="申し込む" id="cart-subs-button">申し込む</button>
+												{{/instock}}
+												{{^instock}}
+												<button class="p-product__paymentButton p-product__paymentButton--disabled" type="button" value="在庫切れ">在庫切れ</button>
+												{{/instock}}
+												<div class="p-product__paymentNote">
+													定期購入に関するよくある質問は<a href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000VenDGAS/%E5%AE%9A%E6%9C%9F%E8%B3%BC%E5%85%A5" target="_blank">こちら</a><br>
+													<br>
+													■初回発送は10%オフ。<br>
+													■2回目以降は、申込みの金額に応じて、10%もしくは5%オフとなります。<br>
+													■6,000円（税別）以上のお買い物で送料無料となります(沖縄と離島を除く)。
+												</div>
+										</div>
+									</li>
+								</ol>
+								<div class="p-product__review">
+									<div class="p-product__reviewStar">
+										<span class="is-checked">★</span>
+										<span class="is-checked">★</span>
+										<span class="is-checked">★</span>
+										<span class="is-checked">★</span>
+										<span>★</span>
+										<p class="p-product__reviewCount">
+											（<span>0</span>）
+										</p>
+									</div>
+									<a class="p-product__reviewLink" href="#review" id="review-link">購入レビューを見る</a>
+								</div>
+								<div class="p-product__reviewNote">
+									※レビュー投稿は購入商品に限ります。レビューは「<a href="{{{home_url}}}/my-page">マイページ</a>」から投稿が可能です。
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="p-product__detail">
+					<div class="l-container">
+						{{{product.short_description}}}
+						{{{_im_product_content1}}}
+						<h2 class="p-product__h2">
+							関連商品
+						</h2>
+						<ol class="c-itemList js-itemList--related">{{#related_products}}
+							<li class="c-itemList__item">
+								<a class="c-itemList__link" href="./{{slug}}">
+									<div class="c-itemList__image">
+										<img class="object-fit" src="{{img}}" alt="{{name}}">
+									</div>
+									<div class="c-itemList__label">
+										{{name}}
+									</div>
+								</a>
+							</li>
+						{{/related_products}}</ol>
+						{{{_im_product_content2}}}
+						{{{_im_product_content3}}}
+						{{{_im_product_content4}}}
+
+						<h2 class="p-product__h2 p-product__h2--fold js-fold" id="review">
+							レビュー
+						</h2>
+						<div class="p-product__contents">
+							<div class="p-product__averageReview">
+								<div class="p-product__averageReviewText">
+									総合評価：<span id="average-rating">0</span>
+									<p class="p-product__averageReviewNote">
+									※個人の感想であり、効能・効果を保証するものではありません。
+									</p>
+								</div>
+								<div class="p-product__averageReviewStar">
+									<span class="is-checked">★</span>
+									<span class="is-checked">★</span>
+									<span class="is-checked">★</span>
+									<span class="is-checked">★</span>
+									<span>★</span>
+									<p class="p-product__averageReviewCount">
+										（00）
+									</p>
+								</div>
+							</div>
+							<div class="p-product__customerReview" id="review-list">
+								<div class="p-product__customerReviewCard">
+									<div class="p-product__customerReviewHeader">
+										<div class="p-product__customerReviewStar">
+											<span class="is-checked">★</span>
+											<span class="is-checked">★</span>
+											<span class="is-checked">★</span>
+											<span class="is-checked">★</span>
+											<span>★</span>
+										</div>
+										<div class="p-product__customerReviewDate"></div>
+									</div>
+									<div class="p-product__customerReviewContents">
+										まだレビューはありません。
+									</div>
+								</div>
+							</div>
+							<div class="c-button-wrap">
+								<a class="c-button" id="all-reviews">すべてのレビューを見る</a>
+							</div>
+						</div><!-- /.p-product__contents -->
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<div class="c-share c-share--product">
+							<h2 class="c-share__heading">この商品をシェアする</h2>
+							<ul class="c-share__list">
+								<li class="c-share__item">
+									<a id="share__link--line" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-line.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--facebook" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-facebook.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--twitter" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-twitter.svg">
+									</a>
+								</li>
+								<li class="c-share__item">
+									<a id="share__link--mail" class="c-share__link js-share__link" href="" target="_blank">
+										<img src="{{{base_url}}}/static/images/common/common_ico_share-mail.svg">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+
+
+			<div class="c-modal">
+				<div id="dispWarning" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						食事療法食ご購入について
+					</h3>
+					<div class="c-modal__contents">
+						<div class="c-modal__lead c-modal__lead--center">
+							<strong>食事療法食は、<br class="u-sp--inline">獣医師の診断・指示のもとに与える<br class="u-sp--inline">特別なペットフードです</strong>
+						</div>
+						<div class="c-modal__warning">
+							<p class="c-modal__warningTitle">HPM 療法食シリーズを買うには？</p>
+							HPM 療法食シリーズは以下の二通りの方法で購入することができます。<br>
+							<br>
+							１：提携病院で購入する<br>
+							２：病院でもらえる「ユニークコード」をマイページ/会員情報に登録し、オンラインで購入する<br>
+							<br>
+							ビルバックサービスの提携病院は下にある「病院を探す」から検索することができます。<br>
+						</div>
+						<div class="c-button-wrap">
+							<a href="{{{home_url}}}/find-hospitals" class="c-button c-button--reversal">病院を探す</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</article>
+	</main>
+	<div class="p-product__cart js-float">
+		<a href="#payment"></a>
+	</div><!-- /.p-product__cart -->
+	<script>
+	var variant_index = 0;
+    var variations = [{{{product.variations}}}];
+ 
+	(function() {
+		var breadcrumb = document.getElementById('breadcrumb-category');
+		if (location.pathname.includes('/cat/')) {
+			breadcrumb.innerText = '猫用商品';
+			breadcrumb.href = '/product/cat';
+		} else {
+			breadcrumb.innerText = '犬用商品';
+			breadcrumb.href = '/product/dog';
+		}
+
+		var first_variant = document.getElementById('option0');
+		if (first_variant) {
+			first_variant.checked = true;
+			selectVariant(0);
+		} else {
+			setPrice();
+		}
+	})();
+	async function setPrice(){
+
+		var rx_original = parseInt(document.getElementById('regular_price').innerText.replace(',', ''));
+		var rx_regular = document.getElementsByClassName('rx-regular').length == 0 ? rx_original : parseInt(document.getElementsByClassName('rx-regular')[0].innerText.replace(',', ''));
+		var ri_original = (Math.round(parseFloat(rx_original) * 1.1) || 0);
+		var sx_original = (parseFloat(rx_original) - Math.ceil(parseFloat(rx_original) * 0.1));
+		var si_original = (Math.round((parseFloat(rx_original) - Math.ceil(parseFloat(rx_original) * 0.1)) * 1.1) || 0);
+
+		var values = {
+			'rx_original': rx_original,
+			'rx_regular': rx_regular,
+			'ri_original': ri_original,
+			'sx_original': sx_original,
+			'si_original': si_original
+		}
+
+		for (var cls of Object.keys(values)) {
+			var instances = document.getElementsByClassName(cls.replace('_','-'));
+			if (instances == null) continue;
+			for (var i=0; i<instances.length; i++) {
+				instances[i].innerText = values[cls].toLocaleString();
+			}
+		}
+	}
+	async function selectVariant(var_idx) {
+        variant_index = var_idx;
+        let  product_id = variations[variant_index]; 
+
+        const response = await (await fetch('/products/price/'+product_id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer'
+        })).json();
+
+		var rx_original = response.regular_price != response.price && response.regular_price != "" ? (parseInt(response.regular_price) || 0) + (parseInt(response.price) || 0) : parseInt(response.regular_price);
+		var rx_regular = document.getElementsByClassName('rx-regular').length == 0 ? rx_original : parseInt(document.getElementsByClassName('rx-regular')[0].innerText.replace(',', ''));
+		var ri_original = (Math.round(parseFloat(rx_original) * 1.1) || 0);
+		var sx_original = (parseFloat(rx_original) - Math.ceil(parseFloat(rx_original) * 0.1));
+		var si_original = (Math.round((parseFloat(rx_original) - Math.ceil(parseFloat(rx_original) * 0.1)) * 1.1) || 0);
+
+		var values = {
+			'rx_original': rx_original,
+			'rx_regular': rx_regular,
+			'ri_original': ri_original,
+			'sx_original': sx_original,
+			'si_original': si_original
+		}
+
+		for (var cls of Object.keys(values)) {
+			var instances = document.getElementsByClassName(cls.replace('_','-'));
+			if (instances == null) continue;
+			for (var i=0; i<instances.length; i++) {
+				instances[i].innerText = values[cls].toLocaleString();
+			}
+		}
+
+        document.getElementById('product-name').innerHTML = response.name; //商品名
+
+        let stockMessageIndex = response.meta_data.findIndex(r => r.key == "_im_variation_stock_date");
+        let stockMessage = stockMessageIndex == -1 && response.stock_status == "instock"? "あり": response.meta_data[stockMessageIndex].value;
+        document.getElementById('stock-status-r').innerHTML = stockMessage == ""?  "あり" : stockMessage;
+        document.getElementById('stock-status-s').innerHTML = stockMessage == ""?  "あり" : stockMessage;
+        if (document.getElementById('stock-status-r').innerHTML == "あり") {
+            document.getElementById('cart-button').disabled = false;
+            document.getElementById('cart-button').value = "カートに入れる";
+            document.getElementById('cart-button').innerHTML = "カートに入れる";
+			document.getElementById('cart-button').classList.remove('p-product__paymentButton--disabled');
+            document.getElementById('cart-subs-button').disabled = false;
+            document.getElementById('cart-subs-button').value = "申し込む";
+            document.getElementById('cart-subs-button').innerHTML = "申し込む";
+			document.getElementById('cart-subs-button').classList.remove('p-product__paymentButton--disabled');            
+        } else {
+            document.getElementById('cart-button').disabled = true;
+            document.getElementById('cart-button').value = "在庫切れ";
+            document.getElementById('cart-button').innerHTML = "在庫切れ";
+			document.getElementById('cart-button').classList.add('p-product__paymentButton--disabled');
+            document.getElementById('cart-subs-button').disabled = true;
+            document.getElementById('cart-subs-button').value = "在庫切れ";
+            document.getElementById('cart-subs-button').innerHTML = "在庫切れ";
+			document.getElementById('cart-subs-button').classList.add('p-product__paymentButton--disabled');
+        }
+    }
+	</script>
+{{{footer}}}

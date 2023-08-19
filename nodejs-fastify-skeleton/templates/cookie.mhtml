@@ -1,0 +1,46 @@
+<script type="module">
+    import { cookieService } from '/services/cookie.service.js';
+    import { cart } from '/components/cart/cart.js';
+    
+    let query_params = (new URL(document.location)).searchParams;
+    //Referral
+    let ref = query_params.get("ref");
+    let refcd = query_params.get("refcd");
+    //Hospital salesforce
+    let hospital_unique_cd = query_params.get("hospital_unique_cd");
+    let hid = query_params.get("hid");
+    let sfType = hospital_unique_cd !== null? 'HospitalCode__c' : 'HospitalID__c';
+    let sfId =  hospital_unique_cd !== null? hospital_unique_cd : hid != null? ""+parseInt(hid) : null;
+    //Add to cart product
+    let productId = query_params.get("add-to-cart");
+    let productQuantity = query_params.get("quantity");
+    //Timesale
+    let _v_timesale_slug =  query_params.get("ts");;
+
+    if(ref != null) {
+        cookieService.setCookie('ref', ref, 30);
+    }
+    if(refcd != null) {
+        cookieService.setCookie('refcd', refcd, 30);
+    }
+    if(sfId != null && sfId != NaN) {
+        cookieService.setCookie('sfId', sfId, 30);
+    }
+    if(sfType != null) {
+        cookieService.setCookie('sfType', sfType, 30);
+    }
+    if(_v_timesale_slug != null) {
+        cookieService.setCookie('_v_timesale_slug', _v_timesale_slug, 30);
+    }
+    if(productId != null){
+        let path = location.pathname;
+        if (path.includes('/product') || path.includes('/news') || path.includes('/pet-qa')) {
+            (async()=>{
+                cart.addToCartByParams(productId, productQuantity != null? productQuantity : 1);
+                cart.reloadCartUpperWidget();
+            })();
+        }
+    }
+    cart.reloadCartUpperWidget();
+    
+</script>

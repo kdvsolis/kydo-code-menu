@@ -1,0 +1,47 @@
+.banner-1{
+    width: 50vw;
+    object-fit: contain;
+    display: inline-block;
+    margin: 0 auto;
+}
+.post-content p{
+    font-size: 16px;
+}
+.post-content ol li{
+    font-size: 16px;
+}
+.post-content header {
+    width:100%;
+    text-align:center;
+}
+
+@media screen and (max-width: 990px) {
+  .qanda {width:100%;}
+  .entry-title {
+      font-size: 16px !important;
+  }
+}
+
+.post-navigation {
+    margin: 0;
+    padding: 2em 0 0;
+    border-top: 1px solid #eee;
+}
+.post-navigation a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+
+.customButton {
+    width: 100%;
+    background-color: #004c99;
+    margin-top: 20px;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
+    height: 50px;
+    padding-top: 10px;
+    color: #FFFFFF;
+}

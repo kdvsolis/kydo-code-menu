@@ -1,0 +1,37 @@
+<script type="module">
+    //Cart Module test
+    import { cart } from '/components/cart/cart.js';
+    import mustache from 'https://unpkg.com/mustache@latest/mustache.mjs';
+    console.log(mustache.render('<div>{{test}}</div>', { test: 'test' }));
+    (async () => {
+        //console.log(await cart.updateCartItem('', 21785, 1));
+    })();
+    import { account } from '/components/account/account.js';
+    (async () => {
+        //account.templateLogic();
+        let data = await account.getUser();
+
+        //document.querySelector('.example').innerHTML = data.id;
+        console.log(data);
+    })();
+</script>
+<script type="module">
+    //DOCUMENTATION AREA
+    import { cart } from '/components/cart/cart.js';
+    import { account } from '/components/account/account.js';
+    import { product } from '/components/product/product.js';
+    import { wordpress } from '/components/wordpress/wordpress.js';
+
+    //INPUT PRODUCT SLUG HERE
+    let slug = 'c-e-t-ベジデントフレッシュ';//HERE example: 'c-e-t-ベジデントフレッシュ' OR 'derm1-2'
+    await product.stockAvailability(slug);
+
+
+</script>
+
+<body>
+    Output of availability should be below this.
+    <div>
+        Stock Availability: <p class="stock_availability"></p>
+    </div>
+</body>

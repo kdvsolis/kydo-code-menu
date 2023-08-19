@@ -1,0 +1,32 @@
+.banner-1{
+    width: 50vw;
+    object-fit: contain;
+    display: inline-block;
+    margin: 0 auto;
+}
+.post-content p{
+    font-size: 14px;
+}
+.post-content ol li{
+    font-size: 14px;
+}
+.post-content header {
+    width:100%;
+    text-align:center;
+}
+
+@media screen and (max-width: 990px) {
+  .qanda {width:100%;}
+}
+
+.post-navigation {
+    margin: 0;
+    padding: 2em 0 0;
+    border-top: 1px solid #eee;
+}
+.post-navigation a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}

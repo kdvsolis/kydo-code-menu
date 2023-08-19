@@ -1,0 +1,390 @@
+{{{header}}}
+<!-- IM script -->
+
+<script type="module">
+    //Generate visited products JSON area
+    import { product } from '/components/product/product.js';
+    import {cookieService} from '/services/cookie.service.js';
+	import { account } from '/components/account/account.js'
+
+	function getDate(li) {
+		var date_str = li.getAttribute('data-date');
+		console.log('date', date_str);
+		return date_str || '';
+	}
+
+	function getPrice(li) {
+		var price_str = li.getElementsByClassName('p-products__price')[0].innerText;
+		var price = price_str.replace(/[^0-9]/g, '');
+		return parseInt(price);
+	}
+
+    let sortfuncs = {
+		'recent': (a, b) => getDate(a) < getDate(b) ? 1 : getDate(a) > getDate(b) ? -1 : 0,
+		'price_high': (a, b) => getPrice(a) < getPrice(b) ? 1 : getPrice(a) > getPrice(b) ? -1 : 0,
+		'price_low': (a, b) => getPrice(a) > getPrice(b) ? 1 : getPrice(a) < getPrice(b) ? -1 : 0,
+    };
+
+
+    (async () => {
+
+		let x = await {{{products}}}
+		let type = "{{{type}}}"
+		let category_name = "{{{category_name}}}"
+		console.log('x', x);
+		console.log('type', type);
+
+		let userInfo = await account.getUser();
+		let isPremiumUser = userInfo.isPremiumUser != undefined ? userInfo.isPremiumUser.toString() : "false"
+        console.log('isPremiumUser: ',isPremiumUser);
+        console.log('category_name: ',category_name);
+        console.log('href: ',location.href);
+		if (isPremiumUser != "false" && location.pathname.includes('/normal-')) {
+			location.href = location.href.replace('normal-', 'premium-');
+		} else if (isPremiumUser == "false" && location.pathname.includes('/premium-') && !location.pathname.includes('/premium-care-')) {
+			location.href = location.href.replace('premium-', 'normal-');
+		}
+		if (isPremiumUser != "false") {
+			// Warning! Special processing to display premium pricing to premium users under product category
+			x = x.map(p => {
+				if (!p.premium_slug) return p;
+				p.slug = p.premium_slug;
+				p.price = p.premium_price;
+				p.isPremium = true;
+				return p;
+			});
+		} else if (location.pathname.includes('/premium-care-')) {
+			// Warning! Special processing to display premium pricing to normal users under care category
+			x = x.map(p => {
+				p.isPremium = false;
+				return p;
+			});
+		}
+		console.log('x', x);
+
+		await product.productsPagination(x,type);
+		// let isPremiumForPage = isPremiumUser;
+		// if (isPremiumUser && !location.pathname.includes('/premium-') && !location.pathname.includes('/normal-')) isPremiumForPage = "false";
+		// if (!isPremiumUser && location.pathname.includes('/premium-care-')) isPremiumForPage = "true";
+		product.loadButtons(x.length, isPremiumUser);
+		product.changePage(1, isPremiumUser);
+		
+		let label = type == 'dog' ? '犬' : '猫';
+//		let category_title = label + '用商品 - ' + category_name;
+		let category_title = category_name;
+		console.log(category_title);
+		document.getElementsByClassName('c-pageHeader__titleMain')[0].innerText = category_title.replace('n', '').replace('p', '');
+		document.getElementsByClassName('is-current')[0].getElementsByTagName('span')[0].innerText = category_title.replace('n', '').replace('p', '');
+		let sorters = document.getElementsByClassName('c-pagination__orderSelect');
+		for (var i=0; i<sorters.length; i++) {
+			sorters[i].addEventListener('change', function(e) {
+				let ols = document.getElementsByClassName('p-products__list');
+				for (var j=0; j<ols.length; j++) {
+					let ol = ols[j];
+					let lis = ol.getElementsByTagName('li');
+					lis = Array.prototype.slice.call(lis);
+					lis = lis.sort(sortfuncs[e.target.value]);
+					for(var i = 0; i < lis.length; i++) {
+						lis[i].setAttribute('data-page', Math.floor(i / 8) + 1);
+						var parent = lis[i].parentNode;
+						var detached = parent.removeChild(lis[i]);
+						parent.appendChild(detached);
+					}
+					product.changePage(1, isPremiumUser);
+				}
+			});
+		}
+		
+    })();
+	
+	
+
+</script>
+<!-- IM script -->
+
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/product">商品一覧</a></li>
+				<li class="is-current"><span>猫用商品</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-products">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">猫用商品一覧</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--cat">
+					<div class="l-container">
+						<h2 class="p-products__h2 p-products__h2--cat">猫用商品</h2>
+						<h3 class="p-products__h3 p-products__h3--cat">猫用商品　カテゴリーから探す</h3>
+						<ol class="p-products__category">
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-health-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-normal.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										総合栄養食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/premium-care-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-premium.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										食事療法食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-dental-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-dental.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										デンタル
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryImage" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-supplement.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										サプリメント
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-skin.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										スキンケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-feliway">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-mental.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										フェリウェイ
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+						</ol>
+						<h3 class="p-products__h3 p-products__h3--cat">猫用商品　目的から探す</h3>
+						<ol class="p-products__purpose">
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-neutered">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-neutered.svg" alt="NEUTERED">
+									</div>
+									<div class="p-products__purposeLabel">
+										避妊・去勢後ケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-weight">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-weight.svg" alt="WEIGHT">
+									</div>
+									<div class="p-products__purposeLabel">
+										体重のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-urology">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-urology.svg" alt="UROLOGY">
+									</div>
+									<div class="p-products__purposeLabel">
+										泌尿器のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-gastro">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-gastro.svg" alt="GASTRO">
+									</div>
+									<div class="p-products__purposeLabel">
+										お腹・肝臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-kidney">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-kidney.svg" alt="KIDNEY">
+									</div>
+									<div class="p-products__purposeLabel">
+										腎臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-skin">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-skincare.svg" alt="SKIN CARE">
+									</div>
+									<div class="p-products__purposeLabel">
+										皮膚被毛のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-dental">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-dental.svg" alt="DENTAL">
+									</div>
+									<div class="p-products__purposeLabel">
+										デンタルケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-joint">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-joint.svg" alt="JOINT">
+									</div>
+									<div class="p-products__purposeLabel">
+										関節のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-behavior">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-behavior.svg" alt="BEHAVIOR">
+									</div>
+									<div class="p-products__purposeLabel">
+										あんしんケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<div class="c-pagination">
+							<div class="c-pagination__information c-pagination__information--top">
+								<div class="c-pagination__informationLabel">検索結果</div>
+								<div class="c-pagination__informationCount">00件中1～12件</div>
+							</div>
+							<ul class="c-pagination__list c-pagination__list--top">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a {{#firstPage}}is-disabled{{/firstPage}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--page">
+<ul class="page_numbers_top">
+	<!--
+										{{#pages}}
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--numberTop {{#currentPage}}is-current{{/currentPage}}"><a href="{{url}}">{{page}}</a></li>
+										{{/pages}}
+	-->
+									
+										
+									</ul>								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a {{#lastPage}}is-disabled{{/lastPage}}>次へ→</a>
+								</li>
+							</ul>
+							<div class="c-pagination__order">
+								<span>表示順：</span>
+								<select class="c-pagination__orderSelect">
+									<option value="recent">新着順</option>
+									<option value="price_high">価格の高い順</option>
+									<option value="price_low">価格の低い順</option>
+								</select>
+							</div>
+						</div>
+						<ol class="p-products__list pagination_items">
+							
+						</ol>
+						<div class="c-pagination">
+							<div class="c-pagination__information c-pagination__information--bottom">
+								<div class="c-pagination__informationLabel">検索結果</div>
+								<div class="c-pagination__informationCount">00件中1～12件</div>
+							</div>
+							<ul class="c-pagination__list c-pagination__list--bottom">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a {{#firstPage}}is-disabled{{/firstPage}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--page">
+									<ul class="page_numbers_bot">
+	<!--
+										{{#pages}}
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--numberBottom {{#currentPage}}is-current{{/currentPage}}"><a href="{{url}}">{{page}}</a></li>
+										{{/pages}}
+	-->
+										
+									</ul>
+								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a {{#lastPage}}is-disabled{{/lastPage}}>次へ→</a>
+								</li>
+							</ul>
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--
+			<section>
+				<div class="p-lower__section p-lower__section--history">
+					<div class="l-container carousel--history">
+						<h2 class="c-heading01__h2">
+							閲覧した商品
+						</h2>
+					</div>
+				</div>
+			</section>
+
+
+			<section>
+				<div class="p-lower__section p-lower__section--reorder">
+					<div class="l-container carousel--reorder">
+						<h2 class="c-heading01__h2">
+							もう一度買う
+						</h2>
+						
+						<div class="c-button-wrap">
+							<a class="c-button" href="{{{home_url}}}/my-page/orders">注文履歴を確認する</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			-->
+		</article>
+	</main>
+{{{footer}}}

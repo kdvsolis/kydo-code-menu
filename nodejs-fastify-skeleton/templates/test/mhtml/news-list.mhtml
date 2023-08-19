@@ -1,0 +1,87 @@
+{{{header}}}
+<!-- IM script -->
+<script type="module">
+
+import { account } from '/components/account/account.js'
+
+(async () => {
+	
+
+		let length = {{{news_length}}}
+		console.log(length);
+
+
+		account.loadButtonsTest(length, 'news');
+		account.changePageTest(1,'news');
+		console.log('buttons loaded')
+ })();
+		/*
+		let featured_media = {{{featured_media}}}
+		featured_media.forEach(e=>{
+			e != '' ? console.log(e) : console.log('empty');
+		})
+		*/
+   
+</script>
+<!-- IM script -->
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>最新情報</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-news">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">最新情報</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--news">
+					<div class="l-container">
+<!-- 値もらう -->
+						<ol class="c-newPost">
+                                                        {{#news_list}}
+							<li class="c-newPost__item pagination_item" data-page={{data_page}}>
+								<a class="c-newPost__tag" href="#">
+									お知らせ
+								</a>
+								<p class="c-newPost__date">{{date}}</p>
+								<a class="c-newPost__link" href="/news/{{slug}}">
+								{{title}}	
+						                </a>
+							</li>
+                                                        {{/news_list}}
+						</ol>
+						<div class="c-pagination">
+							<ul class="c-pagination__list c-pagination__list--bottom">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a{{#firstPage}}is-disabled{{/firstPage}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--page">
+									<ul class="page_numbers_bot">
+	<!--
+										{{#pages}}
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number {{#currentPage}}is-current{{/currentPage}}"><a href="{{url}}">{{page}}</a></li>
+										{{/pages}}
+	-->
+									
+									</ul>
+								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a{{#lastPage}}is-disabled{{/lastPage}}>次へ→</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

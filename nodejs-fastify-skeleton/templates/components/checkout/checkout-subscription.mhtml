@@ -1,0 +1,438 @@
+<script src="{{{shopBaseUrl}}}/ext/js/token.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script type="module">
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { checkout } from '/components/checkout/checkout.js?v={{checkoutVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+
+    let address = null;
+    let name = null;
+    let phone = null;
+    let userInfo = { success: false };
+    let dates = JSON.parse('{{{string_dates}}}');
+    let delivery_info = { del_date: "{{dates.0.value}}", del_time: "0", memo:"", frequency: "{{{frequency}}}" };
+    let hasCreditCard = "{{{hasCreditCard}}}" == "true";
+    let state_array = ["", "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+        "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+        "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+        "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県",
+        "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県",
+        "大分県", "宮崎県",
+        "鹿児島県", "沖縄県"
+    ];
+
+    checkout.items = JSON.parse('{{{items}}}');
+    checkout.coupons = [];
+    let subscription_price = checkout.items[0].price;
+    let subscription_quantity = checkout.items[0].quantity;
+    let subscription_discount = Math.ceil(0.1 * checkout.items[0].price) * subscription_quantity;
+    let expireMonth = "{{{expireMonth}}}";
+    let expireYear = "{{{expireYear}}}";
+    
+    document.getElementById("imgmopg_expdate_month").value = expireMonth;
+    document.getElementById("imgmopg_expdate_year").value = expireYear;
+    
+    checkout.items.forEach(element => {
+        let subs_coupon_index = element.meta_data.findIndex(r => r.key == '_im_product_subscription_coupon' || r.key == '_im_variation_subscription_coupon');
+        if(subs_coupon_index > -1){
+            checkout.coupons.push({
+                code: element.meta_data[subs_coupon_index].value.split(",")[0]
+            });
+            checkout.selected_coupon = 0;
+        }
+    });
+
+    async function executeCompute(hasSelected){
+        let user_token = cookieService.getCookieValue('token');
+        userInfo = user_token != ""? await account.getUser() : {success: false};
+        checkout.postcode = userInfo.postcode;
+        let prices = await checkout.computePrice(hasSelected);
+        let state = userInfo.state.startsWith("JP")? state_array[parseInt(userInfo.state.replace("JP", ""))] : userInfo.state;
+        address = address == null? {
+            address_1: userInfo.address_1,
+            address_2: userInfo.address_2,
+            city: userInfo.city,
+            state: userInfo.state,
+            country: userInfo.country,
+            postcode: userInfo.postcode
+        } : address;
+        name = name == null? {
+            first_name: userInfo.first_name,
+            last_name: userInfo.last_name
+        } : name;
+        phone = phone == null? userInfo.phone : phone;
+        console.log('prices: ', prices);
+        console.log('coupon_err_msg', checkout.coupon_err_msg);
+        console.log('coupon_applied', checkout.coupon_applied);
+        console.log('hasSelected: ', hasSelected);
+        console.log('checkout.selected_coupon: ', checkout.selected_coupon);
+
+        let subtotal = subscription_price * subscription_quantity;
+        let tax_exclusive = subtotal - subscription_discount + prices.shipping_fee + prices.cod_fee;
+        let tax_value = Math.round(tax_exclusive * 0.1);
+        let final_price = tax_exclusive + tax_value;
+        document.querySelectorAll('.p-cart__subtotalData')[0].innerHTML = subtotal.toLocaleString() + '円'; //prices.raw_price.toLocaleString() + '円';
+        document.querySelectorAll('.p-cart__subtotalData')[1].innerHTML = subscription_discount.toLocaleString() + '円';
+        document.querySelectorAll('.p-cart__subtotalData')[2].innerHTML = prices.shipping_fee.toLocaleString() + '円';
+        document.querySelectorAll('.p-cart__subtotalData')[3].innerHTML = prices.cod_fee.toLocaleString() + '円';
+        document.querySelectorAll('.p-cart__subtotalData')[4].innerHTML = tax_value.toLocaleString() + '円'; //prices.tax_value.toLocaleString() + '円';
+        document.querySelectorAll('.p-cart__totalData')[0].innerHTML = final_price.toLocaleString() + '円';
+
+        document.querySelectorAll('.p-cart__addressData')[0].innerHTML = userInfo.success? name.last_name + " " + name.first_name : '';
+        // document.querySelectorAll('.p-cart__addressData')[1].innerHTML = userInfo.success? address.address_1 + " " + address.address_2 + " " + address.city + " " + state + " " : '';
+        // document.querySelectorAll('.p-cart__addressData')[1].innerHTML = userInfo.success? state + address.city + address.address_1 + address.address_2 : '';
+        document.querySelectorAll('.p-cart__addressData')[1].innerHTML = userInfo.success? address.postcode.slice(0, 3) + '-' + address.postcode.slice(3, address.postcode.length) + ' ' + state + address.city + address.address_1 + address.address_2  : '';
+
+        // document.querySelectorAll('.p-cart__addressData')[2].innerHTML = userInfo.success? phone : '';
+    };
+
+    async function loadPostalAddress(){
+        try{
+            let postal = (await checkout.getPostal(document.getElementById('postal').value.replace("-", ""))).response;
+            document.getElementById("shipping_state").value = postal.pref.name;
+            document.getElementById('municipality').value =  postal.city.name;
+            document.getElementById('town').value = postal.name.replace(document.getElementById('postal').value + " ", "");
+        } catch(e){
+            console.error(e);
+        }
+    }
+
+    (async () => {
+        document.querySelectorAll('.p-cart__paymentCheck.js-cart__paymentCheck')[0].checked = true;
+
+        document.querySelectorAll('.p-cart__paymentType')[0].addEventListener('click', async function(event) {
+            document.querySelectorAll('.p-cart__paymentCheck')[0].checked = true;
+            checkout.payment_method = "imgmopg";
+            await executeCompute(checkout.selected_coupon > -1);
+        });
+            
+        document.querySelectorAll('.p-cart__paymentType')[1].addEventListener('click', async function(event) {
+            document.querySelectorAll('.p-cart__paymentCheck')[1].checked = true;
+            checkout.payment_method = "cod";
+            await executeCompute(checkout.selected_coupon > -1);
+        });
+
+        document.addEventListener('click', async function(event) {
+            if (event.target.getAttribute('href') == ('#editAddress')) {
+                event.preventDefault();
+                if(address == null)
+                    return;
+                let state = address.state.startsWith("JP")? state_array[parseInt(address.state.replace("JP", ""))] : address.state;
+                let postal = (await checkout.getPostal(address.postcode.replace("-", ""))).response;
+                document.getElementById('surname_modal').value = name.last_name;
+                document.getElementById('firstname_modal').value = name.first_name;
+                document.getElementById('postal').value = address.postcode;
+                document.getElementById('town').value = address.address_1;
+                document.getElementById('bldg').value = address.address_2;
+                document.getElementById("shipping_state").value = state;
+                document.getElementById('municipality').value =  address.city;
+                //document.getElementById('contactno').value = phone;
+            }
+            if (event.target.getAttribute('href') == ('#editDate')) {
+                event.preventDefault();
+                document.getElementById('del-date').value = delivery_info.del_date;
+                document.getElementById('del-time').value = delivery_info.del_time;
+                document.getElementById('freq-val').value = delivery_info.frequency;
+                document.getElementById('message-modal').value = delivery_info.memo;
+            }
+            if (event.target.id == ('#save-email')) {
+                event.preventDefault();
+                let lity_address = {
+                    postcode: document.getElementById('postal').value,
+                    state: document.getElementById('shipping_state').value,
+                    city: document.getElementById('municipality').value,
+                    address_1: document.getElementById('town').value,
+                    address_2: document.getElementById('bldg').value
+                }
+                let lity_user_data = {
+                    billing: lity_address,
+                    shipping: lity_address
+                };
+                
+                if (!lity_address.city || lity_address.city == '' || !lity_address.address_1 || lity_address.address_1 == '' || !lity_address.postcode || lity_address.postcode == '') {
+                    // エラーだった場合の処理
+                    document.getElementsByClassName('lity')[0].getElementsByClassName('c-form__error')[0].style.display = 'block';
+                } else {
+                    // TODO: 動いてるかチェック！！！！
+                    let user_info = await account.getUser();
+                    await account.modifyUser(user_info.id, lity_user_data);
+                    document.querySelector('.lity-close').click();
+                }
+            }
+        }, false);
+
+        document.querySelectorAll('.c-form__button.c-form__button--reversal')[0].onclick = loadPostalAddress;
+
+        document.getElementById('postal').oninput = loadPostalAddress;
+
+        document.querySelectorAll('.c-button.c-button--reversal')[3].onclick = async function(event){
+            event.preventDefault();
+            let state_name = document.getElementById("shipping_state").value;
+            let state_number = state_array.findIndex(r => r == state_name).toString().padStart(2, "0");
+            name.last_name = document.getElementById('surname_modal').value;
+            name.first_name = document.getElementById('firstname_modal').value;
+            address.postcode = document.getElementById('postal').value;
+            address.address_1 = document.getElementById('town').value;
+            address.address_2 = document.getElementById('bldg').value;
+            address.state = state_number > -1? "JP" + state_number : "";
+            address.city = document.getElementById('municipality').value;
+            // phone = document.getElementById('contactno').value;
+            
+            document.querySelectorAll('.p-cart__addressData')[0].innerHTML = name.last_name + " " + name.first_name;
+            // document.querySelectorAll('.p-cart__addressData')[1].innerHTML = address.address_1 + " " + address.address_2 + " " + address.city + " " + state_name;
+            document.querySelectorAll('.p-cart__addressData')[1].innerHTML = address.postcode.slice(0, 3) + '-' + address.postcode.slice(3, address.postcode.length) + ' ' + state_name + address.city + address.address_1 + address.address_2;
+            // document.querySelectorAll('.p-cart__addressData')[2].innerHTML = phone;
+            let modified = await account.validateAddress();
+            if (modified.success==true){
+                let response = await account.modifyUser(userInfo.id, modified.data)
+                document.querySelector('.lity-close').click();
+            }
+        }
+
+        account.limitInput()
+    })();
+
+    document.querySelectorAll('.c-button.c-button--reversal')[4].onclick = async function(event){
+        
+        let date = document.getElementById('del-date');
+        let time = document.getElementById('del-time');
+        let freq = document.getElementById('freq-val');
+        delivery_info.del_date = date.value;
+        delivery_info.del_time = time.value;
+        delivery_info.frequency = freq.value;
+        delivery_info.memo = document.getElementById('message-modal').value;
+        document.querySelectorAll('.p-cart__dateData')[0].innerHTML = date.options[date.selectedIndex].text;
+        document.querySelectorAll('.p-cart__dateData')[1].innerHTML = time.options[time.selectedIndex].text;
+        document.querySelectorAll('.p-cart__dateData')[2].innerHTML = freq.options[freq.selectedIndex].text;
+        document.querySelectorAll('.p-cart__dateData')[3].innerHTML = delivery_info.memo;
+        document.querySelector('.lity-close').click();
+    }
+
+    document.getElementById('place_order_bottom').onclick = async function(){
+        document.getElementById('place_order_bottom').disabled = true;
+        let user_info = await account.getUser();
+        let isCreditCard = checkout.payment_method == "imgmopg";
+        let imgmopg_holdername = isCreditCard? document.getElementById('imgmopg_holdername').value : '';
+        let imgmopg_ccNo = isCreditCard? document.getElementById('imgmopg_ccNo').value : '';
+        let imgmopg_expdate_month = isCreditCard? document.getElementById('imgmopg_expdate_month').value : '';
+        let imgmopg_expdate_year = isCreditCard? document.getElementById('imgmopg_expdate_year').value : '';
+        let imgmopg_cvv = isCreditCard? document.getElementById('imgmopg_cvv').value : '';
+        let shipping = {
+            first_name: name.first_name,
+            last_name: name.last_name,
+            address_1: address.address_1,
+            address_2: address.address_2,
+            email: user_info.email,
+            city: address.city,
+            state: address.state.startsWith("JP") ? state_array[parseInt(address.state.replace("JP", ""))] : address.state,
+            postcode: address.postcode.replace(/(\d{3})(\d{4})/, "$1-$2"),
+            country: address.country
+        };
+        // Address validation
+        if (!shipping.city || shipping.city == '' || !shipping.address_1 || shipping.address_1 == '' || !shipping.postcode || shipping.postcode == '') {
+            let err_text = '住所を入力してください。';
+            let err_elm = document.getElementsByClassName('c-form__errorMessage');
+            for (let i = 0; i < err_elm.length; i++) {
+                err_elm[i].innerHTML += '注文確定エラー：' + err_text + '<br>';
+                err_elm[i].style.display = 'block';
+            }
+            document.getElementById('place_order_bottom').disabled = false;
+            return;
+        }
+
+        //Postcode validation
+        if (address.postcode.match(/^\d{7}$/g) == null) {
+            let err_text = '郵便番号に誤りがあります。';
+            let err_elm = document.getElementsByClassName('c-form__errorMessage');
+            for (let i = 0; i < err_elm.length; i++) {
+                err_elm[i].innerHTML += '注文確定エラー：' + err_text + '<br>';
+                err_elm[i].style.display = 'block';
+            }
+            document.getElementById('place_order_bottom').disabled = false;
+            return;
+        }
+
+        let billing = shipping; billing.phone = user_info.phone; billing.email = user_info.email;
+        let line_items = [];  checkout.items.forEach(element => {line_items.push({ product_id: element.id, quantity: element.quantity })});
+        let user_meta_products_index = user_info.user_meta.findIndex(r => r.key == "user_meta_products");
+        let user_meta_products = user_meta_products_index >-1? user_info.user_meta[user_meta_products_index].value: []; checkout.items.forEach(element => {if (element.parent_id > 0) { user_meta_products.push(element.parent_id) } else { user_meta_products.push(element.id)}});
+        let data = {
+            user_id: user_info.id,
+            payment_method: checkout.payment_method,
+            payment_method_title: "クレジットカード",
+            set_paid: false, 
+            status: user_info.status,
+            customer_note: delivery_info.memo,
+            billing: billing,
+            shipping: shipping,
+            del_date: delivery_info.del_date,
+            del_time: delivery_info.del_time,
+            frequency: delivery_info.frequency,
+            sf_status: "",
+            sf_date: moment((new Date())).format('YYYYMMDD-HHmmss'),
+            shipping: shipping,
+            line_items: line_items,
+            postage_name: checkout.postage_name,
+            shipping_fee: checkout.shipping_fee,
+            cod_fee: checkout.cod_fee,
+            coupon_lines: checkout.selected_coupon > -1? [checkout.coupons[checkout.selected_coupon].code] : []
+        };
+        if(isCreditCard){
+            let tokenRequestPayload = {
+                  expire: imgmopg_expdate_year + '' + imgmopg_expdate_month,
+                  cardno: imgmopg_ccNo,
+                  securityCode: imgmopg_cvv,
+                  holdername: imgmopg_holdername,
+                  tokennumber: '1'
+            };
+            let GET_TOKEN_RESULT = {
+                '000': 'トークン取得正常終了',
+                '100': 'カード番号必須チェックエラー',
+                '101': 'カード番号フォーマットエラー(数字以外を含む)',
+                '102': 'カード番号フォーマットエラー(10-16 桁の範囲外)',
+                '110': '有効期限必須チェックエラー',
+                '111': '有効期限フォーマットエラー(数字以外を含む)',
+                '112': '有効期限フォーマットエラー(6 又は 4 桁以外)',
+                '113': '有効期限フォーマットエラー(月が 13 以上)',
+                '121': 'セキュリティコードフォーマットエラー(数字以外を含む)',
+                '122': 'セキュリティコード桁数エラー',
+                '131': '名義人フォーマットエラー(半角英数字、一部の記号以外を含む)',
+                '132': '名義人フォーマットエラー(51 桁以上)',
+                '141': '発行数フォーマットエラー(数字以外を含む)',
+                '142': '発行数フォーマットエラー(1-10 の範囲外)',
+                '150': 'カード情報を暗号化した情報必須チェックエラー',
+                '160': 'ショップ ID 必須チェックエラー',
+                '161': 'ショップ ID フォーマットエラー(14 桁以上)',
+                '162': 'ショップ ID フォーマットエラー(半角英数字以外)',
+                '170': '公開鍵ハッシュ値必須チェックエラー',
+                '180': 'ショップ ID または公開鍵ハッシュ値がマスターに存在しない',
+                '190': 'カード情報(Encrypted)が復号できない',
+                '191': 'カード情報(Encrypted)復号化後フォーマットエラー',
+                '501': 'トークン用パラメータ(id)が送信されていない',
+                '502': 'トークン用パラメータ(id)がマスターに存在しない',
+                '511': 'トークン用パラメータ(cardInfo)が送信されていない',
+                '512': 'トークン用パラメータ(cardInfo)が復号できない',
+                '521': 'トークン用パラメータ(key)が送信されていない',
+                '522': 'トークン用パラメータ(key)が復号できない',
+                '531': 'トークン用パラメータ(callBack)が送信されていない',
+                '541': 'トークン用パラメータ(hash)が存在しない',
+                '551': 'トークン用 apikey が存在しない ID',
+                '552': 'トークン用 apikey が有効ではない',
+                '901': 'マルチペイメント内部のシステムエラー',
+                '902': '処理が混み合っている'
+            };
+            let test_credit_card_list = [
+                "4111111111111111",
+                "2111111111111111",
+                "5111111111111111",
+                "3111111111111111",
+                "30000000000111",
+                "375987000000088"
+            ];
+            data.payment_method_title = "クレジットカード";
+            data.status = "pending";
+            data.sf_status = "extra";
+
+            //Check if current checkout page is production or not to prevent test environment real orders
+            if(!window.location.origin.startsWith("https://virbac-services.jp") && !hasCreditCard && test_credit_card_list.findIndex(r => r == imgmopg_ccNo) == -1 ){
+                let err_text = GET_TOKEN_RESULT["100"];
+                let err_elm = document.getElementsByClassName('c-form__errorMessage');
+                for (let i = 0; i < err_elm.length; i++) {
+                    err_elm[i].innerHTML = "";
+                }
+                for (let i = 0; i < err_elm.length; i++) {
+                    err_elm[i].innerHTML += 'クレジットカードエラー 100' + '：' + err_text + '<br>';
+                    err_elm[i].style.display = 'block';
+                }
+                document.getElementById('place_order_bottom').disabled = false;
+                return;
+            }
+
+            Multipayment.init('{{{shop_id}}}');
+            Multipayment.getToken(tokenRequestPayload, async function (token_response) {
+                try{
+                    hasCreditCard = hasCreditCard && (imgmopg_ccNo.startsWith("****") || imgmopg_ccNo == "");
+                    if (token_response.resultCode != '000' && !hasCreditCard) {
+                        console.log("Display invalid credit card nor no existing card");
+                        let err_text = GET_TOKEN_RESULT[token_response.resultCode];
+                        let err_elm = document.getElementsByClassName('c-form__errorMessage');
+                        for (let i = 0; i < err_elm.length; i++) {
+                            err_elm[i].innerHTML += 'クレジットカードエラー' + token_response.resultCode + '：' + err_text + '<br>';
+                            err_elm[i].style.display = 'block';
+                            document.getElementById('place_order_bottom').disabled = false;
+                        }
+                        return;
+                    } else {
+                        let token = hasCreditCard? "hascreditcard" : token_response.tokenObject.token[0];
+                        let cc_response = {
+                            user_id: data.user_id,
+                            token: token
+                        };
+                        let order_response = await checkout.checkoutSubscription(data, cc_response);
+                        if (order_response.id != null || typeof order_response.id !== "undefined") {
+                            let new_user_data = {
+                                meta_data: [{
+                                       key: 'user_meta_products',
+                                       value: user_meta_products
+                                }]
+                            }
+                            if(address.postcode != userInfo.postcode || address.city != userInfo.city || address.state != userInfo.state){
+                                new_user_data.shipping = address;
+                                new_user_data.billing = address;
+                                new_user_data.billing.phone = phone;
+                            }
+                            await account.modifyUser(data.user_id, new_user_data);
+                            window.history.pushState('forward', null, '/cart');
+                            window.location.href = "/checkout/order-received/" + order_response.id;
+                        } else {
+                            let err_text = token_response.resultCode == "000"? order_response.error[0] : GET_TOKEN_RESULT[token_response.resultCode];
+                            let err_elm = document.getElementsByClassName('c-form__errorMessage');
+                            for (let i = 0; i < err_elm.length; i++) {
+                                err_elm[i].innerHTML = "";
+                            }
+                            for (let i = 0; i < err_elm.length; i++) {
+                                err_elm[i].innerHTML += 'クレジットカードエラー' + (token_response.resultCode == "000"? order_response.errInfo : token_response.resultCode) + '：' + err_text + '<br>';
+                                err_elm[i].style.display = 'block';
+                            }
+                            document.getElementById('place_order_bottom').disabled = false;
+                        }
+                    }
+                } catch(e){
+                    console.error(e);
+                }
+                
+            });
+        } else {
+            let cc_response = {
+                user_id: data.user_id
+            };
+            data.payment_method = "cod";
+            data.payment_method_title = "代金引換";
+            data.sf_status = "_sf_unposted";
+            data.status = "processing";
+            data.cod_fee = checkout.cod_fee;
+            let order_response = await checkout.checkoutSubscription(data, cc_response);
+            if (order_response.id != null || typeof order_response.id !== "undefined") {
+                let new_user_data = {
+                    meta_data: [{
+                            key: 'user_meta_products',
+                            value: user_meta_products
+                    }]
+                }
+                if(address.postcode != userInfo.postcode || address.city != userInfo.city || address.state != userInfo.state){
+                    new_user_data.shipping = address;
+                    new_user_data.billing = address;
+                    new_user_data.billing.phone = phone;
+                }
+                await account.modifyUser(data.user_id, new_user_data);
+                window.history.pushState('forward', null, '/cart');
+                window.location.href = "/checkout/order-received/" + order_response.id;
+            } else {
+
+            }
+        }
+
+    }
+
+    executeCompute(false);
+</script>

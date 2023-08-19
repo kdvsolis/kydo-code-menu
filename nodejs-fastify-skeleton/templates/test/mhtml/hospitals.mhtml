@@ -1,0 +1,347 @@
+{{{header}}}
+<!--
+<link rel="stylesheet" type="text/css" href="/css/hospitals.css">
+-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGVz7YZgBU8agRY0JBAmIkespE0Gj65yo"></script>
+
+
+
+
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>ビルバックサービスの提携病院</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-guarantee">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ビルバックサービスの提携病院</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">お近くの提携病院を見つけられます</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--findHospitals">
+					<div class="l-container">
+						<h2 class="c-heading02__h2">地図から探す</h2>
+						<ol class="p-findHospitals__mapRow">
+							<li class="p-findHospitals__mapCol">
+								<button id="current" class="p-findHospitals__button p-findHospitals__button--current" type="button" value="現在地から提携病院を探す">現在地から提携病院を探す</button>
+							</li>
+							<li class="p-findHospitals__mapCol">
+								<input id="address" type="text" class="p-findHospitals__input" placeholder="地名で探す（例：池袋、新宿）">
+								<span>&nbsp;</span>
+								<button id="locate" type="button" class="p-findHospitals__button p-findHospitals__button--locate" value="病院検索"></button>
+							</li>
+						</ol>
+						<div id="map" class="p-findHospitals__mapObject">
+							<iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section p-lower__section--findHospitals">
+					<div class="l-container">
+						<h2 class="c-heading02__h2">都道府県から探す</h2>
+						<ul class="p-findHospitals__regionList">
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">北海道・東北</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/hokkaido">北海道</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/aomori">青森県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/iwate">岩手県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/miyagi">宮城県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/akita">秋田県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/yamagata">山形県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/fukushima">福島県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">北陸・中部</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/niigata">新潟県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/toyama">富山県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/ishikawa">石川県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/fukui">福井県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/yamanashi">山梨県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/nagano">長野県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/gifu">岐阜県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/shizuoka">静岡県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/aichi">愛知県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">関東</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/ibaraki">茨城県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/tochigi">栃木県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/gunma">群馬県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/saitama">埼玉県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/chiba">千葉県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/tokyo">東京都</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kanagawa">神奈川県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">近畿</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/mie">三重県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/shiga">滋賀県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kyoto">京都府</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/osaka">大阪府</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/hyogo">兵庫県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/nara">奈良県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/wakayama">和歌山県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">中国</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/tottori">鳥取県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/shimane">島根県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/okayama">岡山県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/hiroshima">広島県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/yamaguchi">山口県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">四国</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/tokushima">徳島県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kagawa">香川県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/ehime">愛媛県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kochi">高知県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem js-findHospitals__regionItem">
+								<span class="p-findHospitals__regionName js-findHospitals__regionName">九州・沖縄</span>
+								<ul class="p-findHospitals__regionSubList">
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/fukuoka">福岡県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/saga">佐賀県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/nagasaki">長崎県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kumamoto">熊本県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/oita">大分県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/miyazaki">宮崎県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/kagoshima">鹿児島県</a></li>
+									<li class="p-findHospitals__regionSubItem"><a href="{{{home_url}}}/find-hospitals/okinawa">沖縄県</a></li>
+								</ul>
+							</li>
+							<li class="p-findHospitals__regionItem p-findHospitals__regionItem--empty"></li>
+							<li class="p-findHospitals__regionItem p-findHospitals__regionItem--empty"></li>
+							<li class="p-findHospitals__regionItem p-findHospitals__regionItem--empty"></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+
+<script>
+
+    function ajaxQuery(method, data, success, failure) {
+        if (!data) data = {}
+        //data['security'] = WPAPI.nonce
+
+        if (failure === undefined) failure = null
+
+        jQuery.ajax({
+            dataType: 'json', url: 'https://virbac-services.jp/location', method: method,
+            data: data,
+            success: function(data) {
+                if (data != null) success(data)
+                else if (failure) failure(data.data)
+            },
+            failure: function(req, status, error) {
+                alert('Network Error: (' + status + ') ' + error)
+            },
+            error: function(req, status, error) {
+                alert('Error: (' + status + ') ' + error)
+            }
+        }).always(function(data) {
+        })
+    }
+    function initMap() {
+        var elmt = document.getElementById('map');
+        if (!elmt) return;
+        
+        var user_pos = {
+            lat: 36.458804, 
+            lng: 138.424074
+        };
+        var map = new google.maps.Map(elmt, {
+            center: new google.maps.LatLng(user_pos.lat, user_pos.lng),
+            zoom: 7,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+            minZoom: 7/*,
+            restriction: {
+                latLngBounds: {
+                    // Japan	JP	JA	122.933333	20.416667	154	45.520833	138.4666665	32.96875	Asia
+                    // https://wiki.openstreetmap.org/wiki/User:Ewmjc/Country_bounds
+                    east: 154,
+                    north: 45.520833,
+                    south: 20.416667,
+                    west: 122.933333
+                },
+                strictBounds: false
+            },*/
+        });
+        var geocoder = new google.maps.Geocoder();
+        
+
+        document.getElementById('current').addEventListener('click', function() {
+            initMap();
+        });
+        document.getElementById('locate').addEventListener('click', function() {
+            geocodeAddress(geocoder, map);
+        });
+        var markers = [];
+        var hospitals = [];
+        var curr = { lat1: 0, lng1: 0, lat2: 0, lng2: 0 };
+        var info = new google.maps.InfoWindow();
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            user_pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            
+            info.setPosition(user_pos);
+            info.setContent('現在地');
+            info.open(map);
+            map.setCenter(user_pos);
+            map.setZoom(12);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        
+
+        google.maps.event.addListener(map, "idle", function() {
+            var initial = curr.lat1 === 0;
+            //console.log('initial', initial, markers);
+            if (map.getZoom() < 10) {
+                if (initial) {
+                    curr.lat1 = 0.1;
+                    return;
+                }
+                else map.setZoom(10);
+            }
+            //console.log(map.getZoom(), map.getCenter().lat(), map.getCenter().lng());
+            var bounds = map.getBounds();
+            console.log(bounds.getNorthEast().lat(), bounds.getNorthEast().lng());
+            console.log(bounds.getSouthWest().lat(), bounds.getSouthWest().lng());
+            //console.log(curr);
+            var latdiff = bounds.getNorthEast().lat() - bounds.getSouthWest().lat(), lngdiff = bounds.getNorthEast().lng() - bounds.getSouthWest().lng();
+            console.log(latdiff, lngdiff);
+            var latmax = bounds.getNorthEast().lat() + latdiff, latmin = bounds.getSouthWest().lat() - latdiff;
+            var lngmax = bounds.getNorthEast().lng() + lngdiff, lngmin = bounds.getSouthWest().lng() - lngdiff;
+            //console.log(curr, latmin, lngmin, latmax, lngmax);
+            if (latmin >= curr.lat1 && lngmin >= curr.lng1 && latmax <= curr.lat2 && lngmax <= curr.lng2) return;
+            //console.log('RETRIEVE!');
+
+            var center = map.getCenter();
+            var lat1 = center.lat() - 2.0, lat2 = center.lat() + 2.0, lng1 = center.lng() - 3.0, lng2 = center.lng() + 3.0;
+            //console.log(lat1, lng1, lat2, lng2);
+            var params = {
+               action: 'location',
+                lat1: lat1, lng1: lng1, lat2: lat2, lng2: lng2
+            }
+            ajaxQuery('GET', params, function(data) {
+                // Delete all markers first
+                for (var i=0; i<markers.length; i++) markers[i].setMap(null);
+                markers.splice(0, markers.length);
+                hospitals.splice(0, hospitals.length);
+                console.log(data)	
+                for (var i=0; i<data.length; i++) {
+                    var pos = data[i];
+                  
+
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(parseFloat(pos.lat),parseFloat(pos.lng)),
+                        map: map
+                    });
+	            
+                   
+                    markers.push(marker);
+                    hospitals.push(pos);
+                    marker.addListener('click', function() {
+                        var index = markers.indexOf(this);
+                        var h = hospitals[index];
+                        var content = '<div class="p-findHospitals__gm">' +
+                        '<h3 class="p-findHospitals__gmHospital">' + h.hospital + '</h3>' +
+                        '<p class="p-findHospitals__gmInformation">〒' + h.postcode + '<br>' +
+                        h.prefecture + h.city + '<br>' +
+                        h.addr1 + '<br>' +
+                        h.addr2 + '<br>' +
+                        '<span class="tel">' + h.phone + '</span><br>' +
+                        '</p>' +
+                        '</div>';
+                        info.setContent(content);
+                        info.open(map, this);
+                    })
+                }
+                console.log(markers);
+                curr.lat1 = lat1;
+                curr.lng1 = lng1;
+                curr.lat2 = lat2;
+                curr.lng2 = lng2;
+            }, function(data) {
+                alert('ERROR');
+            })
+        });
+    }
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
+
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                resultsMap.setZoom(14);
+                /*
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+                var params = {
+                    action: 'retrieve_locations'
+                }
+                ajaxQuery('GET', params, function(data) {
+                    //console.log(data)
+                }, function(data) {
+                    alert('ERROR')
+                })
+                */
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    initMap();
+
+</script>
+{{{footer}}}

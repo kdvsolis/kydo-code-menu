@@ -1,0 +1,65 @@
+{{{header}}}
+<!-- IM script -->
+<script type="module">
+
+
+		let featured_media = "{{{featured_media}}}"
+		if (featured_media == '') {
+			console.log('empty')
+		}  else {
+			console.log(featured_media)
+		} 
+   
+</script>
+<!-- IM script -->
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/news">最新情報</a></li>
+				<li class="is-current"><span>{{page_content.title}}</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-post">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">最新情報</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--post">
+					<div class="l-container--small">
+						<div class="p-post__frame">
+							<time class="p-post__date" datetime="">{{page_content.date}}</time>
+							<h1 class="p-post__title">{{page_content.title}}</h1>
+							<div class="p-post__contents user-edit">
+								{{{page_content.content}}}
+							</div>
+						</div>
+						<div class="c-pagination">
+							<ul class="c-pagination__list">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a href="{{page_content.previous_page}}" {{#page_content.previous_page}}is-disabled{{/page_content.previous_page}}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--top">
+									<a href="/news">一覧へ戻る</a>
+								</li>
+								{{#page_content.next_page}}
+								<li class="c-pagination__item c-pagination__item--next">
+									<a href="{{page_content.next_page}}" {{#page_content.next_page}}is-disabled{{/page_content.next_page}}>次へ→</a>
+								</li>
+								{{/page_content.next_page}}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}
+

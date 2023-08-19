@@ -1,0 +1,17 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    import {account} from '/components/account/account.js';
+    
+    import { product } from '/components/product/product.js';
+    (async () => {
+         //await account.templateLogic();
+         /*
+         window.onload = async () =>{
+            await account.two_factor_authentication(true, ''); //true = 2fa is activated
+         }
+         */
+         
+
+    })();
+    
+</script>

@@ -1,0 +1,392 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>ショッピングカート</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-search">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ショッピングカート</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--cart">
+					<div class="l-container">
+						<ul class="p-cart__flowList">
+							
+							<li class="p-cart__flowItem is-current" style="width: calc(50% - 15px);">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の確認</div>
+							</li>
+							<li class="p-cart__flowItem" style="width: calc(50% - 15px);">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の完了</div>
+							</li>
+						</ul>
+						<h2 class="c-heading02__h2">お届け先住所</h2>
+						<div class="p-cart__address">
+							<dl class="p-cart__addressDef">
+								<dt class="p-cart__addressTitle">氏名</dt>
+								<dd class="p-cart__addressData"></dd>
+								<dt class="p-cart__addressTitle">住所</dt>
+								<dd class="p-cart__addressData">000-0000 </dd>
+							</dl>
+						</div>
+						<div class="c-button-wrap">
+							<button class="c-button c-button--reversal" href="#editAddress" data-lity="">変更</button>
+						</div>
+						<hr class="p-cart__hr">
+						<h2 class="c-heading02__h2">お届け日時</h2>
+						<div class="p-cart__date">
+							<dl class="p-cart__dateDef">
+								<dt class="p-cart__dateTitle">初回お届け予定日</dt>
+								<dd class="p-cart__dateData">2021年5月26日</dd>
+								<dt class="p-cart__dateTitle">ご希望の時間帯</dt>
+								<dd class="p-cart__dateData">指定しない</dd>
+								<dt class="p-cart__dateTitle">配送頻度</dt>
+								<dd class="p-cart__dateData">30日</dd>
+								<dt class="p-cart__dateTitle">配達メモ</dt>
+								<dd class="p-cart__dateData">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</dd>
+							</dl>
+						</div>
+						<div class="c-button-wrap">
+							<button class="c-button c-button--reversal" href="#editDate" data-lity="">変更</button>
+						</div>
+						<hr class="p-cart__hr">
+						<h2 class="c-heading02__h2">お支払い方法</h2>
+						<ol id="payment" class="p-cart__payment js-cart__payment">
+							<li class="p-cart__paymentItem p-cart__paymentItem js-cart__paymentItem is-active">
+								<div class="p-cart__paymentType">
+									<input type="radio" class="p-cart__paymentCheck js-cart__paymentCheck" name="paymentType" checked="">
+									<span class="p-cart__paymentTypeName">クレジットカード</span>
+								</div>
+								<div class="p-cart__paymentDetail js-cart__paymentDetail" style="">
+									<div class="p-cart__text">
+										以下のクレジットカードをご利用いただけます。
+										<img src="{{{base_url}}}/static/images/mypage/mypage_img_gmopg-cards.png" alt="">
+									</div>
+									<table class="c-form">
+										<tbody>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード番号</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_holdername" type="text" autocomplete="off" placeholder="" value="" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">カード名義</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_ccNo" name="cardNumber" pattern="[0-9]*" type="tel" autocomplete="off" maxlength="17" placeholder="**** **** **** ****" value="" class="c-form__input c-form__input--text">
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">有効期限</label></th>
+												<td class="c-form__data">
+													<div class="c-form__inline">
+														<select id="imgmopg_expdate_month" class="c-form__input c-form__input--select">
+															<option value="">MM</option>
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+														</select>
+														<span>&nbsp;月&nbsp;</span>
+														<select id="imgmopg_expdate_year" class="c-form__input c-form__input--select">
+															<option value="">YYYY</option>
+															<option value="2020">2020</option>
+															<option value="2021">2021</option>
+															<option value="2022">2022</option>
+															<option value="2023">2023</option>
+															<option value="2024">2024</option>
+															<option value="2025">2025</option>
+															<option value="2026">2026</option>
+															<option value="2027">2027</option>
+															<option value="2028">2028</option>
+															<option value="2029">2029</option>
+															<option value="2030">2030</option>
+															<option value="2031">2031</option>
+															<option value="2032">2032</option>
+															<option value="2033">2033</option>
+															<option value="2034">2034</option>
+															<option value="2035">2035</option>
+															<option value="2036">2036</option>
+															<option value="2037">2037</option>
+															<option value="2038">2038</option>
+															<option value="2039">2039</option>
+															<option value="2040">2040</option>
+														</select>
+														<span>&nbsp;年&nbsp;</span>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th class="c-form__head"><label class="c-form__label c-form__label--required">セキュリティコード</label></th>
+												<td class="c-form__data">
+													<input id="imgmopg_cvv" name="cvc2" pattern="[0-9]*" type="tel" autocomplete="off" placeholder="CVC" maxlength="4" class="c-form__input c-form__input--text">
+													<div class="c-form__attention">※セキュリティコード：主にカードの裏面の署名欄に記載されている末尾3桁～4桁の数字をご記入下さい。</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</li>
+							<li class="p-cart__paymentItem p-cart__paymentItem js-cart__paymentItem">
+								<div class="p-cart__paymentType">
+									<input type="radio" class="p-cart__paymentCheck js-cart__paymentCheck" name="paymentType">
+									<span class="p-cart__paymentTypeName">代引</span>
+								</div>
+								<div class="p-cart__paymentDetail js-cart__paymentDetail" style=""></div>
+							</li>
+						</ol>
+						<hr class="p-cart__hr">
+
+
+						<h2 class="c-heading02__h2">注文内容</h2>
+						<table class="p-cart__table">
+							<thead>
+								<tr class="p-cart__tableRow">
+									<th class="p-cart__tableHead p-cart__tableHead--ctrl"></th>
+									<th class="p-cart__tableHead p-cart__tableHead--product" colspan="2">商品名</th>
+									<th class="p-cart__tableHead p-cart__tableHead--price">単価（税別）</th>
+									<th class="p-cart__tableHead p-cart__tableHead--quantity">数量</th>
+									<th class="p-cart__tableHead p-cart__tableHead--">小計（税別）</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#items}}
+									<tr class="p-cart__tableRow">
+										<td class="p-cart__tableData p-cart__tableData--ctrl">
+											<div class="p-cart__button-wrap">
+											
+											</div>
+										</td>
+										<td class="p-cart__tableData  p-cart__tableData--image">
+											<img class="object-fit" src="{{{images.0.src}}}" alt="">
+										</td>
+										<td class="p-cart__tableData p-cart__tableData--name" data-label="商品名">{{name}}</td>
+										<td class="p-cart__tableData p-cart__tableData--price" data-label="単価">{{parseToLocaleString}}円<small class="u-sp--inline">（税別）</small></td>
+										<td class="p-cart__tableData p-cart__tableData--quantity" data-label="数量"><input type="number" id="quantity_{{id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="{{quantity}}" title="数" size="4" inputmode="numeric"></td>
+										<td class="p-cart__tableData p-cart__tableData--subtotal" data-label="小計">{{computeItemPrice}}円<small class="u-sp--inline">（税別）</small></td>
+									</tr>
+								{{/items}}
+							</tbody>
+						</table>
+						<dl class="p-cart__subtotalDef">
+							<dt class="p-cart__subtotalTitle">小計（税別）</dt>
+							<dd class="p-cart__subtotalData">円</dd>
+							<dt class="p-cart__subtotalTitle">消費税</dt>
+							<dd class="p-cart__subtotalData">円</dd>
+							<dt class="p-cart__subtotalTitle">クーポン値引き</dt>
+							<dd class="p-cart__subtotalData">円</dd>
+							<dt class="p-cart__subtotalTitle">送料</dt>
+							<dd class="p-cart__subtotalData">円</dd>
+							<dt class="p-cart__subtotalTitle">代引き手数料</dt>
+							<dd class="p-cart__subtotalData">円</dd>
+						</dl>
+						<dl class="p-cart__totalDef">
+							<dt class="p-cart__totalTitle">合計金額（税込）</dt>
+							<dd class="p-cart__totalData">円</dd>
+						</dl>
+
+						<div class="c-button-wrap c-button-wrap--vertical">
+							<button type="button" class="c-button c-button--reversal" onclick="checkout()" name="woocommerce_checkout_place_order" id="place_order_bottom" value="注文する" data-value="注文する">注文を確定する</button>
+							<a class="c-button" href="{{{home_url}}}/cart" value="カートに戻る">カートに戻る</a>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			<div class="c-modal">
+				<div id="editAddress" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お届け先住所
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">お名前</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" placeholder="(例) 山田" class="c-form__input c-form__input--text" id="surname" autocomplete="surname" value="">
+											<span>&nbsp;</span>
+											<input type="text" placeholder="(例) 太郎" class="c-form__input c-form__input--text" id="firstname" autocomplete="firstname" value="">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">郵便番号</label></th>
+									<td class="c-form__data">
+										<div class="c-form__inline">
+											<input type="text" class="c-form__input c-form__input--text" name="postal" id="postal" onkeyup="setPostal(false)" onchange="postalValidation()" placeholder="(例) 1234567">
+											<span>&nbsp;</span>
+											<button class="c-form__button c-form__button--reversal" onclick="setPostal(false)">郵便番号検索</button>
+										</div>
+										<div class="c-form__attention">※半角数字ハイフンなしで入力（例：1234567）</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">都道府県</label></th>
+									<td class="c-form__data">
+										<select name="shipping_state" id="shipping_state" class="c-form__input c-form__input--select" data-placeholder="お選びください" tabindex="-1" aria-hidden="true">
+											<option value="">お選びください</option>
+											<option value="北海道">北海道</option>
+											<option value="青森県">青森県</option>
+											<option value="岩手県">岩手県</option>
+											<option value="宮城県">宮城県</option>
+											<option value="秋田県">秋田県</option>
+											<option value="山形県">山形県</option>
+											<option value="福島県">福島県</option>
+											<option value="茨城県">茨城県</option>
+											<option value="栃木県">栃木県</option>
+											<option value="群馬県">群馬県</option>
+											<option value="埼玉県">埼玉県</option>
+											<option value="千葉県">千葉県</option>
+											<option value="東京都">東京都</option>
+											<option value="神奈川県">神奈川県</option>
+											<option value="新潟県">新潟県</option>
+											<option value="富山県">富山県</option>
+											<option value="石川県">石川県</option>
+											<option value="福井県">福井県</option>
+											<option value="山梨県">山梨県</option>
+											<option value="長野県">長野県</option>
+											<option value="岐阜県">岐阜県</option>
+											<option value="静岡県">静岡県</option>
+											<option value="愛知県">愛知県</option>
+											<option value="三重県">三重県</option>
+											<option value="滋賀県">滋賀県</option>
+											<option value="京都府">京都府</option>
+											<option value="大阪府">大阪府</option>
+											<option value="兵庫県">兵庫県</option>
+											<option value="奈良県">奈良県</option>
+											<option value="和歌山県">和歌山県</option>
+											<option value="鳥取県">鳥取県</option>
+											<option value="島根県">島根県</option>
+											<option value="岡山県">岡山県</option>
+											<option value="広島県">広島県</option>
+											<option value="山口県">山口県</option>
+											<option value="徳島県">徳島県</option>
+											<option value="香川県">香川県</option>
+											<option value="愛媛県">愛媛県</option>
+											<option value="高知県">高知県</option>
+											<option value="福岡県">福岡県</option>
+											<option value="佐賀県">佐賀県</option>
+											<option value="長崎県">長崎県</option>
+											<option value="熊本県">熊本県</option>
+											<option value="大分県">大分県</option>
+											<option value="宮崎県">宮崎県</option>
+											<option value="鹿児島県">鹿児島県</option>
+											<option value="沖縄県">沖縄県</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">市区</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="municipality" id="municipality">
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--required">町名・番地</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--textt" name="town" id="town" value="">
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label c-form__label--optional">建物名、部屋番号 など</label></th>
+									<td class="c-form__data">
+										<input type="text" class="c-form__input c-form__input--text" name="bldg" id="bldg" value="">
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" id="save-email" onclick="saveAddress()">変更を保存する</button>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div id="editDate" class="c-modal__wrap js-modal__wrap lity-hide">
+					<h3 class="c-modal__heading">
+						お届け日時指定
+					</h3>
+					<div class="c-modal__contents">
+						<table class="c-form">
+							<tbody>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">初回お届け予定日</label></th>
+									<td class="c-form__data">
+										<select class="c-form__input c-form__input--select" id="del-date">
+											<option value="none">指定日なし</option>
+											<option value="2021-05-14">2021年5月14日</option>
+											<option value="2021-05-15">2021年5月15日</option>
+											<option value="2021-05-16">2021年5月16日</option>
+											<option value="2021-05-17">2021年5月17日</option>
+											<option value="2021-05-18">2021年5月18日</option>
+											<option value="2021-05-19">2021年5月19日</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">お届ご希望の時聞帯</label></th>
+									<td class="c-form__data">
+										<select class="c-form__input c-form__input--select" id="del-time">
+											<option value="0">指定時間帯なし</option>
+											<option value="1">午前中 (8時〜12時)</option>
+											<option value="2">12時〜14時</option>
+											<option value="3">14時〜16時</option>
+											<option value="4">16時〜18時</option>
+											<option value="5">18時〜21時</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th class="c-form__head"><label class="c-form__label">配達メモ</label></th>
+									<td class="c-form__data">
+										<textarea class="c-form__input c-form__input--textarea" id="message-modal" maxlength="100" placeholder="その他、配送に関するご希望はこちらにご記入ください。
+（例：宅配BOXに入れてください）
+※ご希望に添えない場合がございます事、予めご了承ください。" rows="5"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="c-button-wrap">
+							<button type="button" class="c-button c-button--reversal" onclick="saveDate()">変更</button>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+
+
+
+			</section>
+		</article>
+	</main>
+{{{footer}}}

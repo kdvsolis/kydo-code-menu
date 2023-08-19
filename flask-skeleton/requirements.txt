@@ -1,0 +1,14 @@
+openai
+python-dotenv
+flask
+requests
+beautifulsoup4
+httplib2
+cloudinary
+google-search-results
+urllib3==1.26.5
+pandas
+matplotlib
+ipywidgets
+sentence-transformers
+datasets

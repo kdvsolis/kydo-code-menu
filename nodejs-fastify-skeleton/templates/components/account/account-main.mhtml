@@ -1,0 +1,56 @@
+<script type="module">
+	import {account} from '/components/account/account.js?v={{accountVersion}}';
+	
+	let notReviewedProducts = JSON.parse('{{{product_names}}}');
+
+	async function logout(e){
+		await account.logoutUser();
+		location.reload();
+	}
+
+	(async() => {
+		let userInfo = await account.getUser();
+		document.querySelector(".c-heading02__link").addEventListener("click", logout);
+		document.getElementById('logout').addEventListener("click", logout);
+		document.getElementById('logout').addEventListener("touchstart", logout);
+		document.getElementById('logout').addEventListener("touchend", logout);
+
+		if (userInfo.isPremiumUser == true){
+		document.querySelectorAll(".p-mypage__menuItem")[4].style.display = "block";
+		}
+	})();
+
+	notReviewedProducts.forEach(async function(product_name){
+		document.getElementById("product-" + product_name.id).onclick = async function(){
+			let rating = 0;
+			document.querySelector('.p-mypage__reviewEditLabel').innerHTML = product_name.name;
+			document.querySelector('.p-mypage__reviewEditImage').children[0].src = product_name.image;
+			document.getElementById('rev-modal-submit').onclick = async function(){
+				document.getElementById('rev-modal-submit').disabled = true;
+				document.getElementById('rev-modal-submit').innerHTML = "投稿中です";
+				let review = document.getElementById("rev-modal-content").value ? document.getElementById("rev-modal-content").value : ' ' ;
+				document.getElementsByName('rating001').forEach(e=>{
+					if(e.checked){
+						rating = e.id
+					}
+				})
+
+				let response = await account.submitReview(product_name.id, review, rating);
+				console.log(response);
+				if(response.success){
+					location.reload();
+				}
+				else{
+					document.getElementById('rev-modal-submit').disabled = false;
+				    document.getElementById('rev-modal-submit').innerHTML = "投稿";
+				}
+			};
+			for(let i = 1; i <= 5; i++){
+				document.getElementById(i).onclick = async function(event){
+					rating = i;
+				};
+			};
+		};
+	});
+	
+</script>

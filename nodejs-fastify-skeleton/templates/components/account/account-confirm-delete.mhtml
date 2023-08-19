@@ -1,0 +1,21 @@
+<script type="module">
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+
+    document.querySelector('.c-button--reversal').onclick = async function(){
+		try{
+			let userInfo = await account.getUser();
+
+			console.log("userInfo: " + userInfo.id);
+			let reason = document.getElementById("cancel-reason-text").value;
+
+			console.log("reason: " + reason)
+			let deleteAccount = await account.cancelUser(userInfo.id, reason);
+
+			location.reload()
+
+		}catch(e){
+			console.log(e);
+		}
+	}
+</script>

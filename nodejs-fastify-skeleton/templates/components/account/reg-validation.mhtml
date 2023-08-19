@@ -1,0 +1,31 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    import {account} from '/components/account/account.js?v={{accountVersion}}';
+    (async () => {
+         account.templateLogic();
+         
+         window.onload = async () => {
+             console.log('pre-press')
+             await account.two_factor_authentication(true, false);
+             let new_user_data;
+             let hospital_data;
+             document.getElementById('confirm-form').addEventListener('click', async function(){
+                 console.log('post-press')
+                let x = await account.validateFormTest('registration', true);
+                console.log('valid registration?', x.status);
+                new_user_data = x.data;
+                hospital_data = x.hospital_valid;
+             })
+             
+             document.getElementById('saveBtn').addEventListener('click', async function(event){
+                 await account.confirmNewUser(new_user_data,hospital_data)
+                 account.templateLogic();
+             })
+             
+         }
+        account.limitInput()
+
+    })();
+    
+</script>

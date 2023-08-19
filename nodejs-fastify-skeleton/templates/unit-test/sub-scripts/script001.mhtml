@@ -1,0 +1,19 @@
+<script type="module">
+    import { account } from '/components/account/account.js';
+
+    QUnit.module('authpass', function() {
+        QUnit.test('should authenticate user', async function(assert) {
+            let response = await account.authenticateUser("test3@gmail.com", "1rootadmin");
+            await account.logoutUser();
+            assert.equal(response.success, true);
+        });
+    });
+    
+    QUnit.module('authfail', function() {
+        QUnit.test('should authenticate user', async function(assert) {
+            let response = await account.authenticateUser("testing@admin.com", "root");
+            await account.logoutUser();
+            assert.equal(response.success, false);
+        });
+    });
+</script>

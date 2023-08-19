@@ -1,0 +1,736 @@
+{{{header}}}
+	<div id="mainvisual" class="p-home_mainvisual">
+		<!-- 縦長の画像を設定する場合 -->
+		<div class="p-home_mainvisual__images u-sp">
+			<ol class="p-home_mainvisual__slider p-home_mainvisual__slider--portrait js-home_mainvisual__slider--portrait">
+				<li><a href="https://virbac-services.jp/campaign/zenflex" target="_blank"><img src="{{{base_url}}}/static/images/index/banner_zen_sp.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/zenflex" target="_blank"><img src="{{{base_url}}}/static/images/index/banner_flex_sp.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/hpm_b" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_385sample-sp.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/pronefra" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_pronefra-sp.jpg"></a></li>
+				<li><a href="https://line.me/R/ti/p/%40860zuhne" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_line-sp.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/special/hpm_b/" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_hpm-sp.jpg"></a></li>
+<!-- 基本期間限定バナー→HPM→LINE
+				<li><a href="https://go.pardot.com/l/480061/2020-10-01/27z9cs" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_img04-sp.jpg"></a></li>
+				<li><a href="https://go.pardot.com/l/480061/2020-10-05/27zsgx" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_img06-sp.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/special/lp_feluro/" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_feluro-sp.jpg"></a></li>
+
+-->
+			</ol>
+		</div>
+		<!-- 横長の画像を設定する場合 -->
+		<div class="p-home_mainvisual__images u-pc">
+			<ol class="p-home_mainvisual__slider p-home_mainvisual__slider--landscape js-home_mainvisual__slider--landscape">
+				<li><a href="https://virbac-services.jp/campaign/zenflex" target="_blank"><img src="{{{base_url}}}/static/images/index/banner_zen_pc.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/zenflex" target="_blank"><img src="{{{base_url}}}/static/images/index/banner_flex_pc.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/hpm_b" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_385sample-pc.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/campaign/pronefra" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_pronefra-pc.jpg"></a></li>
+				<li><a href="https://line.me/R/ti/p/%40860zuhne" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_line-pc.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/special/hpm_b/" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_hpm-pc.jpg"></a></li>
+<!-- 基本期間限定バナー→HPM→LINE
+				<li><a href="https://go.pardot.com/l/480061/2020-10-01/27z9cs" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_img04-pc.jpg"></a></li>
+				<li><a href="https://go.pardot.com/l/480061/2020-10-05/27zsgx" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_img06-pc.jpg"></a></li>
+				<li><a href="https://virbac-services.jp/special/lp_feluro/" target="_blank"><img src="{{{base_url}}}/static/images/index/index_slider_feluro-pc.jpg"></a></li>
+-->
+			</ol>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-home">
+			<section id="type" class="p-home_type">
+				<div class="p-home__section p-home__section--type">
+					<div class="l-container">
+						<h2 class="c-heading01__h2">
+							商品を探す
+						</h2>
+						<ol class="c-type">
+							<li class="c-type__item">
+								<a class="c-type__link" href="#dog">
+									<div class="c-type__icon">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog.svg">
+									</div>
+									<div class="c-type__label c-type__label--dog">
+										犬用商品
+									</div>
+								</a>
+							</li>
+							<li class="c-type__item">
+								<a class="c-type__link" href="#cat">
+									<div class="c-type__icon">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat.svg">
+									</div>
+									<div class="c-type__label c-type__label--cat">
+										猫用商品
+									</div>
+								</a>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			<section id="dog" class="p-home_dog">
+				<div class="p-home__section p-home__section--dog">
+					<div class="l-container">
+						<h2 class="c-headingDog__h2">
+							犬用商品
+						</h2>
+						<section>
+							<h3 class="c-heading01__h3">
+								カテゴリーから探す
+							</h3>
+							<ol class="c-category">
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/dog/normal-health-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-normal.png" alt="">
+										</div>
+										<div class="c-category__label">
+											総合栄養食
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/dog/premium-care-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-premium.png" alt="">
+										</div>
+										<div class="c-category__label">
+											食事療法食
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/dog/normal-dental-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-dental.png" alt="">
+										</div>
+										<div class="c-category__label">
+											デンタル
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__image" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-supplement.png" alt="">
+										</div>
+										<div class="c-category__label">
+											サプリメント
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-skin.png" alt="">
+										</div>
+										<div class="c-category__label">
+											スキンケア
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/dog/normal-snack-dog">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-category-snacks.png" alt="">
+										</div>
+										<div class="c-category__label">
+											機能性おやつ
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+							</ol>
+						</section>
+						<section>
+							<h3 class="c-heading01__h3">
+								目的から探す
+							</h3>
+							<ol class="c-purpose">
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-neutered">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-neutered.svg" alt="NEUTERED">
+										</div>
+										<div class="c-purpose__label">
+											避妊・去勢後ケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-weight">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-weight.svg" alt="WEIGHT">
+										</div>
+										<div class="c-purpose__label">
+											体重のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-urology">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-urology.svg" alt="UROLOGY">
+										</div>
+										<div class="c-purpose__label">
+											泌尿器のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-gastro">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-gastro.svg" alt="GASTRO">
+										</div>
+										<div class="c-purpose__label">
+											お腹・肝臓のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-kidney">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-kidney.svg" alt="KIDNEY">
+										</div>
+										<div class="c-purpose__label">
+											腎臓のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-allergy">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-allergy.svg" alt="ALLERGY">
+										</div>
+										<div class="c-purpose__label">
+											食物アレルギー
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-skin">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-skincare.svg" alt="SKIN CARE">
+										</div>
+										<div class="c-purpose__label">
+											皮膚被毛のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-dental">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-dental.svg" alt="DENTAL">
+										</div>
+										<div class="c-purpose__label">
+											デンタルケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-joint">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-joint.svg" alt="JOINT">
+										</div>
+										<div class="c-purpose__label">
+											関節のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/dog/dog-behavior">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-behavior.svg" alt="BEHAVIOR">
+										</div>
+										<div class="c-purpose__label">
+											あんしんケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+							</ol>
+						</section>
+						<div class="c-button-wrap">
+							<a class="c-button c-button--dog" href="{{{home_url}}}/product/dog">犬用商品一覧</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="cat" class="p-home_cat">
+				<div class="p-home__section p-home__section--cat">
+					<div class="l-container">
+						<h2 class="c-headingCat__h2">
+							猫用商品
+						</h2>
+						<section>
+							<h3 class="c-heading01__h3">
+								カテゴリーから探す
+							</h3>
+							<ol class="c-category">
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/cat/normal-health-cat">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-normal.png" alt="">
+										</div>
+										<div class="c-category__label">
+											総合栄養食
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/cat/premium-care-cat">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-premium.png" alt="">
+										</div>
+										<div class="c-category__label">
+											食事療法食
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/cat/normal-dental-cat">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-dental.png" alt="">
+										</div>
+										<div class="c-category__label">
+											デンタル
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__image" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-supplement.png" alt="">
+										</div>
+										<div class="c-category__label">
+											サプリメント
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-skin.png" alt="">
+										</div>
+										<div class="c-category__label">
+											スキンケア
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item">
+									<a class="c-category__link" href="{{{home_url}}}/product/category/cat/normal-feliway">
+										<div class="c-category__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-category-mental.png" alt="">
+										</div>
+										<div class="c-category__label">
+											フェリウェイ
+										</div>
+									</a>
+								</li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+								<li class="c-category__item c-category__item--empty"></li>
+							</ol>
+							<h3 class="c-heading01__h3">
+								目的から探す
+							</h3>
+							<ol class="c-purpose">
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-neutered">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-neutered.svg" alt="NEUTERED">
+										</div>
+										<div class="c-purpose__label">
+											避妊・去勢後ケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-weight">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-weight.svg" alt="WEIGHT">
+										</div>
+										<div class="c-purpose__label">
+											体重のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-urology">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-urology.svg" alt="UROLOGY">
+										</div>
+										<div class="c-purpose__label">
+											泌尿器のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-gastro">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-gastro.svg" alt="GASTRO">
+										</div>
+										<div class="c-purpose__label">
+											お腹・肝臓のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-kidney">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-kidney.svg" alt="KIDNEY">
+										</div>
+										<div class="c-purpose__label">
+											腎臓のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-skin">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-skincare.svg" alt="SKIN CARE">
+										</div>
+										<div class="c-purpose__label">
+											皮膚被毛のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-dental">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-dental.svg" alt="DENTAL">
+										</div>
+										<div class="c-purpose__label">
+											デンタルケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-joint">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-joint.svg" alt="JOINT">
+										</div>
+										<div class="c-purpose__label">
+											関節のお悩み
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item">
+									<a class="c-purpose__link" href="{{{home_url}}}/product/purpose/cat/cat-behavior">
+										<div class="c-purpose__image">
+											<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-behavior.svg" alt="BEHAVIOR">
+										</div>
+										<div class="c-purpose__label">
+											あんしんケア
+										</div>
+									</a>
+								</li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+								<li class="c-purpose__item c-purpose__item--empty"></li>
+							</ol>
+						</section>
+						<div class="c-button-wrap">
+							<a class="c-button c-button--cat" href="{{{home_url}}}/product/cat">猫用商品一覧</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="history" class="p-home_history">
+				<div class="p-home__section p-home__section--history">
+					<div class="l-container carousel--history">
+						<h2 class="c-heading01__h2">
+							閲覧した商品
+						</h2>
+
+					</div>
+				</div>
+			</section>
+			<section id="reorder" class="p-home_reorder">
+				<div class="p-home__section p-home__section--reorder">
+					<div class="l-container carousel--reorder">
+						<h2 class="c-heading01__h2">
+							もう一度買う
+						</h2>
+
+						<div class="c-button-wrap">
+							<a class="c-button" href="{{{home_url}}}/my-page/orders">注文履歴を確認する</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="ambassador" class="p-home_ambassador">
+				<div class="p-home__section p-home__section--ambassador">
+					<div class="l-container">
+						<h2 class="p-home_ambassador__heading">
+							<span>第2期</span>
+							ビルバック公式アンバサダー
+						</h2>
+						<div class="p-home_ambassador__lead">
+							ビルバックの魅力を一緒に伝えてくれる<br>わんちゃん&#x1f436;ねこちゃん&#x1f63a;が決定しました！<br>
+							みなさまご応募ありがとうございました
+						</div>
+						<ol class="p-home_ambassador__list">
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/tanuunibiwa" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/tanuunibiwa.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">TANU☆UNI☆<br class="u-pc--inline">BIWA</div>
+										<div class="p-home_ambassador__account">@tanuunibiwa</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--cat">
+											<div class="p-home_ambassador__petName">たぬ</div>
+											<div class="p-home_ambassador__petAge">6歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/ao_fukujin_matthew" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/ao_fukujin_matthew.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">Ao ＆ Matthew ＆ Fukujin</div>
+										<div class="p-home_ambassador__account">@ao_fukujin_matthew</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--cat">
+											<div class="p-home_ambassador__petName">愛生</div>
+											<div class="p-home_ambassador__petAge">1歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/taichan.family" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/taichan.family.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">たいちゃん！<br class="u-pc--inline">ファミリー！</div>
+										<div class="p-home_ambassador__account">@taichan.family</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--cat">
+											<div class="p-home_ambassador__petName">みゆき</div>
+											<div class="p-home_ambassador__petAge">1歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/mame.saku" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/mame.saku.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">柴犬 さく</div>
+										<div class="p-home_ambassador__account">@mame.saku</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--dog">
+											<div class="p-home_ambassador__petName">さく</div>
+											<div class="p-home_ambassador__petAge">6歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/sora__0803" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/sora__0803.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">ビションプー sora♀🧸☁*°</div>
+										<div class="p-home_ambassador__account">@sora__0803</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--dog">
+											<div class="p-home_ambassador__petName">空(そら)</div>
+											<div class="p-home_ambassador__petAge">1歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item">
+								<a class="p-home_ambassador__link" href="https://www.instagram.com/hachimitsu_crayon" target="_blank">
+									<div class="p-home_ambassador__ribbon"><span></span></div>
+									<div class="p-home_ambassador__image"><img src="{{{base_url}}}/static/images/ambassador/term02/hachimitsu_crayon.jpg" alt=""></div>
+									<div class="p-home_ambassador__meta">
+										<div class="p-home_ambassador__handle">はちみつ<br class="u-pc--inline">クレヨン</div>
+										<div class="p-home_ambassador__account">@hachimitsu_crayon</div>
+										<div class="p-home_ambassador__pet p-home_ambassador__pet--dog">
+											<div class="p-home_ambassador__petName">はちみつ</div>
+											<div class="p-home_ambassador__petAge">4歳</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li class="p-home_ambassador__item p-home_ambassador__item--empty"></li>
+							<li class="p-home_ambassador__item p-home_ambassador__item--empty"></li>
+						</ol>
+						<div class="p-home_ambassador__text">
+							<span>アンバサダー応援はインスタグラムから</span>
+						</div>
+						<div class="c-button-wrap">
+							<a class="c-button" href="https://www.instagram.com/virbac_japan/" target="_blank">
+								<figure class="c-image-hover">
+									<img src="{{{base_url}}}/static/images/common/common_ico_sns-instagram-pink.svg">
+									<figcaption>
+										<img src="{{{base_url}}}/static/images/common/common_ico_sns-instagram-white.svg">
+									</figcaption>
+								</figure>
+								<span>公式インスタグラムはこちら</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="appeal" class="p-home_appeal">
+				<div class="p-home__section p-home__section--appeal">
+					<div class="l-container">
+						<h2 class="c-heading01__h2">
+							ビルバック商品の魅力
+						</h2>
+						<div class="p-home_appeal__row">
+							<div class="p-home_appeal__col p-home_appeal__col--image">
+								<img class="u-pc" src="{{{base_url}}}/static/images/index/index_appeal_img-pc.png">
+								<img class="u-sp" src="{{{base_url}}}/static/images/index/index_appeal_img-sp.png">
+							</div>
+							<div class="p-home_appeal__col p-home_appeal__col--contents">
+								<p class="p-home_appeal__lead">
+									犬と猫にとっての最高の商品が<br>
+									ビルバックにとっての最高の商品です。
+								</p>
+								<p class="p-home_appeal__text p-home_appeal__text--point">
+									ご飯も、歯みがきも、シャンプーも。ビルバックなら全部あります。
+								</p>
+								<ol class="p-home_appeal__point">
+									<li class="p-home_appeal__pointItem">毎日、健康のために使える商品をたくさん揃えてきました</li>
+									<li class="p-home_appeal__pointItem">ペットフードから医薬品まで、ペットの色々な悩みに合う豊富なラインアップ</li>
+									<li class="p-home_appeal__pointItem">犬と猫がほんとうに必要なものは？という思いで商品をつくっています</li>
+								</ol>
+								<p class="p-home_appeal__text">
+									全国の動物病院から推奨され、通販でもお手軽にお届け。<br>
+									ペットの健康を、もっと手軽に。もっとわかりやすく。<br>
+									看護師のように寄り添う、親身な通販サービスを目指しています。
+								</p>
+							</div>
+						</div>
+						<div class="c-button-wrap">
+							<a class="c-button" href="{{{home_url}}}/guarantee">ビルバックの満足保証</a>
+							<a class="c-button" href="{{{home_url}}}/find-hospitals">提携病院を検索する</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="faq" class="p-home_faq">
+				<div class="p-home__section p-home__section--faq">
+					<div class="l-container">
+						<h2 class="c-heading01__h2">
+							よくある質問
+						</h2>
+						<ol class="p-home_faq__list">
+							<li class="p-home_faq__listItem">
+								<a class="p-home_faq__listTag" href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000NINdGAO/%E9%85%8D%E9%80%81" target="_blank">
+									配送
+								</a>
+								<a class="p-home_faq__listLink" href="https://virbacjapan.force.com/hpmfaqpo/s/article/%E9%80%81%E6%96%99%E3%81%AF%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E3%82%89%E7%84%A1%E6%96%99%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B" target="_blank">
+									送料はいくらから無料になりますか？
+								</a>
+							</li>
+							<li class="p-home_faq__listItem">
+								<a class="p-home_faq__listTag" href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000NINdGAO/%E9%85%8D%E9%80%81" target="_blank">
+									配送
+								</a>
+								<a class="p-home_faq__listLink" href="https://virbacjapan.force.com/hpmfaqpo/s/article/%E6%B3%A8%E6%96%87%E3%81%97%E3%81%A6%E3%81%8B%E3%82%89%E4%BD%95%E6%97%A5%E3%81%A7%E5%B1%8A%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B" target="_blank">
+									注文してから何日で届きますか？
+								</a>
+							</li>
+							<li class="p-home_faq__listItem">
+								<a class="p-home_faq__listTag" href="https://virbacjapan.force.com/hpmfaqpo/s/topic/0TO10000000VenDGAS/%E5%AE%9A%E6%9C%9F%E8%B3%BC%E5%85%A5" target="_blank">
+									定期購入
+								</a>
+								<a class="p-home_faq__listLink" href="https://virbacjapan.force.com/hpmfaqpo/s/article/%E5%AE%9A%E6%9C%9F%E8%B3%BC%E5%85%A5%E3%81%A0%E3%81%A8-%E3%81%A9%E3%81%AE%E3%81%90%E3%82%89%E3%81%84%E3%81%8A%E5%BE%97%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B" target="_blank">
+									定期購入だと、どのぐらいお得になりますか？
+								</a>
+							</li>
+						</ol>
+						<div class="c-button-wrap">
+							<a class="c-button" href="https://virbacjapan.force.com/hpmfaqpo/s/" target="_blank">よくある質問一覧</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="qa" class="p-home_qa">
+				<div class="p-home__section p-home__section--qa">
+					<div class="l-container">
+						<h2 class="c-heading01__h2">
+							ペットのお悩みQ&A
+						</h2>
+
+						<ol class="c-newPost">
+						{{#qa_list}}
+							<li class="c-newPost__item">
+								<a class="c-newPost__tag" href="{{home_url}}/pet-qa/?category={{category.slug}}">
+									{{category.name}}
+								</a>
+								<p class="c-newPost__date">{{date}}</p>
+								<a class="c-newPost__link c-newPost__link--{{type.slug}}" href="{{{home_url}}}/pet-qa/{{slug}}">
+									{{title.rendered}}
+								</a>
+							</li>
+						{{/qa_list}}
+						</ol>
+
+						<section>
+							<div class="c-dTag-box c-dTag-box--dog">
+								<h3>詳細タグから探す</h3>
+								<ol class="c-dTag">
+									{{#dog_tag_list}}
+									<li class="c-dTag__item"><a class="c-dTag__link" href="{{home_url}}/pet-qa/?tags={{slug}}">{{name}}</a></li>
+									{{/dog_tag_list}}
+								</ol>
+							</div>
+							<div class="c-dTag-box c-dTag-box--cat">
+								<h3>詳細タグから探す</h3>
+								<ol class="c-dTag">
+									{{#cat_tag_list}}
+									<li class="c-dTag__item"><a class="c-dTag__link" href="{{home_url}}/pet-qa/?tags={slug}}">{{name}}</a></li>
+									{{/cat_tag_list}}
+								</ol>
+							</div>
+						</section>
+						<div class="c-button-wrap">
+							<a class="c-button" href="{{{home_url}}}/pet-qa">ペットのお悩みQ&A一覧</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="news" class="p-home_news">
+				<div class="p-home__section p-home__section--news">
+					<div class="l-container">
+						<h2 class="c-heading01__h2">
+							最新情報
+						</h2>
+<!-- 値もらう -->
+						<ol class="c-newPost">
+						    {{#posts}}
+							<li class="c-newPost__item">
+								<a class="c-newPost__tag" href="#">
+									お知らせ
+								</a>
+								<p class="c-newPost__date">{{date}}</p>
+								<a class="c-newPost__link" href="{{{home_url}}}/news/{{slug}}">
+									{{title}}
+								</a>
+							</li>
+						    {{/posts}}
+						</ol>
+						<div class="c-button-wrap">
+							<a class="c-button" href="{{{home_url}}}/news">新着情報一覧</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

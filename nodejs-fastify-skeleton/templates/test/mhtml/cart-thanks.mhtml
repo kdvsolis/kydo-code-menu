@@ -1,0 +1,82 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/cart">ショッピングカート</a></li>
+				<li class="is-current"><span>ご注文の完了</span></li>
+			</ul>
+		</div>
+	</div>
+	<div style="display: none;">{{#order}}
+		{{#line_items}}
+		<span data-id="{{id}}"></span>
+		<span data-name="{{name}}"></span>
+		<span data-variation_id="{{variation_id}}"></span>
+		<span data-quantity="{{quantity}}"></span>
+		<span data-subtotal="{{subtotal}}"></span>
+		<span data-subtotal_tax="{{subtotal_tax}}"></span>
+		{{/line_items}}
+		<span data-coupon_total="{{coupon_lines.0.discount}}"></span>
+		<span data-coupon_tax="{{coupon_lines.0.discount_tax}}"></span>
+		<span data-fee_total="{{fee_lines.0.total}}"></span>
+		<span data-fee_total_tax="{{fee_lines.0.total_tax}}"></span>
+		<span data-shipping_total="{{shipping_lines.0.total}}"></span>
+		<span data-shipping_total_tax="{{shipping_lines.0.total_tax}}"></span>
+	{{/order}}</div>
+	<main id="main" class="l-main">
+		<article class="p-search">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ショッピングカート</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--cart">
+					<div class="l-container">
+						<ul class="p-cart__flowList">
+							<li class="p-cart__flowItem">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">カートのご確認</div>
+							</li>
+							<li class="p-cart__flowItem">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の確認</div>
+							</li>
+							<li class="p-cart__flowItem is-current">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の完了</div>
+							</li>
+						</ul>
+						<div class="p-cart__thanks">
+							<div class="p-cart__thanksText">
+								ご注文ありがとうございました！<br>
+								商品の到着までしばらくお待ちください
+							</div>
+							<img src="{{{base_url}}}/static/images/cart/cart_img_thanks.png">
+						</div>
+						<div class="p-cart__orderFrame">
+							<dl class="p-cart__orderDef">
+								<dt class="p-cart__orderTitle">注文受付番号</dt>
+								<dd class="p-cart__orderData">#<span id="order_id">{{{order.id}}}</span></dd>
+								<dt class="p-cart__orderTitle">注文日時</dt>
+								<dd class="p-cart__orderData">{{date_purchased}}</dd>
+								<dt class="p-cart__orderTitle">メール</dt>
+								<dd class="p-cart__orderData">{{{email}}}</dd>
+								<dt class="p-cart__orderTitle">支払い金額</dt>
+								<dd class="p-cart__orderData"><span id="total_quantity">{{quantity_total}}</span>点 <span id="total_price">{{total_price}}</span>円</dd>
+							</dl>
+						</div>
+						<div class="c-button-wrap c-button-wrap--vertical">
+							<a class="c-button c-button--reversal" href="{{{home_url}}}/my-page/orders/{{{order.id}}}">ご注文内容の確認はこちら</a>
+							<button type="button" class="c-button" onclick="window.location.href='/'" >ショッピングを続ける</button>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

@@ -1,0 +1,86 @@
+<script type="module">
+    import mustache from 'https://unpkg.com/mustache@latest/mustache.mjs';
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+    import { checkoutService } from '/services/checkout.service.js?v={{checkoutServiceVersion}}';
+
+    let coupons = [];
+    let user_token = cookieService.getCookieValue('token');
+    let userInfo = {success: false}; //Get user info if available
+
+    async function loadCoupons(){
+        userInfo = user_token != ""? await account.getUser() : {success: false};
+        coupons = (await checkoutService.getCoupons()).coupons;
+        
+        let coupon_template = (`\{\{#coupons\}\}
+                                    <li class="p-mypage__couponItem">
+                                        <div class="p-mypage__couponName">\{\{description\}\}</div>
+                                    </li>
+                                {\{/coupons\}\}`);
+        userInfo = user_token != ""? await account.getUser() : {success: false};
+        coupons = (await checkoutService.getCoupons()).coupons;
+        document.querySelector('.p-mypage__couponList').innerHTML = mustache.render(coupon_template, { coupons: coupons });
+    }
+    document.querySelector('.c-form__button.c-form__button--reversal').onclick = async function(){
+        let coupons_validate = (await checkoutService.getCoupons(document.getElementById("coupon").value, true));
+        let groups = coupons_validate.groups;
+        let coupon_index = coupons_validate.coupons.findIndex(r => r.code == document.getElementById("coupon").value.toUpperCase());
+        coupons_validate = coupons_validate.coupons;
+
+        if(document.getElementById("coupon").value.toUpperCase() !==""){
+            document.getElementById('coupon_error').style.display = 'none';
+            if(coupon_index != -1){
+                
+                if(coupons_validate[coupon_index].expiry){
+                    if( new Date() > new Date(coupons_validate[coupon_index].expiry.date)){
+                        //Show expired modal
+                        document.getElementById('coupon_error').innerText = 'ご入力のクーポンの有効期限は終了しました。';
+                        document.getElementById('coupon_error').style.display = 'block';
+                        return;
+                    }
+                }
+                // if(!isPremiumUser &&  coupons_validate[coupon_index].customer_type == "premium"){
+                //     //show non premium modal
+                //     return;
+                // }
+                if(coupons_validate[coupon_index].product_group != ""){
+                    if(coupons.findIndex(r => r.product_group == coupons_validate[coupon_index].product_group ) > -1 ||
+                        groups[coupons_validate[coupon_index].product_group] > 0){
+                        //show invalid product group modal
+                        document.getElementById('coupon_error').innerText = 'ご入力のクーポンコードは無効です。';
+                        document.getElementById('coupon_error').style.display = 'block';
+                        return;
+                    }
+                }
+                if(coupons_validate[coupon_index].count == 0) { 
+                    //show coupon already used
+                    document.getElementById('coupon_error').innerText = 'ご入力のクーポンコードは既に利用されています。';
+                    document.getElementById('coupon_error').style.display = 'block';
+                    return;
+                }
+                if(coupons.findIndex(r => r.code == coupons_validate[coupon_index].code) == -1){
+                    //show add confirmation
+                    coupons.push(coupons_validate[coupon_index]);
+                    document.querySelector('.p-mypage__couponList').innerHTML = mustache.render(coupon_template, { coupons: coupons });
+                    document.getElementById('coupon_error').innerText = 'クーポンを追加しました。';
+                    document.getElementById('coupon_error').style.display = 'block';
+                    return;
+                } else {
+                    document.getElementById('coupon_error').innerText = 'ご入力のクーポンコードは既に利用されています。';
+                    document.getElementById('coupon_error').style.display = 'block';
+                    // modal_message = "ご入力のクーポンコードは既に利用されています";
+                    // lowerButton = '<b> 閉じる </b>'
+                    // $('#myModal2').modal('show');
+                    return;
+                }
+            }  else {
+                // show invalid coupon
+                document.getElementById('coupon_error').innerText = 'このクーポンは無効です。';
+                document.getElementById('coupon_error').style.display = 'block';
+                return;
+            } 
+            
+        }
+    };
+    loadCoupons();
+</script>

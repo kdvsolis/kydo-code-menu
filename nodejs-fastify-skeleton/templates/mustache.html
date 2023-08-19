@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{product.name}}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+</head>
+<style>
+	.center{
+		text-align: center;
+	}
+	
+</style>
+<style>
+    figure {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 40px;
+        margin-inline-end: 40px;
+        margin: 0;
+    }
+
+    .wp-block-image .aligncenter {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    _im_product_review_group
+    /* .wp-block-image .aligncenter, .wp-block-image .alignleft, .wp-block-image .alignright, .wp-block-image.is-resized {
+        display: table;
+        margin-left: 0;
+        margin-right: 0;
+    } */
+
+    .aligncenter {
+        clear: both;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .wp-block-image img {
+        max-width: 100%;
+    }
+
+    .wp-block-image {
+        max-width: 100%;
+        margin-bottom: 1em;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .n2-section-smartslider {
+        position: relative;
+        width: 100%;
+    }
+
+    .n2-ss-align.n2-ss-align-visible {
+        overflow: visible;
+    }
+
+    .n2-ss-align {
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .rating {
+        padding: 0;
+        list-style: none;
+        display: block;
+        margin-left: 0px;
+    }
+
+    .rating li {
+        color: #0274be;
+        font-size: 15px;
+        display: inline-block;
+    }
+
+    .pcol {
+        width: 47%;
+        margin: auto;
+    }
+
+    .carousel-inner img {
+        width: 600px !important;
+        height: 600px;
+        object-fit: contain;
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    #carousel-desktop {
+        display: block;
+    }
+
+    #carousel-mobile {
+        display: none;
+    }
+
+    @media screen and (max-width: 990px) {
+        .ast-container {
+            max-width: 90%;
+        }
+
+        .carousel-inner>img {
+            height: 269px;
+        }
+
+        .carousel-inner img {
+            max-width: 100%;
+            height: 300px;
+        }
+
+        .product_details {
+            flex-direction: column !important;
+        }
+
+        .pcol {
+            width: 100%;
+        }
+
+        h1.entry-title {
+            font-size: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        #carousel-desktop {
+            display: none;
+        }
+
+        #carousel-mobile {
+            display: block;
+        }
+    }
+
+    .ast-container {
+        max-width: 1240px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .red {
+        background-color: black;
+    }
+
+    .carousel-indicators {
+        position: initial;
+        margin-top: 20px;
+    }
+
+    .carousel-indicators li {
+        /* border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        background-color: #545454; */
+        width: 100px;
+        height: 100px;
+    }
+
+    .carousel-indicators li img {
+        /* border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        background-color: #545454; */
+        width: 100px;
+        height: 100px;
+    }
+
+    .carousel-indicators li img {
+        /* background-color: #09b474; */
+        opacity: 0.3;
+        object-fit: contain;
+    }
+
+    .carousel-indicators li:hover img {
+        /* background-color: #09b474; */
+        opacity: 1;
+    }
+
+    .carousel-indicators li.active img {
+        /* background-color: #09b474; */
+        opacity: 1;
+    }
+
+    #product_col2 a {
+        color: #0274be;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    .price {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .alignnone {
+        width: 295px;
+        height: 80px;
+    }
+
+    .quantity {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .qty {
+        max-width: 15%;
+        text-align: center;
+        min-height: 35px;
+        color: #666;
+        padding: .75em;
+        height: auto;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #eaeaea;
+        border-radius: 2px;
+        background: #fafafa;
+        box-shadow: none;
+        box-sizing: border-box;
+        transition: all .2s linear;
+        border-color: #ddd;
+        background: #fff !important;
+        box-shadow: none;
+        border-radius: 0;
+        font-size: 14px;
+    }
+
+    .add_to_cart_button {
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 5px;
+        border-color: #1f497d;
+        border: none;
+        background-color: #1f497d;
+        color: #FFFFFF !important;
+        padding: 10px 30px 10px 30px;
+    }
+
+    .table {
+        width: 100%;
+        display: block;
+        border: 0;
+        background-color: #FFFFFF;
+    }
+
+    .table td img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .nutrition img {
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    .shop__thumb {
+        /* border: 1px solid rgba(0, 0, 0, 0.05); */
+        /* padding: 20px; */
+        /* margin-bottom: 20px; */
+        /* background-color: white; */
+        /* text-align: center; */
+        -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
+        -o-transition: border-color 0.1s, box-shadow 0.1s;
+        transition: border-color 0.1s, box-shadow 0.1s;
+    }
+
+    .shop__thumb:hover {
+        /* border-color: rgba(0, 0, 0, 0.07);
+      -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07); */
+    }
+
+    .shop__thumb>a {
+        color: #333333;
+    }
+
+    .shop__thumb>a:hover {
+        text-decoration: none;
+    }
+
+    .shop-thumb__img {
+        position: relative;
+        margin: auto;
+        overflow: hidden;
+        max-width: 255px;
+        max-height: 255px;
+    }
+
+    .shop-thumb__img>img {
+        max-width: 255px;
+        max-height: 255px;
+        object-fit: contain;
+    }
+
+    .shop-thumb__title {
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px;
+        padding: 0;
+        font-size: 14px !important;
+        font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+    }
+
+    .shop-thumb__price {
+        color: #777777;
+    }
+
+    #tabs {
+        background: white;
+        color: black;
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: 0px;
+        margin-top: 10px;
+    }
+
+    .nav-fill .nav-item {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        text-align: left;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        color: black;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px solid black !important;
+        font-size: 12px;
+        font-weight: bold;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs .nav-link {
+        color: black;
+        font-size: 12px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .nav-tabs {
+        width: 100%;
+        border-bottom: 1;
+
+    }
+
+    #comments {
+        margin-left: 20px;
+    }
+
+    .woocommerce-Reviews-title {
+
+        margin-bottom: 50px !important;
+    }
+
+    .woocommerce-Reviews p {
+        font-size: 14px;
+    }
+
+    .woocommerce-verification-required {
+        font-size: 14px;
+        margin-left: 20px;
+
+    }
+
+    .product-link {
+        color: #007bff;
+    }
+
+    .product-link:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+    .col-md-3 {
+        margin-bottom: 25px;
+    }
+
+
+    .img-responsive {
+        width: 42vw;
+    }
+
+    @media screen and (max-width: 321px) {
+        .col-product {
+            max-width: 50%;
+        }
+
+        .add_to_cart_button {
+            padding: 5px 15px 5px 15px;
+            font-size: 10px;
+        }
+
+        #vbtabs a {
+            font-size: 14px;
+        }
+
+        .shop-thumb__img>img {
+            max-width: 200px;
+            max-height: 180px;
+            object-fit: contain;
+        }
+
+        .nav-tabs {
+            width: 100vw;
+            border-bottom: 1;
+            margin-left: calc(-50vw + 50%);
+        }
+    }
+
+    @media screen and (max-width: 990px) and (min-width:321px) {
+        .col-product {
+            max-width: 50%;
+        }
+
+        .add_to_cart_button {
+            font-size: 10px;
+        }
+
+        #vbtabs a {
+            font-size: 14px;
+        }
+
+        .shop-thumb__img>img {
+            max-width: 140px;
+            max-height: 140px;
+            object-fit: contain;
+        }
+
+        .nav-tabs {
+            width: 100vw;
+            border-bottom: 1;
+            margin-left: calc(-50vw + 50%);
+        }
+    }
+
+    .product-detail-page .product-title {
+        text-align: left !important;
+        font-size: 26px !important;
+        width: 50% !important;
+    }
+
+    .product-detail-page .ratings {
+        font-size: 20px;
+        color: #ffc002;
+    }
+
+
+
+    .product-detail-page .carousel .carousel-inner .carousel-item img {
+        margin: auto;
+    }
+
+
+    .product-detail-page .rating-count {
+        font-size: 14px !important;
+        padding-top: 5px;
+    }
+    #product-info {
+        text-align: left !important;
+        font-size: 16px;
+        width: 50%;
+        display: inline-block;
+        color:  #c00000;
+    }
+
+    @media screen and (max-width: 990px) {
+        .product-detail-page .product-title {
+            text-align: left !important;
+            font-size: 16px !important;
+            width: 50%  !important;
+        }
+
+        .btn-add {
+            width: 100%;
+        }
+
+        #product-info {
+            text-align: left !important;
+            font-size: 16px;
+            width: 100%;
+            display: inline-block;
+            color:  #c00000;
+        }
+    }
+
+    .carousel-indicators {
+        position: initial;
+        margin-top: 20px;
+    }
+
+    .carousel-indicators li {
+        border-radius: 100%;
+        width: 10px;
+        height: 10px;
+        background-color: #DFDBD8;
+    }
+
+    .nav-item {
+        font-size: 14px;
+    }
+
+    .carousel-indicators li:hover {
+        background-color: #B0A59E;
+    }
+
+    .carousel-indicators li.active {
+        background-color: #B0A59E;
+    }
+
+
+    .btn-size {
+        background-color: white;
+        border: solid 2px #1f497d;
+    }
+
+    .btn-group .active {
+        background-color: #1f497d;
+        color: #FFFFFF;
+    }
+
+    .btn-add {
+        max-width: 344px;
+        background-color: #004C98;
+        color: #FFFFFF;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    .btn-add2 {
+        max-width: 344px;
+        background-color: gray;
+        color: #FFFFFF;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .shop-thumb__title {
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px;
+        margin-left: 20px !important;
+        padding: 0;
+        font-size: 12px !important;
+        font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    }
+
+    .shop-thumb__img {
+        text-align: center;
+    }
+
+    .carousel-control-product-next-icon:after {
+        content: '>';
+        font-size: 35px;
+        color: #E2DDDB;
+    }
+
+    .carousel-control-product-prev-icon:after {
+        content: '<';
+        font-size: 35px;
+        color: #E2DDDB;
+    }
+
+    .items-holder {
+        margin-top: 15px;
+    }
+
+    .product-link {
+        color: #007bff;
+        font-size: 12px;
+    }
+
+    .product-link:hover {
+        color: black;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .product-link-holder {
+        padding-left: 20px !important;
+        width: 170px;
+        height: 60px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .close {
+        font-size: 50px;
+    }
+
+    .button {
+        width: 70%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 200 !important;
+    }
+
+    .modal-body {
+        padding-bottom: 60px;
+    }
+
+    .modal-full {
+        min-width: 90%;
+
+    }
+
+    .modal-full .modal-content {
+        min-height: 30vh;
+        height: 100%;
+    }
+
+    .modal-fonts {
+        font-size: 15px;
+    }
+
+    .modal,
+    .show,
+    .fade {
+        padding-right: unset !important;
+    }
+
+    .carousel-control-product-next-icon:after {
+        content: '>';
+        font-size: 35px;
+        color: #E2DDDB;
+    }
+
+    .carousel-control-product-prev-icon:after {
+        content: '<';
+        font-size: 35px;
+        color: #E2DDDB;
+    }
+
+    .rating-content {
+        width: 55%;
+    }
+
+    .rating-input {
+        width: 45%;
+    }
+
+    .rating {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+    }
+
+    .rating>input {
+        display: none
+    }
+
+    .rating>label {
+        position: relative;
+        width: 1em;
+        font-size: 24px;
+        color: #f5deb3;
+        cursor: pointer
+    }
+
+    .rating>label::before {
+        content: "\2605";
+        position: absolute;
+        opacity: 1;
+    }
+
+    .rating>label:hover:before,
+    .rating>label:hover~label:before {
+        opacity: 1;
+        color: #ffc002;
+
+    }
+
+    .rating>input:checked~label:before {
+        opacity: 1;
+        color: #ffc002;
+
+    }
+
+    .rating:hover>input:checked~label:before {
+        opacity: 1;
+        color: #ffc002;
+
+    }
+
+    .submit-review {
+        color: #FFFFFF;
+        margin-top: 10px;
+        width: 110px;
+        margin: 0;
+        /* width: 100%;
+        color: #FFFFFF; */
+        background-color: #1f497b;
+        font-weight: bold;
+    }
+
+    .rating-input-content {
+        border: 2px solid #E2DDDB;
+        margin: 30px;
+        padding: 20px;
+    }
+
+    @media screen and (max-width: 990px) {
+        #reviews {
+            display: block !important;
+        }
+
+        .rating-content {
+            width: 100% !important;
+        }
+
+        .rating-input {
+            width: 100% !important;
+        }
+
+        .rating-input-content {
+            margin: 0;
+            padding: 10px;
+        }
+    }
+
+    .subs-list-item {
+        display: flex;
+        /* justify-content: space-between; */
+        align-items: center;
+    }
+
+    .normal-subs-label {
+        font-size: 16px;
+    }
+    #normal-cart {
+        border: solid 1px black;
+        border-radius: 10px 10px 0 0;
+    }
+    #subs-cart {
+        border: solid 1px black;
+        border-radius: 0 0 10px 10px;
+    }   
+
+    .background_gray {
+        background-color: #e0dbd8;
+    }
+    /* input[type=radio],
+    input[type=checkbox] {
+    display: none;
+    } */
+    /* ul li input[type="radio"]:checked + label {
+        background-color: yellow;
+    } */
+    /* .normal-subs-label #collapseCc:not(.show) {
+        background-color: #e0dbda;
+    } */
+    /* .collapse:not(show){ 
+       
+    }  */
+</style>
+
+<style>
+    .banner-everydaycare img{
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 269px;
+        height: 269px;
+        max-width: 100%;
+        object-fit: contain;
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+</style>
+<body>
+<div class="ast-container">
+    <div class="content-area primary">
+	<div class="center">
+		<div class="d-flex align-items-end bd-highlight mb-3">
+			<span class="mr-auto product-title " id="product-name" itemprop="headline" style="font-size: 26px; text-align: left; width: 50%;">{{product.name}}</span>
+			
+		</div>
+		<div>
+			{{#note}}
+			<span class="mr-auto" id="product-info" itemprop="headline">※2020年10月中旬より「HPM 猫用 ストルバイト＆シュウ酸塩結石」の製品名とパッケージがリニューアルされました。疾患の適応に変更はありませんので、引き続き本品をご使用いただけます。</span>
+			{{/note}}
+			{{#note2}}
+				<span class="mr-auto" id="product-info" itemprop="headline">※2020年11月新発売</span>
+			{{/note2}}
+		</div>
+		<div>
+			<div class="mb-5">
+				<div
+					id="carouselExampleIndicators"
+					class="carousel slide"
+					data-ride="carousel"
+				>
+				<div class="carousel-inner">
+				{{#images}}	
+				<div class="carousel-item item {{isActive}}">
+				<img class="image-carousel" src="{{src}}" alt="" />
+				</div>
+				{{/images}}
+				</div>
+				<a
+				class="carousel-control-prev"
+				href="#carouselExampleIndicators"
+				role="button"
+				data-slide="prev"
+				>
+				<span
+				class="carousel-control-product-prev-icon"
+				aria-hidden="true"
+				></span>
+				<span class="sr-only">Previous</span>
+				</a>
+				<a
+				class="carousel-control-next"
+				href="#carouselExampleIndicators"
+				role="button"
+				data-slide="next"
+				>
+				<span
+				class="carousel-control-product-next-icon"
+				aria-hidden="true"
+				></span>
+				<span class="sr-only">Next</span>
+				</a>
+				<ol class="carousel-indicators">
+				{{#images}}
+				<li
+				data-target="#carouselExampleIndicators"
+				data-slide-to="{{increment}}"
+				class=""
+				></li>
+				{{/images}}
+				</ol>
+				</div>
+			</div>
+		</div>
+		<div class="order_review text-left">
+			<div id="payment" class="woocommerce-checkout-payment">
+			   <ul id="subs-list" class="wc_payment_methods payment_methods methods">
+				  <li id="normal-cart"  class="subs-list-item ">
+					 <input id="payment_method_imgmopg"  checked="checked" type="radio" class="input-radio" data-toggle="collapse"
+						data-target="#collapseNormal" name="payment_method" value="normal"  onclick="check(this.value)"
+						data-order_button_text="" style="cursor:pointer;margin-left: 20px;
+						margin-right: 20px; ">
+				   
+						<div style="padding: 10px; line-height: 2.2;" class="normal-subs-label">
+							<span style="font-size: 18px; font-weight: 600; display: block">通常購入</span>
+							<span style="font-size: 16px; font-weight: 600;">値段:</span> 
+							{{#dis_price}}
+							<span id="price_id"
+								style="padding-top: 9px;font-size: 20px;"><del>{{regular}}</del>
+								<red>{{original}}</red> 円 (税別)
+							</span>
+							{{/dis_price}}
+							{{^dis_price}}
+							<span  id="price_id"
+								style="padding-top: 9px;font-size: 20px;">{{original}}
+								円 (税別)
+							</span>
+							{{/dis_price}}
+							
+							<div class="payment_box payment_method_imgmopg collapse show" id="collapseNormal" data-parent="#subs-list">
+								<span style="font-size: 16px; font-weight: 600;">在庫:</span> <span style="color: red;">       
+								{{#instock}}
+									あり
+								{{/instock}}
+								{{#stocks}}
+									{{stockvalue}}
+								{{/stocks}}
+								{{#nostock}}
+									 なし
+								{{/nostock}}</span></br>
+								<span style="font-size: 16px; font-weight: 600; display: block">数量:</span>
+							
+								<input type="number" id="quantity_{{product.id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="1" title="数" size="4" inputmode="numeric">
+
+								{{#instock}}
+								<!-- <button id="cart-button" type="button" class="button btn-add" onclick="addToCart(<%= product.id %>)" value="カートに入れる">カートに入れる</button> -->
+								<button id="cart-button" type="button" class="button btn-add" onclick="addToCart()" value="カートに入れる">カートに入れる</button>
+								{{/instock}}
+								{{^instock}}
+								<!-- <button id="cart-button" type="button" class="button btn-add2" onclick="addToCart(<%= product.id %>)"
+									value="在庫切れ" disabled>在庫切れ</button> -->
+								<button id="cart-button" type="button" class="button btn-add2" onclick="addToCart()"
+									value="在庫切れ" disabled>在庫切れ</button>
+								{{/instock}}
+
+								<div style="font-size: 18px;line-height: 1;">
+									
+									<p>6,000円（税別）以上のお買い物で送料無料となります。<br>
+										※沖縄・離島を除く<br>※お試し用の商品には送料は一切かかりません
+									</p>
+								</div>
+							</div>
+						  
+						  
+					</div>
+				   
+				  </li>
+				  <li id="subs-cart"  class="subs-list-item background_gray">
+				 
+
+					 <input id="payment_method_cod" type="radio" class="input-radio collapsed" data-toggle="collapse"
+					 data-target="#collapseSubs"  name="payment_method" value="subs" data-order_button_text=""  onclick="check(this.value)" style="cursor:pointer;margin-left: 20px;
+							margin-right: 20px; ">
+						
+							<div style="padding: 10px; line-height: 2.2;" class="normal-subs-label">
+								<span style="font-size: 18px; font-weight: 600;">定期購入</span><span style="background-color:#f6c144; " class="ml-2">初回10％OFF</span></br>
+							 
+								<span style="font-size: 16px; font-weight: 600;">値段:</span>
+								<span>
+
+									{{#dis_price}}
+										<span id="price_id"
+											style="padding-top: 9px;font-size: 20px;"><del>{{regular}}</del>
+											<red>{{original}}</red> 円 (税別)
+										</span>
+									{{/dis_price}}
+									{{^dis_price}}
+										<span  id="price_id"
+											style="padding-top: 9px;font-size: 20px;">{{original}}
+											円 (税別)
+										</span>
+									{{/dis_price}} 
+								</span></br>
+								
+								<div  class="payment_box payment_method_cod collapse" id="collapseSubs" data-parent="#subs-list">
+									<span style="font-size: 16px; font-weight: 600;">在庫:</span> <span style="color: red;">
+									{{#instock}}
+										あり
+									{{/instock}}										
+									{{#stocks}}
+										{{stockvalue}}
+									{{/stocks}}
+									{{#nostock}}
+										 なし
+									{{/nostock}}
+									<span style="font-size: 16px; font-weight: 600; display: block">数量:</span>
+									<input type="number" id="quantity_subs_{{product.id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="1" title="数" size="4" inputmode="numeric">
+									<span style="font-size: 16px; font-weight: 600; display: block">配送頻度:</span>
+									
+                                    
+									<select id="frequency" class="form-control" style="max-width: 200px;">
+										<option value="30">30日（おすすめ)</option>
+										<option value="40">40日</option>
+									</select>
+									{{#instock}}
+									<!-- <button id="cart-subs-button" type="button" class="button btn-add" onclick="addToCartSubscribe(<%= product.id %>)" value="申し込む">申し込む</button> -->
+									<button id="cart-subs-button" type="button" class="button btn-add" onclick="addToCartSubscribe()" value="申し込む">申し込む</button>
+									{{/instock}}
+									{{^instock}}
+									<!-- <button id="cart-subs-button" type="button" class="button btn-add2" onclick="addToCartSubscribe(<%= product.id %>)" value="在庫切れ" disabled>在庫切れ</button> -->
+									<button id="cart-subs-button" type="button" class="button btn-add2" onclick="addToCartSubscribe()" value="在庫切れ" disabled>在庫切れ</button>
+									{{/instock}}
+
+									<!-- <button id="cart-button" type="button" class="button btn-add" value="申し込む">申し込む</button> -->
+									
+									<div style="font-size: 18px;line-height: 1;">
+										<p><a href="#">定期購入に関するよくある質問はこちら</a></p>
+										<p>6,000円（税別）以上のお買い物で送料無料となります。(ほか注意書き・さらに6,000円以上の定期申し込みで毎回１０％オフ！・6,000円未満で２回目以降は５％オフ)<br>※沖縄・離島を除く<br>※お試し用の商品には送料は一切かかりません
+										</p>
+									</div>
+								</div>
+							
+							
+						</div>
+				  </li>
+				
+			   </ul>
+			</div>
+		 </div>
+         <p>{{{product.short_description}}}</p>
+         <div id="tabs"></div>
+         <div id="product-tabs" class="col-xs-12 ">
+             <nav>
+                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                         href="#nav-description" role="tab" aria-controls="nav-home" aria-selected="true"
+                         style="width: 0px;">商品の特徴</a>
+                     <a class="nav-item nav-link" id="nav-ingredients-tab" data-toggle="tab"
+                         href="#nav-ingredients" role="tab" aria-controls="nav-ingredients" aria-selected="false"
+                         style="width: 0px; padding-right: 0px;">原材料</a>
+                     <a class="nav-item nav-link" id="nav-nutrition-tab" data-toggle="tab" href="#nav-nutrition"
+                         role="tab" aria-controls="nav-nutrition" aria-selected="false"
+                         style="width: 0px; padding-right: 0px;">商品詳細</a>
+                     <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews"
+                         role="tab" aria-controls="nav-reviews" aria-selected="false"
+                         style="width: 0px; padding-right: 0px;">レビュー</a>
+                 </div>
+             </nav>
+         </div>
+         <div class="tab-content py-3 px-3 px-sm-0" " id=" nav-tabContent">
+            {{{product.description}}}
+         </div>
+		
+	</div>
+    <p>
+        {{responseDataStringed}}
+    </p><br>
+    <p>
+        {{customerDataStringed}}
+    </p><br>
+    <p>
+        {{related_products}}
+    </p>
+	{{#modal1}}
+	<div class="modal fade" id="myModal2" role="dialog" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row no-gutters text-right">
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+					</div>
+					<div class="row no-gutters text-center">
+						<div class="col" style="background-color:#f0f5fa; padding: 30px; border: 1px solid">
+							<div class="row no-gutters">
+								<div class="col-12">
+									<p style="font-size:18px;" id="modalMessage2">すでにカートに入っています。</p><br>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<a id="upperButton2"> </a>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<button type="button" class="button modal-fonts"
+										style="color: #000000; background-color: #FFFFFF;" data-dismiss="modal"
+										id="lowerButton2"><b> 閉じる </b></button>
+										
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/modal1}}
+	{{#modal2}}
+	<div class="modal fade" id="myModal2" role="dialog" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row no-gutters text-right">
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+					</div>
+					<div class="row no-gutters text-center">
+						<div class="col" style="background-color:#f0f5fa; padding: 30px; border: 1px solid">
+							<div class="row no-gutters">
+								<div class="col-12">
+									<p style="font-size:18px;" id="modalMessage2">お試し商品は初回のお客様限定となっています。</p><br>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<a id="upperButton2"> </a>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<button type="button" class="button modal-fonts"
+										style="color: #000000; background-color: #FFFFFF;" data-dismiss="modal"
+										id="lowerButton2"><b> 閉じる </b></button>
+										
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/modal2}}
+	{{#modal3}}
+	<div class="modal fade" id="myModal2" role="dialog" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row no-gutters text-right">
+						<div class="col">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+					</div>
+					<div class="row no-gutters text-center">
+						<div class="col" style="background-color:#f0f5fa; padding: 30px; border: 1px solid">
+							<div class="row no-gutters">
+								<div class="col-12">
+									<p style="font-size:18px;" id="modalMessage2">食事療法食は、獣医師の診断・指示の基に与える、特別なペットフードです。獣医師の指示によらない給与は、健康上のリスクとなる可能性があります。ビルバックサービスでの食事療法食のご購入には「マイページ／会員情報変更」内の「かかりつけ病院の変更（6桁のユニークコードを入力）」欄に、病院専用コードの入力が必要です。食事療法食のお取り扱い病院は「病院を探す」から検索いただけます。</p><br>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<a id="upperButton2" href="/find-hospitals"><button type="button" class="button modal-fonts" style="color: white; background-color: #1f497d;"><b>病院を探す</b> </button></a>
+								</div>
+							</div>
+							<div class="row no-gutters">
+								<div class="col-12">
+									<button type="button" class="button modal-fonts"
+										style="color: #000000; background-color: #FFFFFF;" data-dismiss="modal"
+										id="lowerButton2"><b> 閉じる </b></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/modal3}}
+    </div>
+</div>
+
+    <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" class="site-footer" role="contentinfo">
+
+			
+
+        <div class="ast-small-footer footer-sml-layout-1">
+        <div class="ast-footer-overlay">
+        <div class="ast-container">
+            <div class="ast-small-footer-wrap">
+                <div class="ast-small-footer-section ast-small-footer-section-1">
+                <div class="ast-footer-widget-1-area"><aside id="text-2" class="widget widget_text">			
+                <div class="textwidget">
+        <ul>
+        <li><a href="/about">運営会社</a></li>
+        <li><a href="/terms">利用規約</a></li>
+        <li><a href="/privacy-policy">プライバシーポリシー</a></li>
+        </ul>
+        <ul>
+        <li><a href="/spec">特定商取引法に基づく表示</a></li>
+        </ul>
+        </div>
+        </aside>
+    </div>					
+</div>
+                
+        <div class="ast-small-footer-section ast-small-footer-section-2">Copyright © {{year}} <span class="ast-footer-site-title">ビルバック®サービス</span>					</div>
+                
+            </div><!-- .ast-row .ast-small-footer-wrap -->
+        </div><!-- .ast-container -->
+        </div><!-- .ast-footer-overlay -->
+        </div><!-- .ast-small-footer-->
+    
+        
+    </footer>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -1,0 +1,13 @@
+<script type="module">
+	import {account} from '/components/account/account.js?v={{accountVersion}}';
+
+    (async()=>{
+        if (document.getElementsByClassName('p-mypage__side').length > 0) {
+            let userInfo = await account.getUser();
+            if (userInfo.isPremiumUser) {
+                document.getElementById('sidemenu-samples').style.display = 'block';
+            }
+        }
+    })();
+
+</script>

@@ -1,0 +1,14 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    console.log("{{accountVersion}}", "{{{accountVersion}}}")
+    import {account} from '/components/account/account.js?v={{accountVersion}}';
+    
+    import { product } from '/components/product/product.js?v={{productVersion}}';
+    (async () => {
+         account.templateLogic();
+
+    })();
+    function modifyUser(user_id, data){
+        account.modifyUser(user_id, data);
+    }
+</script>

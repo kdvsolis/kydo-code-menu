@@ -1,0 +1,61 @@
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cart } from '/components/cart/cart.js?v={{cartVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+
+    let sample_health_dog = JSON.parse('{{{sample_health_dog}}}');
+    let sample_health_cat = JSON.parse('{{{sample_health_cat}}}');
+    let sample_dental_dog = JSON.parse('{{{sample_dental_dog}}}');
+    let sample_dental_cat = JSON.parse('{{{sample_dental_cat}}}');
+    let sample_feliway = JSON.parse('{{{sample_feliway}}}');
+    (async () => {
+        let user_token = cookieService.getCookieValue('token');
+        let userInfo = user_token != ""? await account.getUser() : {success: false}; //Duplicate for button purposes
+        let ordered_samples_index = userInfo.user_meta.findIndex(r => r.key == '_v_ordered_samples');
+        let ordered_samples = ordered_samples_index > -1? userInfo.user_meta[ordered_samples_index].value : [];
+
+        function loadProduct(product){
+            let sample_cat_flag = sample_dental_cat.findIndex(p => p.id == product.id) >= 0;
+            let sample_feliway_flag = sample_feliway.findIndex(p => p.id == product.id) >= 0;
+            let ordered = (ordered_samples.findIndex(r => r == product.id) > -1 || 
+                                                                     cart.getCartContents().findIndex(r => r.product_id == product.id) > -1);
+            
+            if (!sample_cat_flag) document.getElementById("item_" + product.id).disabled = ordered;
+            console.log('ordered', ordered, product.id);
+            if (ordered && sample_cat_flag) {
+                sample_dental_cat.forEach(function(i) {
+                    let item = document.getElementById('item_' + i.id);
+                    if (item != null) item.disabled = true;
+                    console.log('item', item);
+                });
+            }
+            let target_item = document.getElementById("item_" + product.id);
+            if (target_item != null) target_item.onclick = async function(e) {
+                await cart.updateCartItem(userInfo.id, product.id, 1);
+                cart.reloadCartUpperWidget();
+                e.target.disabled = true;
+                document.querySelector('.p-mypage__mainMessage.js-mypage__mainMessage').style.display = "block";
+                setTimeout(function(){
+                document.querySelector('.p-mypage__mainMessage.js-mypage__mainMessage').style.display = "none";
+                }, 5000);
+                if (sample_dental_cat.findIndex(p => p.id == product.id) >= 0) {
+                    sample_dental_cat.forEach(function(i) {
+                        let item = document.getElementById('item_' + i.id);
+                        if (item != null) {
+                            item.disabled = true;
+                        }
+                    });
+                }
+            }
+            // document.getElementById("item_" + product.id).onclick = function(){ window.location = "/sample-products/" + product.slug; }
+        }
+        sample_health_dog.forEach(loadProduct);
+        sample_health_cat.forEach(loadProduct);
+        sample_dental_dog.forEach(loadProduct);
+        sample_dental_cat.forEach(loadProduct);
+        sample_feliway.forEach(loadProduct);
+    })();
+
+</script>

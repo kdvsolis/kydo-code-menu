@@ -1,0 +1,34 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>パスワード再発行</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">パスワード再発行</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">
+						パスワード再設定のリクエストを承りました。<br>
+						パスワードリセット用リンクをご登録メールアドレスに送信しましたので、ご確認ください。<br>
+						※受信まで数分かかる場合がございます。予めご了承ください</p>
+				</div>
+			</div>
+			<div>
+				<div class="p-lower__section p-lower__section--mypage">
+				</div>
+			</div>
+		</article>
+	</main>
+{{{footer}}}

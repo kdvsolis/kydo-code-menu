@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  imsrestapi:
+    image: ims-service:latest
+    volumes:
+      - ./:/app
+    env_file: .env
+    extra_hosts:
+      - "remote:${EXT2_IMS}"
+    environment:
+      - DJ_SECRET_KEY=${DJ_SECRET_KEY}
+      - DJ_DEBUG=${DJ_DEBUG}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - LWA_APP_ID=${LWA_APP_ID}
+      - LWA_CLIENT_SECRET=${LWA_CLIENT_SECRET}
+      - AMAZON_TOKEN_URL=${AMAZON_TOKEN_URL}
+    ports:
+      - "8010:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"

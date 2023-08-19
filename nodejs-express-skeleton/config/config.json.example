@@ -1,0 +1,21 @@
+{
+    "local": {
+        "HOST": "localhost",
+        "PROTOCOL" : "http",
+        "LOG_PATH": "logs/",
+        "PORT": 3000,
+        "SMART_CONNECT":{
+            "baseURL": "https://smartr-userprofile-service-test-170.azurewebsites.net",
+            "apiKey" : "bW9iaWxlaHViOlNtYXJ0cnVzZXJwcm9maWxl"
+        },
+        "DB": {
+                "user": "xx",
+                "host": "localhost",
+                "database": "xxxx",
+                "password": "xxxx",
+                "dialect": "postgres",
+                "port": "5432",
+                "logging": false
+        }
+    }
+}

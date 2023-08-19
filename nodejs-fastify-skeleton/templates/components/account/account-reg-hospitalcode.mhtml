@@ -1,0 +1,29 @@
+
+<script type="module">
+    import {account} from '/components/account/account.js?v={{accountVersion}}';
+    (async () => {
+        let isValidHospital = await account.validateHospital();
+
+        console.log("hospital here: ",isValidHospital)
+
+        let hospital_label = document.createElement('label')
+        hospital_label.setAttribute('class', 'c-form__label')
+
+        let hospital_name = document.createElement('label')
+        hospital_name.setAttribute('class', 'c-form__label')
+      
+        let hLabelContainer = document.querySelectorAll('.c-form__head')[6]
+        let hDataContainer = document.querySelectorAll('.c-form__data')[6];
+
+        if (isValidHospital.success == true && isValidHospital.hospital_name != undefined){
+                hLabelContainer.removeChild(hLabelContainer.childNodes[0]);
+                hospital_label.innerHTML = 'かかりつけ病院';
+                hLabelContainer.appendChild(hospital_label)
+
+                hDataContainer.removeChild(hDataContainer.childNodes[0]);
+                hospital_name.innerHTML = isValidHospital.hospital_name
+                hDataContainer.appendChild(hospital_name)
+			}
+            
+    })();
+</script>

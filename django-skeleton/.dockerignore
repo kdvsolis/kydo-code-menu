@@ -1,0 +1,6 @@
+.dockerdev/
+.github/
+.pytest_cache/
+.venv/
+scripts/
+.git/

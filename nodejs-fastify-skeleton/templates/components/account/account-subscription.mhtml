@@ -1,0 +1,237 @@
+<script src="{{{shopBaseUrl}}}/ext/js/token.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script type="module">
+    import { account } from '/components/account/account.js';
+    import { checkout } from '/components/checkout/checkout.js';
+    import { cookieService } from '/services/cookie.service.js';
+
+    let address = null;
+    let name = null;
+    let phone = null;
+    let userInfo = { success: false };
+    
+    let hasCreditCard = "{{{hasCreditCard}}}" == "true";
+    let state_array = ["", "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県",
+        "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県",
+        "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県",
+        "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県",
+        "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県",
+        "大分県", "宮崎県",
+        "鹿児島県", "沖縄県"
+    ];    
+
+    async function executeCompute(hasSelected){
+        let user_token = cookieService.getCookieValue('token');
+        userInfo = user_token != ""? await account.getUser() : {success: false};
+        checkout.postcode = userInfo.postcode;
+        let prices = await checkout.computePrice(hasSelected);
+        let state = userInfo.state.startsWith("JP")? state_array[parseInt(userInfo.state.replace("JP", ""))] : userInfo.state;
+        address = address == null? {
+            address_1: userInfo.address_1,
+            address_2: userInfo.address_2,
+            city: userInfo.city,
+            state: userInfo.state,
+            country: userInfo.country,
+            postcode: userInfo.postcode
+        } : address;
+        name = name == null? {
+            first_name: userInfo.first_name,
+            last_name: userInfo.last_name
+        } : name;
+        phone = phone == null? userInfo.phone : phone;
+        document.getElementById('address_name').innerHTML = userInfo.success? name.last_name + " " + name.first_name : '';
+        document.getElementById('address_street').innerHTML = userInfo.success? address.postcode.substr(0, 3) + '-' + address.postcode.substr(3) + ' ' + state + address.city + address.address_1 + address.address_2 : '';
+    };
+
+	async function loadPostalAddress(){
+		try{
+			let postal = (await checkout.getPostal(document.getElementById('postal').value.replace("-", ""))).response;
+			document.getElementById("shipping_state").value = postal.pref.name;
+			document.getElementById('municipality').value =  postal.city.name;
+		} catch(e){
+			console.error(e);
+		}
+    }
+
+	 document.addEventListener('click', async function(event) {
+        if (event.target.getAttribute('href') == ('#editAddress')) {
+            event.preventDefault();
+            let state = address.state.startsWith("JP")? state_array[parseInt(address.state.replace("JP", ""))] : address.state;
+            //console.log("state: ", state, "state.1 : ", address.state);
+            let postal = (await checkout.getPostal(address.postcode.replace("-", ""))).response;
+            document.getElementById('surname_modal').value = name.last_name;
+            document.getElementById('firstname_modal').value = name.first_name;
+            document.getElementById('postal').value = address.postcode;
+            document.getElementById('town').value = address.address_1;
+            document.getElementById('bldg').value = address.address_2;
+            document.getElementById("shipping_state").value = state;
+            document.getElementById('municipality').value =  address.city;
+            //document.getElementById('contactno').value = phone;
+        }
+        if (event.target.getAttribute('href') == ('#editPayment')) {
+            event.preventDefault();
+            document.getElementById('imgmopg_holdername').value = '';
+        	document.getElementById('imgmopg_ccNo').value = '';
+			document.getElementById('imgmopg_expdate_month').value = '';
+			document.getElementById('imgmopg_expdate_year').value = '';
+			document.getElementById('imgmopg_cvv').value = '';
+        }
+    }, false);
+
+	//document.querySelectorAll('.c-form__button.c-form__button--reversal')[0].onclick = loadPostalAddress;
+
+	document.getElementById('postal').oninput = loadPostalAddress;
+
+	document.querySelectorAll('.c-button.c-button--reversal')[2].onclick = async function(event){
+        event.preventDefault();
+        let state_name = document.getElementById("shipping_state").value;
+        let state_number = state_array.findIndex(r => r == state_name).toString().padStart(2, "0");
+        name.last_name = document.getElementById('surname_modal').value;
+        name.first_name = document.getElementById('firstname_modal').value;
+        address.postcode = document.getElementById('postal').value;
+        address.address_1 = document.getElementById('town').value;
+        address.address_2 = document.getElementById('bldg').value;
+        address.state = state_number > -1? "JP" + state_number : "";
+        address.city = document.getElementById('municipality').value;
+        //phone = document.getElementById('contactno').value;
+        let new_user_data = {
+            meta_data: [{}],
+            billing: {},
+            shipping: {}
+		};
+        new_user_data.first_name = name.first_name;
+        new_user_data.last_name = name.last_name;
+        
+        new_user_data.billing.first_name = name.first_name;
+        new_user_data.billing.last_name =  name.last_name;
+        new_user_data.billing.state = address.state;
+        new_user_data.billing.city = address.city;
+        new_user_data.billing.address_1 = address.address_1;
+        new_user_data.billing.address_2 = address.address_2;
+        new_user_data.billing.postcode = address.postcode;
+        new_user_data.shipping.first_name = new_user_data.billing.first_name
+        new_user_data.shipping.last_name = new_user_data.billing.last_name
+        new_user_data.shipping.state = new_user_data.billing.state
+        new_user_data.shipping.city = new_user_data.billing.city
+        new_user_data.shipping.address_1 = new_user_data.billing.address_1
+        new_user_data.shipping.address_2 = new_user_data.billing.address_2
+        new_user_data.shipping.postcode = new_user_data.billing.postcode
+        console.log(document.getElementById('shipping_state').value, state_array.findIndex(r => r == document.getElementById('shipping_state').value),"--------");
+        let state = state_array[parseInt(new_user_data.shipping.state.replace("JP","") || 0)];
+        //console.log("state 2: ", state);
+        let validAddress = await account.validateAddress();
+        if (validAddress.success==true){
+            validAddress.data.billing.state = address.state;
+            validAddress.data.shipping.state = new_user_data.billing.state;
+            console.log(await account.modifyUser(userInfo.id, validAddress.data));
+        }
+        
+
+        document.getElementById('address_name').innerHTML = name.last_name + " " + name.first_name;
+        //document.getElementById('address_street').innerHTML = address.address_1 + " " + address.address_2 + " " + address.city + " " + state_name + " " + address.country;
+        //document.getElementById('address_street').innerHTML = address.postcode + " " + state + " " + address.city + " " + address.address_1 + " " + address.address_2;        
+        document.getElementById('address_street').innerHTML = address.postcode.substr(0, 3) + '-' + address.postcode.substr(3) + ' ' + state + address.city + address.address_1 + address.address_2;
+        //document.querySelectorAll('.p-cart__addressData')[2].innerHTML = phone;
+
+        document.querySelector('.lity-close').click();
+    }
+
+	document.querySelectorAll('.c-button.c-button--reversal')[3].onclick = async function(event){
+		event.preventDefault();
+		let cardNo = document.getElementById("imgmopg_ccNo").value;
+		let expire = document.getElementById("imgmopg_expdate_year").value + '' + document.getElementById("imgmopg_expdate_month").value
+		let security = document.getElementById("imgmopg_cvv").value; 
+		let holder_name = document.getElementById("imgmopg_holdername").value;
+			
+		let tokenRequestPayload = {
+			expire: expire,
+			cardno: cardNo,
+			securityCode: security,
+			holdername: holder_name,
+			tokennumber: '1'
+		}
+		let GET_TOKEN_RESULT = {
+                '000': 'トークン取得正常終了',
+                '100': 'カード番号必須チェックエラー',
+                '101': 'カード番号フォーマットエラー(数字以外を含む)',
+                '102': 'カード番号フォーマットエラー(10-16 桁の範囲外)',
+                '110': '有効期限必須チェックエラー',
+                '111': '有効期限フォーマットエラー(数字以外を含む)',
+                '112': '有効期限フォーマットエラー(6 又は 4 桁以外)',
+                '113': '有効期限フォーマットエラー(月が 13 以上)',
+                '121': 'セキュリティコードフォーマットエラー(数字以外を含む)',
+                '122': 'セキュリティコード桁数エラー',
+                '131': '名義人フォーマットエラー(半角英数字、一部の記号以外を含む)',
+                '132': '名義人フォーマットエラー(51 桁以上)',
+                '141': '発行数フォーマットエラー(数字以外を含む)',
+                '142': '発行数フォーマットエラー(1-10 の範囲外)',
+                '150': 'カード情報を暗号化した情報必須チェックエラー',
+                '160': 'ショップ ID 必須チェックエラー',
+                '161': 'ショップ ID フォーマットエラー(14 桁以上)',
+                '162': 'ショップ ID フォーマットエラー(半角英数字以外)',
+                '170': '公開鍵ハッシュ値必須チェックエラー',
+                '180': 'ショップ ID または公開鍵ハッシュ値がマスターに存在しない',
+                '190': 'カード情報(Encrypted)が復号できない',
+                '191': 'カード情報(Encrypted)復号化後フォーマットエラー',
+                '501': 'トークン用パラメータ(id)が送信されていない',
+                '502': 'トークン用パラメータ(id)がマスターに存在しない',
+                '511': 'トークン用パラメータ(cardInfo)が送信されていない',
+                '512': 'トークン用パラメータ(cardInfo)が復号できない',
+                '521': 'トークン用パラメータ(key)が送信されていない',
+                '522': 'トークン用パラメータ(key)が復号できない',
+                '531': 'トークン用パラメータ(callBack)が送信されていない',
+                '541': 'トークン用パラメータ(hash)が存在しない',
+                '551': 'トークン用 apikey が存在しない ID',
+                '552': 'トークン用 apikey が有効ではない',
+                '901': 'マルチペイメント内部のシステムエラー',
+                '902': '処理が混み合っている'
+            };
+		Multipayment.init('{{{shop_id_subs}}}');
+		Multipayment.getToken(tokenRequestPayload, async function (token_response) {     
+			try{
+                    console.log(token_response.resultCode);
+                    if (token_response.resultCode != '000') {
+						document.getElementById("imgmopg_expdate_month").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_expdate_year").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_cvv").style.backgroundColor = "#FFA3A4";
+						document.getElementById("imgmopg_holdername").style.backgroundColor = "#FFA3A4";
+                        return;
+                    } else {
+                        let token = token_response.tokenObject.token[0];
+                        let cc_response = {
+                            user_id: userInfo.user_id,
+                            token: token
+                        };
+                        document.getElementById("imgmopg_expdate_month").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_expdate_year").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_cvv").style.backgroundColor = "#FFF";
+						document.getElementById("imgmopg_holdername").style.backgroundColor = "#FFF";
+						
+						
+						let cardUpdateResponse = await account.modifySubscriptionPayMethod({ id:"" },"imgmopg",token_response.tokenObject.token[0])
+						
+						console.log("cardUpdateResponse: " + JSON.stringify(cardUpdateResponse));
+						
+						if(cardUpdateResponse.success == true){
+							document.querySelectorAll(".p-mypage__creditcardData")[0].innerHTML = holder_name;
+							document.querySelectorAll(".p-mypage__creditcardData")[1].innerHTML = "*************" + cardNo.substr(cardNo.length - 3);
+							document.querySelectorAll(".p-mypage__creditcardData")[2].innerHTML = expire.substring(4,6) + "/" + expire.substring(2,4);
+							document.querySelector('.lity-close').click();
+						} else {
+							document.getElementById("imgmopg_ccNo").style.backgroundColor = "#FFA3A4";
+						}
+
+                    }
+                } catch(e){
+                    console.error(e);
+                }
+                
+            });
+
+	}
+
+
+	executeCompute();
+</script>

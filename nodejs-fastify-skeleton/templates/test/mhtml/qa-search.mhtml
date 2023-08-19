@@ -1,0 +1,258 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/pet-qa">ペットのお悩みQ&A</a></li>
+				<li class="is-current"><span>検索結果</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-search">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ペットのお悩みQ&A</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">ペットの日頃気になることや<br class="u-sp--inline">お悩みに役立つ記事をお届けします</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--search">
+					<div class="l-container">
+						<div class="c-pagination__information c-pagination__information--top">
+							<div class="c-pagination__informationLabel">検索結果</div>
+							<div class="c-pagination__informationCount">00件中1～12件</div>
+						</div>
+						<ol class="p-search__list">
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="{{{base_url}}/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩みタグ
+								</a>
+								<time class="p-search__date" datetime="">2021.02.08</time>
+							</li>
+							<li class="p-search__item p-search__item--empty"></li>
+							<li class="p-search__item p-search__item--empty"></li>
+							<li class="p-search__item p-search__item--empty"></li>
+						</ol>
+
+						<div class="c-pagination">
+							<div class="c-pagination__information c-pagination__information--bottom">
+								<div class="c-pagination__informationLabel">検索結果</div>
+								<div class="c-pagination__informationCount">00件中1～12件</div>
+							</div>
+							<ul class="c-pagination__list c-pagination__list--bottom">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a href="{{prevUrl}}" {{#firstPage}}is-disabled{{/firstPage}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--page">
+									<ul>
+	<!--
+										{{#pages}}
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number {{#currentPage}}is-current{{/currentPage}}"><a href="{{url}}">{{page}}</a></li>
+										{{/pages}}
+	-->
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">1</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">2</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">3</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">4</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">5</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number is-currentPage"><a href="{{url}}">6</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">7</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">8</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">9</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">10</a></li>
+									</ul>
+								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a href="{{nextUrl}}" {{#lastPage}}is-disabled{{/lastPage}}>次へ→</a>
+								</li>
+							</ul>
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<form class="c-search" name="search">
+							<h2 class="c-search__h2">記事を検索する</h2>
+							<div class="c-search__row">
+								<div class="c-search__col">
+									<select name="menu-category" class="c-search__select c-search__select--category js-search__select--category">
+										<option>犬</option>
+										<option>猫</option>
+									</select>
+								</div>
+								<div class="c-search__col">
+									<select class="c-search__select c-search__select--tag">
+										<option>お悩みタグ</option>
+										<option>お悩みタグ</option>
+										<option>お悩みタグ</option>
+										<option>お悩みタグ</option>
+										<option>お悩みタグ</option>
+										<option>お悩みタグ</option>
+									</select>
+								</div>
+								<div class="c-search__col">
+									<input type="text" class="c-search__input c-search__input--text" placeholder="フリーワード">
+								</div>
+								<div class="c-search__col">
+									<a class="c-search__button" href="#">検索</a>
+								</div>
+							</div>
+							<h2 class="c-search__h2">詳細タグから探す</h2>
+							<div class="js-search__dTag--dog">
+								<ol class="c-search__dTagList">
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog1" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog1">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog2" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog2">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog3" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog3">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog4" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog4">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog5" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog5">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog6" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog6">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog7" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog7">犬の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagDog" class="c-search__dTagCheck" id="dTagDog8" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagDog8">犬の具体的内容や症状</label>
+									</li>
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('dog');">× 全てクリア</a>
+							</div>
+							<div class="js-search__dTag--cat">
+								<ol class="c-search__dTagList">
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat1" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat1">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat2" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat2">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat3" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat3">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat4" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat4">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat5" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat5">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat6" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat6">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat7" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat7">猫の具体的内容や症状</label>
+									</li>
+									<li class="c-search__dTagItem">
+										<input name="dTagCat" class="c-search__dTagCheck" id="dTagCat8" type="checkbox" value="hoge">
+										<label class="c-search__dTagLabel" for="dTagCat8">猫の具体的内容や症状</label>
+									</li>
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('cat');">× 全てクリア</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

@@ -1,0 +1,51 @@
+<script type="module">
+    import { cart } from '/components/cart/cart.js?v={{cartVersion}}';
+    import { account } from '/components/account/account.js?v={{accountVersion}}';
+    import { cookieService } from '/services/cookie.service.js?v={{cookieServiceVersion}}';
+
+    let items = JSON.parse('{{{items}}}');
+    let cart_summary_contents = cart.getCartContents();
+   
+    (async() =>{  
+        let user_token = cookieService.getCookieValue('token');
+        let userInfo = user_token != ""? await account.getUser() : {success: false}; //Get user info if available
+    if (items.length == 0){
+            document.querySelector('.p-cart__message--empty').innerHTML = "現在あとで買うに商品はありません";
+            document.querySelector('.p-cart__table').style.display = 'none';
+        } else {
+            document.querySelector('.p-cart__table').style.display = 'show';
+            document.querySelector('.p-cart__message--empty').style.display = 'none';
+        }
+        items.forEach(function(item, index){
+            function computePrice(){
+                items[index].quantity = quantity;
+                    total_price = parseFloat(items.reduce(function(a,b){ return parseFloat(b.quantity) * parseFloat(b.price) + a }, 0));
+                    total_tax = (total_price * 0.1);
+
+                    document.querySelectorAll('.p-cart__tableData--subtotal')[index].innerHTML = (item.price * quantity).toLocaleString() + "円";
+                    document.querySelectorAll(".p-cart__subtotalData")[0].innerHTML = total_price.toLocaleString() + "円";
+                    document.querySelectorAll(".p-cart__subtotalData")[1].innerHTML = total_tax.toLocaleString() + "円";
+                    document.querySelector('.p-cart__totalData').innerHTML = (total_price + total_tax).toLocaleString() + "円";
+            }
+            document.getElementById("delete_" + item.id).onclick = async function(){
+                try{
+                    await cart.deleteCartItemLater(item.cart_id, item.id);
+                    //Do UI trigger here
+                    location.reload();
+                } catch(e){
+                    //Do error display here
+                }
+            }
+            document.getElementById("move_back_" + item.id).onclick = async function(){
+                try{
+                    await cart.updateCartItem(userInfo.success ? userInfo.id : '', item.id, 0, 0);
+                    //Do UI trigger here
+                    location.reload();
+                } catch(e){
+                    //Do error display here
+                }
+            }
+        });
+    })();
+
+</script>

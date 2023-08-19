@@ -1,0 +1,409 @@
+{{{header}}}
+<!-- IM script -->
+
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    //Generate visited products JSON area
+    import { product } from '/components/product/product.js';
+    import {cookieService} from '/services/cookie.service.js';
+
+    (async () => {
+        let checked_products = await product.checkedProducts_carousel(); // get array of checked products
+        console.log(checked_products)
+        //[{id: , name: , slug: , image: },{id: , name: , slug: , image: },...]
+    })();
+
+</script>
+<script src="https://unpkg.com/mustache@latest"></script>
+<script type="module">
+    //Import related modules for product-detail page
+    import { account } from '/components/account/account.js'
+
+    (async () => {
+        let userInfo = await account.getUser(); //Get user info if available
+        if (userInfo.success) {
+            let recentOrders = await account.orderHistoryCarousel(); //get order history list in format
+            //[{name: "name", slug: "slug", "", image: "image"}]
+        }
+
+    })();
+
+</script>
+
+<!-- IM script -->
+
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>商品一覧</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-products">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">商品一覧</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--dog">
+					<div class="l-container">
+						<h2 class="p-products__h2 p-products__h2--dog">犬用商品</h2>
+						<h3 class="p-products__h3 p-products__h3--dog">犬用商品　カテゴリーから探す</h3>
+						<ol class="p-products__category">
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/dog/normal-health-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-normal.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										総合栄養食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/dog/premium-care-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-premium.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										食事療法食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/dog/normal-dental-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-dental.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										デンタル
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryImage" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-supplement.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										サプリメント
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-skin.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										スキンケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/dog/normal-snack-dog">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-category-snacks.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										機能性おやつ
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+						</ol>
+						<h3 class="p-products__h3 p-products__h3--dog">犬用商品　目的から探す</h3>
+						<ol class="p-products__purpose">
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-neutered">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-neutered.svg" alt="NEUTERED">
+									</div>
+									<div class="p-products__purposeLabel">
+										避妊・去勢後ケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-weight">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-weight.svg" alt="WEIGHT">
+									</div>
+									<div class="p-products__purposeLabel">
+										体重のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-urology">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-urology.svg" alt="UROLOGY">
+									</div>
+									<div class="p-products__purposeLabel">
+										泌尿器のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-gastro">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-gastro.svg" alt="GASTRO">
+									</div>
+									<div class="p-products__purposeLabel">
+										お腹・肝臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-kidney">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-kidney.svg" alt="KIDNEY">
+									</div>
+									<div class="p-products__purposeLabel">
+										腎臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-allergy">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-allergy.svg" alt="ALLERGY">
+									</div>
+									<div class="p-products__purposeLabel">
+										食物アレルギー
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-skin">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-skincare.svg" alt="SKIN CARE">
+									</div>
+									<div class="p-products__purposeLabel">
+										皮膚被毛のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-dental">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-dental.svg" alt="DENTAL">
+									</div>
+									<div class="p-products__purposeLabel">
+										デンタルケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-joint">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-joint.svg" alt="JOINT">
+									</div>
+									<div class="p-products__purposeLabel">
+										関節のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/dog/dog-behavior">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_dog-purpose-behavior.svg" alt="BEHAVIOR">
+									</div>
+									<div class="p-products__purposeLabel">
+										あんしんケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+						</ol>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section p-lower__section--cat">
+					<div class="l-container">
+						<h2 class="p-products__h2 p-products__h2--cat">猫用商品</h2>
+						<h3 class="p-products__h3 p-products__h3--cat">猫用商品　カテゴリーから探す</h3>
+						<ol class="p-products__category">
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-health-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-normal.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										総合栄養食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/premium-care-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-premium.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										食事療法食
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-dental-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-dental.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										デンタル
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryImage" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-supplement.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										サプリメント
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-skin.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										スキンケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem">
+								<a class="p-products__categoryLink" href="{{{home_url}}}/product/category/cat/normal-feliway">
+									<div class="p-products__categoryImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-category-mental.png" alt="">
+									</div>
+									<div class="p-products__categoryLabel">
+										フェリウェイ
+									</div>
+								</a>
+							</li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+							<li class="p-products__categoryItem p-products__categoryItem--empty"></li>
+						</ol>
+						<h3 class="p-products__h3 p-products__h3--cat">猫用商品　目的から探す</h3>
+						<ol class="p-products__purpose">
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-neutered">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-neutered.svg" alt="NEUTERED">
+									</div>
+									<div class="p-products__purposeLabel">
+										避妊・去勢後ケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-weight">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-weight.svg" alt="WEIGHT">
+									</div>
+									<div class="p-products__purposeLabel">
+										体重のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-urology">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-urology.svg" alt="UROLOGY">
+									</div>
+									<div class="p-products__purposeLabel">
+										泌尿器のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-gastro">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-gastro.svg" alt="GASTRO">
+									</div>
+									<div class="p-products__purposeLabel">
+										お腹・肝臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-kidney">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-kidney.svg" alt="KIDNEY">
+									</div>
+									<div class="p-products__purposeLabel">
+										腎臓のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-skin">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-skincare.svg" alt="SKIN CARE">
+									</div>
+									<div class="p-products__purposeLabel">
+										皮膚被毛のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-joint">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-joint.svg" alt="JOINT">
+									</div>
+									<div class="p-products__purposeLabel">
+										関節のお悩み
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-dental">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-dental.svg" alt="DENTAL">
+									</div>
+									<div class="p-products__purposeLabel">
+										デンタルケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem">
+								<a class="p-products__purposeLink" href="{{{home_url}}}/product/purpose/cat/cat-behavior">
+									<div class="p-products__purposeImage">
+										<img src="{{{base_url}}}/static/images/common/common_img_cat-purpose-behavior.svg" alt="BEHAVIOR">
+									</div>
+									<div class="p-products__purposeLabel">
+										あんしんケア
+									</div>
+								</a>
+							</li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+							<li class="p-products__purposeItem p-products__purposeItem--empty"></li>
+						</ol>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

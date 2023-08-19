@@ -1,0 +1,103 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>ショッピングカート</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-search">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ショッピングカート</h1>
+					</div>
+				</div>
+			</div>
+			
+			<section>
+				<div class="p-lower__section p-lower__section--cart">
+					<div class="l-container">
+					<p class="p-cart__message p-cart__message--empty"></p>
+						<ul class="p-cart__flowList">
+							<li class="p-cart__flowItem is-current">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">カートのご確認</div>
+							</li>
+							<li class="p-cart__flowItem">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の確認</div>
+							</li>
+							<li class="p-cart__flowItem">
+								<div class="p-cart__flowNumber"><span></span></div>
+								<div class="p-cart__flowLabel">ご注文の完了</div>
+							</li>
+						</ul>
+						<table class="p-cart__table">
+							<thead>
+								<tr class="p-cart__tableRow">
+									<th class="p-cart__tableHead p-cart__tableHead--ctrl"></th>
+									<th class="p-cart__tableHead p-cart__tableHead--product" colspan="2">商品名</th>
+									<th class="p-cart__tableHead p-cart__tableHead--price">単価（税別）</th>
+									<th class="p-cart__tableHead p-cart__tableHead--quantity">数量</th>
+									<th class="p-cart__tableHead p-cart__tableHead--">小計（税別）</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#items}}	
+								<tr class="p-cart__tableRow">
+									<form>
+									<td class="p-cart__tableData p-cart__tableData--ctrl">
+										<div class="p-cart__button-wrap">
+											<button type="button" id="delete_{{id}}" class="p-cart__button" name="delete_cart" value="カートを更新">削除</button>
+											<button type="button" id="cart_later_{{id}}" class="p-cart__button" name="update_cart" value="カートを更新">あとで買う</button>
+										</div>
+										<script>
+											if ({{computeItemPrice}} == 0) document.getElementById("cart_later_{{id}}").style.display = 'none';
+										</script>
+									</td>
+									<td class="p-cart__tableData  p-cart__tableData--image">
+										<img class="object-fit" src="{{{images.0.src}}}" alt="">
+									</td>
+									<td class="p-cart__tableData p-cart__tableData--name" data-label="商品名">{{name}}</td>
+									<td class="p-cart__tableData p-cart__tableData--price" data-label="単価">{{parseToLocaleString}}円<small class="u-sp--inline">（税別）</small></td>
+									<td class="p-cart__tableData p-cart__tableData--quantity" data-label="数量">
+										<div class="p-cart__tableDataQuantityGroup">
+											<button type="button" id="button_minus_{{id}}">－</button>
+											<input type="number" inputmode="numeric" pattern="[0-9]*" id="quantity_{{id}}" class="input-text qty text" step="1" min="1" max="30" name="quantity" value="{{quantity}}" title="数" size="4"  autocomplete="off">
+											<button type="button" id="button_plus_{{id}}" >＋</button>
+											<input type="text" name="dummy" style="display:none;">
+										</div>
+									</td>
+									<td class="p-cart__tableData p-cart__tableData--subtotal" data-label="小計">{{computeItemPrice}}円<small class="u-sp--inline">（税別）</small></td>
+									</form>
+								</tr>
+								{{/items}}
+							</tbody>
+						</table>
+						<dl class="p-cart__subtotalDef">
+							<dt class="p-cart__subtotalTitle">カート内小計（税別）</dt>
+							<dd class="p-cart__subtotalData">{{total_raw_price}}円</dd>
+							<dt class="p-cart__subtotalTitle">消費税</dt>
+							<dd class="p-cart__subtotalData">{{total_tax}}円</dd>
+							<dd class="p-cart__subtotalMessage">6,000円（税別）以上のご購入で送料無料となります。<br class="u-sp--inline">※沖縄・離島を除く</dd>
+						</dl>
+						<dl class="p-cart__totalDef">
+							<dt class="p-cart__totalTitle">合計金額（税込）</dt>
+							<dd class="p-cart__totalData">{{total_price}}円</dd>
+						</dl>
+
+						<div class="c-button-wrap c-button-wrap--vertical">
+							<button type="button" class="c-button c-button--reversal" name="update_cart" onclick="location.href='/checkout'" value="注文手続きへ進む">注文手続きへ進む</button>
+							<a class="c-button" href="{{{home_url}}}/cart-later"> 「あとで買う」に入っている商品<span class="u-pc--inline">を見る</span></a>
+							<a class="c-button" href="{{{home_url}}}/#top">ショッピングを続ける</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

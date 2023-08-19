@@ -1,0 +1,245 @@
+	<footer id="footer" class="l-footer">
+		<div class="l-footer__section l-footer__section--main">
+			<div class="l-container">
+				<p class="l-footer__guideLead">
+					ビルバック公式オンラインストアでは<br>
+					全国の動物病院で販売されているものと同じ商品のほか、ウェブサイト限定の特別商品もご用意しております。
+				</p>
+				<ol class="l-footer__guide">
+					<li class="l-footer__guideItem">
+						<div class="l-footer__guideCatch">
+							<div class="l-footer__guideImage">
+								<img src="{{{base_url}}}/static/images/footer/footer_img_guide01.svg" alt="">
+							</div>
+							<div class="l-footer__guideLabel">
+								ウェブサイト限定<br>商品の販売
+							</div>
+						</div>
+						<div class="l-footer__guideText">
+							ビルバック公式オンラインストアだから用意できる、ウェブサイト限定の商品もご用意しております。
+						</div>
+					</li>
+					<li class="l-footer__guideItem">
+						<div class="l-footer__guideCatch">
+							<div class="l-footer__guideImage">
+								<img src="{{{base_url}}}/static/images/footer/footer_img_guide02.svg" alt="">
+							</div>
+							<div class="l-footer__guideLabel">
+								￥6,000以上<small>（税別）</small><br>送料無料
+							</div>
+						</div>
+						<div class="l-footer__guideText">
+							沖縄・離島除く。商品代金がそれ未満の場合は別途送料を一律600円（税別）を頂いております。
+						</div>
+					</li>
+					<li class="l-footer__guideItem">
+						<div class="l-footer__guideCatch">
+							<div class="l-footer__guideImage">
+								<img src="{{{base_url}}}/static/images/footer/footer_img_guide03.svg" alt="">
+							</div>
+							<div class="l-footer__guideLabel">
+								16時までの注文で<br>翌営業日発送
+							</div>
+						</div>
+						<div class="l-footer__guideText">
+							お届け日時のご指定も承ります。ご指定日時は発送日の翌々日より可能です。
+						</div>
+					</li>
+				</ol>
+				<div class="l-footer__informationWrap">
+					<div class="l-footer__information l-footer__information--company">
+						<div class="l-footer__logo">
+							<a class="l-footer__logoLink" href="{{{home_url}}}/#top" title="" data-label="">
+								<img src="{{{base_url}}}/static/images/common/common_company-logo.svg" alt="Virbac">
+							</a>
+						</div>
+						<div class="l-footer__snsLead">FOLLOW　US！</div>
+						<ol class="l-footer__sns">
+							<li class="l-footer__snsItem">
+								<a class="l-footer__snsLink" target="_blank" href="https://www.facebook.com/%E3%83%93%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-111324977239001/">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_sns-facebook-pink.svg">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_sns-facebook-blue.svg">
+										</figcaption>
+									</figure>
+								</a>
+							</li>
+							<li class="l-footer__snsItem">
+								<a class="l-footer__snsLink" target="_blank" href="https://www.instagram.com/virbac_japan/">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_sns-instagram-pink.svg">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_sns-instagram-blue.svg">
+										</figcaption>
+									</figure>
+								</a>
+							</li>
+							<li class="l-footer__snsItem">
+								<a class="l-footer__snsLink" target="_blank" href="https://line.me/R/ti/p/%40860zuhne">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_sns-line-pink.svg">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_sns-line-blue.svg">
+										</figcaption>
+									</figure>
+								</a>
+							</li>
+							<li class="l-footer__snsItem">
+								<a class="l-footer__snsLink" target="_blank" href="https://www.youtube.com/channel/UCatOudL82eGDZ0lHY-6Dazw">
+									<figure class="c-image-hover">
+										<img src="{{{base_url}}}/static/images/common/common_ico_sns-youtube-pink.svg">
+										<figcaption>
+											<img src="{{{base_url}}}/static/images/common/common_ico_sns-youtube-blue.svg">
+										</figcaption>
+									</figure>
+								</a>
+							</li>
+						</ol>
+					</div>
+					<div class="l-footer__information l-footer__information--category">
+						<div class="l-footer__categoryTitle">商品一覧</div>
+						<div class="l-footer__categorySection">
+							<div class="l-footer__categorySectionTitle">犬用商品</div>
+							<ol class="l-footer__category">
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/normal-health-dog">総合栄養食</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/premium-care-dog">食事療法食</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/normal-dental-dog">デンタル</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/normal-supplement-dog">サプリメント</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/normal-skincare-dog">スキンケア</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/dog/normal-snack-dog">機能性おやつ</a></li>
+							</ol>
+						</div>
+						<div class="l-footer__categoryCategory">
+							<div class="l-footer__categorySectionTitle">猫用商品</div>
+							<ol class="l-footer__category">
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/normal-health-cat">総合栄養食</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/premium-care-cat">食事療法食</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/normal-dental-cat">デンタル</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/normal-supplement-cat">サプリメント</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/normal-skincare-cat">スキンケア</a></li>
+								<li class="l-footer__categoryItem"><a class="l-footer__categoryLink" href="{{{home_url}}}/product/category/cat/normal-feliway">フェリウェイ</a></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="l-footer__section l-footer__section--sitemap">
+			<div class="l-container">
+				<ol class="l-footer__Nav01">
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="{{{home_url}}}/news">最新情報</a></li>
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="https://virbacjapan.force.com/hpmfaqpo/s/" target="_blank">よくある質問</a></li>
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="{{{home_url}}}/pet-qa">ペットのお悩みQ＆A</a></li>
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="https://virbacjapan.force.com/hpmfaqpo/s/createrecord/GuestCommunityCaseVBServicePO" target="_blank">お問い合わせ</a></li>
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="{{{home_url}}}/find-hospitals">ビルバック提携病院</a></li>
+					<li class="l-footer__Nav01Item"><a class="l-footer__Nav01Link" href="{{{home_url}}}/guarantee">満足保証</a></li>
+				</ol>
+				<ol class="l-footer__Nav02">
+					<li class="l-footer__Nav02Item"><a class="l-footer__Nav02Link" href="{{{home_url}}}/terms">利用規約</a></li>
+					<li class="l-footer__Nav02Item"><a class="l-footer__Nav02Link" href="{{{home_url}}}/spec">特定商取引法に関する表示</a></li>
+					<li class="l-footer__Nav02Item"><a class="l-footer__Nav02Link" href="{{{home_url}}}/about">運営会社</a></li>
+<!-- 対応ページ現在なし
+					<li class="l-footer__Nav02Item"><a class="l-footer__Nav02Link" href="#">サイトマップ</a></li>
+-->
+					<li class="l-footer__Nav02Item"><a class="l-footer__Nav02Link" href="{{{home_url}}}/privacy-policy">プライバシーポリシー</a></li>
+				</ol>
+			</div>
+		</div>
+		<div class="l-footer__section l-footer__section--copy">
+			<div class="l-container">
+				<div class="l-footer__copyright">
+					Copyright&copy; 2021 ビルバック&reg;サービス
+				</div>
+			</div>
+		</div>
+	</footer><!-- /.l-footer -->
+	<div class="c-to-top js-float">
+		<a href="#top"></a>
+	</div><!-- /.c-to-top -->
+	<div class="c-float js-float">
+		<div class="c-float__side">
+			<a class="c-float__sideRegistration customer-logged-out-side" href="{{{home_url}}}/reg" style="display: none;">
+				<div class="c-float__sideRegistrationNotice">
+					<div class="c-float__sideRegistrationBalloon">
+						<div>
+						初回購入<br>
+						<strong>1000円オフ</strong><br>
+						クーポン進呈
+						</div>
+					</div>
+				</div>
+				新規登録<small>（無料）</small>
+			</a>
+			<a class="c-float__sideCart" href="{{{home_url}}}/cart">
+				<div class="c-float__sideCartIcon">
+					<img src="{{{base_url}}}/static/images/common/common_ico_util-cart-white.svg" alt="カート" title="カート">
+					<span id="cart-qty" class="c-float__sideQuantity cart-qty-badge"></span>
+				</div>
+			</a>
+		</div>
+		<div class="c-float__bottom">
+			<!--chatbot実装時ここに入れる-->
+		</div>
+	</div><!-- /.c-side-float -->
+</div><!-- /.l-wrapper -->
+</body>
+
+<!-- JS -->
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- object-fit -->
+<script src="{{{base_url}}}/static/js/lib/ofi.min.js"></script>
+
+<!-- スライダー -->
+<link rel="stylesheet" href="{{{base_url}}}/static/js/lib/slick/slick.css">
+<link rel="stylesheet" href="{{{base_url}}}/static/js/lib/slick/slick-theme.css">
+<script src="{{{base_url}}}/static/js/lib/slick/slick.js"></script>
+
+<!-- モーダルウィンドウ -->
+<link rel="stylesheet" href="{{{base_url}}}/static/css/lity.css">
+<script src="{{{base_url}}}/static/js/lity.js"></script>
+
+<!--[if !IE]><!-->
+<script src="{{{base_url}}}/static/js/setProperty.js"></script>
+<!--<![endif]-->
+<script src="{{{base_url}}}/static/js/script.js"></script>
+<script type="module">
+    //Generate visited products JSON area
+    import { product } from '/components/product/product.js';
+    import {cookieService} from '/services/cookie.service.js';
+	import { account } from '/components/account/account.js'
+
+    (async () => {
+		if(document.querySelector(".carousel--history")){
+			let checked_products = await product.checkedProducts_carousel(); // get array of checked products
+        	console.log(checked_products)
+        	//[{id: , name: , slug: , image: },{id: , name: , slug: , image: },...]
+			redrawDo()
+		}
+		if(document.querySelector(".carousel--reorder")){
+			let userInfo = await account.getUser(); //Get user info if available
+        if (userInfo.success) {
+            let recentOrders = await product.orderedProducts_carousel(); // get array of checked products
+        	console.log(recentOrders)
+        	//[{id: , name: , slug: , image: },{id: , name: , slug: , image: },...]
+			redrawDo()
+        }
+		else {
+			document.querySelector('.p-lower__section--reorder')
+            ? 
+            document.querySelector('.p-lower__section--reorder').style.display = 'none'
+            :
+            document.querySelector('.p-home__section--reorder').style.display = 'none'
+		}
+			
+		}
+        
+
+    })();
+	
+	
+</script>
+</html>

@@ -1,0 +1,51 @@
+{
+    "local": {
+        "host": "host",
+        "port": ":port",
+        "WC_CREDS": {
+                    "url": "wcURL",
+                    "consumerKey": "ck_xxxx",
+                    "consumerSecret": "cs_xxxx",
+                    "version": "wc/v3"
+        },
+        "DB": {
+                "user": "user",
+                "host": "host",
+                "database": "database",
+                "password": "password",
+                "port": "port",
+                "promise": "true"
+        },
+        "ADMIN_CRED" : {
+            "token" : "token"
+        },
+        "SALESFORCE_JWT": {
+            "username": "username@email.com", 
+            "clientId": "xxxxxx",
+            "privateKey": "./config/cert.key",
+            "sf_url" : ""
+        },
+        "CC_PARAMS": {
+            "baseUrl": "....", 
+            "ShopID": "....",
+            "ShopPass": "....",
+            "SiteID": "....",
+            "SitePass": "...."
+        },
+        "MISC":{
+            "uploadLocation": "",
+            "base64TenantName": "....",
+            "baseCcTokenUrl": "....",
+            "categories": [],
+            "sample_categories": [],
+            "wordpress_url": "https://vdev.impactm.net/b2c/wp-json",
+            "ga_tag": "",
+            "mustache_dir":"/home/templates/mhtml"
+        },
+        "TWILIO": {
+            "serviceID": "VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "accountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "authToken": "asdfghjklqwertyuiopzx1234567890"
+        }
+    }
+}

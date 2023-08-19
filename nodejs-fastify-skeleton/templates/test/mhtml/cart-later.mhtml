@@ -1,0 +1,60 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>あとで買うに入っている商品</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-search">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">あとで買うに入っている商品</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--cart">
+					<div class="l-container">
+					<p class="p-cart__message p-cart__message--empty"></p>
+						<table class="p-cart__table">
+							<thead>
+								<tr class="p-cart__tableRow">
+									<th class="p-cart__tableHead p-cart__tableHead--product" colspan="2">商品名</th>
+									<th class="p-cart__tableHead p-cart__tableHead--price">単価（税別）</th>
+									<th class="p-cart__tableHead p-cart__tableHead--ctrl"></th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#items}}
+								<tr class="p-cart__tableRow">
+									<td class="p-cart__tableData  p-cart__tableData--image">
+										<img class="object-fit" src="{{{images.0.src}}}" alt="">
+									</td>
+									<td class="p-cart__tableData p-cart__tableData--name" data-label="商品名">{{name}}</td>
+									<td class="p-cart__tableData p-cart__tableData--price" data-label="単価">{{computeItemPrice}}円<small class="u-sp--inline">（税別）</small></td>
+									<td class="p-cart__tableData p-cart__tableData--ctrl">
+										<div class="p-cart__button-wrap">
+											<button type="button" class="p-cart__button" id="delete_{{id}}" name="delete_{{id}}" value="カートを更新">削除</button>
+											<button type="button" class="p-cart__button" id="move_back_{{id}}" name="move_back_{{id}}" value="カートを更新">カートに戻す</button>
+										</div>
+									</td>
+								</tr>
+								{{/items}}
+							</tbody>
+						</table>
+
+						<div class="c-button-wrap c-button-wrap--vertical">
+							<a class="c-button c-button--reversal" href="{{{home_url}}}/cart">カートに戻る</a>
+							<a class="c-button" href="{{{home_url}}}/#top">ショッピングを続ける</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}

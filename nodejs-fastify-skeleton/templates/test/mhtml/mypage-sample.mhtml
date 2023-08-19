@@ -1,0 +1,348 @@
+{{{header}}}
+
+<script type="module">
+	import {account} from '/components/account/account.js';
+
+	document.querySelector(".p-mypage__sideLogoutLink").addEventListener("click", async function(){
+		console.log(await account.logoutUser());
+		window.location.replace("/my-page");
+	});
+</script>
+<p class="p-mypage__mainMessage js-mypage__mainMessage" style="display: none;">
+    カートに追加しました
+</p>
+<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li><a href="{{{home_url}}}/my-page">マイページ</a></li>
+				<li class="is-current"><span>無料サンプル</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-mypage">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">マイページ</h1>
+					</div>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--mypage">
+					<div class="l-container">
+						<div class="p-mypage__layout">
+							<div class="p-mypage__main">
+								<h2 class="p-mypage__mainHeading__h2">無料サンプル一覧</h2>
+								<!-- sample_feliway-->
+								{{#sample_feliway.length}}
+								<h4 class="p-mypage__mainHeading__h4">【特別企画】ベジデントフレッシュXSサイズ　1袋プレゼント！</h4>
+								<ol class="p-mypage__sampleList">
+										{{#sample_feliway}}
+										<li class="p-mypage__sampleItem">
+											<div class="p-mypage__sampleImage">
+												<a href="{{uri}}" target="_blank"><img src="{{{images.0.src}}}" alt=""></a>
+											</div>
+											<div class="p-mypage__sampleLabel">
+												{{name}}
+											</div>
+											<button id="item_{{id}}" class="p-mypage__sampleButton p-mypage__sampleButton--reversal">サンプル申込</button>
+										</li>
+										{{/sample_feliway}}
+										</ol>
+					
+								{{/sample_feliway.length}}
+								<!-- sample_feliway-->
+								<!-- 2021/09/25から登録した方のみ表示 -->
+								{{#sample_dental_cat.length}}
+								<div class="p-mypage__mainSection p-mypage__campaign">
+									<div class="p-mypage__campaignBox">
+										<div class="p-mypage__campaignLimit"><span>12月31日まで</span></div>
+										<div class="p-mypage__campaignPrivilege"><span>今回新たにビルバックサービスに<br class="u-sp--inline">ご登録いただいた方への特典</span></div>
+										<div class="p-mypage__campaignPlus">＼HPMの無料サンプルに加えて／</div>
+										<div class="p-mypage__campaignPresent">
+											<img src="../static/images/mypage/campaign202109/mypage_txt_campaign.svg" alt="ベジデントシリーズの中から現品を一つプレゼント！">
+										</div>
+										<div class="p-mypage__campaignText">
+											キャンペーン期間中にビルバックサービスにご登録いただいた方に、ベジデント フレックス・ゼンの中からお好みの商品（販売サイズ1袋15本入り）をプレゼントいたします。ご希望のサイズを１つ選択してください。（各サイズの在庫には限りがあります。グレーのボタンのサイズは、すでに用意した在庫数に達しましたのでお選びいただけません。）
+											<small>*ベジデントシリーズのプレゼントはお一人様1回・１つ限り</small>
+										</div>
+										<ol class="p-mypage__campaignList">
+											<li class="p-mypage__campaignItem">
+												<div class="p-mypage__campaignImage">
+													<img src="../static/images/mypage/campaign202109/mypage_img_campaign-flex.png" alt="歯垢ケア＋関節ケアベジデントフレックス FLEX">
+												</div>
+												<div class="p-mypage__campaignLabel">
+													ベジデントフレックス FLEX
+												</div>
+												<div class="p-mypage__campaignButtonWrap">
+													<button id="item_33513" class="p-mypage__campaignButton p-mypage__campaignButton--flex">XSサイズ</button>
+													<button id="item_33517" class="p-mypage__campaignButton p-mypage__campaignButton--flex">Sサイズ</button>
+												</div>
+											</li>
+											<li class="p-mypage__campaignItem">
+												<div class="p-mypage__campaignImage">
+													<img src="../static/images/mypage/campaign202109/mypage_img_campaign-zen.png" alt="歯垢ケア＋安心ケアベジデントフレックス ZEN">
+												</div>
+												<div class="p-mypage__campaignLabel">
+													ベジデントゼン ZEN
+												</div>
+												<div class="p-mypage__campaignButtonWrap">
+													<button id="item_33506" class="p-mypage__campaignButton p-mypage__campaignButton--zen">XSサイズ</button>
+													<button id="item_33511" class="p-mypage__campaignButton p-mypage__campaignButton--zen">Sサイズ</button>
+												</div>
+											</li>
+										</ol>
+
+										<div class="p-mypage__campaignSizeTitle">
+											<img src="../static/images/mypage/campaign202109/mypage_ttl_campaign-size.svg" alt="サイズ選びの目安">
+										</div>
+										<ol class="p-mypage__campaignSizeList">
+											<li class="p-mypage__campaignSizeItem">
+												<div class="p-mypage__campaignSizeLabel p-mypage__campaignSizeLabel--xs">
+													<span>XS<small>サイズ</small></span>
+												</div>
+												<div class="p-mypage__campaignSizeTarget">
+													<span>5kg以下のワンちゃん</span>
+												</div>
+												<div class="p-mypage__campaignSizeEtc">
+													チワワ、トイプードル、マルチーズ、ヨークシャテリア、ポメラニアン、パグなど
+												</div>
+											</li>
+											<li class="p-mypage__campaignSizeItem">
+												<div class="p-mypage__campaignSizeLabel p-mypage__campaignSizeLabel--s">
+													<span>S<small>サイズ</small></span>
+												</div>
+												<div class="p-mypage__campaignSizeTarget">
+													<span>5kg～10kgのワンちゃん</span>
+												</div>
+												<div class="p-mypage__campaignSizeEtc">
+													豆柴、ミニチュアダックス、ミニチュアシュナウザー、ジャックラッセルテリア、フレンチブルドックなど
+												</div>
+											</li>
+										</ol>
+										<div class="p-mypage__campaignNote">
+											※ベジデントシリーズは医薬品ではありませんのですべての犬に与えていただけます。愛犬の治療や体調の点で気になる飼い主様はかかりつけの獣医師にお尋ねください。  ※XSサイズはメール便（10日前後のお届け）での配送となります。  ※動物病院のご紹介で新たにビルバックサービスにご登録いただいた方限定です。  ※ご登録のおひとり様につき、ベジデントフレックスあるいはゼンの各２サイズから１種類、1個のみをご提供します。  ※ビルバックサービス会員登録後、キャンペーン期間中（2021年12月31日まで）であれば、後からベジデントのサンプル申込が可能です。こちらの「無料サンプル一覧」からお選びください。  ※動物病院にて推奨されたHPMの総合栄養食のサンプルもリクエスト可能です。
+										</div>
+									</div>
+								</div>
+								{{/sample_dental_cat.length}}
+								<!-- ここまで 2021/09/25から登録した方のみ表示 -->
+								
+								<div class="p-mypage__mainSection">
+									<div class="p-mypage__sampleRow">
+										<div class="p-mypage__sampleCol">
+											<h3 class="p-mypage__mainHeading__h3">HPM総合栄養食</h3>
+											<p class="p-mypage__mainText p-mypage__mainText--sample">
+												かかりつけ動物病院経由のお客さまに限り、<br class="u-pc--inline">
+												無料でサンプルをお届けしています。<br>
+												ぜひお試しください。<br>
+												<span class="p-mypage__mainNote p-mypage__mainNote--sample">
+												※既往歴がある、または現在通院中の方、食物アレルギーが気になる⽅は、獣医師にご相談のうえ無料サンプルをお申し込みください。<br>
+												※HPMのサンプルは商品とは別にメール便にてお届けします。10日前後のお届けとなります。<br>
+												※下記のグレーのボタンのサンプルは、すでにお選びいただいておりますので、再度お選びいただくことはできません。</span>
+											</p>
+										</div>
+										<div class="p-mypage__sampleCol">
+											<img src="{{{base_url}}}/static/images/mypage/mypage_img_sample-tpm.png" alt="">
+										</div>
+									</div>
+
+									<h4 class="p-mypage__mainHeading__h4">犬用総合栄養食サンプル<small>（容量：80ｇｘ4袋）</small></h4>
+									<ol class="p-mypage__sampleList">
+										{{#sample_health_dog}}
+										<li class="p-mypage__sampleItem">
+											<div class="p-mypage__sampleImage">
+												<a href="{{uri}}" target="_blank"><img src="{{{images.0.src}}}" alt=""></a>
+											</div>
+											<div class="p-mypage__sampleLabel">
+												{{name}}
+											</div>
+											<button id="item_{{id}}" class="p-mypage__sampleButton p-mypage__sampleButton--reversal">サンプル申込</button>
+										</li>
+										{{/sample_health_dog}}
+										</ol>
+										<h4 class="p-mypage__mainHeading__h4">猫用総合栄養食サンプル<small>（容量：80ｇｘ4袋）</small></h4>
+										<ol class="p-mypage__sampleList">
+										{{#sample_health_cat}}
+										<li class="p-mypage__sampleItem">
+											<div class="p-mypage__sampleImage">
+												<a href="{{uri}}" target="_blank"><img src="{{{images.0.src}}}" alt=""></a>
+											</div>
+											<div class="p-mypage__sampleLabel">
+												{{name}}
+											</div>
+											<button id="item_{{id}}" class="p-mypage__sampleButton p-mypage__sampleButton--reversal">サンプル申込</button>
+										</li>
+										{{/sample_health_cat}}
+										{{#sample_dental_dog}}
+										<li class="p-mypage__sampleItem">
+											<div class="p-mypage__sampleImage">
+												<a href="{{uri}}" target="_blank"><img src="{{{images.0.src}}}" alt=""></a>
+											</div>
+											<div class="p-mypage__sampleLabel">
+												{{name}}
+											</div>
+											<button id="item_{{id}}" class="p-mypage__sampleButton p-mypage__sampleButton--reversal">サンプル申込</button>
+										</li>
+										{{/sample_dental_dog}}
+									</ol>
+								</div>
+								<div class="p-mypage__mainSection">
+									<h3 class="p-mypage__mainHeading__h3">HPM食事療法食は満足保証制度がございます</h3>
+									<div class="p-mypage__mainImage">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_img_guarantee.png" alt="">
+									</div>
+									<p class="p-mypage__mainText">
+									HPM食事療法食はお試し品のご用意はありませんが、ご購入頂いた後、ご満足頂けない場合には、全額返金の<a href="{{{home_url}}}/guarantee">満足保証制度</a>がございます。
+									安心してお買い求めください。
+									</p>
+								</div>
+							</div>
+							<div class="p-mypage__side">
+								<h2 class="p-mypage__sideHeading__h2 u-sp">マイページメニュー</h2>
+								<a class="p-mypage__sideTopLink" href="{{{home_url}}}/my-page">
+									マイページTOP
+								</a>
+								<ol class="p-mypage__sideMenu">
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/orders">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_history-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												注文履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/subscription">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_subscription-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												定期購入
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/share">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_share-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												友だち紹介
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/coupons">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_coupon-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												クーポン
+											</div>
+										</a>
+									</li>
+									<li id="sidemenu-samples" class="p-mypage__sideMenuItem" style="display: none;">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/sample-products">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_sample-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												無料サンプル
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/reviews">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_reviews-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												レビュー履歴
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/user-info">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_change-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												会員情報変更
+											</div>
+										</a>
+									</li>
+									<li class="p-mypage__sideMenuItem">
+										<a class="p-mypage__sideMenuLink" href="{{{home_url}}}/my-page/confirm-delete ">
+											<div class="p-mypage__sideMenuIco">
+												<figure class="c-image-hover">
+													<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-black.svg" alt="">
+													<figcaption>
+														<img src="{{{base_url}}}/static/images/mypage/mypage_ico_delete-pink.svg" alt="">
+													</figcaption>
+												</figure>
+											</div>
+											<div class="p-mypage__sideMenuLabel">
+												退会手続き
+											</div>
+										</a>
+									</li>
+								</ol>
+								<a class="p-mypage__sideLogoutLink" href="#">
+									<div class="p-mypage__sideLogoutIco">
+										<img src="{{{base_url}}}/static/images/mypage/mypage_ico_logout-white.svg" alt="">
+									</div>
+									<div class="p-mypage__sideLogoutLabel">
+										ログアウト
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+
+
+{{{footer}}}

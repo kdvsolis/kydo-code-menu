@@ -1,0 +1,313 @@
+<script type="module">
+    //Cart Module test
+    import { cart } from '/components/cart/cart.js';
+    import mustache from 'https://unpkg.com/mustache@latest/mustache.mjs';
+    console.log(mustache.render('<div>{{test}}</div>', { test: 'test' }));
+    (async () => {
+        //console.log(await cart.updateCartItem('', 21785, 1));
+    })();
+    import { account } from '/components/account/account.js';
+    (async () => {
+        account.templateLogic();
+        let data = await account.getUser();
+
+        document.querySelector('.example').innerHTML = data.id;
+        console.log(data);
+    })();
+</script>
+<script type="module">
+    //DOCUMENTATION AREA
+    import { cart } from '/components/cart/cart.js';
+    import { account } from '/components/account/account.js';
+    import { product } from '/components/product/product.js';
+    import { wordpress } from '/components/wordpress/wordpress.js';
+
+    //Cart function example
+    (async () => {
+        let cart_items = await cart.updateCartItem('', 21785, 1, 0, '+'); //Adds product with id 21785 to cart
+        console.log(cart_items) // displays cart content
+        /*
+            OUTPUT:
+            cart_items = [{
+                id: 1,
+                user_id: '',
+                data: {
+                    product_id: 21785
+                },
+                quantity: 1,
+                buylater: 0
+            }]
+        */
+        let cart_total = cart.getTotalCartQuantity(); //Get total quantity
+        console.log(cart_total);
+        /*
+            OUTPUT:
+            cart_total = 0;
+        */
+
+        cart_items = await cart.updateCartItem('', 21785, 0, 1, '+'); //move to buy later
+        console.log(cart_items) // displays cart content
+        /*
+            OUTPUT:
+            cart_items = []
+        */
+        cart_total = cart.getTotalCartQuantity(); //Get total quantity
+        console.log(cart_total);
+        /*
+            OUTPUT:
+            cart_total = 0;
+        */
+
+        let try_delete = await cart.deleteCartItem(1, 21785); //Delete product with id 21785 to cart
+        console.log(try_delete) // displays cart content
+        /*
+            OUTPUT:
+            try_delete = { 
+                deleted: "1" 
+            }
+        */
+    })();
+
+
+    //Account functions example
+    (async () => {
+
+        //GET USER INFORMATION
+        let data = await account.getUser();
+        /* OUTPUT:
+         data: {
+                token: xxxxxx,
+                id: 000000,
+                isPremiumUser: false, 
+                first_name: John, 
+                last_name: Doe,
+                user_meta: [
+                    {
+                "id": 3781141,
+                "key": "hospital_id",
+                "value": "99999"
+            },
+            {
+                "id": 3781142,
+                "key": "_v_customer_type",
+                "value": "N"
+            },...
+                ],
+        } 
+        */
+
+        //MODIFY USER INFORMATION EXAMPLE
+        let user_id = '000000';
+        data = {};
+
+        data.first_name = 'Jane';
+        data.last_name = 'Doe';
+
+        response = await account.modifyUser(user_id, data);
+        /* OUTPUT:
+         response: {
+                token: xxxxxx,
+                id: 000000,
+                isPremiumUser: false, 
+                first_name: Jane, //originally "John" 
+                last_name: Doe,
+                user_meta: [
+                    {
+                "id": 3781141,
+                "key": "hospital_id",
+                "value": "99999"
+            },
+            {
+                "id": 3781142,
+                "key": "_v_customer_type",
+                "value": "N"
+            },...
+                ],
+        } 
+        */
+
+        //AUTHENTICATE USER
+        let username = 'exampleuser';
+        let password = 'test0000';
+
+        response = await account.authenticateUser(username, password);
+
+        /* OUTPUT:
+            response ={
+                success: true,
+                message: "Auth Success!",
+                token: token
+                                        
+            }
+        */
+
+        //REGISTER USER
+        data = { //user data
+            "email": 'test@example.com',
+            "first_name": 'James',
+            "last_name": 'Doe',
+            "username": 'xxxXXxxxxXXxx',
+            "password": 'xxxxxxxxx',
+
+        }
+        await account.registerUser(data);
+        /* OUTPUT:
+        Account should be created after this function;
+
+        If account was successfully created, authentication will begin;
+
+        Once authentication is done, user should be logged in;
+        
+        */
+
+        //LOGOUT USER
+        let token = 'xxxXXXxxxXx'
+
+        await account.logoutUser(token);
+        /* OUTPUT:
+         User should be logged out after this function;
+        */
+
+        //DOM MANIPULATION IF USER IS LOGGED IN/OUT OR PREMIUM/NORMAL
+        await account.templateLogic(); //Checks if user is logged in and if they are premium
+
+        /* OUTPUT:
+         HTML elements will be hidden/displayed depending on condition.
+            if logged-in {
+                document.querySelectorAll('.customer-logged-out').forEach(element =>{
+                element.style.visibility = 'hidden'
+                })
+                if premium {
+                    document.querySelectorAll('.customer-premium').forEach(element =>{
+                    element.style.visibility = 'visible'
+                    })
+                }
+                else{
+                    document.querySelectorAll('.customer-premium').forEach(element =>{
+                    element.style.visibility = 'hidden'
+                    })
+                }
+            }
+            else{
+                document.querySelectorAll('.customer-logged-in').forEach(element =>{
+                element.style.visibility = 'hidden'
+                })
+            }
+        */
+    })();
+
+    //Product functions example
+    (async () => {
+
+        //GET PRODUCT 
+        let slug = 'c-e-t-ベジデントフレッシュ';
+        let data = await product.getProduct(slug);
+        /*
+            PRODUCT OUTPUT:
+            data = [{
+                "id": 000000,
+                "name": "xxx",
+                "slug": "xxxx",
+                ...
+                "variations": [...]
+                ...
+            }]
+        */
+
+        //GET PRODUCT VARIATION
+        slug = 'c-e-t-ベジデントフレッシュ';
+        data = await product.getProduct(slug);
+        let variant = await product.getProductVariant(data.product.variations[0]);
+
+        /*
+           PRODUCT OUTPUT:
+            variant = [{
+                "id": 000000,
+                "name": "xxx",
+                "slug": "xxxx",
+                ...
+                "variations": [...]
+                ...
+            }]
+        */
+
+        //UPDATE STOCK AVAILABILITY
+        slug = 'c-e-t-ベジデントフレッシュ'
+        await product.stockAvailability(slug);
+        /*
+          OUTPUT:
+         HTML elements will be updated depending on stock status.
+         if product is 'instock'{
+             document.querySelector('.stock_availability').innerHTML = 'あり';
+         }
+         if product is 'outofstock'{
+            if product has restock date {
+                document.querySelector('.stock_availability').innerHTML = restock date;
+            }
+            else {
+                document.querySelector('.stock_availability').innerHTML = 'なし';
+            }
+         }
+        
+        */
+    })();
+
+    //Wordpress function example
+    (async()=>{
+        let qa_result = await wordpress.getQA('愛犬が足を痛がっている原因は？対処方法や考え','cat,dog','');//search Q and A by keyword, categories and tags(comma separated for categories and tags)
+        console.log(qa_result);
+        //OUTPUT
+        /*
+        qa_result = [{
+            id: <id>,
+            slug: <slug>,
+            type: 'qanda',
+            content: {
+                rendered: <rendered>,
+                protected: <protected>
+            },
+            excerpt: {
+                rendered: <rendered>,
+                protected: <protected>
+            },
+            featured_media: <featured_media>,
+            template: <template>,
+            categories: [...],
+            tags: [...]
+        }, {
+            ...
+        }]
+        
+        */
+
+        let all_locations = await wordpress.getAllLocations();//get all locations of hospital at once
+        console.log(all_locations);
+        /*
+            [
+                {
+                "hid":5690,
+                "lat":34.6864327,
+                "lng":135.5090809,
+                "hospital":"インパクトMアニマルクリニックFXZ-分院",
+                "prefecture":"大阪府",
+                "city":"大阪市",
+                "addr1":"中央区淡路町1-3-14",
+                "addr2":"",
+                "postcode":"541-0047",
+                "phone":"06-6203-3148"
+                },
+                {
+                    ...
+                }
+            ]
+        */
+    })();
+
+</script>
+
+<body>
+    test
+    <div class="example">
+
+    </div>
+</body>

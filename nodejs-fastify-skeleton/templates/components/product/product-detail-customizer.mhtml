@@ -1,0 +1,83 @@
+<script type="module">
+    import { product } from '/components/product/product.js?v={{productVersion}}';
+    let template = `<div class="p-product__customerReviewCard" style="#visibility#">
+                        <div class="p-product__customerReviewHeader">
+                            <div class="p-product__customerReviewStar">
+                                #stars#
+                            </div>
+                            <div class="p-product__customerReviewDate">#date#</div>
+                        </div>
+                        <div class="p-product__customerReviewContents">
+                            #comment#
+                        </div>
+                    </div>`;
+
+    let is_sample = '{{product.categories.0.slug}}'.startsWith('sample');
+    
+    if(is_sample) {
+        document.getElementById('payment').removeChild(document.getElementById('payment').children[1]);
+    }
+
+    function stars(num) {
+        var ret = '';
+        for (var i=1; i<=5; i++) {
+            var checked = (i <= Math.ceil(num)) ? ' class="is-checked"' : '';
+            ret += '<span' + checked + '>★</span>';
+        }
+        return ret;
+    }
+    
+    (async () => {
+        let reviews = {{{review}}};//await product.getProductReviews("{{product.id}}", 1);
+        var sum = 0;
+        var all_reviews = '';
+        var reviews_displayed = 0;
+        
+        for (var i = 0; i < reviews.length; i++) {
+            var review = reviews[i];
+
+            if(review.review != ""){
+                var visibility = reviews_displayed >= 10 ? 'display:none' : '';
+                var rendered = template.replace('#date#', review.date_created.substr(0, 10));
+                rendered = rendered.replace('#comment#', review.review);
+                rendered = rendered.replace('#stars#', stars(review.rating));
+                rendered = rendered.replace('#visibility#', visibility);
+                all_reviews += rendered;  
+                reviews_displayed++;
+            }
+
+            sum += review.rating;            
+        }
+
+        var average = reviews.length > 0 ? sum / reviews.length : 0;
+        average = average.toFixed(2);
+        document.getElementById('average-rating').innerText = average;
+        console.log('Sum', sum, 'Average', average);
+        //p-product__averageReviewStar, p-product__reviewStar
+        document.getElementById('review-list').innerHTML = all_reviews;
+        var star_ave = stars(average);
+        var star1 = document.getElementsByClassName('p-product__averageReviewStar')[0];
+        var star2 = document.getElementsByClassName('p-product__reviewStar')[0];
+        star1.innerHTML = star2.innerHTML = star_ave + '<p class="p-product__reviewCount">（' + reviews.length + '）</p>';
+        var button = document.getElementById('all-reviews');
+        if (reviews.length < 10) {
+            button.style.display = 'none';
+        } else {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                button.style.display = 'none';
+                var divs = document.getElementsByClassName('p-product__customerReviewCard');
+                Array.from(divs).forEach(function(div) {
+                    div.style.display = 'block';
+                });
+            });
+        }
+
+        var link = document.getElementById('review-link');
+        if (link) {
+            link.addEventListener('click', function(event) {
+                document.getElementById('review').click();
+            });
+        }
+    })()
+</script>

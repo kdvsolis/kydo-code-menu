@@ -1,0 +1,282 @@
+{{{header}}}
+	<div id="c-breadcrumb" class="c-breadcrumb">
+		<div class="l-container">
+			<ul class="c-breadcrumb__list">
+				<li><a href="{{{home_url}}}/">ホーム</a></li>
+				<li class="is-current"><span>ペットのお悩みQ&A</span></li>
+			</ul>
+		</div>
+	</div>
+	<main id="main" class="l-main">
+		<article class="p-qa">
+			<div class="c-pageHeader">
+				<div class="l-container">
+					<div class="c-pageHeader__title">
+						<p class="c-pageHeader__titleSub">VIRBAC SERVICE</p>
+						<h1 class="c-pageHeader__titleMain">ペットのお悩みQ&A</h1>
+					</div>
+				</div>
+			</div>
+			<div class="c-pageLead">
+				<div class="l-container">
+					<p class="c-pageLead__text">ペットの日頃気になることや<br class="u-sp--inline">お悩みに役立つ記事をお届けします</p>
+				</div>
+			</div>
+			<section>
+				<div class="p-lower__section p-lower__section--dog">
+					<div class="l-container">
+						<h2 class="p-qa__h2">犬のお悩み</h2>
+						<div class="p-qa__row">
+							<div class="p-qa__col p-qa__col--main">
+								<div class="p-qa__item p-qa__item--dog">
+									<a class="p-qa__link" href="{{home_url}}/pet-qa/{{dog_list.0.slug}}">
+										<div class="p-qa__image">
+											<img src="{{dog_list.0.featured_media_rendered}}" alt="テスト" class="">
+										</div>
+										<p class="p-qa__title">{{dog_list.0.title.rendered}}</p>
+									</a>
+									<a class="p-qa__tag" href="{{home_url}}/pet-qa?category={{dog_list.0.category.slug}}">
+										{{dog_list.0.category.name}}
+									</a>
+									<time class="p-qa__date" datetime="{{dog_list.0.date}}">{{dog_list.0.date}}</time>
+								</div>
+							</div>
+							<div class="p-qa__col p-qa__col--sub">
+								<ol class="p-qa__sub">
+									<li class="p-qa__subItem p-qa__subItem--dog">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{dog_list.1.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{dog_list.1.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{dog_list.1.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{dog_list.1.category.slug}}">
+											{{dog_list.1.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{dog_list.1.date}}">{{dog_list.1.date}}</time>
+									</li>
+									<li class="p-qa__subItem p-qa__subItem--dog">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{dog_list.2.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{dog_list.2.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{dog_list.2.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{dog_list.2.category.slug}}">
+											{{dog_list.2.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{dog_list.2.date}}">{{dog_list.2.date}}</time>
+									</li>
+									<li class="p-qa__subItem p-qa__subItem--dog">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{dog_list.3.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{dog_list.3.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{dog_list.3.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{dog_list.3.category.slug}}">
+											{{dog_list.3.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{dog_list.3.date}}">{{dog_list.3.date}}</time>
+									</li>
+								</ol>
+							</div>
+						</div>
+						<div class="c-button-wrap">
+							<a class="c-button c-button--dog" href="{{home_url}}/pet-qa?category=dog">犬のお悩み記事をすべて見る</a>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="p-lower__section p-lower__section--cat">
+					<div class="l-container">
+						<h2 class="p-qa__h2">猫のお悩み</h2>
+						<div class="p-qa__row">
+							<div class="p-qa__col p-qa__col--main">
+								<div class="p-qa__item p-qa__item--cat">
+									<a class="p-qa__link" href="{{home_url}}/pet-qa/{{cat_list.0.slug}}">
+										<div class="p-qa__image">
+											<img src="{{cat_list.0.featured_media_rendered}}" alt="テスト" class="">
+										</div>
+										<p class="p-qa__title">{{cat_list.0.title.rendered}}</p>
+									</a>
+									<a class="p-qa__tag" href="{{home_url}}/pet-qa?category={{cat_list.0.category.slug}}">
+										{{cat_list.0.category.name}}
+									</a>
+									<time class="p-qa__date" datetime="{{cat_list.0.date}}">{{cat_list.0.date}}</time>
+								</div>
+							</div>
+							<div class="p-qa__col p-qa__col--sub">
+								<ol class="p-qa__sub">
+									<li class="p-qa__subItem p-qa__subItem--cat">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{cat_list.1.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{cat_list.1.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{cat_list.1.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{cat_list.1.category.slug}}">
+											{{cat_list.1.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{cat_list.1.date}}">{{cat_list.1.date}}</time>
+									</li>
+									<li class="p-qa__subItem p-qa__subItem--cat">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{cat_list.2.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{cat_list.2.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{cat_list.2.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{cat_list.2.category.slug}}">
+											{{cat_list.2.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{cat_list.2.date}}">{{cat_list.2.date}}</time>
+									</li>
+									<li class="p-qa__subItem p-qa__subItem--cat">
+										<a class="p-qa__subLink" href="{{home_url}}/pet-qa/{{cat_list.3.slug}}">
+											<div class="p-qa__subImage">
+												<img src="{{cat_list.3.featured_media_rendered}}" alt="テスト" class="">
+											</div>
+											<p class="p-qa__subTitle">{{cat_list.3.title.rendered}}</p>
+										</a>
+										<a class="p-qa__subTag" href="{{home_url}}/pet-qa?category={{cat_list.3.category.slug}}">
+											{{cat_list.3.category.name}}
+										</a>
+										<time class="p-qa__subDate" datetime="{{cat_list.3.date}}">{{cat_list.3.date}}</time>
+									</li>
+								</ol>
+							</div>
+						</div>
+						<div class="c-button-wrap">
+							<a class="c-button c-button--cat" href="{{home_url}}/pet-qa?category=cat">猫のお悩み記事をすべて見る</a>
+						</div>
+
+					</div>
+					
+				</div>
+				
+			</section>
+			<section>
+				<div class="p-lower__section p-lower__section--search">
+					<div class="l-container">
+						<div class="c-pagination__information c-pagination__information--top">
+							<div class="c-pagination__informationLabel">検索結果</div>
+							<div class="c-pagination__informationCount">読み込み中...</div>
+						</div>
+						<ol class="p-search__list">
+							<li class="p-search__item p-search__item--dog">
+								<a class="p-search__link" href="#">
+									<div class="p-search__image">
+										<img src="https://vdev.impactm.net/static/images/temp/temp_img_qa.jpg" alt="テスト" class="">
+									</div>
+									<p class="p-search__title">読み込み中...</p>
+								</a>
+								<a class="p-search__tag" href="#">
+									お悩み
+								</a>
+								<!-- <time class="p-search__date" datetime="">2021.02.08</time> -->
+							</li>
+						</ol>
+
+						<div class="c-pagination">
+							<div class="c-pagination__information c-pagination__information--bottom">
+								<div class="c-pagination__informationLabel">検索結果</div>
+								<div class="c-pagination__informationCount">読み込み中...</div>
+							</div>
+							<ul class="c-pagination__list c-pagination__list--bottom">
+								<li class="c-pagination__item c-pagination__item--prev">
+									<a href="{{prevUrl}}" {{#firstPage}}is-disabled{{/firstPage}}>←前へ</a>
+								</li>
+								<li class="c-pagination__item c-pagination__item--page">
+									<ul>
+	<!--
+										{{#pages}}
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number {{#currentPage}}is-current{{/currentPage}}"><a href="{{url}}">{{page}}</a></li>
+										{{/pages}}
+	-->
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number is-currentPage"><a href="{{url}}">1</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">2</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">3</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">4</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">5</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">6</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">7</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">8</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">9</a></li>
+										<li class="c-pagination__item c-pagination__item--number js-pagination__item--number"><a href="{{url}}">10</a></li>
+									</ul>
+								</li>
+								<li class="c-pagination__item c-pagination__item--next">
+									<a href="{{nextUrl}}" {{#lastPage}}is-disabled{{/lastPage}}>次へ→</a>
+								</li>
+							</ul>
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="p-lower__section">
+					<div class="l-container">
+						<form class="c-search" name="search">
+							<h2 class="c-search__h2">記事を検索する</h2>
+							<div class="c-search__row">
+								<div class="c-search__col">
+									<select name="category" class="c-search__select c-search__select--category js-search__select--category">
+										<option value="dog">犬</option>
+										<option value="cat">猫</option>
+									</select>
+								</div>
+								<div class="c-search__col">
+									<select name="category-dog" class="c-search__select c-search__select--tag js-search__dTag--dog">
+									<option value="">選択…</option>
+									{{#dog_category_list}}
+										<option value="{{id}}">{{name}}</option>
+									{{/dog_category_list}}</select>
+									<select name="category-cat" class="c-search__select c-search__select--tag js-search__dTag--cat">
+									<option value="">選択…</option>
+									{{#cat_category_list}}
+										<option value="{{id}}">{{name}}</option>
+									{{/cat_category_list}}</select>
+								</div>
+								<div class="c-search__col">
+									<input type="text" name="search" class="c-search__input c-search__input--text" placeholder="フリーワード">
+								</div>
+								<div class="c-search__col">
+									<a class="c-search__button" href="javascript:search.submit()">検索</a>
+								</div>
+							</div>
+							<h2 class="c-search__h2">詳細タグから探す</h2>
+							<div class="js-search__dTag--dog">
+								<ol class="c-search__dTagList">
+									{{#dog_tag_list}}
+									<li class="c-search__dTagItem">
+										<input name="tag-dog" class="c-search__dTagCheck" id="tag-dog{{id}}" type="checkbox" value="{{slug}}">
+										<label class="c-search__dTagLabel" for="tag-dog{{id}}">{{name}}</label>
+									</li>
+									{{/dog_tag_list}}
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('dog');">× 全てクリア</a>
+							</div>
+							<div class="js-search__dTag--cat">
+								<ol class="c-search__dTagList">
+									{{#cat_tag_list}}
+									<li class="c-search__dTagItem">
+										<input name="tag-cat" class="c-search__dTagCheck" id="tag-cat{{id}}" type="checkbox" value="{{slug}}">
+										<label class="c-search__dTagLabel" for="tag-cat{{id}}">{{name}}</label>
+									</li>
+									{{/cat_tag_list}}
+								</ol>
+								<a class="c-search__clear" href="javascript:void(0);" onClick="clearDTag('cat');">× 全てクリア</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+{{{footer}}}
+
